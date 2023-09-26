@@ -3,6 +3,9 @@
   <project key="-149847933">
     <configuration>DEBUG;TRACE</configuration>
   </project>
+  <project key="-612619279">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
   <sourcecode name="Form1.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2023/09/14 11:33:33.214</styleCop>
