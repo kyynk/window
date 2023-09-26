@@ -12,12 +12,10 @@ namespace Homework1
 {
     public partial class Form1 : Form
     {
-        private const int ZERO = 0;
-        private const string PLUS = "+";
-        private Model _model;
-
         public Form1()
         {
+            const double ZERO = 0.0;
+            const string PLUS = "+";
             InitializeComponent();
             _model = new Model(ZERO, ZERO.ToString(), PLUS, true);
         }
@@ -47,7 +45,7 @@ namespace Homework1
         // clear all
         private void ClickButtonClear(object sender, EventArgs e)
         {
-            _model.ClearAll();
+            _model.Clear();
             _textBoxResult.Text = _model.GetBuffer();
         }
 
@@ -58,7 +56,7 @@ namespace Homework1
             _model.SetOperation(buttonOperation.Text);
         }
 
-        // equal
+        // equal (use former operator and buffer)
         private void ClickButtonEqual(object sender, EventArgs e)
         {
             _model.Equal();

@@ -311,6 +311,6 @@ namespace Homework1
         private System.Windows.Forms.Button _buttonPoint;
         private System.Windows.Forms.Button _buttonEqual;
         private System.Windows.Forms.Button _buttonDivide;
+        private Model _model;
     }
 }
-

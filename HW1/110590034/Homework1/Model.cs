@@ -8,7 +8,7 @@ namespace Homework1
 {
     class Model
     {
-        private const int ZERO = 0;
+        private const double ZERO = 0.0;
         private const string POINT = ".";
         private const string PLUS = "+";
         private const string MINUS = "-";
@@ -17,18 +17,21 @@ namespace Homework1
         private double _memory;
         private string _buffer;
         private string _operation;
+        private bool _isNotEqual;
         private bool _isNewNumber;
 
-        public Model(double memory, string buffer, string operation, bool isNewNumber)
+        public Model(double memory, string buffer, string operation, bool initialBoolean)
         {
             _memory = memory;
             _buffer = buffer;
             _operation = operation;
-            _isNewNumber = isNewNumber;
+            _isNotEqual = initialBoolean;
+            _isNewNumber = initialBoolean;
+
         }
 
         // clear _memory _buffer _operation
-        public void ClearAll()
+        public void Clear()
         {
             _memory = ZERO;
             _buffer = ZERO.ToString();
@@ -36,16 +39,21 @@ namespace Homework1
             _isNewNumber = true;
         }
 
-        // clear _buffer _operation
+        // clear _buffer
         public void ClearEntry()
         {
             _buffer = ZERO.ToString();
         }
 
-        // add digit in buffer
+        // add number in buffer
+        // if add number after equal and not set operator
+        // will Clear() first then add number
         public void AddNumber(string number)
         {
-            _isNewNumber = false;
+            if (!_isNotEqual)
+            {
+                Clear();
+            }
             if (_buffer == ZERO.ToString())
             {
                 _buffer = number;
@@ -54,16 +62,17 @@ namespace Homework1
             {
                 _buffer += number;
             }
+            _isNewNumber = false;
         }
 
         // add point in buffer
         public void AddPoint()
         {
-            _isNewNumber = false;
             if (!_buffer.Contains(POINT))
             {
                 _buffer += POINT;
             }
+            _isNewNumber = false;
         }
 
         // get buffer
@@ -105,13 +114,6 @@ namespace Homework1
             }
         }
         
-        // equal (use former operator and buffer)
-        public void Equal()
-        {
-            PerformOperations();
-            _isNewNumber = true;
-        }
-
         // perform operation with +-*/
         public void PerformOperations()
         {
@@ -131,18 +133,26 @@ namespace Homework1
             {
                 Divide();
             }
+            _isNewNumber = true;
         }
 
-        // set operation
+        // set operation (+-*/)
         public void SetOperation(string operation)
         {
             if (!_isNewNumber)
             {
                 PerformOperations();
-                _isNewNumber = true;
             }
             ClearEntry();
+            _isNotEqual = true;
             _operation = operation;
+        }
+
+        // equal (use former operator and buffer)
+        public void Equal()
+        {
+            PerformOperations();
+            _isNotEqual = false;
         }
     }
 }

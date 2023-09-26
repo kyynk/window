@@ -193,7 +193,7 @@
               <AnalysisFile>
                 <RelativePath>Form1.cs</RelativePath>
                 <ProjectName>Homework1</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
+                <AnalysisFileType>ViewOrController</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Form1.Designer.cs</RelativePath>
@@ -227,7 +227,7 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>590</ProductionLoc>
+          <ProductionLoc>598</ProductionLoc>
           <TestLoc>0</TestLoc>
         </CodeReview>
       </Data>
