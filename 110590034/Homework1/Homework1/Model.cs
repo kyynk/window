@@ -45,7 +45,7 @@ namespace Homework1
             _buffer = ZERO.ToString();
         }
 
-        // add number in buffer
+        // add number to buffer
         // if add number after equal and not set operator
         // will Clear() first then add number
         public void AddNumber(string number)
@@ -65,7 +65,7 @@ namespace Homework1
             _isNewNumber = false;
         }
 
-        // add point in buffer
+        // add point to buffer
         public void AddPoint()
         {
             if (!_buffer.Contains(POINT))
