@@ -36,6 +36,7 @@ namespace Homework1
             _memory = ZERO;
             _buffer = ZERO.ToString();
             _operation = PLUS;
+            _isNotEqual = true;
             _isNewNumber = true;
         }
 

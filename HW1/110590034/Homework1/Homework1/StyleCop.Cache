@@ -9,6 +9,9 @@
   <project key="-1491458056">
     <configuration>DEBUG;TRACE</configuration>
   </project>
+  <project key="1451577547">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
   <sourcecode name="Form1.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2023/09/14 11:33:33.214</styleCop>
@@ -35,7 +38,7 @@
     <timestamps>
       <styleCop>2023/09/14 11:33:33.214</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/09/26 22:00:58.451</sourceFile>
+      <sourceFile>2023/09/27 16:47:33.705</sourceFile>
       <parser>2023/09/14 11:33:33.214</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/14 11:33:33.214</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
