@@ -15,24 +15,23 @@ namespace Homework
         private readonly Model _model;
         private const string DELETE = "刪除";
 
-        public Form1()
+        public Form1(Model model)
         {
             InitializeComponent();
-            _model = new Model();
+            _model = model;
         }
 
         // click create button
         private void ClickCreateButton(object sender, EventArgs e)
         {
             _model.Create(_shapeTypeComboBox.Text);
-            _shapeData.Rows.Add(DELETE, _model.GetNewShapeTypeName(), "(1, 1), (1, 1)");
+            _shapeData.Rows.Add(DELETE, _model.GetNewShapeTypeName(), _model.GetNewShapeInfoByString());
         }
 
         // click delete button
         private void ClickDeleteButton(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow rowToDelete = _shapeData.Rows[e.RowIndex];
-            Console.WriteLine(e.RowIndex);
             _shapeData.Rows.Remove(rowToDelete);
             _model.Delete(e.RowIndex);
         }

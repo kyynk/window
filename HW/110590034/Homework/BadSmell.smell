@@ -185,39 +185,7 @@
     <div class="data">
       <Data id="ReviewPalData">
         <CodeReview xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-          <Reviews>
-            <Smell>
-              <Id>1</Id>
-              <SmellType>Literal constants(字面常數)-"(1, 1), (1, 1)"</SmellType>
-              <HashCode>LiteralConstants.ClickCreateButton."(1, 1), (1, 1)"</HashCode>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
-              <Project>Homework</Project>
-              <File>Form1.cs</File>
-              <Line>28</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment />
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>2</Id>
-              <SmellType>A syntax error has been discovered in file C:\Users\user\Desktop\window\HW\110590034\Homework\Homework\Model.cs on line 35.</SmellType>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
-              <Project>Homework</Project>
-              <File>Model.cs</File>
-              <Line>35</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment />
-              <Auto>false</Auto>
-            </Smell>
-          </Reviews>
+          <Reviews />
           <HashCodeIgnoreList />
           <HashCodeRequestIgnoreList />
           <AnalysisFileManager>
@@ -289,7 +257,7 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>534</ProductionLoc>
+          <ProductionLoc>595</ProductionLoc>
           <TestLoc>0</TestLoc>
         </CodeReview>
       </Data>

@@ -28,14 +28,10 @@ namespace Homework
         }
 
         // get new shape location
-        public string GetNewShapeInfo()
+        public string GetNewShapeInfoByString()
         {
-            string location;
-            // location = "(" + _shapesData.GetNewShape().GetInfo()[0][0] + ", " + _shapesData.GetNewShape().GetInfo()[0][1] + "), (" + _shapesData.GetNewShape().GetInfo()[1][0] + ", " + _shapesData.GetNewShape().GetInfo()[1][1] + ")";
-            location = $"{GetNewShapeTypeName()} aaaa";
-            return location;
+            return _shapesData.GetNewShapeInfoByString();
         }
-
 
         // delete selected shape from _shapes
         public void Delete(int index)

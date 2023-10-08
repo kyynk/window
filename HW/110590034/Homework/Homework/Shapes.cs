@@ -46,5 +46,11 @@ namespace Homework
         {
             return _shapes[_shapes.Count - 1].GetInfo();
         }
+
+        // get new shape info
+        public string GetNewShapeInfoByString()
+        {
+            return _shapes[_shapes.Count - 1].GetInfoByString();
+        }
     }
 }
