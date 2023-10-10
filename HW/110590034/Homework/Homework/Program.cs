@@ -14,10 +14,11 @@ namespace Homework
         [STAThread]
         static void Main()
         {
-            Model m = new Model();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1(m));
+            Model model = new Model();
+            Form1 form = new Form1(model);
+            Application.Run(form);
         }
     }
 }

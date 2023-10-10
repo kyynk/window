@@ -31,9 +31,6 @@ namespace Homework
         {
             this._groupBox = new System.Windows.Forms.GroupBox();
             this._shapeData = new System.Windows.Forms.DataGridView();
-            this._deleteButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this._shapeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._information = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._shapeTypeComboBox = new System.Windows.Forms.ComboBox();
             this._createButton = new System.Windows.Forms.Button();
             this._canvases = new System.Windows.Forms.DataGridView();
@@ -42,6 +39,9 @@ namespace Homework
             this._menuStrip = new System.Windows.Forms.MenuStrip();
             this._description = new System.Windows.Forms.ToolStripMenuItem();
             this._about = new System.Windows.Forms.ToolStripMenuItem();
+            this._deleteButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this._shapeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._information = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._shapeData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._canvases)).BeginInit();
@@ -62,6 +62,7 @@ namespace Homework
             // 
             // _shapeData
             // 
+            this._shapeData.AllowUserToAddRows = false;
             this._shapeData.AllowUserToResizeColumns = false;
             this._shapeData.AllowUserToResizeRows = false;
             this._shapeData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -75,37 +76,9 @@ namespace Homework
             this._shapeData.RowHeadersVisible = false;
             this._shapeData.RowHeadersWidth = 51;
             this._shapeData.RowTemplate.Height = 27;
-            this._shapeData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this._shapeData.Size = new System.Drawing.Size(277, 484);
-            this._shapeData.TabIndex = 2;
+            this._shapeData.TabIndex = 0;
             this._shapeData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClickDeleteButton);
-            // 
-            // _deleteButton
-            // 
-            this._deleteButton.FillWeight = 50F;
-            this._deleteButton.HeaderText = "刪除";
-            this._deleteButton.MinimumWidth = 6;
-            this._deleteButton.Name = "_deleteButton";
-            this._deleteButton.ReadOnly = true;
-            this._deleteButton.Width = 50;
-            // 
-            // _shapeType
-            // 
-            this._shapeType.FillWeight = 75F;
-            this._shapeType.HeaderText = "形狀";
-            this._shapeType.MinimumWidth = 6;
-            this._shapeType.Name = "_shapeType";
-            this._shapeType.ReadOnly = true;
-            this._shapeType.Width = 75;
-            // 
-            // _information
-            // 
-            this._information.FillWeight = 150F;
-            this._information.HeaderText = "資訊";
-            this._information.MinimumWidth = 6;
-            this._information.Name = "_information";
-            this._information.ReadOnly = true;
-            this._information.Width = 150;
             // 
             // _shapeTypeComboBox
             // 
@@ -119,7 +92,6 @@ namespace Homework
             this._shapeTypeComboBox.Name = "_shapeTypeComboBox";
             this._shapeTypeComboBox.Size = new System.Drawing.Size(156, 23);
             this._shapeTypeComboBox.TabIndex = 1;
-            this._shapeTypeComboBox.SelectedIndex = 0;
             // 
             // _createButton
             // 
@@ -181,6 +153,38 @@ namespace Homework
             this._about.Name = "_about";
             this._about.Size = new System.Drawing.Size(122, 26);
             this._about.Text = "關於";
+            // 
+            // _deleteButton
+            // 
+            this._deleteButton.FillWeight = 50F;
+            this._deleteButton.HeaderText = "刪除";
+            this._deleteButton.MinimumWidth = 6;
+            this._deleteButton.Name = "_deleteButton";
+            this._deleteButton.ReadOnly = true;
+            this._deleteButton.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this._deleteButton.Width = 50;
+            // 
+            // _shapeType
+            // 
+            this._shapeType.FillWeight = 75F;
+            this._shapeType.HeaderText = "形狀";
+            this._shapeType.MinimumWidth = 6;
+            this._shapeType.Name = "_shapeType";
+            this._shapeType.ReadOnly = true;
+            this._shapeType.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this._shapeType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this._shapeType.Width = 75;
+            // 
+            // _information
+            // 
+            this._information.FillWeight = 150F;
+            this._information.HeaderText = "資訊";
+            this._information.MinimumWidth = 6;
+            this._information.Name = "_information";
+            this._information.ReadOnly = true;
+            this._information.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this._information.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this._information.Width = 150;
             // 
             // Form1
             // 

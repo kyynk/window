@@ -22,15 +22,15 @@ namespace Homework
         }
 
         // get new shape name
-        public string GetNewShapeTypeName()
+        public string GetNewShapeType()
         {
             return _shapesData.GetNewShapeName();
         }
 
         // get new shape location
-        public string GetNewShapeInfoByString()
+        public string GetNewShapePosition()
         {
-            return _shapesData.GetNewShapeInfoByString();
+            return _shapesData.GetNewShapeInfo();
         }
 
         // delete selected shape from _shapes

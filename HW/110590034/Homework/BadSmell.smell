@@ -193,7 +193,7 @@
               <AnalysisFile>
                 <RelativePath>Form1.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
+                <AnalysisFileType>ViewOrController</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Form1.Designer.cs</RelativePath>
@@ -247,11 +247,6 @@
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Shapes.cs</RelativePath>
-                <ProjectName>Homework</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
-                <RelativePath>ShapeType.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>

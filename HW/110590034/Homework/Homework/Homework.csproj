@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ShapeType.cs" />
     <Compile Include="Shapes.cs" />
     <Compile Include="ShapeFactory.cs" />
     <Compile Include="Line.cs" />

@@ -25,7 +25,7 @@ namespace Homework
         private void ClickCreateButton(object sender, EventArgs e)
         {
             _model.Create(_shapeTypeComboBox.Text);
-            _shapeData.Rows.Add(DELETE, _model.GetNewShapeTypeName(), _model.GetNewShapeInfoByString());
+            _shapeData.Rows.Add(DELETE, _model.GetNewShapeType(), _model.GetNewShapePosition());
         }
 
         // click delete button

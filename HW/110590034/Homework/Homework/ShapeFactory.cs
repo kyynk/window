@@ -8,22 +8,29 @@ namespace Homework
 {
     public class ShapeFactory
     {
-        private readonly ShapeType _shapeType;
+        private const string LINE_CHINESE = "線";
+        private const string RECTANGLE_CHINESE = "矩形";
+        private const string NOT_IMPLEMENTED = "NOT_IMPLEMENTED";
+
         public ShapeFactory()
         {
-            _shapeType = new ShapeType();
+
         }
 
         // create shape
         public Shape CreateShape(string shapeType)
         {
-            if (shapeType == _shapeType.GetLineChinese())
+            if (shapeType == LINE_CHINESE)
             {
                 return new Line();
             }
-            else
+            else if (shapeType == RECTANGLE_CHINESE)
             {
                 return new Rectangle();
+            }
+            else
+            {
+                throw new NotImplementedException(NOT_IMPLEMENTED);
             }
         }
     }

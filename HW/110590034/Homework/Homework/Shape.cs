@@ -12,53 +12,45 @@ namespace Homework
         protected const int MAX_X_RANGE = 800;
         protected const int MIN_Y_RANGE = 50;
         protected const int MAX_Y_RANGE = 600;
-        protected const string COMMA = ", ";
-        protected const string LEFT_PARENTHESIS = "(";
-        protected const string RIGHT_PARENTHESIS = ")";
-        protected ShapeType _shapeType;
+        protected const string NOT_IMPLEMENTED = "NOT_IMPLEMENTED";
         protected string _shapeName;
         protected Random _randomNumber;
-        protected List<List<int>> _info;
+        protected List<List<int>> _position;
 
         public Shape()
         {
-            _shapeType = new ShapeType();
-            _shapeName = "";
             _randomNumber = new Random();
-            _info = new List<List<int>>();
         }
 
         // get name
-        public string GetShapeName()
+        public virtual string GetShapeName()
         {
             return _shapeName;
         }
 
-        // get location
-        public List<List<int>> GetInfo()
+        // get position
+        public virtual string GetInfo()
         {
-            return _info;
+            throw new NotImplementedException(NOT_IMPLEMENTED);
         }
 
-        // get location by string
-        public string GetInfoByString()
+        // set position by random
+        public void SetPosition()
         {
-            string firstCoordinate = LEFT_PARENTHESIS + _info[0][0] + COMMA + _info[0][1] + RIGHT_PARENTHESIS;
-            string secondCoordinate = LEFT_PARENTHESIS + _info[1][0] + COMMA + _info[1][1] + RIGHT_PARENTHESIS;
-            return firstCoordinate + COMMA + secondCoordinate;
-        }
-
-        // set location
-        public void SetInfo()
-        {
-            List<int> location1 = new List<int>
-            { 
-                _randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE), _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE) };
-            List<int> location2 = new List<int>
-            { 
-                _randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE), _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE) };
-            _info.Add(location1);
-            _info.Add(location2);
+            List<int> coordinate1;
+            coordinate1 = new List<int> 
+            {
+                _randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE),
+                _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE)
+            };
+            List<int> coordinate2;
+            coordinate2 = new List<int> 
+            {
+                _randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE),
+                _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE)
+            };
+            _position.Add(coordinate1);
+            _position.Add(coordinate2);
         }
     }
 }

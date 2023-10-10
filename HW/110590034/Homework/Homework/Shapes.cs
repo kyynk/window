@@ -29,28 +29,28 @@ namespace Homework
             _shapes.RemoveAt(index);
         }
 
-        // get new shape
-        public Shape GetNewShape()
+        // get shape name by index
+        public string GetShapeNameByIndex(int index)
         {
-            return _shapes[_shapes.Count - 1];
+            return _shapes[index].GetShapeName();
+        }
+        
+        // get shape info by index
+        public string GetShapeInfoByIndex(int index)
+        {
+            return _shapes[index].GetInfo();
         }
 
         // get new shape name
         public string GetNewShapeName()
         {
-            return _shapes[_shapes.Count - 1].GetShapeName();
-        }
-        
-        // get new shape info
-        public List<List<int>> GetNewShapeInfo()
-        {
-            return _shapes[_shapes.Count - 1].GetInfo();
+            return GetShapeNameByIndex(_shapes.Count - 1);
         }
 
         // get new shape info
-        public string GetNewShapeInfoByString()
+        public string GetNewShapeInfo()
         {
-            return _shapes[_shapes.Count - 1].GetInfoByString();
+            return GetShapeInfoByIndex(_shapes.Count - 1);
         }
     }
 }
