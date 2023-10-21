@@ -21,6 +21,33 @@ namespace Homework
             _model = model;
         }
 
+        // click line button
+        private void ClickLineButton(object sender, EventArgs e)
+        {
+            _lineButton.Checked = true;
+            _rectangleButton.Checked = false;
+            _ellipseButton.Checked = false;
+            Cursor.Current = Cursors.Cross;
+        }
+
+        // click rectangle button
+        private void ClickRectangleButton(object sender, EventArgs e)
+        {
+            _lineButton.Checked = false;
+            _rectangleButton.Checked = true;
+            _ellipseButton.Checked = false;
+            Cursor.Current = Cursors.Cross;
+        }
+
+        // click ellipse button
+        private void ClickEllipseButton(object sender, EventArgs e)
+        {
+            _lineButton.Checked = false;
+            _rectangleButton.Checked = false;
+            _ellipseButton.Checked = true;
+            Cursor.Current = Cursors.Cross;
+        }
+
         // click create button
         private void ClickCreateButton(object sender, EventArgs e)
         {

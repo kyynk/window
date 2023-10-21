@@ -10,12 +10,12 @@ namespace Homework
     {
         protected const int MIN_X_RANGE = 150;
         protected const int MAX_X_RANGE = 800;
-        protected const int MIN_Y_RANGE = 50;
-        protected const int MAX_Y_RANGE = 600;
+        protected const int MIN_Y_RANGE = 100;
+        protected const int MAX_Y_RANGE = 550;
         protected const string NOT_IMPLEMENTED = "NOT_IMPLEMENTED";
         protected string _shapeName;
         protected Random _randomNumber;
-        protected List<List<int>> _position;
+        protected List<Point> _position;
 
         public Shape()
         {
@@ -37,20 +37,7 @@ namespace Homework
         // set position by random
         public virtual void SetPosition()
         {
-            List<int> coordinate1;
-            coordinate1 = new List<int> 
-            {
-                _randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE),
-                _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE)
-            };
-            List<int> coordinate2;
-            coordinate2 = new List<int> 
-            {
-                _randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE),
-                _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE)
-            };
-            _position.Add(coordinate1);
-            _position.Add(coordinate2);
+            throw new NotImplementedException(NOT_IMPLEMENTED);
         }
     }
 }

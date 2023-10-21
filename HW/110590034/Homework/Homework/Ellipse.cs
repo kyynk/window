@@ -6,24 +6,25 @@ using System.Threading.Tasks;
 
 namespace Homework
 {
-    class Circle : Shape
+    public class Ellipse : Shape
     {
-        private const string RECTANGLE_CHINESE = "圓形";
+        private const string CIRCLE_CHINESE = "圓";
         private const string COMMA = ", ";
         private const string LEFT_PARENTHESIS = "(";
         private const string RIGHT_PARENTHESIS = ")";
 
-        public Circle() : base()
+        public Ellipse() : base()
         {
-            _shapeName = RECTANGLE_CHINESE;
-            _position = new List<List<int>>();
+            _shapeName = CIRCLE_CHINESE;
+            _position = new List<Point>();
             SetPosition();
         }
 
         // set info by random
         public override void SetPosition()
         {
-            base.SetPosition();
+            Point point = new Point(_randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE), _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE));
+            _position.Add(point);
         }
 
         // get shape name
@@ -35,7 +36,7 @@ namespace Homework
         // get info (position)
         public override string GetInfo()
         {
-            string coordinate = LEFT_PARENTHESIS + _position[0][0] + COMMA + _position[0][1] + RIGHT_PARENTHESIS;
+            string coordinate = LEFT_PARENTHESIS + _position[0].X + COMMA + _position[0].Y + RIGHT_PARENTHESIS;
             return coordinate;
         }
     }

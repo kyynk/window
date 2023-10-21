@@ -10,6 +10,7 @@ namespace Homework
     {
         private const string LINE_CHINESE = "線";
         private const string RECTANGLE_CHINESE = "矩形";
+        private const string CIRCLE_CHINESE = "圓";
         private const string NOT_IMPLEMENTED = "NOT_IMPLEMENTED";
 
         public ShapeFactory()
@@ -27,6 +28,10 @@ namespace Homework
             else if (shapeType == RECTANGLE_CHINESE)
             {
                 return new Rectangle();
+            }
+            else if (shapeType == CIRCLE_CHINESE)
+            {
+                return new Ellipse();
             }
             else
             {

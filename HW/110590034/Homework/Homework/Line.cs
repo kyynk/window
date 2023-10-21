@@ -8,7 +8,6 @@ namespace Homework
 {
     public class Line : Shape
     {
-
         private const string LINE_CHINESE = "線";
         private const string COMMA = ", ";
         private const string LEFT_PARENTHESIS = "(";
@@ -17,8 +16,17 @@ namespace Homework
         public Line() : base()
         {
             _shapeName = LINE_CHINESE;
-            _position = new List<List<int>>();
+            _position = new List<Point>();
             SetPosition();
+        }
+
+        // set position by random
+        public override void SetPosition()
+        {
+            Point point1 = new Point(_randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE), _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE));
+            Point point2 = new Point(_randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE), _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE));
+            _position.Add(point1);
+            _position.Add(point2);
         }
 
         // get shape name
@@ -30,8 +38,8 @@ namespace Homework
         // get info (position)
         public override string GetInfo()
         {
-            string firstCoordinate = LEFT_PARENTHESIS + _position[0][0] + COMMA + _position[0][1] + RIGHT_PARENTHESIS;
-            string secondCoordinate = LEFT_PARENTHESIS + _position[1][0] + COMMA + _position[1][1] + RIGHT_PARENTHESIS;
+            string firstCoordinate = LEFT_PARENTHESIS + _position[0].X + COMMA + _position[0].Y + RIGHT_PARENTHESIS;
+            string secondCoordinate = LEFT_PARENTHESIS + _position[1].X + COMMA + _position[1].Y + RIGHT_PARENTHESIS;
             return firstCoordinate + COMMA + secondCoordinate;
         }
     }
