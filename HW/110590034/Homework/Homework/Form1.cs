@@ -31,9 +31,12 @@ namespace Homework
         // click delete button
         private void ClickDeleteButton(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow rowToDelete = _shapeData.Rows[e.RowIndex];
-            _shapeData.Rows.Remove(rowToDelete);
-            _model.Delete(e.RowIndex);
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
+            {
+                DataGridViewRow rowToDelete = _shapeData.Rows[e.RowIndex];
+                _shapeData.Rows.Remove(rowToDelete);
+                _model.Delete(e.RowIndex);
+            }
         }
     }
 }

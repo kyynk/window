@@ -24,7 +24,7 @@ namespace Homework
         // get shape name
         public override string GetShapeName()
         {
-            return _shapeName;
+            return base.GetShapeName();
         }
 
         // get info (position)

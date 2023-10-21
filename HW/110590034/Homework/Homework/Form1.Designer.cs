@@ -31,6 +31,9 @@ namespace Homework
         {
             this._groupBox = new System.Windows.Forms.GroupBox();
             this._shapeData = new System.Windows.Forms.DataGridView();
+            this._deleteButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this._shapeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._information = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._shapeTypeComboBox = new System.Windows.Forms.ComboBox();
             this._createButton = new System.Windows.Forms.Button();
             this._canvases = new System.Windows.Forms.DataGridView();
@@ -39,9 +42,7 @@ namespace Homework
             this._menuStrip = new System.Windows.Forms.MenuStrip();
             this._description = new System.Windows.Forms.ToolStripMenuItem();
             this._about = new System.Windows.Forms.ToolStripMenuItem();
-            this._deleteButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this._shapeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._information = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this._groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._shapeData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._canvases)).BeginInit();
@@ -53,9 +54,9 @@ namespace Homework
             this._groupBox.Controls.Add(this._shapeData);
             this._groupBox.Controls.Add(this._shapeTypeComboBox);
             this._groupBox.Controls.Add(this._createButton);
-            this._groupBox.Location = new System.Drawing.Point(807, 36);
+            this._groupBox.Location = new System.Drawing.Point(807, 55);
             this._groupBox.Name = "_groupBox";
-            this._groupBox.Size = new System.Drawing.Size(289, 557);
+            this._groupBox.Size = new System.Drawing.Size(313, 538);
             this._groupBox.TabIndex = 0;
             this._groupBox.TabStop = false;
             this._groupBox.Text = "資料顯示";
@@ -76,83 +77,9 @@ namespace Homework
             this._shapeData.RowHeadersVisible = false;
             this._shapeData.RowHeadersWidth = 51;
             this._shapeData.RowTemplate.Height = 27;
-            this._shapeData.Size = new System.Drawing.Size(277, 484);
+            this._shapeData.Size = new System.Drawing.Size(301, 471);
             this._shapeData.TabIndex = 0;
             this._shapeData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClickDeleteButton);
-            // 
-            // _shapeTypeComboBox
-            // 
-            this._shapeTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this._shapeTypeComboBox.FormattingEnabled = true;
-            this._shapeTypeComboBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this._shapeTypeComboBox.Items.AddRange(new object[] {
-            "矩形",
-            "線"});
-            this._shapeTypeComboBox.Location = new System.Drawing.Point(101, 24);
-            this._shapeTypeComboBox.Name = "_shapeTypeComboBox";
-            this._shapeTypeComboBox.Size = new System.Drawing.Size(156, 23);
-            this._shapeTypeComboBox.TabIndex = 1;
-            // 
-            // _createButton
-            // 
-            this._createButton.Location = new System.Drawing.Point(6, 24);
-            this._createButton.Name = "_createButton";
-            this._createButton.Size = new System.Drawing.Size(64, 37);
-            this._createButton.TabIndex = 0;
-            this._createButton.Text = "新增";
-            this._createButton.UseVisualStyleBackColor = true;
-            this._createButton.Click += new System.EventHandler(this.ClickCreateButton);
-            // 
-            // _canvases
-            // 
-            this._canvases.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this._canvases.Location = new System.Drawing.Point(3, 36);
-            this._canvases.Name = "_canvases";
-            this._canvases.RowHeadersWidth = 51;
-            this._canvases.RowTemplate.Height = 27;
-            this._canvases.Size = new System.Drawing.Size(141, 557);
-            this._canvases.TabIndex = 1;
-            // 
-            // _canvas1
-            // 
-            this._canvas1.Location = new System.Drawing.Point(12, 49);
-            this._canvas1.Name = "_canvas1";
-            this._canvas1.Size = new System.Drawing.Size(121, 70);
-            this._canvas1.TabIndex = 2;
-            this._canvas1.UseVisualStyleBackColor = true;
-            // 
-            // _canvas2
-            // 
-            this._canvas2.Location = new System.Drawing.Point(12, 135);
-            this._canvas2.Name = "_canvas2";
-            this._canvas2.Size = new System.Drawing.Size(121, 70);
-            this._canvas2.TabIndex = 3;
-            this._canvas2.UseVisualStyleBackColor = true;
-            // 
-            // _menuStrip
-            // 
-            this._menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this._menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this._description});
-            this._menuStrip.Location = new System.Drawing.Point(0, 0);
-            this._menuStrip.Name = "_menuStrip";
-            this._menuStrip.Size = new System.Drawing.Size(1108, 27);
-            this._menuStrip.TabIndex = 4;
-            this._menuStrip.Text = "menuStrip1";
-            // 
-            // _description
-            // 
-            this._description.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this._about});
-            this._description.Name = "_description";
-            this._description.Size = new System.Drawing.Size(53, 23);
-            this._description.Text = "說明";
-            // 
-            // _about
-            // 
-            this._about.Name = "_about";
-            this._about.Size = new System.Drawing.Size(122, 26);
-            this._about.Text = "關於";
             // 
             // _deleteButton
             // 
@@ -186,11 +113,95 @@ namespace Homework
             this._information.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this._information.Width = 150;
             // 
+            // _shapeTypeComboBox
+            // 
+            this._shapeTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._shapeTypeComboBox.FormattingEnabled = true;
+            this._shapeTypeComboBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this._shapeTypeComboBox.Items.AddRange(new object[] {
+            "矩形",
+            "線"});
+            this._shapeTypeComboBox.Location = new System.Drawing.Point(101, 24);
+            this._shapeTypeComboBox.Name = "_shapeTypeComboBox";
+            this._shapeTypeComboBox.Size = new System.Drawing.Size(156, 23);
+            this._shapeTypeComboBox.TabIndex = 1;
+            // 
+            // _createButton
+            // 
+            this._createButton.Location = new System.Drawing.Point(6, 24);
+            this._createButton.Name = "_createButton";
+            this._createButton.Size = new System.Drawing.Size(64, 37);
+            this._createButton.TabIndex = 0;
+            this._createButton.Text = "新增";
+            this._createButton.UseVisualStyleBackColor = true;
+            this._createButton.Click += new System.EventHandler(this.ClickCreateButton);
+            // 
+            // _canvases
+            // 
+            this._canvases.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._canvases.Location = new System.Drawing.Point(3, 55);
+            this._canvases.Name = "_canvases";
+            this._canvases.RowHeadersWidth = 51;
+            this._canvases.RowTemplate.Height = 27;
+            this._canvases.Size = new System.Drawing.Size(141, 538);
+            this._canvases.TabIndex = 1;
+            // 
+            // _canvas1
+            // 
+            this._canvas1.Location = new System.Drawing.Point(12, 72);
+            this._canvas1.Name = "_canvas1";
+            this._canvas1.Size = new System.Drawing.Size(121, 70);
+            this._canvas1.TabIndex = 2;
+            this._canvas1.UseVisualStyleBackColor = true;
+            // 
+            // _canvas2
+            // 
+            this._canvas2.Location = new System.Drawing.Point(12, 169);
+            this._canvas2.Name = "_canvas2";
+            this._canvas2.Size = new System.Drawing.Size(121, 70);
+            this._canvas2.TabIndex = 3;
+            this._canvas2.UseVisualStyleBackColor = true;
+            // 
+            // _menuStrip
+            // 
+            this._menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this._menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this._description});
+            this._menuStrip.Location = new System.Drawing.Point(0, 0);
+            this._menuStrip.Name = "_menuStrip";
+            this._menuStrip.Size = new System.Drawing.Size(1132, 27);
+            this._menuStrip.TabIndex = 4;
+            this._menuStrip.Text = "menuStrip1";
+            // 
+            // _description
+            // 
+            this._description.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this._about});
+            this._description.Name = "_description";
+            this._description.Size = new System.Drawing.Size(53, 23);
+            this._description.Text = "說明";
+            // 
+            // _about
+            // 
+            this._about.Name = "_about";
+            this._about.Size = new System.Drawing.Size(122, 26);
+            this._about.Text = "關於";
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 27);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1132, 25);
+            this.toolStrip1.TabIndex = 5;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1108, 605);
+            this.ClientSize = new System.Drawing.Size(1132, 605);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this._canvas2);
             this.Controls.Add(this._canvas1);
             this.Controls.Add(this._canvases);
@@ -224,6 +235,7 @@ namespace Homework
         private System.Windows.Forms.DataGridViewButtonColumn _deleteButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn _shapeType;
         private System.Windows.Forms.DataGridViewTextBoxColumn _information;
+        private System.Windows.Forms.ToolStrip toolStrip1;
     }
 }
 

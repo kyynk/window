@@ -35,7 +35,7 @@ namespace Homework
         }
 
         // set position by random
-        public void SetPosition()
+        public virtual void SetPosition()
         {
             List<int> coordinate1;
             coordinate1 = new List<int> 

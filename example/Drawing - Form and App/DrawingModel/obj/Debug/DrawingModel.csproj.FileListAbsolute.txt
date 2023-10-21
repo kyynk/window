@@ -1,0 +1,17 @@
+C:\Users\wkc\Desktop\108590005\DrawingModel\DrawingModel\bin\Debug\DrawingModel.dll
+C:\Users\wkc\Desktop\108590005\DrawingModel\DrawingModel\bin\Debug\DrawingModel.pdb
+C:\Users\wkc\Desktop\108590005\DrawingModel\DrawingModel\obj\Debug\DrawingModel.csproj.AssemblyReference.cache
+C:\Users\wkc\Desktop\108590005\DrawingModel\DrawingModel\obj\Debug\DrawingModel.csproj.CoreCompileInputs.cache
+C:\Users\wkc\Desktop\108590005\DrawingModel\DrawingModel\obj\Debug\DrawingModel.dll
+C:\Users\wkc\Desktop\108590005\DrawingModel\DrawingModel\obj\Debug\DrawingModel.pdb
+C:\Users\wkc\Desktop\Drawing - Form and App\DrawingModel\bin\Debug\DrawingModel.dll
+C:\Users\wkc\Desktop\Drawing - Form and App\DrawingModel\bin\Debug\DrawingModel.pdb
+C:\Users\wkc\Desktop\Drawing - Form and App\DrawingModel\obj\Debug\DrawingModel.csproj.CoreCompileInputs.cache
+C:\Users\wkc\Desktop\Drawing - Form and App\DrawingModel\obj\Debug\DrawingModel.dll
+C:\Users\wkc\Desktop\Drawing - Form and App\DrawingModel\obj\Debug\DrawingModel.pdb
+C:\Work\text\lecture\Windows Programming\Example Code\Drawing - Form and App\DrawingModel\bin\Debug\DrawingModel.dll
+C:\Work\text\lecture\Windows Programming\Example Code\Drawing - Form and App\DrawingModel\bin\Debug\DrawingModel.pdb
+C:\Work\text\lecture\Windows Programming\Example Code\Drawing - Form and App\DrawingModel\obj\Debug\DrawingModel.csproj.AssemblyReference.cache
+C:\Work\text\lecture\Windows Programming\Example Code\Drawing - Form and App\DrawingModel\obj\Debug\DrawingModel.csproj.CoreCompileInputs.cache
+C:\Work\text\lecture\Windows Programming\Example Code\Drawing - Form and App\DrawingModel\obj\Debug\DrawingModel.dll
+C:\Work\text\lecture\Windows Programming\Example Code\Drawing - Form and App\DrawingModel\obj\Debug\DrawingModel.pdb
