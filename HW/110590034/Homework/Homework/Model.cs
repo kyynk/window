@@ -8,6 +8,11 @@ namespace Homework
 {
     public class Model
     {
+        public event ModelChangedEventHandler _modelChanged;
+        public delegate void ModelChangedEventHandler();
+        private double _firstPointX;
+        private double _firstPointY;
+        private bool _isPressed = false;
         private readonly Shapes _shapesData;
 
         public Model()
@@ -37,6 +42,13 @@ namespace Homework
         public void Delete(int index)
         {
             _shapesData.DeleteSelectedShape(index);
+        }
+
+        // notify observer
+        private void NotifyObserver()
+        {
+            if (_modelChanged != null)
+                _modelChanged();
         }
     }
 }

@@ -22,6 +22,12 @@ namespace Homework
             _randomNumber = new Random();
         }
 
+        // draw
+        public virtual void Draw(IGraphics graphics)
+        {
+            throw new NotImplementedException(NOT_IMPLEMENTED);
+        }
+
         // get name
         public virtual string GetShapeName()
         {
@@ -35,9 +41,12 @@ namespace Homework
         }
 
         // set position by random
-        public virtual void SetPosition()
+        public void SetPosition()
         {
-            throw new NotImplementedException(NOT_IMPLEMENTED);
+            Point point1 = new Point(_randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE), _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE));
+            Point point2 = new Point(_randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE), _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE));
+            _position.Add(point1);
+            _position.Add(point2);
         }
     }
 }

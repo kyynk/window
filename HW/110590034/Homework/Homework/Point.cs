@@ -8,18 +8,18 @@ namespace Homework
 {
     public class Point
     {
-        public int X 
+        public double X 
         { 
             get;
             set;
         }
-        public int Y 
+        public double Y 
         { 
             get;
             set;
         }
 
-        public Point(int locationX, int locationY)
+        public Point(double locationX, double locationY)
         {
             X = locationX;
             Y = locationY;

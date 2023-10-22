@@ -61,7 +61,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormPresentationModel.cs" />
+    <Compile Include="FormGraphicsAdaptor.cs" />
     <Compile Include="Ellipse.cs" />
+    <Compile Include="IGraphics.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Shapes.cs" />
     <Compile Include="ShapeFactory.cs" />

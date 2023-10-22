@@ -20,19 +20,16 @@ namespace Homework
             SetPosition();
         }
 
-        // set position by random
-        public override void SetPosition()
+        // draw
+        public override void Draw(IGraphics graphics)
         {
-            Point point1 = new Point(_randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE), _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE));
-            Point point2 = new Point(_randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE), _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE));
-            _position.Add(point1);
-            _position.Add(point2);
+            graphics.DrawRectangle(_position[0].X, _position[0].Y, _position[1].X, _position[1].Y);
         }
 
         // get shape name
         public override string GetShapeName()
         {
-            return base.GetShapeName();
+            return _shapeName;
         }
 
         // get info (position)

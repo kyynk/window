@@ -20,24 +20,24 @@ namespace Homework
             SetPosition();
         }
 
-        // set info by random
-        public override void SetPosition()
+        // draw
+        public override void Draw(IGraphics graphics)
         {
-            Point point = new Point(_randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE), _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE));
-            _position.Add(point);
+            graphics.DrawEllipse(_position[0].X, _position[0].Y, _position[1].X, _position[1].Y);
         }
 
         // get shape name
         public override string GetShapeName()
         {
-            return base.GetShapeName();
+            return _shapeName;
         }
 
         // get info (position)
         public override string GetInfo()
         {
-            string coordinate = LEFT_PARENTHESIS + _position[0].X + COMMA + _position[0].Y + RIGHT_PARENTHESIS;
-            return coordinate;
+            string firstCoordinate = LEFT_PARENTHESIS + _position[0].X + COMMA + _position[0].Y + RIGHT_PARENTHESIS;
+            string secondCoordinate = LEFT_PARENTHESIS + _position[1].X + COMMA + _position[1].Y + RIGHT_PARENTHESIS;
+            return firstCoordinate + COMMA + secondCoordinate;
         }
     }
 }

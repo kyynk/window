@@ -12,47 +12,53 @@ namespace Homework
 {
     public partial class Form1 : Form
     {
-        private readonly Model _model;
+        private readonly FormPresentationModel _presentationModel;
         private const string DELETE = "刪除";
 
-        public Form1(Model model)
+        public Form1(FormPresentationModel presentationModel)
         {
             InitializeComponent();
-            _model = model;
+            _presentationModel = presentationModel;
+            RefreshButtonChecked();
         }
 
         // click line button
         private void ClickLineButton(object sender, EventArgs e)
         {
-            _lineButton.Checked = true;
-            _rectangleButton.Checked = false;
-            _ellipseButton.Checked = false;
+            _presentationModel.EnableLine();
+            RefreshButtonChecked();
             Cursor.Current = Cursors.Cross;
         }
 
         // click rectangle button
         private void ClickRectangleButton(object sender, EventArgs e)
         {
-            _lineButton.Checked = false;
-            _rectangleButton.Checked = true;
-            _ellipseButton.Checked = false;
+            _presentationModel.EnableRectangle();
+            RefreshButtonChecked();
             Cursor.Current = Cursors.Cross;
         }
 
         // click ellipse button
         private void ClickEllipseButton(object sender, EventArgs e)
         {
-            _lineButton.Checked = false;
-            _rectangleButton.Checked = false;
-            _ellipseButton.Checked = true;
+            _presentationModel.EnableEllipse();
+            RefreshButtonChecked();
             Cursor.Current = Cursors.Cross;
+        }
+
+        // refresh checked
+        private void RefreshButtonChecked()
+        {
+            _lineButton.Checked = _presentationModel.IsLineEnabled();
+            _rectangleButton.Checked = _presentationModel.IsRectangleEnabled();
+            _ellipseButton.Checked = _presentationModel.IsEllipseEnabled();
         }
 
         // click create button
         private void ClickCreateButton(object sender, EventArgs e)
         {
-            _model.Create(_shapeTypeComboBox.Text);
-            _shapeData.Rows.Add(DELETE, _model.GetNewShapeType(), _model.GetNewShapePosition());
+            _presentationModel.Create(_shapeTypeComboBox.Text);
+            _shapeData.Rows.Add(DELETE, _presentationModel.GetNewShapeType(), _presentationModel.GetNewShapePosition());
         }
 
         // click delete button
@@ -62,8 +68,14 @@ namespace Homework
             {
                 DataGridViewRow rowToDelete = _shapeData.Rows[e.RowIndex];
                 _shapeData.Rows.Remove(rowToDelete);
-                _model.Delete(e.RowIndex);
+                _presentationModel.Delete(e.RowIndex);
             }
+        }
+
+        // update view
+        private void UpdateView()
+        {
+            Invalidate();
         }
     }
 }
