@@ -6,24 +6,22 @@ using System.Threading.Tasks;
 
 namespace Homework
 {
-    public class Line : Shape
+    public class Rectangle : Shape
     {
-        private const string LINE_CHINESE = "線";
+        private const string RECTANGLE_CHINESE = "矩形";
         private const string COMMA = ", ";
         private const string LEFT_PARENTHESIS = "(";
         private const string RIGHT_PARENTHESIS = ")";
 
-        public Line() : base()
+        public Rectangle() : base()
         {
-            _shapeName = LINE_CHINESE;
-            _position = new List<Point>();
-            SetPosition();
+            _shapeName = RECTANGLE_CHINESE;
         }
 
         // draw
         public override void Draw(IGraphics graphics)
         {
-            graphics.DrawLine(_position[0].X, _position[0].Y, _position[1].X, _position[1].Y);
+            graphics.DrawRectangle(_point1.X, _point1.Y, _point2.X, _point2.Y);
         }
 
         // get shape name
@@ -35,8 +33,8 @@ namespace Homework
         // get info (position)
         public override string GetInfo()
         {
-            string firstCoordinate = LEFT_PARENTHESIS + _position[0].X + COMMA + _position[0].Y + RIGHT_PARENTHESIS;
-            string secondCoordinate = LEFT_PARENTHESIS + _position[1].X + COMMA + _position[1].Y + RIGHT_PARENTHESIS;
+            string firstCoordinate = LEFT_PARENTHESIS + _point1.X + COMMA + _point1.Y + RIGHT_PARENTHESIS;
+            string secondCoordinate = LEFT_PARENTHESIS + _point2.X + COMMA + _point2.Y + RIGHT_PARENTHESIS;
             return firstCoordinate + COMMA + secondCoordinate;
         }
     }

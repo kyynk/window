@@ -18,12 +18,22 @@ namespace Homework
             _model = model;
         }
 
+        // draw
+        public void Draw(System.Drawing.Graphics graphics)
+        {
+            // graphics物件是Paint事件帶進來的，只能在當次Paint使用
+            // 而Adaptor又直接使用graphics，這樣DoubleBuffer才能正確運作
+            // 因此，Adaptor不能重複使用，每次都要重新new
+            _model.Draw(new FormGraphicsAdaptor(graphics));
+        }
+
         // line enable
         public void EnableLine()
         {
             _isLineEnabled = true;
             _isRectangleEnabled = false;
             _isEllipseEnabled = false;
+            _model.SetMode(Model.Mode.DrawLine);
         }
 
         // line enable
@@ -32,6 +42,7 @@ namespace Homework
             _isLineEnabled = false;
             _isRectangleEnabled = true;
             _isEllipseEnabled = false;
+            _model.SetMode(Model.Mode.DrawRectangle);
         }
 
         // line enable
@@ -40,6 +51,7 @@ namespace Homework
             _isLineEnabled = false;
             _isRectangleEnabled = false;
             _isEllipseEnabled = true;
+            _model.SetMode(Model.Mode.DrawEllipse);
         }
 
         // is line enabled
@@ -58,30 +70,6 @@ namespace Homework
         public bool IsEllipseEnabled()
         {
             return _isEllipseEnabled;
-        }
-
-        // create
-        public void Create(string shapeType)
-        {
-            _model.Create(shapeType);
-        }
-
-        // delete
-        public void Delete(int index)
-        {
-            _model.Delete(index);
-        }
-
-        // get new shape type
-        public string GetNewShapeType()
-        {
-            return _model.GetNewShapeType();
-        }
-
-        // get new shape position
-        public string GetNewShapePosition()
-        {
-            return _model.GetNewShapePosition();
         }
     }
 }

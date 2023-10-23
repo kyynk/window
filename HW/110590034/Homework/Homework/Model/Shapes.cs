@@ -17,8 +17,20 @@ namespace Homework
             _shapeFactory = new ShapeFactory();
         }
 
+        // get shapes
+        public List<Shape> GetShapes()
+        {
+            return _shapes;
+        }
+
         // add new shape to _shapes
-        public void AddNewShape(string shapeType)
+        public void AddNewShapeByDrawing(Model.Mode shapeType, Point point1, Point point2)
+        {
+            _shapes.Add(_shapeFactory.AddDrawingShape(shapeType, point1, point2));
+        }
+
+        // add new shape to _shapes
+        public void AddNewShapeByRandom(string shapeType)
         {
             _shapes.Add(_shapeFactory.CreateShape(shapeType));
         }

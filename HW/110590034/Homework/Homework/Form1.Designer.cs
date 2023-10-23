@@ -46,6 +46,7 @@ namespace Homework
             this._rectangleButton = new System.Windows.Forms.ToolStripButton();
             this._ellipseButton = new System.Windows.Forms.ToolStripButton();
             this._toolStrip = new System.Windows.Forms.ToolStrip();
+            this._canvas = new System.Windows.Forms.Panel();
             this._groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._shapeData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._canvases)).BeginInit();
@@ -238,11 +239,19 @@ namespace Homework
             this._toolStrip.TabIndex = 5;
             this._toolStrip.Text = "toolStrip1";
             // 
+            // _canvas
+            // 
+            this._canvas.Location = new System.Drawing.Point(146, 72);
+            this._canvas.Name = "_canvas";
+            this._canvas.Size = new System.Drawing.Size(661, 520);
+            this._canvas.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1132, 605);
+            this.Controls.Add(this._canvas);
             this.Controls.Add(this._toolStrip);
             this.Controls.Add(this._canvas2);
             this.Controls.Add(this._canvas1);
@@ -283,6 +292,7 @@ namespace Homework
         private System.Windows.Forms.ToolStripButton _rectangleButton;
         private System.Windows.Forms.ToolStripButton _ellipseButton;
         private System.Windows.Forms.ToolStrip _toolStrip;
+        private System.Windows.Forms.Panel _canvas;
     }
 }
 

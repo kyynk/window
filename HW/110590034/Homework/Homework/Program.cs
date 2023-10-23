@@ -18,7 +18,7 @@ namespace Homework
             Application.SetCompatibleTextRenderingDefault(false);
             Model model = new Model();
             FormPresentationModel pModel = new FormPresentationModel(model);
-            Form1 form = new Form1(pModel);
+            Form1 form = new Form1(model, pModel);
             Application.Run(form);
         }
     }

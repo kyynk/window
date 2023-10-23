@@ -16,14 +16,12 @@ namespace Homework
         public Ellipse() : base()
         {
             _shapeName = CIRCLE_CHINESE;
-            _position = new List<Point>();
-            SetPosition();
         }
 
         // draw
         public override void Draw(IGraphics graphics)
         {
-            graphics.DrawEllipse(_position[0].X, _position[0].Y, _position[1].X, _position[1].Y);
+            graphics.DrawEllipse(_point1.X, _point1.Y, _point2.X, _point2.Y);
         }
 
         // get shape name
@@ -35,8 +33,8 @@ namespace Homework
         // get info (position)
         public override string GetInfo()
         {
-            string firstCoordinate = LEFT_PARENTHESIS + _position[0].X + COMMA + _position[0].Y + RIGHT_PARENTHESIS;
-            string secondCoordinate = LEFT_PARENTHESIS + _position[1].X + COMMA + _position[1].Y + RIGHT_PARENTHESIS;
+            string firstCoordinate = LEFT_PARENTHESIS + _point1.X + COMMA + _point1.Y + RIGHT_PARENTHESIS;
+            string secondCoordinate = LEFT_PARENTHESIS + _point2.X + COMMA + _point2.Y + RIGHT_PARENTHESIS;
             return firstCoordinate + COMMA + secondCoordinate;
         }
     }

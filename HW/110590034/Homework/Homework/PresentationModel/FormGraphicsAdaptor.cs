@@ -5,7 +5,7 @@ namespace Homework
 {
     public class FormGraphicsAdaptor : IGraphics
     {
-        readonly Graphics _graphics;
+        Graphics _graphics;
 
         public FormGraphicsAdaptor(Graphics graphics)
         {
