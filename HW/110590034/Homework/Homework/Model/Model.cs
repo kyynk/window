@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,17 @@ namespace Homework
 {
     public class Model
     {
+        public event ModelChangedEventHandler _modelChanged;
+        public delegate void ModelChangedEventHandler();
+        private const int MAX_PANEL_X = 490;
+        private const int MAX_PANEL_Y = 415;
+        private Point _point1;
+        private bool _isPressed = false;
+        private Shapes _shapesData;
+        private ShapeFactory _shapeFactory;
+        private Shape _tempShape;
+        private Mode _mode;
+
         public enum Mode
         {
             Pointer,
@@ -16,75 +28,55 @@ namespace Homework
             DrawEllipse
         }
 
-        public event ModelChangedEventHandler _modelChanged;
-        public delegate void ModelChangedEventHandler();
-        private double _firstPointX;
-        private double _firstPointY;
-        private bool _isPressed = false;
-        private Shapes _shapesData;
-        private Shape _tempShape;
-        private Mode _mode = Mode.Pointer;
-
         public Model()
         {
             _shapesData = new Shapes();
+            _shapeFactory = new ShapeFactory();
+            _point1 = new Point(-1, -1);
+            _mode = Mode.Pointer;
         }
 
         // set mode
         public void SetMode(Mode mode)
         {
             _mode = mode;
-            if (mode == Mode.DrawLine)
-            {
-                _tempShape = new Line();
-            }
-            else if (mode == Mode.DrawRectangle)
-            {
-                _tempShape = new Rectangle();
-            }
-            else if (mode == Mode.DrawEllipse)
-            {
-                _tempShape = new Ellipse();
-            }
         }
 
         // pointer pressed
-        public void PointerPressed(double x, double y)
+        public void PressPointer(double mouseX, double mouseY)
         {
-            Console.WriteLine("Press");
-            Console.WriteLine($"x:{x}, y:{y}");
-            if (_mode != Mode.Pointer && x > 0 && y > 0)
+            if (_mode != Mode.Pointer && mouseX > 0 && mouseY > 0)
             {
-                _firstPointX = x;
-                _firstPointY = y;
-                _tempShape.SetPoint1(new Point(_firstPointX,  _firstPointY));
+                _point1.X = mouseX;
+                _point1.Y = mouseY;
+                _tempShape = _shapeFactory.AddDrawingShape(_mode, _point1, _point1);
                 _isPressed = true;
             }
         }
 
         // pointer moved
-        public void PointerMoved(double x, double y)
+        public void MovePointer(double mouseX, double mouseY)
         {
-            Console.WriteLine("Move");
-            Console.WriteLine($"x:{x}, y:{y}");
             if (_isPressed)
             {
-                _tempShape.SetPoint2(new Point(x, y));
+                mouseX = CheckRangeOfX(mouseX);
+                mouseY = CheckRangeOfY(mouseY);
+                _tempShape.SetPoint2(new Point(mouseX, mouseY));
                 NotifyModelChanged();
             }
         }
 
         // pointer released
-        public void PointerReleased(double x, double y)
+        public void ReleasePointer(double mouseX, double mouseY)
         {
             if (_isPressed)
             {
                 _isPressed = false;
-                Point point1 = new Point(_firstPointX, _firstPointY);
-                Point point2 = new Point(x, y);
-                _shapesData.AddNewShapeByDrawing(_mode, point1, point2);
+                mouseX = CheckRangeOfX(mouseX);
+                mouseY = CheckRangeOfY(mouseY);
+                Point point2 = new Point(mouseX, mouseY);
+                _shapesData.AddNewShapeByDrawing(_mode, _point1, point2);
                 _mode = Mode.Pointer;
-                Console.WriteLine($"x1:{point1.X}, y1:{point1.Y}, x2:{point2.X}, y2:{point2.Y}");
                 NotifyModelChanged();
             }
         }
@@ -92,20 +84,75 @@ namespace Homework
         // draw
         public void Draw(IGraphics graphics)
         {
-            Console.WriteLine("drawing");
             graphics.ClearAll();
-            foreach (Shape shape in _shapesData.GetShapes())
-                shape.Draw(graphics);
+            foreach (Shape aShape in _shapesData.ShapeList)
+                aShape.Draw(graphics);
             if (_isPressed)
                 _tempShape.Draw(graphics);
+        }
+
+        // check range for painting and return the value of range
+        public double CheckRangeOfX(double mouseX)
+        {
+            if (mouseX < 0)
+            {
+                return 0;
+            }
+            else if (mouseX > MAX_PANEL_X)
+            {
+                return MAX_PANEL_X;
+            }
+            else
+            {
+                return mouseX;
+            }
+        }
+
+        // check range for painting and return the value of range
+        public double CheckRangeOfY(double mouseY)
+        {
+            if (mouseY < 0)
+            {
+                return 0;
+            }
+            else if (mouseY > MAX_PANEL_Y)
+            {
+                return MAX_PANEL_Y;
+            }
+            else
+            {
+                return mouseY;
+            }
         }
 
         // add new shape to shapes
         public void Create(string shapeType)
         {
             _shapesData.AddNewShapeByRandom(shapeType);
+            NotifyModelChanged();
         }
 
+        // get shapes
+        public BindingList<Shape> GetShapes()
+        {
+            return _shapesData.ShapeList;
+        }
+
+        // delete selected shape from _shapes
+        public void Delete(int index)
+        {
+            _shapesData.DeleteSelectedShape(index);
+            NotifyModelChanged();
+        }
+
+        // notify observer
+        private void NotifyModelChanged()
+        {
+            if (_modelChanged != null)
+                _modelChanged();
+        }
+
+        /*databinding
         // get new shape name
         public string GetNewShapeType()
         {
@@ -117,20 +164,6 @@ namespace Homework
         {
             return _shapesData.GetNewShapeInfo();
         }
-
-        // delete selected shape from _shapes
-        public void Delete(int index)
-        {
-            _isPressed = false;
-            _shapesData.DeleteSelectedShape(index);
-            NotifyModelChanged();
-        }
-
-        // notify observer
-        private void NotifyModelChanged()
-        {
-            if (_modelChanged != null)
-                _modelChanged();
-        }
+        */
     }
 }

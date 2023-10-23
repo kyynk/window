@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,14 +10,63 @@ namespace Homework
 {
     public class FormPresentationModel
     {
-        Model _model;
-        private bool _isLineEnabled = false;
-        private bool _isRectangleEnabled = false;
-        private bool _isEllipseEnabled = false;
+        public event Model.ModelChangedEventHandler _modelChanged;
+        readonly Model _model;
+        private bool _isLineEnabled;
+        private bool _isRectangleEnabled;
+        private bool _isEllipseEnabled;
 
         public FormPresentationModel(Model model)
         {
             _model = model;
+            _isLineEnabled = false;
+            _isRectangleEnabled = false;
+            _isEllipseEnabled = false;
+            _model._modelChanged += HandleModelChanged;
+        }
+
+        // get shapes
+        public BindingList<Shape> GetShapes()
+        {
+            return _model.GetShapes();
+        }
+
+        // create shape
+        public void CreateShape(string shapeType)
+        {
+            _model.Create(shapeType);
+        }
+
+        // remove shape by index
+        public void DeleteShape(int index)
+        {
+            _model.Delete(index);
+        }
+
+        // pointer press
+        public void PressPointer(double mouseX, double mouseY)
+        {
+            _model.PressPointer(mouseX, mouseY);
+        }
+
+        // pointer move
+        public void MovePointer(double mouseX, double mouseY)
+        {
+            _model.MovePointer(mouseX, mouseY);
+        }
+
+        // pointer press
+        public void ReleasePointer(double mouseX, double mouseY)
+        {
+            _model.ReleasePointer(mouseX, mouseY);
+            DrawDone();
+        }
+
+        // handle model change
+        public void HandleModelChanged()
+        {
+            if (_modelChanged != null)
+                _modelChanged();
         }
 
         // draw
@@ -52,6 +103,15 @@ namespace Homework
             _isRectangleEnabled = false;
             _isEllipseEnabled = true;
             _model.SetMode(Model.Mode.DrawEllipse);
+        }
+
+        // draw done
+        public void DrawDone()
+        {
+            _isLineEnabled = false;
+            _isRectangleEnabled = false;
+            _isEllipseEnabled = false;
+            _model.SetMode(Model.Mode.Pointer);
         }
 
         // is line enabled

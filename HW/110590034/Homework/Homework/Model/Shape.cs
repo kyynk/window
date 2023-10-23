@@ -18,11 +18,29 @@ namespace Homework
             _point1 = new Point(-1, -1);
             _point2 = new Point(-1, -1);
         }
-
-        // draw
-        public virtual void Draw(IGraphics graphics)
+        
+        public Shape(Point point1, Point point2)
         {
-            throw new NotImplementedException(NOT_IMPLEMENTED);
+            _point1 = new Point(point1.X, point1.Y);
+            _point2 = new Point(point2.X, point2.Y);
+        }
+
+        // for databinding
+        public string ShapeName
+        {
+            get
+            {
+                return GetShapeName();
+            }
+        }
+
+        // for databinding
+        public string Info
+        {
+            get
+            {
+                return GetInfo();
+            }
         }
 
         // get name
@@ -37,27 +55,26 @@ namespace Homework
             throw new NotImplementedException(NOT_IMPLEMENTED);
         }
 
+        // draw
+        public virtual void Draw(IGraphics graphics)
+        {
+            throw new NotImplementedException(NOT_IMPLEMENTED);
+        }
+
         // set point1
         public void SetPoint1(Point point)
         {
-            _point1.X = point.X;
-            _point1.Y = point.Y;
+            _point1 = point;
+            //_point1.X = point.X;
+            //_point1.Y = point.Y;
         }
 
         // set point2
         public void SetPoint2(Point point)
         {
-            _point2.X = point.X;
-            _point2.Y = point.Y;
-        }
-
-        // set position
-        public void SetPosition(Point point1, Point point2)
-        {
-            _point1.X = point1.X;
-            _point1.Y = point1.Y;
-            _point2.X = point2.X;
-            _point2.Y = point2.Y;
+            _point2 = point;
+            //_point2.X = point.X;
+            //_point2.Y = point.Y;
         }
     }
 }

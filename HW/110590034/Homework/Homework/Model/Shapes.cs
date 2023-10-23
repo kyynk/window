@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,39 +9,43 @@ namespace Homework
 {
     public class Shapes
     {
-        private readonly List<Shape> _shapes;
+        private readonly BindingList<Shape> _shapeList;
         private readonly ShapeFactory _shapeFactory;
 
         public Shapes()
         {
-            _shapes = new List<Shape>();
+            _shapeList = new BindingList<Shape>();
             _shapeFactory = new ShapeFactory();
         }
 
         // get shapes
-        public List<Shape> GetShapes()
+        public BindingList<Shape> ShapeList
         {
-            return _shapes;
+            get
+            {
+                return _shapeList;
+            }
         }
 
         // add new shape to _shapes
         public void AddNewShapeByDrawing(Model.Mode shapeType, Point point1, Point point2)
         {
-            _shapes.Add(_shapeFactory.AddDrawingShape(shapeType, point1, point2));
+            _shapeList.Add(_shapeFactory.AddDrawingShape(shapeType, point1, point2));
         }
 
         // add new shape to _shapes
         public void AddNewShapeByRandom(string shapeType)
         {
-            _shapes.Add(_shapeFactory.CreateShape(shapeType));
+            _shapeList.Add(_shapeFactory.CreateShape(shapeType));
         }
 
         // delete selected shape from _shapes
         public void DeleteSelectedShape(int index)
         {
-            _shapes.RemoveAt(index);
+            _shapeList.RemoveAt(index);
         }
 
+        /* databinding
         // get shape name by index
         public string GetShapeNameByIndex(int index)
         {
@@ -64,5 +69,6 @@ namespace Homework
         {
             return GetShapeInfoByIndex(_shapes.Count - 1);
         }
+        */
     }
 }

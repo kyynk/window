@@ -5,7 +5,7 @@ namespace Homework
 {
     public class FormGraphicsAdaptor : IGraphics
     {
-        Graphics _graphics;
+        readonly Graphics _graphics;
 
         public FormGraphicsAdaptor(Graphics graphics)
         {
@@ -27,13 +27,25 @@ namespace Homework
         // draw rectangle
         public void DrawRectangle(double x1, double y1, double x2, double y2)
         {
-            _graphics.DrawRectangle(Pens.Black, (float)x1, (float)y1, (float)x2, (float)y2);
+            double width = Math.Abs(x2 - x1);
+            double height = Math.Abs(y2 - y1);
+            if (x1 > x2)
+                x1 -= width;
+            if (y1 > y2)
+                y1 -= height;
+            _graphics.DrawRectangle(Pens.Black, (float)x1, (float)y1, (float)width, (float)height);
         }
 
         // draw ellipse
         public void DrawEllipse(double x1, double y1, double x2, double y2)
         {
-            _graphics.DrawEllipse(Pens.Black, (float)x1, (float)y1, (float)x2, (float)y2);
+            double width = Math.Abs(x2 - x1);
+            double height = Math.Abs(y2 - y1);
+            if (x1 > x2)
+                x1 -= width;
+            if (y1 > y2)
+                y1 -= height;
+            _graphics.DrawEllipse(Pens.Black, (float)x1, (float)y1, (float)width, (float)height);
         }
     }
 }

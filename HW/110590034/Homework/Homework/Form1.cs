@@ -12,43 +12,61 @@ namespace Homework
 {
     public partial class Form1 : Form
     {
-        private readonly Model _model;
         private readonly FormPresentationModel _presentationModel;
-        private const string DELETE = "刪除";
 
-        public Form1(Model model, FormPresentationModel presentationModel)
+        public Form1(FormPresentationModel presentationModel)
         {
             InitializeComponent();
+            //
+            // canvas
+            //
             _canvas.BackColor = System.Drawing.Color.LightYellow;
             _canvas.MouseDown += HandleCanvasPressed;
             _canvas.MouseUp += HandleCanvasReleased;
             _canvas.MouseMove += HandleCanvasMoved;
             _canvas.Paint += HandleCanvasPaint;
-            _model = model;
+            //
+            // presentation model
+            //
             _presentationModel = presentationModel;
-            _model._modelChanged += HandleModelChanged;
+            _presentationModel._modelChanged += HandleModelChanged;
+            //
+            // shape data (dataGridview)
+            //
+            _shapeData.AutoGenerateColumns = false;
+            _shapeData.DataSource = _presentationModel.GetShapes();
+            //
+            // setting property for dataGridView (for header column)
+            //
+            _shapeType.DataPropertyName = "ShapeName";
+            _information.DataPropertyName = "Info";
+            //
+            // initialize checked button
+            //
             RefreshButtonChecked();
         }
 
-        // h
+        // handle canvas pressed
         public void HandleCanvasPressed(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            _model.PointerPressed(e.X, e.Y);
+            _presentationModel.PressPointer(e.X, e.Y);
         }
 
-        // h
+        // handle canvas released
         public void HandleCanvasReleased(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            _model.PointerReleased(e.X, e.Y);
+            _presentationModel.ReleasePointer(e.X, e.Y);
+            RefreshButtonChecked();
+            Cursor = Cursors.Arrow;
         }
 
-        // h
+        // handle canvas moved
         public void HandleCanvasMoved(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            _model.PointerMoved(e.X, e.Y);
+            _presentationModel.MovePointer(e.X, e.Y);
         }
 
-        // h
+        // handle canvas paint
         public void HandleCanvasPaint(object sender, System.Windows.Forms.PaintEventArgs e)
         {
             _presentationModel.Draw(e.Graphics);
@@ -89,8 +107,8 @@ namespace Homework
         // click create button
         private void ClickCreateButton(object sender, EventArgs e)
         {
-            _model.Create(_shapeTypeComboBox.Text);
-            _shapeData.Rows.Add(DELETE, _model.GetNewShapeType(), _model.GetNewShapePosition());
+            _presentationModel.CreateShape(_shapeTypeComboBox.Text);
+            //_shapeData.Rows.Add(DELETE, _presentationModel.GetNewShapeType(), _presentationModel.GetNewShapePosition());
         }
 
         // click delete button
@@ -98,9 +116,9 @@ namespace Homework
         {
             if (e.ColumnIndex == 0 && e.RowIndex >= 0)
             {
-                DataGridViewRow rowToDelete = _shapeData.Rows[e.RowIndex];
-                _shapeData.Rows.Remove(rowToDelete);
-                _model.Delete(e.RowIndex);
+                //DataGridViewRow rowToDelete = _shapeData.Rows[e.RowIndex];
+                //_shapeData.Rows.Remove(rowToDelete);
+                _presentationModel.DeleteShape(e.RowIndex);
             }
         }
 

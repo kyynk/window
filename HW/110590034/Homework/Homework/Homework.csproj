@@ -61,6 +61,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DoubleBufferedPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PresentationModel\FormPresentationModel.cs" />
     <Compile Include="PresentationModel\FormGraphicsAdaptor.cs" />
     <Compile Include="Model\Ellipse.cs" />

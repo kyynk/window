@@ -13,7 +13,7 @@ namespace Homework
         private const string LEFT_PARENTHESIS = "(";
         private const string RIGHT_PARENTHESIS = ")";
 
-        public Ellipse() : base()
+        public Ellipse(Point point1, Point point2) : base(point1, point2)
         {
             _shapeName = CIRCLE_CHINESE;
         }

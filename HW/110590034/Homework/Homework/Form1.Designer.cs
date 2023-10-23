@@ -31,9 +31,6 @@ namespace Homework
         {
             this._groupBox = new System.Windows.Forms.GroupBox();
             this._shapeData = new System.Windows.Forms.DataGridView();
-            this._deleteButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this._shapeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._information = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._shapeTypeComboBox = new System.Windows.Forms.ComboBox();
             this._createButton = new System.Windows.Forms.Button();
             this._canvases = new System.Windows.Forms.DataGridView();
@@ -46,7 +43,10 @@ namespace Homework
             this._rectangleButton = new System.Windows.Forms.ToolStripButton();
             this._ellipseButton = new System.Windows.Forms.ToolStripButton();
             this._toolStrip = new System.Windows.Forms.ToolStrip();
-            this._canvas = new System.Windows.Forms.Panel();
+            this._canvas = new DoubleBufferedPanel();
+            this._deleteButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this._shapeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._information = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._shapeData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._canvases)).BeginInit();
@@ -85,38 +85,6 @@ namespace Homework
             this._shapeData.Size = new System.Drawing.Size(301, 448);
             this._shapeData.TabIndex = 0;
             this._shapeData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClickDeleteButton);
-            // 
-            // _deleteButton
-            // 
-            this._deleteButton.FillWeight = 50F;
-            this._deleteButton.HeaderText = "刪除";
-            this._deleteButton.MinimumWidth = 6;
-            this._deleteButton.Name = "_deleteButton";
-            this._deleteButton.ReadOnly = true;
-            this._deleteButton.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this._deleteButton.Width = 50;
-            // 
-            // _shapeType
-            // 
-            this._shapeType.FillWeight = 75F;
-            this._shapeType.HeaderText = "形狀";
-            this._shapeType.MinimumWidth = 6;
-            this._shapeType.Name = "_shapeType";
-            this._shapeType.ReadOnly = true;
-            this._shapeType.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this._shapeType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this._shapeType.Width = 75;
-            // 
-            // _information
-            // 
-            this._information.FillWeight = 150F;
-            this._information.HeaderText = "資訊";
-            this._information.MinimumWidth = 6;
-            this._information.Name = "_information";
-            this._information.ReadOnly = true;
-            this._information.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this._information.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this._information.Width = 150;
             // 
             // _shapeTypeComboBox
             // 
@@ -243,8 +211,42 @@ namespace Homework
             // 
             this._canvas.Location = new System.Drawing.Point(146, 72);
             this._canvas.Name = "_canvas";
-            this._canvas.Size = new System.Drawing.Size(661, 520);
+            this._canvas.Size = new System.Drawing.Size(655, 520);
             this._canvas.TabIndex = 0;
+            // 
+            // _deleteButton
+            // 
+            this._deleteButton.FillWeight = 50F;
+            this._deleteButton.HeaderText = "刪除";
+            this._deleteButton.Text = "刪除";
+            this._deleteButton.MinimumWidth = 6;
+            this._deleteButton.Name = "_deleteButton";
+            this._deleteButton.ReadOnly = true;
+            this._deleteButton.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this._deleteButton.UseColumnTextForButtonValue = true;
+            this._deleteButton.Width = 50;
+            // 
+            // _shapeType
+            // 
+            this._shapeType.FillWeight = 75F;
+            this._shapeType.HeaderText = "形狀";
+            this._shapeType.MinimumWidth = 6;
+            this._shapeType.Name = "_shapeType";
+            this._shapeType.ReadOnly = true;
+            this._shapeType.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this._shapeType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this._shapeType.Width = 75;
+            // 
+            // _information
+            // 
+            this._information.FillWeight = 150F;
+            this._information.HeaderText = "資訊";
+            this._information.MinimumWidth = 6;
+            this._information.Name = "_information";
+            this._information.ReadOnly = true;
+            this._information.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this._information.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this._information.Width = 150;
             // 
             // Form1
             // 
@@ -285,14 +287,14 @@ namespace Homework
         private System.Windows.Forms.MenuStrip _menuStrip;
         private System.Windows.Forms.ToolStripMenuItem _description;
         private System.Windows.Forms.ToolStripMenuItem _about;
-        private System.Windows.Forms.DataGridViewButtonColumn _deleteButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn _shapeType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn _information;
         private System.Windows.Forms.ToolStripButton _lineButton;
         private System.Windows.Forms.ToolStripButton _rectangleButton;
         private System.Windows.Forms.ToolStripButton _ellipseButton;
         private System.Windows.Forms.ToolStrip _toolStrip;
         private System.Windows.Forms.Panel _canvas;
+        private System.Windows.Forms.DataGridViewButtonColumn _deleteButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _shapeType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _information;
     }
 }
 
