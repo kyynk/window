@@ -151,19 +151,5 @@ namespace Homework
             if (_modelChanged != null)
                 _modelChanged();
         }
-
-        /*databinding
-        // get new shape name
-        public string GetNewShapeType()
-        {
-            return _shapesData.GetNewShapeName();
-        }
-
-        // get new shape location
-        public string GetNewShapePosition()
-        {
-            return _shapesData.GetNewShapeInfo();
-        }
-        */
     }
 }

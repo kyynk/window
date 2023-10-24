@@ -65,16 +65,12 @@ namespace Homework
         public void SetPoint1(Point point)
         {
             _point1 = point;
-            //_point1.X = point.X;
-            //_point1.Y = point.Y;
         }
 
         // set point2
         public void SetPoint2(Point point)
         {
             _point2 = point;
-            //_point2.X = point.X;
-            //_point2.Y = point.Y;
         }
     }
 }

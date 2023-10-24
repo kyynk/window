@@ -44,31 +44,5 @@ namespace Homework
         {
             _shapeList.RemoveAt(index);
         }
-
-        /* databinding
-        // get shape name by index
-        public string GetShapeNameByIndex(int index)
-        {
-            return _shapes[index].GetShapeName();
-        }
-        
-        // get shape info by index
-        public string GetShapeInfoByIndex(int index)
-        {
-            return _shapes[index].GetInfo();
-        }
-
-        // get new shape name
-        public string GetNewShapeName()
-        {
-            return GetShapeNameByIndex(_shapes.Count - 1);
-        }
-
-        // get new shape info
-        public string GetNewShapeInfo()
-        {
-            return GetShapeInfoByIndex(_shapes.Count - 1);
-        }
-        */
     }
 }

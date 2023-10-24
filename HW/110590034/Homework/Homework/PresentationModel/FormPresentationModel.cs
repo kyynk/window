@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +10,7 @@ namespace Homework
     public class FormPresentationModel
     {
         public event Model.ModelChangedEventHandler _modelChanged;
-        readonly Model _model;
+        private readonly Model _model;
         private bool _isLineEnabled;
         private bool _isRectangleEnabled;
         private bool _isEllipseEnabled;

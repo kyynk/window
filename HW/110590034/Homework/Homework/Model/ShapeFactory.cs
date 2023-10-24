@@ -13,9 +13,9 @@ namespace Homework
         private const string CIRCLE_CHINESE = "圓";
         private const string NOT_IMPLEMENTED = "NOT_IMPLEMENTED";
         private const int MIN_X_RANGE = 0; // 150
-        private const int MAX_X_RANGE = 475; // 800
+        private const int MAX_X_RANGE = 490; // 800
         private const int MIN_Y_RANGE = 0; // 100
-        private const int MAX_Y_RANGE = 400; // 550
+        private const int MAX_Y_RANGE = 415; // 550
         private readonly Random _randomNumber;
 
         public ShapeFactory()

@@ -191,6 +191,11 @@
           <AnalysisFileManager>
             <AnalysisFiles>
               <AnalysisFile>
+                <RelativePath>DoubleBufferedPanel.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Form1.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>ViewOrController</AnalysisFileType>
@@ -277,7 +282,7 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>1163</ProductionLoc>
+          <ProductionLoc>1204</ProductionLoc>
           <TestLoc>0</TestLoc>
         </CodeReview>
       </Data>

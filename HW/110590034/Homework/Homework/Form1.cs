@@ -57,7 +57,7 @@ namespace Homework
         {
             _presentationModel.ReleasePointer(e.X, e.Y);
             RefreshButtonChecked();
-            Cursor = Cursors.Arrow;
+            _canvas.Cursor = Cursors.Arrow;
         }
 
         // handle canvas moved
@@ -77,7 +77,7 @@ namespace Homework
         {
             _presentationModel.EnableLine();
             RefreshButtonChecked();
-            Cursor = Cursors.Cross;
+            _canvas.Cursor = Cursors.Cross;
         }
 
         // click rectangle button
@@ -85,7 +85,7 @@ namespace Homework
         {
             _presentationModel.EnableRectangle();
             RefreshButtonChecked();
-            Cursor = Cursors.Cross;
+            _canvas.Cursor = Cursors.Cross;
         }
 
         // click ellipse button
@@ -93,7 +93,7 @@ namespace Homework
         {
             _presentationModel.EnableEllipse();
             RefreshButtonChecked();
-            Cursor = Cursors.Cross;
+            _canvas.Cursor = Cursors.Cross;
         }
 
         // refresh checked
@@ -108,7 +108,6 @@ namespace Homework
         private void ClickCreateButton(object sender, EventArgs e)
         {
             _presentationModel.CreateShape(_shapeTypeComboBox.Text);
-            //_shapeData.Rows.Add(DELETE, _presentationModel.GetNewShapeType(), _presentationModel.GetNewShapePosition());
         }
 
         // click delete button
@@ -116,8 +115,6 @@ namespace Homework
         {
             if (e.ColumnIndex == 0 && e.RowIndex >= 0)
             {
-                //DataGridViewRow rowToDelete = _shapeData.Rows[e.RowIndex];
-                //_shapeData.Rows.Remove(rowToDelete);
                 _presentationModel.DeleteShape(e.RowIndex);
             }
         }
