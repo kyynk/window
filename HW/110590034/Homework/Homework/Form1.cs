@@ -25,6 +25,10 @@ namespace Homework
             _canvas.MouseUp += HandleCanvasReleased;
             _canvas.MouseMove += HandleCanvasMoved;
             _canvas.Paint += HandleCanvasPaint;
+            // 
+            // canvas1
+            // 
+            _canvas1.Paint += HandleButtonPaint;
             //
             // presentation model
             //
@@ -72,6 +76,13 @@ namespace Homework
             _presentationModel.Draw(e.Graphics);
         }
 
+        // handle canvas1 paint
+        public void HandleButtonPaint(object sender, System.Windows.Forms.PaintEventArgs e)
+        {
+            // Draw the contents of _canvas onto _canvas1 with scaling
+            _presentationModel.DrawOnButton(e.Graphics, _canvas1.Size, _canvas.Size);
+        }
+
         // click line button
         private void ClickLineButton(object sender, EventArgs e)
         {
@@ -96,12 +107,21 @@ namespace Homework
             _canvas.Cursor = Cursors.Cross;
         }
 
+        // click default cursor button
+        private void ClickDefaultCursorButton(object sender, EventArgs e)
+        {
+            _presentationModel.EnableDefaultCursor();
+            RefreshButtonChecked();
+            _canvas.Cursor = Cursors.Arrow;
+        }
+
         // refresh checked
         private void RefreshButtonChecked()
         {
             _lineButton.Checked = _presentationModel.IsLineEnabled();
             _rectangleButton.Checked = _presentationModel.IsRectangleEnabled();
             _ellipseButton.Checked = _presentationModel.IsEllipseEnabled();
+            _defaultCursorButton.Checked = _presentationModel.IsDefaultCursorEnabled();
         }
 
         // click create button

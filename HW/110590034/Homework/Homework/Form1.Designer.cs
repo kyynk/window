@@ -31,22 +31,22 @@ namespace Homework
         {
             this._groupBox = new System.Windows.Forms.GroupBox();
             this._shapeData = new System.Windows.Forms.DataGridView();
+            this._deleteButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this._shapeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._information = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._shapeTypeComboBox = new System.Windows.Forms.ComboBox();
             this._createButton = new System.Windows.Forms.Button();
             this._canvases = new System.Windows.Forms.DataGridView();
             this._canvas1 = new System.Windows.Forms.Button();
-            this._canvas2 = new System.Windows.Forms.Button();
             this._menuStrip = new System.Windows.Forms.MenuStrip();
             this._description = new System.Windows.Forms.ToolStripMenuItem();
             this._about = new System.Windows.Forms.ToolStripMenuItem();
+            this._toolStrip = new System.Windows.Forms.ToolStrip();
+            this._canvas = new Homework.DoubleBufferedPanel();
             this._lineButton = new System.Windows.Forms.ToolStripButton();
             this._rectangleButton = new System.Windows.Forms.ToolStripButton();
             this._ellipseButton = new System.Windows.Forms.ToolStripButton();
-            this._toolStrip = new System.Windows.Forms.ToolStrip();
-            this._canvas = new DoubleBufferedPanel();
-            this._deleteButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this._shapeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._information = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._defaultCursorButton = new System.Windows.Forms.ToolStripButton();
             this._groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._shapeData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._canvases)).BeginInit();
@@ -85,6 +85,40 @@ namespace Homework
             this._shapeData.Size = new System.Drawing.Size(301, 448);
             this._shapeData.TabIndex = 0;
             this._shapeData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClickDeleteButton);
+            // 
+            // _deleteButton
+            // 
+            this._deleteButton.FillWeight = 50F;
+            this._deleteButton.HeaderText = "刪除";
+            this._deleteButton.MinimumWidth = 6;
+            this._deleteButton.Name = "_deleteButton";
+            this._deleteButton.ReadOnly = true;
+            this._deleteButton.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this._deleteButton.Text = "刪除";
+            this._deleteButton.UseColumnTextForButtonValue = true;
+            this._deleteButton.Width = 50;
+            // 
+            // _shapeType
+            // 
+            this._shapeType.FillWeight = 75F;
+            this._shapeType.HeaderText = "形狀";
+            this._shapeType.MinimumWidth = 6;
+            this._shapeType.Name = "_shapeType";
+            this._shapeType.ReadOnly = true;
+            this._shapeType.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this._shapeType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this._shapeType.Width = 75;
+            // 
+            // _information
+            // 
+            this._information.FillWeight = 150F;
+            this._information.HeaderText = "資訊";
+            this._information.MinimumWidth = 6;
+            this._information.Name = "_information";
+            this._information.ReadOnly = true;
+            this._information.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this._information.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this._information.Width = 150;
             // 
             // _shapeTypeComboBox
             // 
@@ -128,14 +162,6 @@ namespace Homework
             this._canvas1.TabIndex = 2;
             this._canvas1.UseVisualStyleBackColor = true;
             // 
-            // _canvas2
-            // 
-            this._canvas2.Location = new System.Drawing.Point(12, 155);
-            this._canvas2.Name = "_canvas2";
-            this._canvas2.Size = new System.Drawing.Size(121, 70);
-            this._canvas2.TabIndex = 3;
-            this._canvas2.UseVisualStyleBackColor = true;
-            // 
             // _menuStrip
             // 
             this._menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -152,7 +178,7 @@ namespace Homework
             this._description.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this._about});
             this._description.Name = "_description";
-            this._description.Size = new System.Drawing.Size(53, 23);
+            this._description.Size = new System.Drawing.Size(53, 26);
             this._description.Text = "說明";
             // 
             // _about
@@ -161,46 +187,14 @@ namespace Homework
             this._about.Size = new System.Drawing.Size(122, 26);
             this._about.Text = "關於";
             // 
-            // _lineButton
-            // 
-            this._lineButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this._lineButton.Image = global::Homework.Properties.Resources.Line;
-            this._lineButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this._lineButton.Name = "_lineButton";
-            this._lineButton.Size = new System.Drawing.Size(29, 24);
-            this._lineButton.Text = "toolStripButton1";
-            this._lineButton.ToolTipText = "_lineButton";
-            this._lineButton.Click += new System.EventHandler(this.ClickLineButton);
-            // 
-            // _rectangleButton
-            // 
-            this._rectangleButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this._rectangleButton.Image = global::Homework.Properties.Resources.Rectangle;
-            this._rectangleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this._rectangleButton.Name = "_rectangleButton";
-            this._rectangleButton.Size = new System.Drawing.Size(29, 24);
-            this._rectangleButton.Text = "toolStripButton2";
-            this._rectangleButton.ToolTipText = "_rectangleButton";
-            this._rectangleButton.Click += new System.EventHandler(this.ClickRectangleButton);
-            // 
-            // _ellipseButton
-            // 
-            this._ellipseButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this._ellipseButton.Image = global::Homework.Properties.Resources.Ellipse;
-            this._ellipseButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this._ellipseButton.Name = "_ellipseButton";
-            this._ellipseButton.Size = new System.Drawing.Size(29, 24);
-            this._ellipseButton.Text = "toolStripButton3";
-            this._ellipseButton.ToolTipText = "_ellipseButton";
-            this._ellipseButton.Click += new System.EventHandler(this.ClickEllipseButton);
-            // 
             // _toolStrip
             // 
             this._toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this._toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this._lineButton,
             this._rectangleButton,
-            this._ellipseButton});
+            this._ellipseButton,
+            this._defaultCursorButton});
             this._toolStrip.Location = new System.Drawing.Point(0, 27);
             this._toolStrip.Name = "_toolStrip";
             this._toolStrip.Size = new System.Drawing.Size(1132, 27);
@@ -214,39 +208,49 @@ namespace Homework
             this._canvas.Size = new System.Drawing.Size(655, 520);
             this._canvas.TabIndex = 0;
             // 
-            // _deleteButton
+            // _lineButton
             // 
-            this._deleteButton.FillWeight = 50F;
-            this._deleteButton.HeaderText = "刪除";
-            this._deleteButton.Text = "刪除";
-            this._deleteButton.MinimumWidth = 6;
-            this._deleteButton.Name = "_deleteButton";
-            this._deleteButton.ReadOnly = true;
-            this._deleteButton.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this._deleteButton.UseColumnTextForButtonValue = true;
-            this._deleteButton.Width = 50;
+            this._lineButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._lineButton.Image = global::Homework.Properties.Resources.Line;
+            this._lineButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._lineButton.Name = "_lineButton";
+            this._lineButton.Size = new System.Drawing.Size(29, 28);
+            this._lineButton.Text = "toolStripButton1";
+            this._lineButton.ToolTipText = "_lineButton";
+            this._lineButton.Click += new System.EventHandler(this.ClickLineButton);
             // 
-            // _shapeType
+            // _rectangleButton
             // 
-            this._shapeType.FillWeight = 75F;
-            this._shapeType.HeaderText = "形狀";
-            this._shapeType.MinimumWidth = 6;
-            this._shapeType.Name = "_shapeType";
-            this._shapeType.ReadOnly = true;
-            this._shapeType.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this._shapeType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this._shapeType.Width = 75;
+            this._rectangleButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._rectangleButton.Image = global::Homework.Properties.Resources.Rectangle;
+            this._rectangleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._rectangleButton.Name = "_rectangleButton";
+            this._rectangleButton.Size = new System.Drawing.Size(29, 28);
+            this._rectangleButton.Text = "toolStripButton2";
+            this._rectangleButton.ToolTipText = "_rectangleButton";
+            this._rectangleButton.Click += new System.EventHandler(this.ClickRectangleButton);
             // 
-            // _information
+            // _ellipseButton
             // 
-            this._information.FillWeight = 150F;
-            this._information.HeaderText = "資訊";
-            this._information.MinimumWidth = 6;
-            this._information.Name = "_information";
-            this._information.ReadOnly = true;
-            this._information.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this._information.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this._information.Width = 150;
+            this._ellipseButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._ellipseButton.Image = global::Homework.Properties.Resources.Ellipse;
+            this._ellipseButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._ellipseButton.Name = "_ellipseButton";
+            this._ellipseButton.Size = new System.Drawing.Size(29, 28);
+            this._ellipseButton.Text = "toolStripButton3";
+            this._ellipseButton.ToolTipText = "_ellipseButton";
+            this._ellipseButton.Click += new System.EventHandler(this.ClickEllipseButton);
+            // 
+            // _defaultCursorButton
+            // 
+            this._defaultCursorButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._defaultCursorButton.Image = global::Homework.Properties.Resources.DefaultCursor;
+            this._defaultCursorButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._defaultCursorButton.Name = "_defaultCursorButton";
+            this._defaultCursorButton.Size = new System.Drawing.Size(29, 24);
+            this._defaultCursorButton.Text = "toolStripButton1";
+            this._defaultCursorButton.ToolTipText = "_defaultCursorButton";
+            this._defaultCursorButton.Click += new System.EventHandler(this.ClickDefaultCursorButton);
             // 
             // Form1
             // 
@@ -255,7 +259,6 @@ namespace Homework
             this.ClientSize = new System.Drawing.Size(1132, 605);
             this.Controls.Add(this._canvas);
             this.Controls.Add(this._toolStrip);
-            this.Controls.Add(this._canvas2);
             this.Controls.Add(this._canvas1);
             this.Controls.Add(this._canvases);
             this.Controls.Add(this._groupBox);
@@ -283,7 +286,6 @@ namespace Homework
         private System.Windows.Forms.DataGridView _shapeData;
         private System.Windows.Forms.DataGridView _canvases;
         private System.Windows.Forms.Button _canvas1;
-        private System.Windows.Forms.Button _canvas2;
         private System.Windows.Forms.MenuStrip _menuStrip;
         private System.Windows.Forms.ToolStripMenuItem _description;
         private System.Windows.Forms.ToolStripMenuItem _about;
@@ -291,10 +293,11 @@ namespace Homework
         private System.Windows.Forms.ToolStripButton _rectangleButton;
         private System.Windows.Forms.ToolStripButton _ellipseButton;
         private System.Windows.Forms.ToolStrip _toolStrip;
-        private System.Windows.Forms.Panel _canvas;
         private System.Windows.Forms.DataGridViewButtonColumn _deleteButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn _shapeType;
         private System.Windows.Forms.DataGridViewTextBoxColumn _information;
+        private DoubleBufferedPanel _canvas;
+        private System.Windows.Forms.ToolStripButton _defaultCursorButton;
     }
 }
 

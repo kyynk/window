@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace Homework
 {
@@ -14,6 +15,7 @@ namespace Homework
         private bool _isLineEnabled;
         private bool _isRectangleEnabled;
         private bool _isEllipseEnabled;
+        private bool _isDefaultCursorEnabled;
 
         public FormPresentationModel(Model model)
         {
@@ -21,6 +23,7 @@ namespace Homework
             _isLineEnabled = false;
             _isRectangleEnabled = false;
             _isEllipseEnabled = false;
+            _isDefaultCursorEnabled = true;
             _model._modelChanged += HandleModelChanged;
         }
 
@@ -58,7 +61,7 @@ namespace Homework
         public void ReleasePointer(double mouseX, double mouseY)
         {
             _model.ReleasePointer(mouseX, mouseY);
-            DrawDone();
+            EnableDefaultCursor();
         }
 
         // handle model change
@@ -77,12 +80,28 @@ namespace Homework
             _model.Draw(new FormGraphicsAdaptor(graphics));
         }
 
+        // draw
+        public void DrawOnButton(System.Drawing.Graphics graphics, Size buttonSize, Size canvasSize)
+        {
+            // graphics物件是Paint事件帶進來的，只能在當次Paint使用
+            // 而Adaptor又直接使用graphics，這樣DoubleBuffer才能正確運作
+            // 因此，Adaptor不能重複使用，每次都要重新new
+            // Calculate scaling factors
+            float scaleX = (float)buttonSize.Width / canvasSize.Width;
+            float scaleY = (float)buttonSize.Height / canvasSize.Height;
+            // Apply scaling to the graphics object
+            graphics.ScaleTransform(scaleX, scaleY);
+
+            _model.Draw(new FormGraphicsAdaptor(graphics));
+        }
+
         // line enable
         public void EnableLine()
         {
             _isLineEnabled = true;
             _isRectangleEnabled = false;
             _isEllipseEnabled = false;
+            _isDefaultCursorEnabled = false;
             _model.SetMode(Model.Mode.DrawLine);
         }
 
@@ -92,6 +111,7 @@ namespace Homework
             _isLineEnabled = false;
             _isRectangleEnabled = true;
             _isEllipseEnabled = false;
+            _isDefaultCursorEnabled = false;
             _model.SetMode(Model.Mode.DrawRectangle);
         }
 
@@ -101,15 +121,17 @@ namespace Homework
             _isLineEnabled = false;
             _isRectangleEnabled = false;
             _isEllipseEnabled = true;
+            _isDefaultCursorEnabled = false;
             _model.SetMode(Model.Mode.DrawEllipse);
         }
 
-        // draw done
-        public void DrawDone()
+        // default cursor enable
+        public void EnableDefaultCursor()
         {
             _isLineEnabled = false;
             _isRectangleEnabled = false;
             _isEllipseEnabled = false;
+            _isDefaultCursorEnabled = true;
             _model.SetMode(Model.Mode.Pointer);
         }
 
@@ -129,6 +151,12 @@ namespace Homework
         public bool IsEllipseEnabled()
         {
             return _isEllipseEnabled;
+        }
+
+        // is default cursor enabled
+        public bool IsDefaultCursorEnabled()
+        {
+            return _isDefaultCursorEnabled;
         }
     }
 }

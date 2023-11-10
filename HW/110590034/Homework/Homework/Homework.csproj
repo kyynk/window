@@ -122,6 +122,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resource\DefaultCursor.bmp" />
     <Content Include="Resource\Ellipse.bmp" />
     <Content Include="Resource\Rectangle.bmp" />
     <Content Include="Resource\Line.bmp" />
