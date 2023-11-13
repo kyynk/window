@@ -44,10 +44,17 @@ namespace Homework
             //
             _shapeType.DataPropertyName = "ShapeName";
             _information.DataPropertyName = "Info";
+            // 
+            // tool strip binding button
+            // 
+            _lineButton.DataBindings.Add("Checked", _presentationModel, "IsLineEnabled");
+            _rectangleButton.DataBindings.Add("Checked", _presentationModel, "IsRectangleEnabled");
+            _ellipseButton.DataBindings.Add("Checked", _presentationModel, "IsEllipseEnabled");
+            _defaultCursorButton.DataBindings.Add("Checked", _presentationModel, "IsDefaultCursorEnabled");
             //
             // initialize checked button
             //
-            RefreshButtonChecked();
+            // RefreshButtonChecked();
         }
 
         // handle canvas pressed
@@ -60,7 +67,7 @@ namespace Homework
         public void HandleCanvasReleased(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             _presentationModel.ReleasePointer(e.X, e.Y);
-            RefreshButtonChecked();
+            // RefreshButtonChecked();
             _canvas.Cursor = Cursors.Arrow;
         }
 
@@ -87,7 +94,7 @@ namespace Homework
         private void ClickLineButton(object sender, EventArgs e)
         {
             _presentationModel.EnableLine();
-            RefreshButtonChecked();
+            // RefreshButtonChecked();
             _canvas.Cursor = Cursors.Cross;
         }
 
@@ -95,7 +102,7 @@ namespace Homework
         private void ClickRectangleButton(object sender, EventArgs e)
         {
             _presentationModel.EnableRectangle();
-            RefreshButtonChecked();
+            // RefreshButtonChecked();
             _canvas.Cursor = Cursors.Cross;
         }
 
@@ -103,7 +110,7 @@ namespace Homework
         private void ClickEllipseButton(object sender, EventArgs e)
         {
             _presentationModel.EnableEllipse();
-            RefreshButtonChecked();
+            // RefreshButtonChecked();
             _canvas.Cursor = Cursors.Cross;
         }
 
@@ -111,18 +118,18 @@ namespace Homework
         private void ClickDefaultCursorButton(object sender, EventArgs e)
         {
             _presentationModel.EnableDefaultCursor();
-            RefreshButtonChecked();
+            // RefreshButtonChecked();
             _canvas.Cursor = Cursors.Arrow;
         }
 
-        // refresh checked
-        private void RefreshButtonChecked()
-        {
-            _lineButton.Checked = _presentationModel.IsLineEnabled();
-            _rectangleButton.Checked = _presentationModel.IsRectangleEnabled();
-            _ellipseButton.Checked = _presentationModel.IsEllipseEnabled();
-            _defaultCursorButton.Checked = _presentationModel.IsDefaultCursorEnabled();
-        }
+        //// refresh checked
+        //private void RefreshButtonChecked()
+        //{
+        //    _lineButton.Checked = _presentationModel.IsLineEnabled();
+        //    _rectangleButton.Checked = _presentationModel.IsRectangleEnabled();
+        //    _ellipseButton.Checked = _presentationModel.IsEllipseEnabled();
+        //    _defaultCursorButton.Checked = _presentationModel.IsDefaultCursorEnabled();
+        //}
 
         // click create button
         private void ClickCreateButton(object sender, EventArgs e)

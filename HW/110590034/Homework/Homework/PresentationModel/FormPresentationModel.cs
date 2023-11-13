@@ -8,8 +8,9 @@ using System.Drawing;
 
 namespace Homework
 {
-    public class FormPresentationModel
+    public class FormPresentationModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
         public event Model.ModelChangedEventHandler _modelChanged;
         private readonly Model _model;
         private bool _isLineEnabled;
@@ -20,10 +21,10 @@ namespace Homework
         public FormPresentationModel(Model model)
         {
             _model = model;
-            _isLineEnabled = false;
-            _isRectangleEnabled = false;
-            _isEllipseEnabled = false;
-            _isDefaultCursorEnabled = true;
+            IsLineEnabled = false;
+            IsRectangleEnabled = false;
+            IsEllipseEnabled = false;
+            IsDefaultCursorEnabled = true;
             _model._modelChanged += HandleModelChanged;
         }
 
@@ -98,65 +99,106 @@ namespace Homework
         // line enable
         public void EnableLine()
         {
-            _isLineEnabled = true;
-            _isRectangleEnabled = false;
-            _isEllipseEnabled = false;
-            _isDefaultCursorEnabled = false;
+            IsLineEnabled = true;
+            IsRectangleEnabled = false;
+            IsEllipseEnabled = false;
+            IsDefaultCursorEnabled = false;
             _model.SetMode(Model.Mode.DrawLine);
         }
 
         // line enable
         public void EnableRectangle()
         {
-            _isLineEnabled = false;
-            _isRectangleEnabled = true;
-            _isEllipseEnabled = false;
-            _isDefaultCursorEnabled = false;
+            IsLineEnabled = false;
+            IsRectangleEnabled = true;
+            IsEllipseEnabled = false;
+            IsDefaultCursorEnabled = false;
             _model.SetMode(Model.Mode.DrawRectangle);
         }
 
         // line enable
         public void EnableEllipse()
         {
-            _isLineEnabled = false;
-            _isRectangleEnabled = false;
-            _isEllipseEnabled = true;
-            _isDefaultCursorEnabled = false;
+            IsLineEnabled = false;
+            IsRectangleEnabled = false;
+            IsEllipseEnabled = true;
+            IsDefaultCursorEnabled = false;
             _model.SetMode(Model.Mode.DrawEllipse);
         }
 
         // default cursor enable
         public void EnableDefaultCursor()
         {
-            _isLineEnabled = false;
-            _isRectangleEnabled = false;
-            _isEllipseEnabled = false;
-            _isDefaultCursorEnabled = true;
+            IsLineEnabled = false;
+            IsRectangleEnabled = false;
+            IsEllipseEnabled = false;
+            IsDefaultCursorEnabled = true;
             _model.SetMode(Model.Mode.Pointer);
         }
 
         // is line enabled
-        public bool IsLineEnabled()
+        public bool IsLineEnabled
         {
-            return _isLineEnabled;
+            set
+            {
+                _isLineEnabled = value;
+                NotifyPropertyChanged("IsLineEnabled");
+            }
+            get
+            {
+                return _isLineEnabled;
+            }
         }
 
         // is rectangle enabled
-        public bool IsRectangleEnabled()
+        public bool IsRectangleEnabled
         {
-            return _isRectangleEnabled;
+            set
+            {
+                _isRectangleEnabled = value;
+                NotifyPropertyChanged("IsRectangleEnabled");
+            }
+            get
+            {
+                return _isRectangleEnabled;
+            }
         }
 
         // is ellipse enabled
-        public bool IsEllipseEnabled()
+        public bool IsEllipseEnabled
         {
-            return _isEllipseEnabled;
+            set
+            {
+                _isEllipseEnabled = value;
+                NotifyPropertyChanged("IsEllipseEnabled");
+            }
+            get
+            {
+                return _isEllipseEnabled;
+            }
         }
 
         // is default cursor enabled
-        public bool IsDefaultCursorEnabled()
+        public bool IsDefaultCursorEnabled
         {
-            return _isDefaultCursorEnabled;
+            set
+            {
+                _isDefaultCursorEnabled = value;
+                NotifyPropertyChanged("IsDefaultCursorEnabled");
+            }
+            get
+            {
+                return _isDefaultCursorEnabled;
+            }
+        }
+
+        // property changed
+        void NotifyPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }

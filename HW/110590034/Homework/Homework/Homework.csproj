@@ -61,9 +61,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ToolStripBindableButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DoubleBufferedPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="IState.cs" />
     <Compile Include="PresentationModel\FormPresentationModel.cs" />
     <Compile Include="PresentationModel\FormGraphicsAdaptor.cs" />
     <Compile Include="Model\Ellipse.cs" />

@@ -206,6 +206,11 @@
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>IState.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Unknown</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Model\Ellipse.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
@@ -282,7 +287,7 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>1204</ProductionLoc>
+          <ProductionLoc>1255</ProductionLoc>
           <TestLoc>0</TestLoc>
         </CodeReview>
       </Data>
