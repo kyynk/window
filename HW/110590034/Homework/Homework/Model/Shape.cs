@@ -39,6 +39,7 @@ namespace Homework
         {
             get
             {
+                AdjustPoint();
                 return GetInfo();
             }
         }
@@ -71,6 +72,20 @@ namespace Homework
         public void SetPoint2(Point point)
         {
             _point2 = point;
+        }
+
+        // change point1 to left top, point2 to right buttom
+        public void AdjustPoint()
+        {
+            double top = Math.Min(_point1.Y, _point2.Y);
+            double bottom = Math.Max(_point1.Y, _point2.Y);
+            double left = Math.Min(_point1.X, _point2.X);
+            double right = Math.Max(_point1.X, _point2.X);
+
+            _point1.X = left;
+            _point1.Y = top;
+            _point2.X = right;
+            _point2.Y = bottom;
         }
     }
 }

@@ -142,7 +142,7 @@ namespace Homework
             set
             {
                 _isLineEnabled = value;
-                NotifyPropertyChanged("IsLineEnabled");
+                NotifyPropertyChanged(Constant.IS_LINE_ENABLED);
             }
             get
             {
@@ -156,7 +156,7 @@ namespace Homework
             set
             {
                 _isRectangleEnabled = value;
-                NotifyPropertyChanged("IsRectangleEnabled");
+                NotifyPropertyChanged(Constant.IS_RECTANGLE_ENABLED);
             }
             get
             {
@@ -170,7 +170,7 @@ namespace Homework
             set
             {
                 _isEllipseEnabled = value;
-                NotifyPropertyChanged("IsEllipseEnabled");
+                NotifyPropertyChanged(Constant.IS_ELLIPSE_ENABLED);
             }
             get
             {
@@ -184,7 +184,7 @@ namespace Homework
             set
             {
                 _isDefaultCursorEnabled = value;
-                NotifyPropertyChanged("IsDefaultCursorEnabled");
+                NotifyPropertyChanged(Constant.IS_CURSOR_ENABLED);
             }
             get
             {

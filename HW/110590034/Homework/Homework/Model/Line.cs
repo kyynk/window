@@ -8,14 +8,13 @@ namespace Homework
 {
     public class Line : Shape
     {
-        private const string LINE_CHINESE = "線";
         private const string COMMA = ", ";
         private const string LEFT_PARENTHESIS = "(";
         private const string RIGHT_PARENTHESIS = ")";
 
         public Line(Point point1, Point point2) : base(point1, point2)
         {
-            _shapeName = LINE_CHINESE;
+            _shapeName = Constant.LINE_CHINESE;
         }
 
         // draw

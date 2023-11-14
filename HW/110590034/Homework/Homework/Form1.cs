@@ -17,44 +17,28 @@ namespace Homework
         public Form1(FormPresentationModel presentationModel)
         {
             InitializeComponent();
-            //
             // canvas
-            //
-            _canvas.BackColor = System.Drawing.Color.LightYellow;
+            _canvas.BackColor = System.Drawing.Color.White;
             _canvas.MouseDown += HandleCanvasPressed;
             _canvas.MouseUp += HandleCanvasReleased;
             _canvas.MouseMove += HandleCanvasMoved;
             _canvas.Paint += HandleCanvasPaint;
-            // 
             // canvas1
-            // 
             _canvas1.Paint += HandleButtonPaint;
-            //
             // presentation model
-            //
             _presentationModel = presentationModel;
             _presentationModel._modelChanged += HandleModelChanged;
-            //
             // shape data (dataGridview)
-            //
             _shapeData.AutoGenerateColumns = false;
             _shapeData.DataSource = _presentationModel.GetShapes();
-            //
             // setting property for dataGridView (for header column)
-            //
             _shapeType.DataPropertyName = "ShapeName";
             _information.DataPropertyName = "Info";
-            // 
             // tool strip binding button
-            // 
-            _lineButton.DataBindings.Add("Checked", _presentationModel, "IsLineEnabled");
-            _rectangleButton.DataBindings.Add("Checked", _presentationModel, "IsRectangleEnabled");
-            _ellipseButton.DataBindings.Add("Checked", _presentationModel, "IsEllipseEnabled");
-            _defaultCursorButton.DataBindings.Add("Checked", _presentationModel, "IsDefaultCursorEnabled");
-            //
-            // initialize checked button
-            //
-            // RefreshButtonChecked();
+            _lineButton.DataBindings.Add(Constant.CHECKED, _presentationModel, Constant.IS_LINE_ENABLED);
+            _rectangleButton.DataBindings.Add(Constant.CHECKED, _presentationModel, Constant.IS_RECTANGLE_ENABLED);
+            _ellipseButton.DataBindings.Add(Constant.CHECKED, _presentationModel, Constant.IS_ELLIPSE_ENABLED);
+            _defaultCursorButton.DataBindings.Add(Constant.CHECKED, _presentationModel, Constant.IS_CURSOR_ENABLED);
         }
 
         // handle canvas pressed
@@ -67,7 +51,6 @@ namespace Homework
         public void HandleCanvasReleased(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             _presentationModel.ReleasePointer(e.X, e.Y);
-            // RefreshButtonChecked();
             _canvas.Cursor = Cursors.Arrow;
         }
 
@@ -94,7 +77,6 @@ namespace Homework
         private void ClickLineButton(object sender, EventArgs e)
         {
             _presentationModel.EnableLine();
-            // RefreshButtonChecked();
             _canvas.Cursor = Cursors.Cross;
         }
 
@@ -102,7 +84,6 @@ namespace Homework
         private void ClickRectangleButton(object sender, EventArgs e)
         {
             _presentationModel.EnableRectangle();
-            // RefreshButtonChecked();
             _canvas.Cursor = Cursors.Cross;
         }
 
@@ -110,7 +91,6 @@ namespace Homework
         private void ClickEllipseButton(object sender, EventArgs e)
         {
             _presentationModel.EnableEllipse();
-            // RefreshButtonChecked();
             _canvas.Cursor = Cursors.Cross;
         }
 
@@ -118,18 +98,8 @@ namespace Homework
         private void ClickDefaultCursorButton(object sender, EventArgs e)
         {
             _presentationModel.EnableDefaultCursor();
-            // RefreshButtonChecked();
             _canvas.Cursor = Cursors.Arrow;
         }
-
-        //// refresh checked
-        //private void RefreshButtonChecked()
-        //{
-        //    _lineButton.Checked = _presentationModel.IsLineEnabled();
-        //    _rectangleButton.Checked = _presentationModel.IsRectangleEnabled();
-        //    _ellipseButton.Checked = _presentationModel.IsEllipseEnabled();
-        //    _defaultCursorButton.Checked = _presentationModel.IsDefaultCursorEnabled();
-        //}
 
         // click create button
         private void ClickCreateButton(object sender, EventArgs e)

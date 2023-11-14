@@ -43,10 +43,10 @@ namespace Homework
             this._about = new System.Windows.Forms.ToolStripMenuItem();
             this._toolStrip = new System.Windows.Forms.ToolStrip();
             this._canvas = new Homework.DoubleBufferedPanel();
-            this._lineButton = new Homework.ToolStripBindableButton();
-            this._rectangleButton = new Homework.ToolStripBindableButton();
-            this._ellipseButton = new Homework.ToolStripBindableButton();
-            this._defaultCursorButton = new Homework.ToolStripBindableButton();
+            this._lineButton = new Homework.ToolStripBindingButton();
+            this._rectangleButton = new Homework.ToolStripBindingButton();
+            this._ellipseButton = new Homework.ToolStripBindingButton();
+            this._defaultCursorButton = new Homework.ToolStripBindingButton();
             this._groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._shapeData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._canvases)).BeginInit();
@@ -289,15 +289,15 @@ namespace Homework
         private System.Windows.Forms.MenuStrip _menuStrip;
         private System.Windows.Forms.ToolStripMenuItem _description;
         private System.Windows.Forms.ToolStripMenuItem _about;
-        private Homework.ToolStripBindableButton _lineButton;
-        private Homework.ToolStripBindableButton _rectangleButton;
-        private Homework.ToolStripBindableButton _ellipseButton;
+        private Homework.ToolStripBindingButton _lineButton;
+        private Homework.ToolStripBindingButton _rectangleButton;
+        private Homework.ToolStripBindingButton _ellipseButton;
         private System.Windows.Forms.ToolStrip _toolStrip;
         private System.Windows.Forms.DataGridViewButtonColumn _deleteButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn _shapeType;
         private System.Windows.Forms.DataGridViewTextBoxColumn _information;
         private Homework.DoubleBufferedPanel _canvas;
-        private Homework.ToolStripBindableButton _defaultCursorButton;
+        private Homework.ToolStripBindingButton _defaultCursorButton;
     }
 }
 

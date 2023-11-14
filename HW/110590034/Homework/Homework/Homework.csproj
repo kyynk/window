@@ -61,13 +61,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ToolStripBindableButton.cs">
+    <Compile Include="Constant.cs" />
+    <Compile Include="Model\PointState.cs" />
+    <Compile Include="Model\DrawingState.cs" />
+    <Compile Include="ToolStripBindingButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DoubleBufferedPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="IState.cs" />
+    <Compile Include="Model\IState.cs" />
     <Compile Include="PresentationModel\FormPresentationModel.cs" />
     <Compile Include="PresentationModel\FormGraphicsAdaptor.cs" />
     <Compile Include="Model\Ellipse.cs" />

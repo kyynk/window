@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace Homework
 {
-    public interface IState
+    public class PointState
     {
-        // mouse down
-        void mouseDown();
-        // mouse move
-        void mouseMove();
+        public PointState()
+        {
 
-
+        }
     }
 }

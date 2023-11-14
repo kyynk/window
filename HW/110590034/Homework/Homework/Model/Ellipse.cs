@@ -8,14 +8,13 @@ namespace Homework
 {
     public class Ellipse : Shape
     {
-        private const string CIRCLE_CHINESE = "圓";
         private const string COMMA = ", ";
         private const string LEFT_PARENTHESIS = "(";
         private const string RIGHT_PARENTHESIS = ")";
 
         public Ellipse(Point point1, Point point2) : base(point1, point2)
         {
-            _shapeName = CIRCLE_CHINESE;
+            _shapeName = Constant.CIRCLE_CHINESE;
         }
 
         // draw

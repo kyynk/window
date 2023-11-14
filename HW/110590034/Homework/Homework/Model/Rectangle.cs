@@ -8,14 +8,13 @@ namespace Homework
 {
     public class Rectangle : Shape
     {
-        private const string RECTANGLE_CHINESE = "矩形";
         private const string COMMA = ", ";
         private const string LEFT_PARENTHESIS = "(";
         private const string RIGHT_PARENTHESIS = ")";
 
         public Rectangle(Point point1, Point point2) : base(point1, point2)
         {
-            _shapeName = RECTANGLE_CHINESE;
+            _shapeName = Constant.RECTANGLE_CHINESE;
         }
 
         // draw
