@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Homework
 {
@@ -15,35 +16,49 @@ namespace Homework
         private const int MAX_PANEL_Y = 415;
         private Shapes _shapesData;
         private ShapeFactory _shapeFactory;
-        private Mode _mode;
         private IState _state;
-
-        public enum Mode
-        {
-            Pointer,
-            DrawLine,
-            DrawRectangle,
-            DrawEllipse
-        }
+        private string _mode;
 
         public Model()
         {
             _shapesData = new Shapes();
             _shapeFactory = new ShapeFactory();
-            _mode = Mode.Pointer;
-            _state = new DrawingState();
+            _mode = Constant.POINT;
+            _state = new PointState();
         }
 
-        // set mode
-        public void SetMode(Mode mode)
+        public string Mode
         {
-            _mode = mode;
+            get
+            {
+                return _mode;
+            }
+            set
+            {
+                _mode = value;
+                //Console.WriteLine("in model");
+                //Console.WriteLine(_mode);
+            }
+        }
+
+        // change state to point
+        public void ChangeStatePoint()
+        {
+            _state = new PointState();
+        }
+
+        // change state
+        public void ChangeStateDrawing()
+        {
+            _state = new DrawingState();
         }
 
         // pointer pressed
         public void PressPointer(double mouseX, double mouseY)
         {
-            _state.MouseDown(mouseX, mouseY, _mode, ref _shapeFactory);
+            //Console.WriteLine("model press");
+            //Console.WriteLine(_mode);
+            _state.MouseDown(new Point(mouseX, mouseY), _mode, ref _shapesData, ref _shapeFactory);
         }
 
         // pointer moved
@@ -51,7 +66,7 @@ namespace Homework
         {
             mouseX = CheckRangeOfX(mouseX);
             mouseY = CheckRangeOfY(mouseY);
-            _state.MouseMove(mouseX, mouseY);
+            _state.MouseMove(new Point(mouseX, mouseY), ref _shapesData);
             NotifyModelChanged();
         }
 
@@ -61,7 +76,7 @@ namespace Homework
             
             mouseX = CheckRangeOfX(mouseX);
             mouseY = CheckRangeOfY(mouseY);
-            _state.MouseUp(mouseX, mouseY, ref _mode, ref _shapesData);
+            _state.MouseUp(new Point(mouseX, mouseY), _mode, ref _shapesData);
             NotifyModelChanged();
         }
 
@@ -71,7 +86,7 @@ namespace Homework
             graphics.ClearAll();
             foreach (Shape aShape in _shapesData.ShapeList)
                 aShape.Draw(graphics);
-            _state.Drawing(graphics);
+            _state.Drawing(graphics, ref _shapesData);
         }
 
         // check range for painting and return the value of range
@@ -124,7 +139,16 @@ namespace Homework
         // delete selected shape from _shapes
         public void Delete(int index)
         {
-            _shapesData.DeleteSelectedShape(index);
+            _shapesData.DeleteShapeByIndex(index);
+            NotifyModelChanged();
+        }
+
+        // handle key down
+        // if keycode = delete, will delete selected shape
+        public void HandleKeyDown(Keys keyCode)
+        {
+            if (keyCode == Keys.Delete)
+                _shapesData.DeleteSelectedShape();
             NotifyModelChanged();
         }
 

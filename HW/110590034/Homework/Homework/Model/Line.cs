@@ -14,7 +14,7 @@ namespace Homework
 
         public Line(Point point1, Point point2) : base(point1, point2)
         {
-            _shapeName = Constant.LINE_CHINESE;
+            _shapeName = Constant.LINE;
         }
 
         // draw
@@ -32,9 +32,22 @@ namespace Homework
         // get info (position)
         public override string GetInfo()
         {
+            ResetPoint();
             string firstCoordinate = LEFT_PARENTHESIS + _point1.X + COMMA + _point1.Y + RIGHT_PARENTHESIS;
             string secondCoordinate = LEFT_PARENTHESIS + _point2.X + COMMA + _point2.Y + RIGHT_PARENTHESIS;
             return firstCoordinate + COMMA + secondCoordinate;
+        }
+
+        // change point1 to left, point2 to right
+        public override void ResetPoint()
+        {
+            double left = Math.Min(_point1.X, _point2.X);
+            if (_point1.X != left)
+            {
+                Point temp = _point1;
+                _point1 = _point2;
+                _point2 = temp;
+            }
         }
     }
 }

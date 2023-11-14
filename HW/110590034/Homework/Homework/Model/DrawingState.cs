@@ -3,55 +3,75 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace Homework
 {
     public class DrawingState : IState
     {
         private Point _point1;
-        private bool _isPressed = false;
+        private bool _isPressed;
         private Shape _tempShape;
+        private const int MAX_PANEL_X = 490;
+        private const int MAX_PANEL_Y = 415;
 
         public DrawingState()
         {
             _point1 = new Point(-1, -1);
+            _isPressed = false;
+        }
+
+        // check x
+        public bool CheckX(double pointX)
+        {
+            return (pointX >= 0 && pointX <= MAX_PANEL_X);
+        }
+
+        // check y
+        public bool CheckY(double pointY)
+        {
+            return (pointY >= 0 && pointY <= MAX_PANEL_Y);
+        }
+
+        // check range
+        public bool CheckRange(Point point)
+        {
+            return (CheckX(point.X) && CheckY(point.Y));
         }
 
         // mouse down
-        public void MouseDown(double mouseX, double mouseY, Model.Mode mode, ref ShapeFactory shapeFactory)
+        public void MouseDown(Point mouse, string mode, ref Shapes shapes, ref ShapeFactory shapeFactory)
         {
-            if (mode != Model.Mode.Pointer && mouseX > 0 && mouseY > 0)
+            if (CheckRange(mouse))
             {
-                _point1.X = mouseX;
-                _point1.Y = mouseY;
+                _point1 = mouse;
                 _tempShape = shapeFactory.AddDrawingShape(mode, _point1, _point1);
                 _isPressed = true;
             }
         }
 
         // mouse move
-        public void MouseMove(double mouseX, double mouseY)
+        public void MouseMove(Point mouse, ref Shapes shapes)
         {
             if (_isPressed)
             {
-                _tempShape.SetPoint2(new Point(mouseX, mouseY));
+                _tempShape.Point2 = new Point(mouse.X, mouse.Y);
             }
         }
 
         // mouse up
-        public void MouseUp(double mouseX, double mouseY, ref Model.Mode mode, ref Shapes shapes)
+        public void MouseUp(Point mouse, string mode, ref Shapes shapes)
         {
             if (_isPressed)
             {
                 _isPressed = false;
-                Point point2 = new Point(mouseX, mouseY);
+                Point point2 = new Point(mouse.X, mouse.Y);
                 shapes.AddNewShapeByDrawing(mode, _point1, point2);
-                mode = Model.Mode.Pointer;
             }
         }
 
         // drawing
-        public void Drawing(IGraphics graphics)
+        public void Drawing(IGraphics graphics, ref Shapes shapes)
         {
             if (_isPressed)
                 _tempShape.Draw(graphics);

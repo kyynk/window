@@ -12,6 +12,11 @@ namespace Homework
         protected string _shapeName;
         protected Point _point1;
         protected Point _point2;
+        public bool isSelected
+        { 
+            get;
+            set; 
+        }
 
         public Shape()
         {
@@ -39,7 +44,6 @@ namespace Homework
         {
             get
             {
-                AdjustPoint();
                 return GetInfo();
             }
         }
@@ -63,29 +67,69 @@ namespace Homework
         }
 
         // set point1
-        public void SetPoint1(Point point)
+        public Point Point1
         {
-            _point1 = point;
+            get
+            {
+                return _point1;
+            }
+            set
+            {
+                _point1 = value;
+            }
         }
 
         // set point2
-        public void SetPoint2(Point point)
+        public Point Point2
         {
-            _point2 = point;
+            get
+            {
+                return _point2;
+            }
+            set
+            {
+                _point2 = value;
+            }
         }
 
         // change point1 to left top, point2 to right buttom
-        public void AdjustPoint()
+        public virtual void ResetPoint()
         {
             double top = Math.Min(_point1.Y, _point2.Y);
             double bottom = Math.Max(_point1.Y, _point2.Y);
             double left = Math.Min(_point1.X, _point2.X);
             double right = Math.Max(_point1.X, _point2.X);
-
             _point1.X = left;
             _point1.Y = top;
             _point2.X = right;
             _point2.Y = bottom;
+        }
+
+        // move shape
+        public void Move(double offsetX, double offsetY)
+        {
+            _point1.X -= offsetX;
+            _point2.X -= offsetX;
+            _point1.Y -= offsetY;
+            _point2.Y -= offsetY;
+        }
+
+        // check select
+        public bool CheckSelect(double pointX, double pointY)
+        {
+            double top = Math.Min(_point1.Y, _point2.Y);
+            double bottom = Math.Max(_point1.Y, _point2.Y);
+            double left = Math.Min(_point1.X, _point2.X);
+            double right = Math.Max(_point1.X, _point2.X);
+            bool checkX = (left <= pointX && right >= pointX);
+            bool checkY = (top <= pointY && bottom >= pointY);
+            return (checkX && checkY);
+        }
+
+        // draw hint
+        public void DrawHint(IGraphics graphics)
+        {
+            graphics.DrawHint(_point1.X, _point1.Y, _point2.X, _point2.Y);
         }
     }
 }

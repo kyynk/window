@@ -39,6 +39,9 @@ namespace Homework
             _rectangleButton.DataBindings.Add(Constant.CHECKED, _presentationModel, Constant.IS_RECTANGLE_ENABLED);
             _ellipseButton.DataBindings.Add(Constant.CHECKED, _presentationModel, Constant.IS_ELLIPSE_ENABLED);
             _defaultCursorButton.DataBindings.Add(Constant.CHECKED, _presentationModel, Constant.IS_CURSOR_ENABLED);
+            // keyboard
+            KeyDown += HandleKeyDown;
+            KeyPreview = true;
         }
 
         // handle canvas pressed
@@ -114,6 +117,12 @@ namespace Homework
             {
                 _presentationModel.DeleteShape(e.RowIndex);
             }
+        }
+
+        // handle key down
+        private void HandleKeyDown(object sender, KeyEventArgs e)
+        {
+            _presentationModel.HandleKeyDown(e.KeyCode);
         }
 
         // update view

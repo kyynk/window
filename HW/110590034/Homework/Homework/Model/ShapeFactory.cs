@@ -8,9 +8,6 @@ namespace Homework
 {
     public class ShapeFactory
     {
-        private const string LINE_CHINESE = "線";
-        private const string RECTANGLE_CHINESE = "矩形";
-        private const string CIRCLE_CHINESE = "圓";
         private const string NOT_IMPLEMENTED = "NOT_IMPLEMENTED";
         private const int MIN_X_RANGE = 0; // 150
         private const int MAX_X_RANGE = 490; // 800
@@ -24,17 +21,17 @@ namespace Homework
         }
 
         // add shape
-        public Shape AddDrawingShape(Model.Mode shapeType, Point point1, Point point2)
+        public Shape AddDrawingShape(string shapeType, Point point1, Point point2)
         {
-            if (shapeType == Model.Mode.DrawLine)
+            if (shapeType == Constant.LINE)
             {
                 return new Line(point1, point2);
             }
-            else if (shapeType == Model.Mode.DrawRectangle)
+            else if (shapeType == Constant.RECTANGLE)
             {
                 return new Rectangle(point1, point2);
             }
-            else if (shapeType == Model.Mode.DrawEllipse)
+            else if (shapeType == Constant.ELLIPSE)
             {
                 return new Ellipse(point1, point2);
             }
@@ -47,15 +44,15 @@ namespace Homework
         // create shape
         public Shape CreateShape(string shapeType)
         {
-            if (shapeType == LINE_CHINESE)
+            if (shapeType == Constant.LINE)
             {
                 return new Line(new Point(_randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE), _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE)), new Point(_randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE), _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE)));
             }
-            else if (shapeType == RECTANGLE_CHINESE)
+            else if (shapeType == Constant.RECTANGLE)
             {
                 return new Rectangle(new Point(_randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE), _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE)), new Point(_randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE), _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE)));
             }
-            else if (shapeType == CIRCLE_CHINESE)
+            else if (shapeType == Constant.ELLIPSE)
             {
                 return new Ellipse(new Point(_randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE), _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE)), new Point(_randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE), _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE)));
             }

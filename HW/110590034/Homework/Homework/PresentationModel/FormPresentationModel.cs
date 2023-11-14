@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Homework
 {
@@ -49,6 +50,8 @@ namespace Homework
         // pointer press
         public void PressPointer(double mouseX, double mouseY)
         {
+            //Console.WriteLine("p model press");
+            //Console.WriteLine(_model.Mode);
             _model.PressPointer(mouseX, mouseY);
         }
 
@@ -62,7 +65,10 @@ namespace Homework
         public void ReleasePointer(double mouseX, double mouseY)
         {
             _model.ReleasePointer(mouseX, mouseY);
-            EnableDefaultCursor();
+            if (_model.Mode == Constant.POINT)
+                ResetBoolean();
+            else
+                EnableDefaultCursor();
         }
 
         // handle model change
@@ -96,44 +102,70 @@ namespace Homework
             _model.Draw(new FormGraphicsAdaptor(graphics));
         }
 
-        // line enable
-        public void EnableLine()
-        {
-            IsLineEnabled = true;
-            IsRectangleEnabled = false;
-            IsEllipseEnabled = false;
-            IsDefaultCursorEnabled = false;
-            _model.SetMode(Model.Mode.DrawLine);
-        }
-
-        // line enable
-        public void EnableRectangle()
-        {
-            IsLineEnabled = false;
-            IsRectangleEnabled = true;
-            IsEllipseEnabled = false;
-            IsDefaultCursorEnabled = false;
-            _model.SetMode(Model.Mode.DrawRectangle);
-        }
-
-        // line enable
-        public void EnableEllipse()
-        {
-            IsLineEnabled = false;
-            IsRectangleEnabled = false;
-            IsEllipseEnabled = true;
-            IsDefaultCursorEnabled = false;
-            _model.SetMode(Model.Mode.DrawEllipse);
-        }
-
-        // default cursor enable
-        public void EnableDefaultCursor()
+        // reset boolean
+        public void ResetBoolean()
         {
             IsLineEnabled = false;
             IsRectangleEnabled = false;
             IsEllipseEnabled = false;
             IsDefaultCursorEnabled = true;
-            _model.SetMode(Model.Mode.Pointer);
+        }
+
+        // set state
+        public void SetState(string name)
+        {
+            if (name == Constant.POINT)
+                _model.ChangeStatePoint();
+            else
+            {
+                _model.ChangeStateDrawing();
+                IsDefaultCursorEnabled = false;
+            }
+        }
+
+        // set mode
+        public void SetMode(string name)
+        {
+            ResetBoolean();
+            SetState(name);
+            if (name == Constant.LINE)
+            {
+                IsLineEnabled = true;
+            }
+            else if (name == Constant.RECTANGLE)
+            {
+                IsRectangleEnabled = true;
+            }
+            else if (name == Constant.ELLIPSE)
+            {
+                IsEllipseEnabled = true;
+            }
+            _model.Mode = name;
+            Console.WriteLine(_model.Mode);
+        }
+
+        // line enable
+        public void EnableLine()
+        {
+            SetMode(Constant.LINE);
+        }
+
+        // line enable
+        public void EnableRectangle()
+        {
+            SetMode(Constant.RECTANGLE);
+        }
+
+        // line enable
+        public void EnableEllipse()
+        {
+            SetMode(Constant.ELLIPSE);
+        }
+
+        // default cursor enable
+        public void EnableDefaultCursor()
+        {
+            SetMode(Constant.POINT);
         }
 
         // is line enabled
@@ -190,6 +222,12 @@ namespace Homework
             {
                 return _isDefaultCursorEnabled;
             }
+        }
+
+        // handle key down
+        public void HandleKeyDown(Keys keyCode)
+        {
+            _model.HandleKeyDown(keyCode);
         }
 
         // property changed

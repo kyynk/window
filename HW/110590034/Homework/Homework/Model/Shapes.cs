@@ -11,11 +11,13 @@ namespace Homework
     {
         private readonly BindingList<Shape> _shapeList;
         private readonly ShapeFactory _shapeFactory;
+        private Shape _selectedShape;
 
         public Shapes()
         {
             _shapeList = new BindingList<Shape>();
             _shapeFactory = new ShapeFactory();
+            _selectedShape = null;
         }
 
         // get shapes
@@ -28,7 +30,7 @@ namespace Homework
         }
 
         // add new shape to _shapes
-        public void AddNewShapeByDrawing(Model.Mode shapeType, Point point1, Point point2)
+        public void AddNewShapeByDrawing(string shapeType, Point point1, Point point2)
         {
             _shapeList.Add(_shapeFactory.AddDrawingShape(shapeType, point1, point2));
         }
@@ -40,9 +42,52 @@ namespace Homework
         }
 
         // delete selected shape from _shapes
-        public void DeleteSelectedShape(int index)
+        public void DeleteShapeByIndex(int index)
         {
+            if (_selectedShape == _shapeList[index])
+                _selectedShape = null;
             _shapeList.RemoveAt(index);
+        }
+
+        // check point in shape
+        public bool CheckSelect(double pointX, double pointY)
+        {
+            foreach (Shape aShape in _shapeList)
+            {
+                if (_selectedShape != null)
+                {
+                    _selectedShape.isSelected = false;
+                }
+                _selectedShape = null;
+                if (aShape.CheckSelect(pointX, pointY))
+                {
+                    aShape.isSelected = true;
+                    _selectedShape = aShape;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // draw hint select shape
+        public void SelectShape(IGraphics graphics)
+        {
+            if (_selectedShape != null)
+                _selectedShape.DrawHint(graphics);
+        }
+
+        // move select shape
+        public void MoveSelectedShape(double offsetX, double offsetY)
+        {
+            if (_selectedShape != null)
+                _selectedShape.Move(offsetX, offsetY);
+        }
+
+        // delete select shape
+        public void DeleteSelectedShape()
+        {
+            _shapeList.Remove(_selectedShape);
+            _selectedShape = null;
         }
     }
 }
