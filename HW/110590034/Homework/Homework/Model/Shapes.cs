@@ -70,10 +70,9 @@ namespace Homework
         }
 
         // draw hint select shape
-        public void SelectShape(IGraphics graphics)
+        public Shape GetSelectedShape()
         {
-            if (_selectedShape != null)
-                _selectedShape.DrawHint(graphics);
+            return _selectedShape;
         }
 
         // move select shape

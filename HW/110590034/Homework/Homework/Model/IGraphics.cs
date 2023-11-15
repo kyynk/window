@@ -18,5 +18,7 @@ namespace Homework
         void DrawEllipse(double x1, double y1, double x2, double y2);
         // draw hint
         void DrawHint(double x1, double y1, double x2, double y2);
+        // draw hint circle
+        void DrawHintCircle(double x1, double y1, double x2, double y2);
     }
 }

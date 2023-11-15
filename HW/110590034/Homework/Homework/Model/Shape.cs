@@ -130,6 +130,28 @@ namespace Homework
         public void DrawHint(IGraphics graphics)
         {
             graphics.DrawHint(_point1.X, _point1.Y, _point2.X, _point2.Y);
+            double top = Math.Min(_point1.Y, _point2.Y);
+            double bottom = Math.Max(_point1.Y, _point2.Y);
+            double left = Math.Min(_point1.X, _point2.X);
+            double right = Math.Max(_point1.X, _point2.X);
+            const double RADIUS = 4;
+            graphics.DrawHintCircle(left - RADIUS, top - RADIUS, left + RADIUS, top + RADIUS);
+            graphics.DrawHintCircle(GetMean(left, right) - RADIUS, top - RADIUS, GetMean(left, right) + RADIUS, top + RADIUS);
+            graphics.DrawHintCircle(right - RADIUS, top - RADIUS, right + RADIUS, top + RADIUS);
+
+            graphics.DrawHintCircle(left - RADIUS, GetMean(top, bottom) - RADIUS, left + RADIUS, GetMean(top, bottom) + RADIUS);
+            graphics.DrawHintCircle(right - RADIUS, GetMean(top, bottom) - RADIUS, right + RADIUS, GetMean(top, bottom) + RADIUS);
+
+            graphics.DrawHintCircle(left - RADIUS, bottom - RADIUS, left + RADIUS, bottom + RADIUS);
+            graphics.DrawHintCircle(GetMean(left, right) - RADIUS, bottom - RADIUS, GetMean(left, right) + RADIUS, bottom + RADIUS);
+            graphics.DrawHintCircle(right - RADIUS, bottom - RADIUS, right + RADIUS, bottom + RADIUS);
+        }
+
+        // get mean
+        private double GetMean(double number1, double number2)
+        {
+            const double DIVISOR = 2;
+            return (number1 + number2) / DIVISOR;
         }
     }
 }

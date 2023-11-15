@@ -62,8 +62,9 @@ namespace Homework
         {
             //Console.WriteLine("draw");
             //Console.WriteLine(_isSelected.ToString());
-            if (_isClicked)
-                shapes.SelectShape(graphics);
+            Shape hint = shapes.GetSelectedShape();
+            if (_isClicked && hint != null)
+                hint.DrawHint(graphics);
         }
     }
 }
