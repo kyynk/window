@@ -40,12 +40,12 @@ namespace Homework
         }
 
         // mouse down
-        public void MouseDown(Point mouse, string mode, ref Shapes shapes, ref ShapeFactory shapeFactory)
+        public void MouseDown(Point mouse, string shapeName, ref Shapes shapes, ref ShapeFactory shapeFactory)
         {
             if (CheckRange(mouse))
             {
                 _point1 = mouse;
-                _tempShape = shapeFactory.AddDrawingShape(mode, _point1, _point1);
+                _tempShape = shapeFactory.AddDrawingShape(shapeName, _point1, _point1);
                 _isPressed = true;
             }
         }
@@ -60,13 +60,13 @@ namespace Homework
         }
 
         // mouse up
-        public void MouseUp(Point mouse, string mode, ref Shapes shapes)
+        public void MouseUp(Point mouse, string shapeName, ref Shapes shapes)
         {
             if (_isPressed)
             {
                 _isPressed = false;
                 Point point2 = new Point(mouse.X, mouse.Y);
-                shapes.AddNewShapeByDrawing(mode, _point1, point2);
+                shapes.AddNewShapeByDrawing(shapeName, _point1, point2);
             }
         }
 

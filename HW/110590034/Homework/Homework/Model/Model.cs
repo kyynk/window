@@ -17,27 +17,25 @@ namespace Homework
         private Shapes _shapesData;
         private ShapeFactory _shapeFactory;
         private IState _state;
-        private string _mode;
+        private string _shapeName;
 
         public Model()
         {
             _shapesData = new Shapes();
             _shapeFactory = new ShapeFactory();
-            _mode = Constant.POINT;
+            _shapeName = Constant.POINT;
             _state = new PointState();
         }
 
-        public string Mode
+        public string ShapeName
         {
             get
             {
-                return _mode;
+                return _shapeName;
             }
             set
             {
-                _mode = value;
-                //Console.WriteLine("in model");
-                //Console.WriteLine(_mode);
+                _shapeName = value;
             }
         }
 
@@ -56,9 +54,7 @@ namespace Homework
         // pointer pressed
         public void PressPointer(double mouseX, double mouseY)
         {
-            //Console.WriteLine("model press");
-            //Console.WriteLine(_mode);
-            _state.MouseDown(new Point(mouseX, mouseY), _mode, ref _shapesData, ref _shapeFactory);
+            _state.MouseDown(new Point(mouseX, mouseY), _shapeName, ref _shapesData, ref _shapeFactory);
         }
 
         // pointer moved
@@ -76,7 +72,7 @@ namespace Homework
             
             mouseX = CheckRangeOfX(mouseX);
             mouseY = CheckRangeOfY(mouseY);
-            _state.MouseUp(new Point(mouseX, mouseY), _mode, ref _shapesData);
+            _state.MouseUp(new Point(mouseX, mouseY), _shapeName, ref _shapesData);
             NotifyModelChanged();
         }
 

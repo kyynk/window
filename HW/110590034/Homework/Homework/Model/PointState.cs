@@ -21,7 +21,7 @@ namespace Homework
         }
 
         // mouse down
-        public void MouseDown(Point mouse, string mode, ref Shapes shapes, ref ShapeFactory shapeFactory)
+        public void MouseDown(Point mouse, string shapeName, ref Shapes shapes, ref ShapeFactory shapeFactory)
         {
             _isClicked = false;
             _isClicked = shapes.CheckSelect(mouse.X, mouse.Y);
@@ -29,8 +29,6 @@ namespace Homework
             _point = mouse;
             if (!_isClicked)
                 _isSelected = false;
-            //Console.WriteLine("Click");
-            //Console.WriteLine(_isSelected.ToString());
         }
 
         // get diff
@@ -52,7 +50,7 @@ namespace Homework
         }
 
         // mouse up
-        public void MouseUp(Point mouse, string mode, ref Shapes shapes)
+        public void MouseUp(Point mouse, string shapeName, ref Shapes shapes)
         {
             _isSelected = false;
         }
@@ -60,8 +58,6 @@ namespace Homework
         // draw hint
         public void Drawing(IGraphics graphics, ref Shapes shapes)
         {
-            //Console.WriteLine("draw");
-            //Console.WriteLine(_isSelected.ToString());
             Shape hint = shapes.GetSelectedShape();
             if (_isClicked && hint != null)
                 hint.DrawHint(graphics);

@@ -50,8 +50,6 @@ namespace Homework
         // pointer press
         public void PressPointer(double mouseX, double mouseY)
         {
-            //Console.WriteLine("p model press");
-            //Console.WriteLine(_model.Mode);
             _model.PressPointer(mouseX, mouseY);
         }
 
@@ -65,7 +63,7 @@ namespace Homework
         public void ReleasePointer(double mouseX, double mouseY)
         {
             _model.ReleasePointer(mouseX, mouseY);
-            if (_model.Mode == Constant.POINT)
+            if (_model.ShapeName == Constant.POINT)
                 ResetBoolean();
             else
                 EnableDefaultCursor();
@@ -140,8 +138,7 @@ namespace Homework
             {
                 IsEllipseEnabled = true;
             }
-            _model.Mode = name;
-            Console.WriteLine(_model.Mode);
+            _model.ShapeName = name;
         }
 
         // line enable
