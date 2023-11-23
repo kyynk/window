@@ -1,0 +1,54 @@
+C:\Documents and Settings\Woei-Kae Chen\My Documents\Visual Studio 2008\Projects\CommandExample\CommandExample\bin\Debug\CommandExample.exe
+C:\Documents and Settings\Woei-Kae Chen\My Documents\Visual Studio 2008\Projects\CommandExample\CommandExample\bin\Debug\CommandExample.pdb
+C:\Documents and Settings\Woei-Kae Chen\My Documents\Visual Studio 2008\Projects\CommandExample\CommandExample\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Woei-Kae Chen\My Documents\Visual Studio 2008\Projects\CommandExample\CommandExample\obj\Debug\CommandExample.Properties.Resources.resources
+C:\Documents and Settings\Woei-Kae Chen\My Documents\Visual Studio 2008\Projects\CommandExample\CommandExample\obj\Debug\CommandExample.csproj.GenerateResource.Cache
+C:\Documents and Settings\Woei-Kae Chen\My Documents\Visual Studio 2008\Projects\CommandExample\CommandExample\obj\Debug\CommandExample.exe
+C:\Documents and Settings\Woei-Kae Chen\My Documents\Visual Studio 2008\Projects\CommandExample\CommandExample\obj\Debug\CommandExample.pdb
+C:\Work\text\lecture\Windows Programming 2008\CommandExample\CommandExample\obj\Debug\CommandExample.exe
+C:\Work\text\lecture\Windows Programming 2008\CommandExample\CommandExample\obj\Debug\CommandExample.pdb
+C:\Work\text\lecture\Windows Programming 2008\複製 -CommandExample\CommandExample\obj\Debug\CommandExample.exe
+C:\Work\text\lecture\Windows Programming 2008\複製 -CommandExample\CommandExample\obj\Debug\CommandExample.pdb
+C:\Work\text\lecture\Windows Programming 2008\複製 -CommandExample\CommandExample\bin\Debug\CommandExample.exe
+C:\Work\text\lecture\Windows Programming 2008\複製 -CommandExample\CommandExample\bin\Debug\CommandExample.pdb
+C:\Work\text\lecture\Windows Programming 2008\複製 -CommandExample\CommandExample\obj\Debug\ResolveAssemblyReference.cache
+C:\Work\text\lecture\Windows Programming 2008\複製 -CommandExample\CommandExample\obj\Debug\CommandExample.Properties.Resources.resources
+C:\Work\text\lecture\Windows Programming 2008\複製 -CommandExample\CommandExample\obj\Debug\CommandExample.csproj.GenerateResource.Cache
+C:\Work\text\lecture\Windows Programming 2008\CommandExample\CommandExample\bin\Debug\CommandExample.exe
+C:\Work\text\lecture\Windows Programming 2008\CommandExample\CommandExample\bin\Debug\CommandExample.pdb
+C:\Work\text\lecture\Windows Programming 2008\CommandExample\CommandExample\obj\Debug\ResolveAssemblyReference.cache
+C:\Work\text\lecture\Windows Programming 2008\CommandExample\CommandExample\obj\Debug\CommandExample.Properties.Resources.resources
+C:\Work\text\lecture\Windows Programming 2008\CommandExample\CommandExample\obj\Debug\CommandExample.csproj.GenerateResource.Cache
+C:\Work\text\lecture\Windows Programming 2009\CommandExample\CommandExample\obj\Debug\CommandExample.exe
+C:\Work\text\lecture\Windows Programming 2009\CommandExample\CommandExample\obj\Debug\CommandExample.pdb
+C:\Work\text\lecture\Windows Programming 2009\CommandExample\CommandExample\bin\Debug\CommandExample.exe
+C:\Work\text\lecture\Windows Programming 2009\CommandExample\CommandExample\bin\Debug\CommandExample.pdb
+C:\Work\text\lecture\Windows Programming 2009\CommandExample\CommandExample\obj\Debug\ResolveAssemblyReference.cache
+C:\Work\text\lecture\Windows Programming 2009\CommandExample\CommandExample\obj\Debug\CommandExample.Properties.Resources.resources
+C:\Work\text\lecture\Windows Programming 2009\CommandExample\CommandExample\obj\Debug\CommandExample.csproj.GenerateResource.Cache
+C:\Work\text\lecture\Windows Programming\Sample Code\CommandExample\CommandExample\obj\Debug\CommandExample.exe
+C:\Work\text\lecture\Windows Programming\Sample Code\CommandExample\CommandExample\obj\Debug\CommandExample.pdb
+C:\Work\text\lecture\Windows Programming\Sample Code\CommandExample\CommandExample\bin\Debug\CommandExample.exe
+C:\Work\text\lecture\Windows Programming\Sample Code\CommandExample\CommandExample\bin\Debug\CommandExample.pdb
+C:\Work\text\lecture\Windows Programming\Sample Code\CommandExample\CommandExample\obj\Debug\ResolveAssemblyReference.cache
+C:\Work\text\lecture\Windows Programming\Sample Code\CommandExample\CommandExample\obj\Debug\CommandExample.Properties.Resources.resources
+C:\Work\text\lecture\Windows Programming\Sample Code\CommandExample\CommandExample\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Work\text\lecture\Windows Programming\Sample Code\CommandExample\CommandExample\obj\Debug\GenerateResource-ResGen.write.1.tlog
+C:\Work\text\lecture\Windows Programming\Example Code\CommandExample\CommandExample\obj\Debug\CommandExample.exe
+C:\Work\text\lecture\Windows Programming\Example Code\CommandExample\CommandExample\obj\Debug\CommandExample.pdb
+C:\Users\Woei-Kae\Desktop\CommandExample\CommandExample\obj\Debug\CommandExample.exe
+C:\Users\Woei-Kae\Desktop\CommandExample\CommandExample\obj\Debug\CommandExample.pdb
+C:\Users\Woei-Kae\Desktop\CommandExample\CommandExample\obj\Debug\CommandExample.csprojResolveAssemblyReference.cache
+C:\Users\Woei-Kae\Desktop\CommandExample\CommandExample\obj\Debug\CommandExample.Properties.Resources.resources
+C:\Users\Woei-Kae\Desktop\CommandExample\CommandExample\obj\Debug\CommandExample.csproj.GenerateResource.Cache
+C:\Users\Woei-Kae\Desktop\CommandExample\CommandExample\bin\Debug\CommandExample.exe
+C:\Users\Woei-Kae\Desktop\CommandExample\CommandExample\bin\Debug\CommandExample.pdb
+C:\Users\Teaching\Desktop\CommandExample - Command Manager\CommandExample\obj\Debug\CommandExample.exe
+C:\Users\Teaching\Desktop\CommandExample - Command Manager\CommandExample\obj\Debug\CommandExample.pdb
+C:\Users\Teaching\Desktop\CommandExample - Command Manager\CommandExample\bin\Debug\CommandExample.exe
+C:\Users\Teaching\Desktop\CommandExample - Command Manager\CommandExample\bin\Debug\CommandExample.pdb
+C:\Users\Teaching\Desktop\CommandExample - Command Manager\CommandExample\obj\Debug\CommandExample.csprojResolveAssemblyReference.cache
+C:\Users\Teaching\Desktop\CommandExample - Command Manager\CommandExample\obj\Debug\CommandExample.Properties.Resources.resources
+C:\Users\Teaching\Desktop\CommandExample - Command Manager\CommandExample\obj\Debug\CommandExample.csproj.GenerateResource.Cache
+C:\Work\text\lecture\Windows Programming\Example Code\CommandExample - Command Manager\CommandExample\obj\Debug\CommandExample.exe
+C:\Work\text\lecture\Windows Programming\Example Code\CommandExample - Command Manager\CommandExample\obj\Debug\CommandExample.pdb
