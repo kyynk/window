@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using Homework.PresentationModel;
 
-namespace Homework
+namespace Homework.View
 {
     public partial class Form1 : Form
     {
@@ -29,10 +29,10 @@ namespace Homework
             _shapeType.DataPropertyName = "ShapeName";
             _information.DataPropertyName = "Info";
             // tool strip binding button
-            _lineButton.DataBindings.Add(Constant.CHECKED, _presentationModel, Constant.IS_LINE_ENABLED);
-            _rectangleButton.DataBindings.Add(Constant.CHECKED, _presentationModel, Constant.IS_RECTANGLE_ENABLED);
-            _ellipseButton.DataBindings.Add(Constant.CHECKED, _presentationModel, Constant.IS_ELLIPSE_ENABLED);
-            _defaultCursorButton.DataBindings.Add(Constant.CHECKED, _presentationModel, Constant.IS_CURSOR_ENABLED);
+            _lineButton.DataBindings.Add(Constant.Constant.CHECKED, _presentationModel, Constant.Constant.IS_LINE_ENABLED);
+            _rectangleButton.DataBindings.Add(Constant.Constant.CHECKED, _presentationModel, Constant.Constant.IS_RECTANGLE_ENABLED);
+            _ellipseButton.DataBindings.Add(Constant.Constant.CHECKED, _presentationModel, Constant.Constant.IS_ELLIPSE_ENABLED);
+            _defaultCursorButton.DataBindings.Add(Constant.Constant.CHECKED, _presentationModel, Constant.Constant.IS_CURSOR_ENABLED);
             // keyboard
             KeyDown += HandleKeyDown;
             KeyPreview = true;

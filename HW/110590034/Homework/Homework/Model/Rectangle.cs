@@ -8,7 +8,7 @@
 
         public Rectangle(Point point1, Point point2) : base(point1, point2)
         {
-            _shapeName = Constant.RECTANGLE;
+            _shapeName = Constant.Constant.RECTANGLE;
         }
 
         // draw

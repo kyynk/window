@@ -1,4 +1,4 @@
-﻿namespace Homework
+﻿namespace Homework.Constant
 {
     public static class Constant
     {

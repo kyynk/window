@@ -8,7 +8,7 @@
 
         public Ellipse(Point point1, Point point2) : base(point1, point2)
         {
-            _shapeName = Constant.ELLIPSE;
+            _shapeName = Constant.Constant.ELLIPSE;
         }
 
         // draw

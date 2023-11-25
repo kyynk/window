@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Homework.Model;
+using System;
 
 namespace Homework.PresentationModel
 {
@@ -34,7 +35,8 @@ namespace Homework.PresentationModel
         // create shape
         public void CreateShape(string shapeType)
         {
-            _model.Create(shapeType);
+            if (shapeType != "")
+                _model.Create(shapeType);
         }
 
         // remove shape by index
@@ -59,7 +61,7 @@ namespace Homework.PresentationModel
         public void ReleasePointer(double mouseX, double mouseY)
         {
             _model.ReleasePointer(mouseX, mouseY);
-            if (_model.ShapeName == Constant.POINT)
+            if (_model.ShapeName == Constant.Constant.POINT)
                 ResetBoolean();
             else
                 EnableDefaultCursor();
@@ -108,7 +110,7 @@ namespace Homework.PresentationModel
         // set state
         public void SetState(string name)
         {
-            if (name == Constant.POINT)
+            if (name == Constant.Constant.POINT)
                 _model.ChangeStatePoint();
             else
             {
@@ -122,15 +124,15 @@ namespace Homework.PresentationModel
         {
             ResetBoolean();
             SetState(name);
-            if (name == Constant.LINE)
+            if (name == Constant.Constant.LINE)
             {
                 IsLineEnabled = true;
             }
-            else if (name == Constant.RECTANGLE)
+            else if (name == Constant.Constant.RECTANGLE)
             {
                 IsRectangleEnabled = true;
             }
-            else if (name == Constant.ELLIPSE)
+            else if (name == Constant.Constant.ELLIPSE)
             {
                 IsEllipseEnabled = true;
             }
@@ -140,25 +142,25 @@ namespace Homework.PresentationModel
         // line enable
         public void EnableLine()
         {
-            SetMode(Constant.LINE);
+            SetMode(Constant.Constant.LINE);
         }
 
         // line enable
         public void EnableRectangle()
         {
-            SetMode(Constant.RECTANGLE);
+            SetMode(Constant.Constant.RECTANGLE);
         }
 
         // line enable
         public void EnableEllipse()
         {
-            SetMode(Constant.ELLIPSE);
+            SetMode(Constant.Constant.ELLIPSE);
         }
 
         // default cursor enable
         public void EnableDefaultCursor()
         {
-            SetMode(Constant.POINT);
+            SetMode(Constant.Constant.POINT);
         }
 
         // is line enabled
@@ -167,7 +169,7 @@ namespace Homework.PresentationModel
             set
             {
                 _isLineEnabled = value;
-                NotifyPropertyChanged(Constant.IS_LINE_ENABLED);
+                NotifyPropertyChanged(Constant.Constant.IS_LINE_ENABLED);
             }
             get
             {
@@ -181,7 +183,7 @@ namespace Homework.PresentationModel
             set
             {
                 _isRectangleEnabled = value;
-                NotifyPropertyChanged(Constant.IS_RECTANGLE_ENABLED);
+                NotifyPropertyChanged(Constant.Constant.IS_RECTANGLE_ENABLED);
             }
             get
             {
@@ -195,7 +197,7 @@ namespace Homework.PresentationModel
             set
             {
                 _isEllipseEnabled = value;
-                NotifyPropertyChanged(Constant.IS_ELLIPSE_ENABLED);
+                NotifyPropertyChanged(Constant.Constant.IS_ELLIPSE_ENABLED);
             }
             get
             {
@@ -209,7 +211,7 @@ namespace Homework.PresentationModel
             set
             {
                 _isDefaultCursorEnabled = value;
-                NotifyPropertyChanged(Constant.IS_CURSOR_ENABLED);
+                NotifyPropertyChanged(Constant.Constant.IS_CURSOR_ENABLED);
             }
             get
             {

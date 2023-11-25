@@ -19,15 +19,15 @@ namespace Homework.Model
         // add shape
         public Shape AddDrawingShape(string shapeType, Point point1, Point point2)
         {
-            if (shapeType == Constant.LINE)
+            if (shapeType == Constant.Constant.LINE)
             {
                 return new Line(point1, point2);
             }
-            else if (shapeType == Constant.RECTANGLE)
+            else if (shapeType == Constant.Constant.RECTANGLE)
             {
                 return new Rectangle(point1, point2);
             }
-            else if (shapeType == Constant.ELLIPSE)
+            else if (shapeType == Constant.Constant.ELLIPSE)
             {
                 return new Ellipse(point1, point2);
             }
@@ -40,15 +40,15 @@ namespace Homework.Model
         // create shape
         public Shape CreateShape(string shapeType)
         {
-            if (shapeType == Constant.LINE)
+            if (shapeType == Constant.Constant.LINE)
             {
                 return new Line(new Point(_randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE), _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE)), new Point(_randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE), _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE)));
             }
-            else if (shapeType == Constant.RECTANGLE)
+            else if (shapeType == Constant.Constant.RECTANGLE)
             {
                 return new Rectangle(new Point(_randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE), _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE)), new Point(_randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE), _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE)));
             }
-            else if (shapeType == Constant.ELLIPSE)
+            else if (shapeType == Constant.Constant.ELLIPSE)
             {
                 return new Ellipse(new Point(_randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE), _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE)), new Point(_randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE), _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE)));
             }

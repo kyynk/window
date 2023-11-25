@@ -18,7 +18,7 @@ namespace Homework.Model
         {
             _shapesData = new Shapes();
             _shapeFactory = new ShapeFactory();
-            _shapeName = Constant.POINT;
+            _shapeName = Constant.Constant.POINT;
             _state = new PointState();
         }
 

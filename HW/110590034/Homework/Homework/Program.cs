@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using Homework.Model;
 using Homework.PresentationModel;
 
-namespace Homework
+namespace Homework.View
 {
     static class Program
     {

@@ -1,5 +1,4 @@
-﻿
-namespace Homework
+﻿namespace Homework.View
 {
     partial class Form1
     {
@@ -42,11 +41,11 @@ namespace Homework
             this._description = new System.Windows.Forms.ToolStripMenuItem();
             this._about = new System.Windows.Forms.ToolStripMenuItem();
             this._toolStrip = new System.Windows.Forms.ToolStrip();
-            this._canvas = new Homework.DoubleBufferedPanel();
-            this._lineButton = new Homework.ToolStripBindingButton();
-            this._rectangleButton = new Homework.ToolStripBindingButton();
-            this._ellipseButton = new Homework.ToolStripBindingButton();
-            this._defaultCursorButton = new Homework.ToolStripBindingButton();
+            this._canvas = new Homework.View.DoubleBufferedPanel();
+            this._lineButton = new Homework.View.ToolStripBindingButton();
+            this._rectangleButton = new Homework.View.ToolStripBindingButton();
+            this._ellipseButton = new Homework.View.ToolStripBindingButton();
+            this._defaultCursorButton = new Homework.View.ToolStripBindingButton();
             this._groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._shapeData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._canvases)).BeginInit();
@@ -289,15 +288,15 @@ namespace Homework
         private System.Windows.Forms.MenuStrip _menuStrip;
         private System.Windows.Forms.ToolStripMenuItem _description;
         private System.Windows.Forms.ToolStripMenuItem _about;
-        private Homework.ToolStripBindingButton _lineButton;
-        private Homework.ToolStripBindingButton _rectangleButton;
-        private Homework.ToolStripBindingButton _ellipseButton;
+        private Homework.View.ToolStripBindingButton _lineButton;
+        private Homework.View.ToolStripBindingButton _rectangleButton;
+        private Homework.View.ToolStripBindingButton _ellipseButton;
         private System.Windows.Forms.ToolStrip _toolStrip;
         private System.Windows.Forms.DataGridViewButtonColumn _deleteButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn _shapeType;
         private System.Windows.Forms.DataGridViewTextBoxColumn _information;
-        private Homework.DoubleBufferedPanel _canvas;
-        private Homework.ToolStripBindingButton _defaultCursorButton;
+        private Homework.View.DoubleBufferedPanel _canvas;
+        private Homework.View.ToolStripBindingButton _defaultCursorButton;
     }
 }
 

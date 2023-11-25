@@ -29,7 +29,7 @@ namespace Homework.Tests
         [TestMethod()]
         public void GetShapeNameTest()
         {
-            Assert.AreEqual(_line.GetShapeName(), Constant.LINE);
+            Assert.AreEqual(_line.GetShapeName(), Constant.Constant.LINE);
         }
 
         // test get info

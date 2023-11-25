@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Homework
+namespace Homework.View
 {
     class DoubleBufferedPanel : Panel
     {

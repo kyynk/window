@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Homework
+namespace Homework.View
 {
     public class ToolStripBindingButton : ToolStripButton, IBindableComponent
     {

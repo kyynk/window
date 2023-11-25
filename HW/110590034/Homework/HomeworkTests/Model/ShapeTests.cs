@@ -25,8 +25,8 @@ namespace Homework.Tests
         public void GetShapeNameTest()
         {
             Assert.AreEqual(_throwShape.ShapeName, "NOT_IMPLEMENTED");
-            Assert.AreEqual(_shape.ShapeName, Constant.ELLIPSE);
-            Assert.AreEqual(_shape.GetShapeName(), Constant.ELLIPSE);
+            Assert.AreEqual(_shape.ShapeName, Constant.Constant.ELLIPSE);
+            Assert.AreEqual(_shape.GetShapeName(), Constant.Constant.ELLIPSE);
         }
 
         // test get info
