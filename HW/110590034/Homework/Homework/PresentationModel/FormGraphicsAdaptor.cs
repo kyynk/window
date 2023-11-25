@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Drawing;
+using Homework.Model;
 
-namespace Homework
+namespace Homework.PresentationModel
 {
     public class FormGraphicsAdaptor : IGraphics
     {

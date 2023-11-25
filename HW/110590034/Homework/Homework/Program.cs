@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Homework.Model;
+using Homework.PresentationModel;
 
 namespace Homework
 {
@@ -16,7 +15,7 @@ namespace Homework
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Model model = new Model();
+            Model.Model model = new Model.Model();
             FormPresentationModel pModel = new FormPresentationModel(model);
             Form1 form = new Form1(pModel);
             Application.Run(form);

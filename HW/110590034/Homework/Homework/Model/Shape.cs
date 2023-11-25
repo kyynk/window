@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Homework
+namespace Homework.Model
 {
     public class Shape
     {
@@ -18,16 +14,11 @@ namespace Homework
             set; 
         }
 
-        public Shape()
-        {
-            _point1 = new Point(-1, -1);
-            _point2 = new Point(-1, -1);
-        }
-        
         public Shape(Point point1, Point point2)
         {
             _point1 = new Point(point1.X, point1.Y);
             _point2 = new Point(point2.X, point2.Y);
+            _shapeName = NOT_IMPLEMENTED;
         }
 
         // for databinding

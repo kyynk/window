@@ -1,25 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using Homework.Model;
 
-namespace Homework
+namespace Homework.PresentationModel
 {
     public class FormPresentationModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public event Model.ModelChangedEventHandler _modelChanged;
-        private readonly Model _model;
+        public event Model.Model.ModelChangedEventHandler _modelChanged;
+        private Model.Model _model;
         private bool _isLineEnabled;
         private bool _isRectangleEnabled;
         private bool _isEllipseEnabled;
         private bool _isDefaultCursorEnabled;
 
-        public FormPresentationModel(Model model)
+        public FormPresentationModel(Model.Model model)
         {
             _model = model;
             IsLineEnabled = false;
