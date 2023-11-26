@@ -326,6 +326,16 @@
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>Model\ShapeFactoryTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Model\ShapesTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Model\ShapeTests.cs</RelativePath>
                 <ProjectName>HomeworkTests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
@@ -337,8 +347,8 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>1756</ProductionLoc>
-          <TestLoc>247</TestLoc>
+          <ProductionLoc>1757</ProductionLoc>
+          <TestLoc>400</TestLoc>
         </CodeReview>
       </Data>
     </div>

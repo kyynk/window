@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Homework.Model;
+using Homework.Tests;
 using System;
 
-namespace Homework.Tests
+namespace Homework.Model.Tests
 {
     [TestClass()]
     public class ShapeTests
@@ -24,7 +24,7 @@ namespace Homework.Tests
         [TestMethod()]
         public void GetShapeNameTest()
         {
-            Assert.AreEqual(_throwShape.ShapeName, "NOT_IMPLEMENTED");
+            Assert.AreEqual(_throwShape.ShapeName, Constant.Constant.NONE);
             Assert.AreEqual(_shape.ShapeName, Constant.Constant.ELLIPSE);
             Assert.AreEqual(_shape.GetShapeName(), Constant.Constant.ELLIPSE);
         }
@@ -43,6 +43,7 @@ namespace Homework.Tests
         public void DrawTest()
         {
             Assert.ThrowsException<NotImplementedException>(() => _throwShape.Draw(_mockGraphics));
+            _mockGraphics.ClearAll();
             _shape.Draw(_mockGraphics);
             Assert.AreEqual(_mockGraphics.CountEllipse, 1);
         }

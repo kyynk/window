@@ -4,11 +4,11 @@ namespace Homework.Model
 {
     public class ShapeFactory
     {
-        private const string NOT_IMPLEMENTED = "NOT_IMPLEMENTED";
-        private const int MIN_X_RANGE = 0; // 150
-        private const int MAX_X_RANGE = 490; // 800
-        private const int MIN_Y_RANGE = 0; // 100
-        private const int MAX_Y_RANGE = 415; // 550
+        private const string ARGUMENT_WRONG = "ARGUMENT_WRONG";
+        private const int MIN_X_RANGE = 0;
+        private const int MAX_X_RANGE = 490;
+        private const int MIN_Y_RANGE = 0;
+        private const int MAX_Y_RANGE = 415;
         private readonly Random _randomNumber;
 
         public ShapeFactory()
@@ -33,7 +33,7 @@ namespace Homework.Model
             }
             else
             {
-                throw new NotImplementedException(NOT_IMPLEMENTED);
+                throw new ArgumentException(ARGUMENT_WRONG);
             }
         }
 
@@ -54,7 +54,7 @@ namespace Homework.Model
             }
             else
             {
-                throw new NotImplementedException(NOT_IMPLEMENTED);
+                throw new ArgumentException(ARGUMENT_WRONG);
             }
         }
     }

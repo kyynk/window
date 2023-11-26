@@ -18,7 +18,7 @@ namespace Homework.Model
         {
             _point1 = new Point(point1.X, point1.Y);
             _point2 = new Point(point2.X, point2.Y);
-            _shapeName = NOT_IMPLEMENTED;
+            _shapeName = Constant.Constant.NONE;
         }
 
         // for databinding

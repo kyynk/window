@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Homework.Model;
+using Homework.Tests;
 
-namespace Homework.Tests
+namespace Homework.Model.Tests
 {
     [TestClass()]
     public class RectangleTests
