@@ -10,7 +10,7 @@ namespace Homework.Model.Tests
 
         // setup
         [TestInitialize()]
-        public void Setup()
+        public void Initialize()
         {
             _shapeFactory = new ShapeFactory();
         }

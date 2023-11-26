@@ -9,7 +9,7 @@ namespace Homework.Model.Tests
 
         // setup
         [TestInitialize()]
-        public void Setup()
+        public void Initialize()
         {
             _shapes = new Shapes();
         }
@@ -48,20 +48,21 @@ namespace Homework.Model.Tests
         [TestMethod()]
         public void CheckSelectTest()
         {
+            // test selected shape is null
             _shapes.AddNewShapeByDrawing(Constant.Constant.RECTANGLE, new Point(3, 3), new Point(10, 10));
             bool isSelected = _shapes.CheckSelect(15, 15);
             Assert.IsFalse(isSelected);
             Assert.IsNull(_shapes.GetSelectedShape());
-
+            // test selected shape
             _shapes.AddNewShapeByDrawing(Constant.Constant.RECTANGLE, new Point(0, 0), new Point(10, 10));
             isSelected = _shapes.CheckSelect(5, 5);
             Assert.IsTrue(isSelected);
             Assert.IsNotNull(_shapes.GetSelectedShape());
             Assert.IsTrue(_shapes.GetSelectedShape().isSelected);
-            
+            // test branch coverage for repeat CheckSelect
             isSelected = _shapes.CheckSelect(5, 5);
             Assert.IsTrue(isSelected);
-
+            // clean
             _shapes.DeleteShapeByIndex(0);
             _shapes.DeleteShapeByIndex(0);
         }
@@ -81,10 +82,10 @@ namespace Homework.Model.Tests
         [TestMethod()]
         public void MoveSelectedShapeTest()
         {
-            // _selectedShape is null
+            // selected shape is null
             _shapes.MoveSelectedShape(10, 0);
             Assert.AreEqual(0, _shapes.ShapeList.Count);
-
+            // selected shape
             _shapes.AddNewShapeByDrawing(Constant.Constant.LINE, new Point(0, 0), new Point(10, 10));
             _shapes.CheckSelect(5, 5);
             double initialX1 = _shapes.GetSelectedShape().Point1.X;

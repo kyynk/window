@@ -56,6 +56,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Model\DrawingStateTests.cs" />
     <Compile Include="Model\LineTests.cs" />
     <Compile Include="Model\MockGraphics.cs" />
     <Compile Include="Model\EllipseTests.cs" />

@@ -10,7 +10,7 @@ namespace Homework.Model.Tests
 
         // setup
         [TestInitialize()]
-        public void Setup()
+        public void Initialize()
         {
             _rectangle = new Rectangle(new Point(1, 1), new Point(2, 5));
             _mockGraphics = new MockGraphics();
@@ -21,21 +21,21 @@ namespace Homework.Model.Tests
         public void DrawTest()
         {
             _rectangle.Draw(_mockGraphics);
-            Assert.AreEqual(_mockGraphics.CountRectangle, 1);
+            Assert.AreEqual(1, _mockGraphics.CountRectangle);
         }
 
         // test get shape name
         [TestMethod()]
         public void GetShapeNameTest()
         {
-            Assert.AreEqual(_rectangle.GetShapeName(), Constant.Constant.RECTANGLE);
+            Assert.AreEqual(Constant.Constant.RECTANGLE, _rectangle.GetShapeName());
         }
 
         // test get info
         [TestMethod()]
         public void GetInfoTest()
         {
-            Assert.AreEqual(_rectangle.GetInfo(), "(1, 1), (2, 5)");
+            Assert.AreEqual("(1, 1), (2, 5)", _rectangle.GetInfo());
         }
     }
 }

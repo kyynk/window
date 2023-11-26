@@ -10,7 +10,7 @@ namespace Homework.Model.Tests
 
         // setup
         [TestInitialize()]
-        public void Setup()
+        public void Initialize()
         {
             _line = new Line(new Point(1, 1), new Point(2, 5));
             _mockGraphics = new MockGraphics();
@@ -21,21 +21,21 @@ namespace Homework.Model.Tests
         public void DrawTest()
         {
             _line.Draw(_mockGraphics);
-            Assert.AreEqual(_mockGraphics.CountLine, 1);
+            Assert.AreEqual(1, _mockGraphics.CountLine);
         }
 
         // test get shape name
         [TestMethod()]
         public void GetShapeNameTest()
         {
-            Assert.AreEqual(_line.GetShapeName(), Constant.Constant.LINE);
+            Assert.AreEqual(Constant.Constant.LINE, _line.GetShapeName());
         }
 
         // test get info
         [TestMethod()]
         public void GetInfoTest()
         {
-            Assert.AreEqual(_line.GetInfo(), "(1, 1), (2, 5)");
+            Assert.AreEqual("(1, 1), (2, 5)", _line.GetInfo());
         }
 
         // test reset point
@@ -47,7 +47,7 @@ namespace Homework.Model.Tests
             _line.Point1 = point1;
             _line.Point2 = point2;
             _line.ResetPoint();
-            Assert.AreEqual(_line.GetInfo(), "(2, 2), (3, 7)");
+            Assert.AreEqual("(2, 2), (3, 7)", _line.GetInfo());
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Homework.Model.Tests
 
         // setup
         [TestInitialize()]
-        public void Setup()
+        public void Initialize()
         {
             _throwShape = new Shape(new Point(0, 0), new Point(1, 1));
             _shape = new Ellipse(new Point(3, 2), new Point(5, 6));
@@ -23,9 +23,9 @@ namespace Homework.Model.Tests
         [TestMethod()]
         public void GetShapeNameTest()
         {
-            Assert.AreEqual(_throwShape.ShapeName, Constant.Constant.NONE);
-            Assert.AreEqual(_shape.ShapeName, Constant.Constant.ELLIPSE);
-            Assert.AreEqual(_shape.GetShapeName(), Constant.Constant.ELLIPSE);
+            Assert.AreEqual(Constant.Constant.NONE, _throwShape.ShapeName);
+            Assert.AreEqual(Constant.Constant.ELLIPSE, _shape.ShapeName);
+            Assert.AreEqual(Constant.Constant.ELLIPSE, _shape.GetShapeName());
         }
 
         // test get info
@@ -33,8 +33,8 @@ namespace Homework.Model.Tests
         public void GetInfoTest()
         {
             Assert.ThrowsException<NotImplementedException>(() => _throwShape.GetInfo());
-            Assert.AreEqual(_shape.Info, "(3, 2), (5, 6)");
-            Assert.AreEqual(_shape.GetInfo(), "(3, 2), (5, 6)");
+            Assert.AreEqual("(3, 2), (5, 6)", _shape.Info);
+            Assert.AreEqual("(3, 2), (5, 6)", _shape.GetInfo());
         }
 
         // test draw
@@ -44,7 +44,7 @@ namespace Homework.Model.Tests
             Assert.ThrowsException<NotImplementedException>(() => _throwShape.Draw(_mockGraphics));
             _mockGraphics.ClearAll();
             _shape.Draw(_mockGraphics);
-            Assert.AreEqual(_mockGraphics.CountEllipse, 1);
+            Assert.AreEqual(1, _mockGraphics.CountEllipse);
         }
 
         // test reset point
@@ -56,7 +56,7 @@ namespace Homework.Model.Tests
             _shape.Point1 = point1;
             _shape.Point2 = point2;
             _shape.ResetPoint();
-            Assert.AreEqual(_shape.GetInfo(), "(2, 2), (3, 7)");
+            Assert.AreEqual("(2, 2), (3, 7)", _shape.GetInfo());
         }
 
         // test move
@@ -102,8 +102,8 @@ namespace Homework.Model.Tests
         public void DrawHintTest()
         {
             _shape.DrawHint(_mockGraphics);
-            Assert.AreEqual(_mockGraphics.CountHint, 1);
-            Assert.AreEqual(_mockGraphics.CountHintCircle, 8);
+            Assert.AreEqual(1, _mockGraphics.CountHint);
+            Assert.AreEqual(8, _mockGraphics.CountHintCircle);
         }
     }
 }

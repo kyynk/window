@@ -14,6 +14,22 @@
             _isPressed = false;
         }
 
+        public bool IsPressed
+        {
+            get
+            {
+                return _isPressed;
+            }
+        }
+
+        public Shape TempShape
+        {
+            get
+            {
+                return _tempShape;
+            }
+        }
+
         // check x
         public bool CheckX(double pointX)
         {
@@ -60,6 +76,7 @@
                 _isPressed = false;
                 Point point2 = new Point(mouse.X, mouse.Y);
                 shapes.AddNewShapeByDrawing(shapeName, _point1, point2);
+                _tempShape = null;
             }
         }
 

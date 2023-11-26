@@ -10,7 +10,7 @@ namespace Homework.Model.Tests
 
         // setup
         [TestInitialize()]
-        public void Setup()
+        public void Initialize()
         {
             _ellipse = new Ellipse(new Point(1, 1), new Point(2, 5));
             _mockGraphics = new MockGraphics();
@@ -21,21 +21,21 @@ namespace Homework.Model.Tests
         public void DrawTest()
         {
             _ellipse.Draw(_mockGraphics);
-            Assert.AreEqual(_mockGraphics.CountEllipse, 1);
+            Assert.AreEqual(1, _mockGraphics.CountEllipse);
         }
 
         // test get shape name
         [TestMethod()]
         public void GetShapeNameTest()
         {
-            Assert.AreEqual(_ellipse.GetShapeName(), Constant.Constant.ELLIPSE);
+            Assert.AreEqual(Constant.Constant.ELLIPSE, _ellipse.GetShapeName());
         }
 
         // test get info
         [TestMethod()]
         public void GetInfoTest()
         {
-            Assert.AreEqual(_ellipse.GetInfo(), "(1, 1), (2, 5)");
+            Assert.AreEqual("(1, 1), (2, 5)", _ellipse.GetInfo());
         }
     }
 }
