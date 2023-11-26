@@ -42,7 +42,6 @@ namespace Homework.Model.Tests
         public void DrawTest()
         {
             Assert.ThrowsException<NotImplementedException>(() => _throwShape.Draw(_mockGraphics));
-            _mockGraphics.ClearAll();
             _shape.Draw(_mockGraphics);
             Assert.AreEqual(1, _mockGraphics.CountEllipse);
         }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage line-rate="0.556101556101556" branch-rate="0.461538461538462" lines-covered="679" lines-valid="1221" branches-covered="48" branches-valid="104" complexity="214" version="0" timestamp="1701044147">
+<coverage line-rate="0.554098360655738" branch-rate="0.461538461538462" lines-covered="676" lines-valid="1220" branches-covered="48" branches-valid="104" complexity="214" version="0" timestamp="1701045285">
   <sources />
   <packages>
     <package name="Homework" line-rate="0.36310223266745" branch-rate="0.461538461538462" complexity="160">
@@ -2354,7 +2354,7 @@
         </class>
       </classes>
     </package>
-    <package name="HomeworkTests" line-rate="1" branch-rate="1" complexity="54">
+    <package name="HomeworkTests" line-rate="0.994579945799458" branch-rate="1" complexity="54">
       <classes>
         <class name="Homework.Model.Tests.DrawingStateTests" filename="C:\Users\user\Desktop\window\HW\110590034\Homework\HomeworkTests\Model\DrawingStateTests.cs" line-rate="1" branch-rate="1" complexity="8">
           <methods>
@@ -2660,7 +2660,7 @@
             <line number="51" hits="1" branch="false" />
           </lines>
         </class>
-        <class name="Homework.Model.Tests.MockGraphics" filename="C:\Users\user\Desktop\window\HW\110590034\Homework\HomeworkTests\Model\MockGraphics.cs" line-rate="1" branch-rate="1" complexity="3">
+        <class name="Homework.Model.Tests.MockGraphics" filename="C:\Users\user\Desktop\window\HW\110590034\Homework\HomeworkTests\Model\MockGraphics.cs" line-rate="0.951219512195122" branch-rate="1" complexity="3">
           <methods>
             <method name="CountLine" signature="()" line-rate="1" branch-rate="1" complexity="NaN">
               <lines>
@@ -2714,10 +2714,10 @@
                 <line number="22" hits="29" branch="false" />
               </lines>
             </method>
-            <method name="ClearAll" signature="()" line-rate="1" branch-rate="1" complexity="1">
+            <method name="ClearAll" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
-                <line number="66" hits="1" branch="false" />
-                <line number="68" hits="1" branch="false" />
+                <line number="66" hits="0" branch="false" />
+                <line number="68" hits="0" branch="false" />
               </lines>
             </method>
             <method name="DrawLine" signature="(System.Double,System.Double,System.Double,System.Double)" line-rate="1" branch-rate="1" complexity="NaN">
@@ -2781,8 +2781,8 @@
             <line number="59" hits="4" branch="false" />
             <line number="60" hits="4" branch="false" />
             <line number="61" hits="4" branch="false" />
-            <line number="66" hits="1" branch="false" />
-            <line number="68" hits="1" branch="false" />
+            <line number="66" hits="0" branch="false" />
+            <line number="68" hits="0" branch="false" />
             <line number="72" hits="2" branch="false" />
             <line number="73" hits="2" branch="false" />
             <line number="74" hits="2" branch="false" />
@@ -3264,11 +3264,11 @@
                 <line number="45" hits="1" branch="false" />
                 <line number="46" hits="1" branch="false" />
                 <line number="47" hits="1" branch="false" />
-                <line number="48" hits="1" branch="false" />
               </lines>
             </method>
             <method name="ResetPointTest" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
+                <line number="52" hits="1" branch="false" />
                 <line number="53" hits="1" branch="false" />
                 <line number="54" hits="1" branch="false" />
                 <line number="55" hits="1" branch="false" />
@@ -3276,50 +3276,49 @@
                 <line number="57" hits="1" branch="false" />
                 <line number="58" hits="1" branch="false" />
                 <line number="59" hits="1" branch="false" />
-                <line number="60" hits="1" branch="false" />
               </lines>
             </method>
             <method name="MoveTest" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
+                <line number="64" hits="1" branch="false" />
                 <line number="65" hits="1" branch="false" />
                 <line number="66" hits="1" branch="false" />
                 <line number="67" hits="1" branch="false" />
                 <line number="68" hits="1" branch="false" />
                 <line number="69" hits="1" branch="false" />
                 <line number="70" hits="1" branch="false" />
-                <line number="71" hits="1" branch="false" />
-                <line number="73" hits="1" branch="false" />
+                <line number="72" hits="1" branch="false" />
+                <line number="74" hits="1" branch="false" />
                 <line number="75" hits="1" branch="false" />
                 <line number="76" hits="1" branch="false" />
                 <line number="77" hits="1" branch="false" />
                 <line number="78" hits="1" branch="false" />
-                <line number="79" hits="1" branch="false" />
               </lines>
             </method>
             <method name="CheckSelectTest" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
+                <line number="83" hits="1" branch="false" />
                 <line number="84" hits="1" branch="false" />
                 <line number="85" hits="1" branch="false" />
                 <line number="86" hits="1" branch="false" />
                 <line number="87" hits="1" branch="false" />
-                <line number="88" hits="1" branch="false" />
+                <line number="89" hits="1" branch="false" />
                 <line number="90" hits="1" branch="false" />
                 <line number="91" hits="1" branch="false" />
-                <line number="92" hits="1" branch="false" />
+                <line number="93" hits="1" branch="false" />
                 <line number="94" hits="1" branch="false" />
                 <line number="95" hits="1" branch="false" />
                 <line number="96" hits="1" branch="false" />
                 <line number="97" hits="1" branch="false" />
-                <line number="98" hits="1" branch="false" />
               </lines>
             </method>
             <method name="DrawHintTest" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
+                <line number="102" hits="1" branch="false" />
                 <line number="103" hits="1" branch="false" />
                 <line number="104" hits="1" branch="false" />
                 <line number="105" hits="1" branch="false" />
                 <line number="106" hits="1" branch="false" />
-                <line number="107" hits="1" branch="false" />
               </lines>
             </method>
           </methods>
@@ -3344,7 +3343,7 @@
             <line number="45" hits="1" branch="false" />
             <line number="46" hits="1" branch="false" />
             <line number="47" hits="1" branch="false" />
-            <line number="48" hits="1" branch="false" />
+            <line number="52" hits="1" branch="false" />
             <line number="53" hits="1" branch="false" />
             <line number="54" hits="1" branch="false" />
             <line number="55" hits="1" branch="false" />
@@ -3352,38 +3351,37 @@
             <line number="57" hits="1" branch="false" />
             <line number="58" hits="1" branch="false" />
             <line number="59" hits="1" branch="false" />
-            <line number="60" hits="1" branch="false" />
+            <line number="64" hits="1" branch="false" />
             <line number="65" hits="1" branch="false" />
             <line number="66" hits="1" branch="false" />
             <line number="67" hits="1" branch="false" />
             <line number="68" hits="1" branch="false" />
             <line number="69" hits="1" branch="false" />
             <line number="70" hits="1" branch="false" />
-            <line number="71" hits="1" branch="false" />
-            <line number="73" hits="1" branch="false" />
+            <line number="72" hits="1" branch="false" />
+            <line number="74" hits="1" branch="false" />
             <line number="75" hits="1" branch="false" />
             <line number="76" hits="1" branch="false" />
             <line number="77" hits="1" branch="false" />
             <line number="78" hits="1" branch="false" />
-            <line number="79" hits="1" branch="false" />
+            <line number="83" hits="1" branch="false" />
             <line number="84" hits="1" branch="false" />
             <line number="85" hits="1" branch="false" />
             <line number="86" hits="1" branch="false" />
             <line number="87" hits="1" branch="false" />
-            <line number="88" hits="1" branch="false" />
+            <line number="89" hits="1" branch="false" />
             <line number="90" hits="1" branch="false" />
             <line number="91" hits="1" branch="false" />
-            <line number="92" hits="1" branch="false" />
+            <line number="93" hits="1" branch="false" />
             <line number="94" hits="1" branch="false" />
             <line number="95" hits="1" branch="false" />
             <line number="96" hits="1" branch="false" />
             <line number="97" hits="1" branch="false" />
-            <line number="98" hits="1" branch="false" />
+            <line number="102" hits="1" branch="false" />
             <line number="103" hits="1" branch="false" />
             <line number="104" hits="1" branch="false" />
             <line number="105" hits="1" branch="false" />
             <line number="106" hits="1" branch="false" />
-            <line number="107" hits="1" branch="false" />
           </lines>
         </class>
       </classes>
