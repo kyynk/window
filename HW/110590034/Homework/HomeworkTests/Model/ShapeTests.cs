@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Homework.Tests;
 using System;
 
 namespace Homework.Model.Tests

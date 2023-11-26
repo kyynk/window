@@ -1,6 +1,4 @@
-﻿using Homework.Model;
-
-namespace Homework.Tests
+﻿namespace Homework.Model.Tests
 {
     public class MockGraphics : IGraphics
     {
