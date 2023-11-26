@@ -13,6 +13,30 @@
             _isClicked = false;
         }
 
+        public Point ThisPoint
+        {
+            get
+            {
+                return _point;
+            }
+        }
+
+        public bool IsSelected
+        {
+            get
+            {
+                return _isSelected;
+            }
+        }
+
+        public bool IsClicked
+        {
+            get
+            {
+                return _isClicked;
+            }
+        }
+
         // mouse down
         public void MouseDown(Point mouse, string shapeName, ref Shapes shapes, ref ShapeFactory shapeFactory)
         {

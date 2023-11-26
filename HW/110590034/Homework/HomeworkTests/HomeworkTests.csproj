@@ -60,6 +60,7 @@
     <Compile Include="Model\LineTests.cs" />
     <Compile Include="Model\MockGraphics.cs" />
     <Compile Include="Model\EllipseTests.cs" />
+    <Compile Include="Model\PointStateTests.cs" />
     <Compile Include="Model\RectangleTests.cs" />
     <Compile Include="Model\ShapeFactoryTests.cs" />
     <Compile Include="Model\ShapesTests.cs" />
