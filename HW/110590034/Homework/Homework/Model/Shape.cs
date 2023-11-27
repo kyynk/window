@@ -14,6 +14,13 @@ namespace Homework.Model
             set; 
         }
 
+        public Shape()
+        {
+            _point1 = new Point(-1, -1);
+            _point2 = new Point(-1, -1);
+            _shapeName = Constant.Constant.NONE;
+        }
+
         public Shape(Point point1, Point point2)
         {
             _point1 = new Point(point1.X, point1.Y);
@@ -118,7 +125,7 @@ namespace Homework.Model
         }
 
         // draw hint
-        public void DrawHint(IGraphics graphics)
+        public virtual void DrawHint(IGraphics graphics)
         {
             graphics.DrawHint(_point1.X, _point1.Y, _point2.X, _point2.Y);
             double top = Math.Min(_point1.Y, _point2.Y);

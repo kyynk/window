@@ -1,44 +1,63 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace Homework.Model.Tests
 {
     [TestClass()]
     public class PointStateTests
     {
-        private Shapes _shapes;
-        private PointState _pointState;
-        private ShapeFactory _shapeFactory;
+        private Mock<Model> _mockModel;
         private MockGraphics _mockGraphics;
+        private PointState _pointState;
+        private PrivateObject _privatePointState;
 
         // setup
         [TestInitialize()]
         public void Initialize()
         {
-            _shapes = new Shapes();
-            _pointState = new PointState();
+            _mockModel = new Mock<Model>();
             _mockGraphics = new MockGraphics();
-            _shapeFactory = new ShapeFactory();
-            _shapes.AddNewShapeByDrawing(Constant.Constant.ELLIPSE, new Point(1, 1), new Point(10, 10));
+            _pointState = new PointState(_mockModel.Object);
+            _privatePointState = new PrivateObject(_pointState);
+        }
+
+        // test point state
+        [TestMethod()]
+        public void PointStateTest()
+        {
+            _pointState = new PointState(_mockModel.Object);
+            _privatePointState = new PrivateObject(_pointState);
+            Assert.IsNotNull((Model)_privatePointState.GetField("_model"));
+            Assert.AreEqual(-1, ((Point)_privatePointState.GetField("_point")).X);
+            Assert.AreEqual(-1, ((Point)_privatePointState.GetField("_point")).Y);
+            Assert.IsFalse(_pointState.IsSelected);
+            Assert.IsFalse(_pointState.IsClicked);
         }
 
         // test mouse down
         [TestMethod()]
-        public void MouseDownTest()
+        public void MouseDownWithoutClickAndSelectTest()
         {
-            // not select
-            _pointState.MouseDown(new Point(70, 100), Constant.Constant.NONE, ref _shapes, ref _shapeFactory);
+            // not click, select
+            Point mouse = new Point(10, 10);
+            _mockModel.Setup(model => model.CheckSelectedShape(It.IsAny<double>(), It.IsAny<double>())).Returns(false);
+            _pointState.MouseDown(mouse, Constant.Constant.LINE);
+            _mockModel.Verify(model => model.CheckSelectedShape(mouse.X, mouse.Y), Times.Exactly(2));
             Assert.IsFalse(_pointState.IsClicked);
             Assert.IsFalse(_pointState.IsSelected);
-            Assert.AreEqual(70, _pointState.ThisPoint.X);
-            Assert.AreEqual(100, _pointState.ThisPoint.Y);
-            // select
-            _pointState.MouseDown(new Point(5, 5), Constant.Constant.NONE, ref _shapes, ref _shapeFactory);
+        }
+
+        // test mouse down
+        [TestMethod()]
+        public void MouseDownWithClickAndSelectTest()
+        {
+            // click, select
+            Point mouse = new Point(10, 10);
+            _mockModel.Setup(model => model.CheckSelectedShape(It.IsAny<double>(), It.IsAny<double>())).Returns(true);
+            _pointState.MouseDown(mouse, Constant.Constant.LINE);
+            _mockModel.Verify(model => model.CheckSelectedShape(mouse.X, mouse.Y), Times.Exactly(2));
             Assert.IsTrue(_pointState.IsClicked);
             Assert.IsTrue(_pointState.IsSelected);
-            Assert.AreEqual(5, _pointState.ThisPoint.X);
-            Assert.AreEqual(5, _pointState.ThisPoint.Y);
-            // clean
-            _pointState.MouseUp(new Point(5, 5), Constant.Constant.NONE, ref _shapes);
         }
 
         // test get diff
@@ -50,63 +69,56 @@ namespace Homework.Model.Tests
 
         // test mouse move
         [TestMethod()]
-        public void MouseMoveTest()
+        public void MouseMoveWithoutSelectTest()
         {
-            _shapes.AddNewShapeByDrawing(Constant.Constant.LINE, new Point(30, 30), new Point(50, 50));
-            // not select
-            _pointState.MouseDown(new Point(70, 100), Constant.Constant.NONE, ref _shapes, ref _shapeFactory);
-            _pointState.MouseMove(new Point(80, 110), ref _shapes);
-            Assert.IsFalse(_pointState.IsSelected);
-            Assert.AreEqual(70, _pointState.ThisPoint.X);
-            Assert.AreEqual(100, _pointState.ThisPoint.Y);
-            // select
-            _pointState.MouseDown(new Point(35, 33), Constant.Constant.NONE, ref _shapes, ref _shapeFactory);
-            _pointState.MouseMove(new Point(36, 34), ref _shapes);
-            Assert.IsTrue(_pointState.IsSelected);
-            Assert.AreEqual(36, _pointState.ThisPoint.X);
-            Assert.AreEqual(34, _pointState.ThisPoint.Y);
-            // clean
-            _pointState.MouseUp(new Point(36, 34), Constant.Constant.NONE, ref _shapes);
+            Point mouse = new Point(20, 20);
+            _pointState.IsSelected = false;
+            _pointState.MouseMove(mouse);
+            _mockModel.Verify(model => model.MoveSelectedShape(It.IsAny<double>(), It.IsAny<double>()), Times.Never);
+        }
+
+        // test mouse move
+        [TestMethod()]
+        public void MouseMoveWithSelectTest()
+        {
+            Point mouse = new Point(20, 20);
+            _pointState.IsSelected = true;
+            _pointState.MouseMove(mouse);
+            // initial x, y = -1, -1
+            _mockModel.Verify(model => model.MoveSelectedShape(-21, -21), Times.Once);
         }
 
         // test mouse up
+        // not select => _isSelected = false
         [TestMethod()]
-        public void MouseUpTest()
+        public void MouseUpWithSelectTest()
         {
-            // not select
-            _pointState.MouseDown(new Point(70, 100), Constant.Constant.NONE, ref _shapes, ref _shapeFactory);
-            Assert.IsFalse(_pointState.IsSelected);
-            _pointState.MouseUp(new Point(5, 5), Constant.Constant.NONE, ref _shapes);
-            Assert.IsFalse(_pointState.IsSelected);
             // select
-            _pointState.MouseDown(new Point(5, 5), Constant.Constant.NONE, ref _shapes, ref _shapeFactory);
-            Assert.IsTrue(_pointState.IsSelected);
-            _pointState.MouseUp(new Point(5, 5), Constant.Constant.NONE, ref _shapes);
+            _pointState.IsSelected = true;
+            _pointState.MouseUp(new Point(5, 5), Constant.Constant.NONE);
             Assert.IsFalse(_pointState.IsSelected);
         }
 
         // test drawing
         [TestMethod()]
-        public void DrawingTest()
+        public void DrawingWithShapeNullOrNotClickTest()
         {
-            // not click shape
-            _pointState.MouseDown(new Point(70, 100), Constant.Constant.NONE, ref _shapes, ref _shapeFactory);
-            _pointState.Drawing(_mockGraphics, ref _shapes);
-            Assert.IsFalse(_pointState.IsClicked);
-            Assert.AreEqual(0, _mockGraphics.CountHint);
-            Assert.AreEqual(0, _mockGraphics.CountHintCircle);
-            // click shape
-            _pointState.MouseDown(new Point(5, 5), Constant.Constant.NONE, ref _shapes, ref _shapeFactory);
-            _pointState.Drawing(_mockGraphics, ref _shapes);
-            Assert.IsTrue(_pointState.IsClicked);
-            Assert.AreEqual(1, _mockGraphics.CountHint);
-            Assert.AreEqual(8, _mockGraphics.CountHintCircle);
-            // delete clicked shape without cancel
-            _shapes.DeleteSelectedShape();
-            _pointState.Drawing(_mockGraphics, ref _shapes);
-            Assert.IsTrue(_pointState.IsClicked);
-            Assert.AreEqual(1, _mockGraphics.CountHint);
-            Assert.AreEqual(8, _mockGraphics.CountHintCircle);
+            var mockShape = new Mock<Shape>();
+            _pointState.IsClicked = false;
+            _mockModel.Setup(model => model.GetSelectedShape()).Returns((Shape)null);
+            _pointState.Drawing(_mockGraphics);
+            mockShape.Verify(shape => shape.DrawHint(_mockGraphics), Times.Never);
+        }
+
+        // test drawing
+        [TestMethod()]
+        public void DrawingWithShapeNotNullAndClickTest()
+        {
+            var mockShape = new Mock<Shape>();
+            _pointState.IsClicked = true;
+            _mockModel.Setup(model => model.GetSelectedShape()).Returns(mockShape.Object);
+            _pointState.Drawing(_mockGraphics);
+            mockShape.Verify(shape => shape.DrawHint(_mockGraphics), Times.Once);
         }
     }
 }

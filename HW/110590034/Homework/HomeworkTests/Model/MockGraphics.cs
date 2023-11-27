@@ -21,7 +21,7 @@
             _drawEllipseCount = 0;
         }
 
-        public int CountLine
+        public int DrawLineCount
         {
             get
             {
@@ -29,7 +29,7 @@
             }
         }
 
-        public int CountRectangle
+        public int DrawRectangleCount
         {
             get
             {
@@ -37,7 +37,7 @@
             }
         }
 
-        public int CountEllipse
+        public int DrawEllipseCount
         {
             get
             {
@@ -45,7 +45,7 @@
             }
         }
 
-        public int CountHint
+        public int DrawHintCount
         {
             get
             {
@@ -53,7 +53,7 @@
             }
         }
 
-        public int CountHintCircle
+        public int DrawHintCircleCount
         {
             get
             {
@@ -64,7 +64,7 @@
         // clear all
         public void ClearAll()
         {
-
+            ResetAllCount();
         }
 
         // draw line

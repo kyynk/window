@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Homework.Model;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Homework.Model.Tests
 {
@@ -12,6 +13,14 @@ namespace Homework.Model.Tests
         public void Initialize()
         {
             _shapes = new Shapes();
+        }
+
+        // test shapes
+        [TestMethod()]
+        public void ShapesTest()
+        {
+            _shapes = new Shapes();
+            Assert.AreEqual(0, _shapes.ShapeList.Count);
         }
 
         // test add new shape by drawing
@@ -73,8 +82,7 @@ namespace Homework.Model.Tests
         {
             _shapes.AddNewShapeByDrawing(Constant.Constant.RECTANGLE, new Point(0, 0), new Point(10, 10));
             _shapes.CheckSelect(5, 5);
-            Shape selectedShape = _shapes.GetSelectedShape();
-            Assert.IsNotNull(selectedShape);
+            Assert.IsNotNull(_shapes.GetSelectedShape());
             _shapes.DeleteShapeByIndex(0);
         }
 

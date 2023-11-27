@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Homework.Model;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
 namespace Homework.Model.Tests
@@ -17,6 +18,16 @@ namespace Homework.Model.Tests
             _throwShape = new Shape(new Point(0, 0), new Point(1, 1));
             _shape = new Ellipse(new Point(3, 2), new Point(5, 6));
             _mockGraphics = new MockGraphics();
+        }
+
+        // test shape
+        [TestMethod()]
+        public void ShapeTest()
+        {
+            _throwShape = new Shape(new Point(0, 0), new Point(1, 1));
+            Assert.AreEqual(Constant.Constant.NONE, _throwShape.ShapeName);
+            Shape shapeDefaultConstructor = new Shape();
+            Assert.AreEqual(Constant.Constant.NONE, shapeDefaultConstructor.ShapeName);
         }
 
         // test get shape name
@@ -43,7 +54,7 @@ namespace Homework.Model.Tests
         {
             Assert.ThrowsException<NotImplementedException>(() => _throwShape.Draw(_mockGraphics));
             _shape.Draw(_mockGraphics);
-            Assert.AreEqual(1, _mockGraphics.CountEllipse);
+            Assert.AreEqual(1, _mockGraphics.DrawEllipseCount);
         }
 
         // test reset point
@@ -101,8 +112,8 @@ namespace Homework.Model.Tests
         public void DrawHintTest()
         {
             _shape.DrawHint(_mockGraphics);
-            Assert.AreEqual(1, _mockGraphics.CountHint);
-            Assert.AreEqual(8, _mockGraphics.CountHintCircle);
+            Assert.AreEqual(1, _mockGraphics.DrawHintCount);
+            Assert.AreEqual(8, _mockGraphics.DrawHintCircleCount);
         }
     }
 }

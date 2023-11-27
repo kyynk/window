@@ -7,8 +7,8 @@ namespace Homework.Model
     {
         public event ModelChangedEventHandler _modelChanged;
         public delegate void ModelChangedEventHandler();
-        private const int MAX_PANEL_X = 490;
-        private const int MAX_PANEL_Y = 415;
+        private int _panelMaxX;
+        private int _panelMaxY;
         private Shapes _shapesData;
         private ShapeFactory _shapeFactory;
         private IState _state;
@@ -16,10 +16,14 @@ namespace Homework.Model
 
         public Model()
         {
+            const int DEFAULT_MAX_PANEL_X = 490;
+            const int DEFAULT_MAX_PANEL_Y = 415;
             _shapesData = new Shapes();
             _shapeFactory = new ShapeFactory();
             _shapeName = Constant.Constant.POINT;
-            _state = new PointState();
+            _state = new PointState(this);
+            _panelMaxX = DEFAULT_MAX_PANEL_X;
+            _panelMaxY = DEFAULT_MAX_PANEL_Y;
         }
 
         public string ShapeName
@@ -34,22 +38,19 @@ namespace Homework.Model
             }
         }
 
-        // change state to point
-        public void ChangeStatePoint()
-        {
-            _state = new PointState();
-        }
-
         // change state
-        public void ChangeStateDrawing()
+        public void ChangeState(string state)
         {
-            _state = new DrawingState();
+            if (state == Constant.Constant.POINT_STATE)
+                _state = new PointState(this);
+            else
+                _state = new DrawingState(this, _shapeFactory);
         }
 
         // pointer pressed
         public void PressPointer(double mouseX, double mouseY)
         {
-            _state.MouseDown(new Point(mouseX, mouseY), _shapeName, ref _shapesData, ref _shapeFactory);
+            _state.MouseDown(new Point(mouseX, mouseY), _shapeName);
         }
 
         // pointer moved
@@ -57,7 +58,7 @@ namespace Homework.Model
         {
             mouseX = CheckRangeOfX(mouseX);
             mouseY = CheckRangeOfY(mouseY);
-            _state.MouseMove(new Point(mouseX, mouseY), ref _shapesData);
+            _state.MouseMove(new Point(mouseX, mouseY));
             NotifyModelChanged();
         }
 
@@ -67,7 +68,7 @@ namespace Homework.Model
             
             mouseX = CheckRangeOfX(mouseX);
             mouseY = CheckRangeOfY(mouseY);
-            _state.MouseUp(new Point(mouseX, mouseY), _shapeName, ref _shapesData);
+            _state.MouseUp(new Point(mouseX, mouseY), _shapeName);
             NotifyModelChanged();
         }
 
@@ -77,7 +78,31 @@ namespace Homework.Model
             graphics.ClearAll();
             foreach (Shape aShape in _shapesData.ShapeList)
                 aShape.Draw(graphics);
-            _state.Drawing(graphics, ref _shapesData);
+            _state.Drawing(graphics);
+        }
+
+        // add drawing shape
+        public virtual void AddDrawingShape(string shapeName, Point point1, Point point2)
+        {
+            _shapesData.AddNewShapeByDrawing(shapeName, point1, point2);
+        }
+
+        // get select shape
+        public virtual Shape GetSelectedShape()
+        {
+            return _shapesData.GetSelectedShape();
+        }
+
+        // check select shape
+        public virtual bool CheckSelectedShape(double pointX, double pointY)
+        {
+            return _shapesData.CheckSelect(pointX, pointY);
+        }
+
+        // move select shape
+        public virtual void MoveSelectedShape(double diffX, double diffY)
+        {
+            _shapesData.MoveSelectedShape(diffX, diffY);
         }
 
         // check range for painting and return the value of range
@@ -87,9 +112,9 @@ namespace Homework.Model
             {
                 return 0;
             }
-            else if (mouseX > MAX_PANEL_X)
+            else if (mouseX > _panelMaxX)
             {
-                return MAX_PANEL_X;
+                return _panelMaxX;
             }
             else
             {
@@ -104,9 +129,9 @@ namespace Homework.Model
             {
                 return 0;
             }
-            else if (mouseY > MAX_PANEL_Y)
+            else if (mouseY > _panelMaxY)
             {
-                return MAX_PANEL_Y;
+                return _panelMaxY;
             }
             else
             {

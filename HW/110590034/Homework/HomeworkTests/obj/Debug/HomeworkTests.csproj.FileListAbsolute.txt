@@ -18,3 +18,11 @@ C:\Users\user\Desktop\window\HW\110590034\Homework\HomeworkTests\obj\Debug\Homew
 C:\Users\user\Desktop\window\HW\110590034\Homework\HomeworkTests\obj\Debug\HomeworkTests.csproj.CopyComplete
 C:\Users\user\Desktop\window\HW\110590034\Homework\HomeworkTests\obj\Debug\HomeworkTests.dll
 C:\Users\user\Desktop\window\HW\110590034\Homework\HomeworkTests\obj\Debug\HomeworkTests.pdb
+C:\Users\user\Desktop\window\HW\110590034\Homework\HomeworkTests\bin\Debug\Castle.Core.dll
+C:\Users\user\Desktop\window\HW\110590034\Homework\HomeworkTests\bin\Debug\Moq.dll
+C:\Users\user\Desktop\window\HW\110590034\Homework\HomeworkTests\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\user\Desktop\window\HW\110590034\Homework\HomeworkTests\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\user\Desktop\window\HW\110590034\Homework\HomeworkTests\bin\Debug\Castle.Core.xml
+C:\Users\user\Desktop\window\HW\110590034\Homework\HomeworkTests\bin\Debug\Moq.xml
+C:\Users\user\Desktop\window\HW\110590034\Homework\HomeworkTests\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\user\Desktop\window\HW\110590034\Homework\HomeworkTests\bin\Debug\System.Threading.Tasks.Extensions.xml

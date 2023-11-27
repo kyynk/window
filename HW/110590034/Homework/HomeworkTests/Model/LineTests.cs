@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Homework.Model;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Homework.Model.Tests
 {
@@ -16,12 +17,20 @@ namespace Homework.Model.Tests
             _mockGraphics = new MockGraphics();
         }
 
+        // test line
+        [TestMethod()]
+        public void LineTest()
+        {
+            _line = new Line(new Point(1, 1), new Point(2, 5));
+            Assert.AreEqual(Constant.Constant.LINE, _line.GetShapeName());
+        }
+
         // test draw
         [TestMethod()]
         public void DrawTest()
         {
             _line.Draw(_mockGraphics);
-            Assert.AreEqual(1, _mockGraphics.CountLine);
+            Assert.AreEqual(1, _mockGraphics.DrawLineCount);
         }
 
         // test get shape name

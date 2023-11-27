@@ -3,12 +3,12 @@
     public interface IState
     {
         // mouse down
-        void MouseDown(Point mouse, string shapeName, ref Shapes shapes, ref ShapeFactory shapeFactory);
+        void MouseDown(Point mouse, string shapeName);
         // mouse move
-        void MouseMove(Point mouse, ref Shapes shapes);
+        void MouseMove(Point mouse);
         // mouse up
-        void MouseUp(Point mouse, string shapeName, ref Shapes shapes);
+        void MouseUp(Point mouse, string shapeName);
         // drawing
-        void Drawing(IGraphics graphics, ref Shapes shapes);
+        void Drawing(IGraphics graphics);
     }
 }

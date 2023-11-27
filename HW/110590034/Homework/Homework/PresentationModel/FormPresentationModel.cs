@@ -111,10 +111,10 @@ namespace Homework.PresentationModel
         public void SetState(string name)
         {
             if (name == Constant.Constant.POINT)
-                _model.ChangeStatePoint();
+                _model.ChangeState(Constant.Constant.POINT_STATE);
             else
             {
-                _model.ChangeStateDrawing();
+                _model.ChangeState(Constant.Constant.DRAWING_STATE);
                 IsDefaultCursorEnabled = false;
             }
         }

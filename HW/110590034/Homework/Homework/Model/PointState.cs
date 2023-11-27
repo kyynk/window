@@ -2,23 +2,17 @@
 {
     public class PointState : IState
     {
+        private Model _model;
         private Point _point;
         private bool _isSelected;
         private bool _isClicked;
 
-        public PointState()
+        public PointState(Model model)
         {
+            _model = model;
             _point = new Point(-1, -1);
             _isSelected = false;
             _isClicked = false;
-        }
-
-        public Point ThisPoint
-        {
-            get
-            {
-                return _point;
-            }
         }
 
         public bool IsSelected
@@ -26,6 +20,10 @@
             get
             {
                 return _isSelected;
+            }
+            set
+            {
+                _isSelected = value;
             }
         }
 
@@ -35,14 +33,18 @@
             {
                 return _isClicked;
             }
+            set
+            {
+                _isClicked = value;
+            }
         }
 
         // mouse down
-        public void MouseDown(Point mouse, string shapeName, ref Shapes shapes, ref ShapeFactory shapeFactory)
+        public void MouseDown(Point mouse, string shapeName)
         {
             _isClicked = false;
-            _isClicked = shapes.CheckSelect(mouse.X, mouse.Y);
-            _isSelected = shapes.CheckSelect(mouse.X, mouse.Y);
+            _isClicked = _model.CheckSelectedShape(mouse.X, mouse.Y);
+            _isSelected = _model.CheckSelectedShape(mouse.X, mouse.Y);
             _point = mouse;
             if (!_isClicked)
                 _isSelected = false;
@@ -55,27 +57,27 @@
         }
 
         // mouse move
-        public void MouseMove(Point mouse, ref Shapes shapes)
+        public void MouseMove(Point mouse)
         {
             if (_isSelected)
             {
                 double diffX = GetDifference(_point.X, mouse.X);
                 double diffY = GetDifference(_point.Y, mouse.Y);
-                shapes.MoveSelectedShape(diffX, diffY);
+                _model.MoveSelectedShape(diffX, diffY);
                 _point = mouse;
             }
         }
 
         // mouse up
-        public void MouseUp(Point mouse, string shapeName, ref Shapes shapes)
+        public void MouseUp(Point mouse, string shapeName)
         {
             _isSelected = false;
         }
 
         // draw hint
-        public void Drawing(IGraphics graphics, ref Shapes shapes)
+        public void Drawing(IGraphics graphics)
         {
-            Shape hint = shapes.GetSelectedShape();
+            Shape hint = _model.GetSelectedShape();
             if (_isClicked && hint != null)
                 hint.DrawHint(graphics);
         }

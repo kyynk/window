@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Homework.Model;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Homework.Model.Tests
 {
@@ -16,12 +17,20 @@ namespace Homework.Model.Tests
             _mockGraphics = new MockGraphics();
         }
 
+        // test ellipse
+        [TestMethod()]
+        public void EllipseTest()
+        {
+            _ellipse = new Ellipse(new Point(1, 1), new Point(2, 5));
+            Assert.AreEqual(Constant.Constant.ELLIPSE, _ellipse.GetShapeName());
+        }
+
         // test draw
         [TestMethod()]
         public void DrawTest()
         {
             _ellipse.Draw(_mockGraphics);
-            Assert.AreEqual(1, _mockGraphics.CountEllipse);
+            Assert.AreEqual(1, _mockGraphics.DrawEllipseCount);
         }
 
         // test get shape name

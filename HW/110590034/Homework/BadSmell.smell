@@ -321,6 +321,11 @@
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>Model\PointStateTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Model\RectangleTests.cs</RelativePath>
                 <ProjectName>HomeworkTests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>

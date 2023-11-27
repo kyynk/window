@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Homework.Model;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
 namespace Homework.Model.Tests
@@ -7,12 +8,23 @@ namespace Homework.Model.Tests
     public class ShapeFactoryTests
     {
         private ShapeFactory _shapeFactory;
+        private PrivateObject _privateFactory;
 
         // setup
         [TestInitialize()]
         public void Initialize()
         {
             _shapeFactory = new ShapeFactory();
+            _privateFactory = new PrivateObject(_shapeFactory);
+        }
+
+        // test shape factory
+        [TestMethod()]
+        public void ShapeFactoryTest()
+        {
+            _shapeFactory = new ShapeFactory();
+            _privateFactory = new PrivateObject(_shapeFactory);
+            Assert.IsNotNull((Random)_privateFactory.GetField("_randomNumber"));
         }
 
         // test add drawing shape
