@@ -71,12 +71,13 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Model\DrawingStateTests.cs" />
+    <Compile Include="State\DrawingStateTests.cs" />
     <Compile Include="Model\LineTests.cs" />
     <Compile Include="Model\MockGraphics.cs" />
     <Compile Include="Model\EllipseTests.cs" />
     <Compile Include="Model\ModelTests.cs" />
-    <Compile Include="Model\PointStateTests.cs" />
+    <Compile Include="State\PointStateTests.cs" />
+    <Compile Include="Model\PointTests.cs" />
     <Compile Include="Model\RectangleTests.cs" />
     <Compile Include="Model\ShapeFactoryTests.cs" />
     <Compile Include="Model\ShapesTests.cs" />

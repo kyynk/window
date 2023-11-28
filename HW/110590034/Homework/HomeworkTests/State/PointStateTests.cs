@@ -1,12 +1,14 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Homework.Model.Tests;
+using Homework.Model;
 using Moq;
 
-namespace Homework.Model.Tests
+namespace Homework.State.Tests
 {
     [TestClass()]
     public class PointStateTests
     {
-        private Mock<Model> _mockModel;
+        private Mock<Model.Model> _mockModel;
         private MockGraphics _mockGraphics;
         private PointState _pointState;
         private PrivateObject _privatePointState;
@@ -15,7 +17,7 @@ namespace Homework.Model.Tests
         [TestInitialize()]
         public void Initialize()
         {
-            _mockModel = new Mock<Model>();
+            _mockModel = new Mock<Model.Model>();
             _mockGraphics = new MockGraphics();
             _pointState = new PointState(_mockModel.Object);
             _privatePointState = new PrivateObject(_pointState);
@@ -27,7 +29,7 @@ namespace Homework.Model.Tests
         {
             _pointState = new PointState(_mockModel.Object);
             _privatePointState = new PrivateObject(_pointState);
-            Assert.IsNotNull((Model)_privatePointState.GetField("_model"));
+            Assert.IsNotNull((Model.Model)_privatePointState.GetField("_model"));
             Assert.AreEqual(-1, ((Point)_privatePointState.GetField("_point")).X);
             Assert.AreEqual(-1, ((Point)_privatePointState.GetField("_point")).Y);
             Assert.IsFalse(_pointState.IsSelected);

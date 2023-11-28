@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.ComponentModel;
 using System.Windows.Forms;
+using Homework.State;
 using Moq;
 
 namespace Homework.Model.Tests

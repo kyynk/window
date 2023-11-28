@@ -1,12 +1,14 @@
-﻿namespace Homework.Model
+﻿using Homework.Model;
+
+namespace Homework.State
 {
     public class DrawingState : IState
     {
-        private Model _model;
+        private Model.Model _model;
         private Point _point1;
         private bool _isPressed;
 
-        public DrawingState(Model model)
+        public DrawingState(Model.Model model)
         {
             _model = model;
             _point1 = new Point(-1, -1);

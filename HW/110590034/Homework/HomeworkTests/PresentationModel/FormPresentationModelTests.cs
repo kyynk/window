@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Drawing;
+using Homework.View;
 using Moq;
 
 namespace Homework.PresentationModel.Tests

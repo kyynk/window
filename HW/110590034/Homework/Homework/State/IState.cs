@@ -1,4 +1,6 @@
-﻿namespace Homework.Model
+﻿using Homework.Model;
+
+namespace Homework.State
 {
     public interface IState
     {

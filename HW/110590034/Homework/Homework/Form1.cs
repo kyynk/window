@@ -22,6 +22,7 @@ namespace Homework.View
             // presentation model
             _presentationModel = presentationModel;
             _presentationModel._modelChanged += HandleModelChanged;
+            _presentationModel._cursorChanged += HandleCursorChanged;
             // shape data (dataGridview)
             _shapeData.AutoGenerateColumns = false;
             _shapeData.DataSource = _presentationModel.GetShapes();
@@ -117,6 +118,12 @@ namespace Homework.View
         private void HandleKeyDown(object sender, KeyEventArgs e)
         {
             _presentationModel.HandleKeyDown(e.KeyCode);
+        }
+
+        // handle cursor changed
+        private void HandleCursorChanged(Cursor cursorType)
+        {
+            _canvas.Cursor = cursorType;
         }
 
         // update view

@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel;
-using System.Drawing;
 using System.Windows.Forms;
+using System.Drawing;
 using Homework.Model;
+using Homework.View;
 
 namespace Homework.PresentationModel
 {
@@ -9,6 +10,8 @@ namespace Homework.PresentationModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public event Model.Model.ModelChangedEventHandler _modelChanged;
+        public delegate void CursorChangedEventHandler(Cursor cursor);
+        public event CursorChangedEventHandler _cursorChanged;
         private Model.Model _model;
         private bool _isLineEnabled;
         private bool _isRectangleEnabled;
@@ -235,6 +238,12 @@ namespace Homework.PresentationModel
         public void HandleKeyDown(Keys keyCode)
         {
             _model.HandleKeyDown(keyCode);
+        }
+
+        // handle cursor changed
+        public void HandleCursorChanged(Cursor newCursor)
+        {
+            
         }
 
         // property changed

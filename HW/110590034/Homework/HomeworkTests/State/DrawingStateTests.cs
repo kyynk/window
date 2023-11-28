@@ -1,22 +1,23 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+using Homework.Model.Tests;
+using Homework.Model;
 using Moq;
 
-namespace Homework.Model.Tests
+namespace Homework.State.Tests
 {
     [TestClass()]
     public class DrawingStateTests
     {
         private DrawingState _drawingState;
         private PrivateObject _privateState;
-        private Mock<Model> _mockModel;
+        private Mock<Model.Model> _mockModel;
         private MockGraphics _mockGraphics;
 
         // setup
         [TestInitialize()]
         public void Initialize()
         {
-            _mockModel = new Mock<Model>();
+            _mockModel = new Mock<Model.Model>();
             _drawingState = new DrawingState(_mockModel.Object);
             _privateState = new PrivateObject(_drawingState);
             _mockGraphics = new MockGraphics();
@@ -28,7 +29,7 @@ namespace Homework.Model.Tests
         {
             _drawingState = new DrawingState(_mockModel.Object);
             _privateState = new PrivateObject(_drawingState);
-            Assert.IsNotNull((Model)_privateState.GetField("_model"));
+            Assert.IsNotNull((Model.Model)_privateState.GetField("_model"));
             Assert.AreEqual(-1, ((Point)_privateState.GetField("_point1")).X);
             Assert.AreEqual(-1, ((Point)_privateState.GetField("_point1")).Y);
             Assert.IsFalse(_drawingState.IsPressed);

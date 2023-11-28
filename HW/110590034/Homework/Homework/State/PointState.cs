@@ -1,13 +1,15 @@
-﻿namespace Homework.Model
+﻿using Homework.Model;
+
+namespace Homework.State
 {
     public class PointState : IState
     {
-        private Model _model;
+        private Model.Model _model;
         private Point _point;
         private bool _isSelected;
         private bool _isClicked;
 
-        public PointState(Model model)
+        public PointState(Model.Model model)
         {
             _model = model;
             _point = new Point(-1, -1);

@@ -1,11 +1,14 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
+using Homework.State;
 
 namespace Homework.Model
 {
     public class Model
     {
         public event ModelChangedEventHandler _modelChanged;
+        public event Action<Cursor> _cursorChanged;
         public delegate void ModelChangedEventHandler();
         private int _panelMaxX;
         private int _panelMaxY;
