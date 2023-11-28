@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constant.cs" />
+    <Compile Include="State\ResizeState.cs" />
     <Compile Include="State\PointState.cs" />
     <Compile Include="State\DrawingState.cs" />
     <Compile Include="ToolStripBindingButton.cs">

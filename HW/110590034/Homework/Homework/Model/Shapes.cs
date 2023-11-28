@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using Homework.Model;
 
 namespace Homework.Model
 {
@@ -51,12 +52,12 @@ namespace Homework.Model
             {
                 if (_selectedShape != null)
                 {
-                    _selectedShape.isSelected = false;
+                    _selectedShape.IsSelected = false;
                 }
                 _selectedShape = null;
                 if (aShape.CheckSelect(pointX, pointY))
                 {
-                    aShape.isSelected = true;
+                    aShape.IsSelected = true;
                     _selectedShape = aShape;
                     return true;
                 }
@@ -82,6 +83,18 @@ namespace Homework.Model
         {
             _shapeList.Remove(_selectedShape);
             _selectedShape = null;
+        }
+
+        // resize selected shape
+        public void ResizeSelectedShape(Shape.Location location, Point mouse)
+        {
+            _selectedShape.SetResizePoint(location, mouse);
+        }
+
+        // get 
+        public Shape.Location GetSelectedShapeLocation(Point mouse)
+        {
+            return _selectedShape.GetLocation(mouse.X, mouse.Y);
         }
     }
 }

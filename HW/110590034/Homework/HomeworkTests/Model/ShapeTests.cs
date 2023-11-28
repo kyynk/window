@@ -101,10 +101,10 @@ namespace Homework.Model.Tests
             Assert.IsFalse(_shape.CheckSelect(5.0, 5.0));
             Assert.IsFalse(_shape.CheckSelect(-5.0, -5.0));
 
-            _shape.isSelected = true;
-            Assert.IsTrue(_shape.isSelected);
-            _shape.isSelected = false;
-            Assert.IsFalse(_shape.isSelected);
+            _shape.IsSelected = true;
+            Assert.IsTrue(_shape.IsSelected);
+            _shape.IsSelected = false;
+            Assert.IsFalse(_shape.IsSelected);
         }
 
         // test draw hint
@@ -114,6 +114,13 @@ namespace Homework.Model.Tests
             _shape.DrawHint(_mockGraphics);
             Assert.AreEqual(1, _mockGraphics.DrawHintCount);
             Assert.AreEqual(8, _mockGraphics.DrawHintCircleCount);
+        }
+
+        // test get mean
+        [TestMethod()]
+        public void GetMeanTest()
+        {
+            Assert.AreEqual(5, _shape.GetMean(1, 9));
         }
     }
 }

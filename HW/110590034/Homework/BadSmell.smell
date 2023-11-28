@@ -211,7 +211,7 @@
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Model\DrawingState.cs</RelativePath>
+                <RelativePath>FormGraphicsAdaptor.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
@@ -222,11 +222,6 @@
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Model\IGraphics.cs</RelativePath>
-                <ProjectName>Homework</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
-                <RelativePath>Model\IState.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
@@ -242,11 +237,6 @@
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Model\Point.cs</RelativePath>
-                <ProjectName>Homework</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
-                <RelativePath>Model\PointState.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
@@ -267,11 +257,6 @@
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Model\Shapes.cs</RelativePath>
-                <ProjectName>Homework</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
-                <RelativePath>PresentationModel\FormGraphicsAdaptor.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
@@ -301,14 +286,29 @@
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>ToolStripBindingButton.cs</RelativePath>
+                <RelativePath>State\DrawingState.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Model\DrawingStateTests.cs</RelativePath>
-                <ProjectName>HomeworkTests</ProjectName>
-                <AnalysisFileType>Test</AnalysisFileType>
+                <RelativePath>State\IState.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>State\PointState.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>State\ResizeState.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>ToolStripBindingButton.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Model\EllipseTests.cs</RelativePath>
@@ -331,7 +331,7 @@
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Model\PointStateTests.cs</RelativePath>
+                <RelativePath>Model\PointTests.cs</RelativePath>
                 <ProjectName>HomeworkTests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
@@ -365,10 +365,20 @@
                 <ProjectName>HomeworkTests</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>State\DrawingStateTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>State\PointStateTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>1812</ProductionLoc>
-          <TestLoc>1351</TestLoc>
+          <ProductionLoc>1978</ProductionLoc>
+          <TestLoc>1406</TestLoc>
         </CodeReview>
       </Data>
     </div>

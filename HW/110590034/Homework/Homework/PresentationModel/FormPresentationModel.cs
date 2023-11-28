@@ -11,7 +11,6 @@ namespace Homework.PresentationModel
         public event PropertyChangedEventHandler PropertyChanged;
         public event Model.Model.ModelChangedEventHandler _modelChanged;
         public delegate void CursorChangedEventHandler(Cursor cursor);
-        public event CursorChangedEventHandler _cursorChanged;
         private Model.Model _model;
         private bool _isLineEnabled;
         private bool _isRectangleEnabled;

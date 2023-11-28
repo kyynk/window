@@ -8,7 +8,6 @@ namespace Homework.Model
     public class Model
     {
         public event ModelChangedEventHandler _modelChanged;
-        public event Action<Cursor> _cursorChanged;
         public delegate void ModelChangedEventHandler();
         private int _panelMaxX;
         private int _panelMaxY;
@@ -42,6 +41,7 @@ namespace Homework.Model
         }
 
         // change state
+        // add one more state -> resize state
         public virtual void ChangeState(string state)
         {
             if (state == Constant.Constant.POINT_STATE)
@@ -131,6 +131,20 @@ namespace Homework.Model
         {
             _shapesData.MoveSelectedShape(diffX, diffY);
         }
+
+        // check is resize state or not
+        // -> if _selectedShape != null (in point)
+        //        _selectedShape.GetLocation != Shape.Location.None
+        //            set state -> Resize()
+        //            cursor -> change!
+
+        // mouse down (resize)
+        //     check resize state (
+        //     if location != None -> resize state
+        //     else -> point state)
+
+        // resize selected shape(
+        //  -> _shapesData.resize shape)
 
         // check range for painting and return the value of range
         public double CheckRange(double mouse, double max)

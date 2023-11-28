@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Homework.Model
 {
@@ -8,7 +9,20 @@ namespace Homework.Model
         protected string _shapeName;
         protected Point _point1;
         protected Point _point2;
-        public bool isSelected
+        protected Dictionary<Location, Point> _resizePoint;
+        public enum Location
+        {
+            LeftTop,
+            Top,
+            RightTop,
+            Left,
+            Right,
+            LeftBottom,
+            Bottom,
+            RightBottom,
+            None
+        }
+        public bool IsSelected
         { 
             get;
             set; 
@@ -18,6 +32,7 @@ namespace Homework.Model
         {
             _point1 = new Point(-1, -1);
             _point2 = new Point(-1, -1);
+            _resizePoint = new Dictionary<Location, Point>();
             _shapeName = Constant.Constant.NONE;
         }
 
@@ -25,6 +40,7 @@ namespace Homework.Model
         {
             _point1 = new Point(point1.X, point1.Y);
             _point2 = new Point(point2.X, point2.Y);
+            _resizePoint = new Dictionary<Location, Point>();
             _shapeName = Constant.Constant.NONE;
         }
 
@@ -132,24 +148,77 @@ namespace Homework.Model
             double bottom = Math.Max(_point1.Y, _point2.Y);
             double left = Math.Min(_point1.X, _point2.X);
             double right = Math.Max(_point1.X, _point2.X);
-            const double RADIUS = 4;
-            graphics.DrawHintCircle(left - RADIUS, top - RADIUS, left + RADIUS, top + RADIUS);
-            graphics.DrawHintCircle(GetMean(left, right) - RADIUS, top - RADIUS, GetMean(left, right) + RADIUS, top + RADIUS);
-            graphics.DrawHintCircle(right - RADIUS, top - RADIUS, right + RADIUS, top + RADIUS);
+            graphics.DrawHintCircle(left - Constant.Constant.FOUR, top - Constant.Constant.FOUR, left + Constant.Constant.FOUR, top + Constant.Constant.FOUR);
+            graphics.DrawHintCircle(GetMean(left, right) - Constant.Constant.FOUR, top - Constant.Constant.FOUR, GetMean(left, right) + Constant.Constant.FOUR, top + Constant.Constant.FOUR);
+            graphics.DrawHintCircle(right - Constant.Constant.FOUR, top - Constant.Constant.FOUR, right + Constant.Constant.FOUR, top + Constant.Constant.FOUR);
 
-            graphics.DrawHintCircle(left - RADIUS, GetMean(top, bottom) - RADIUS, left + RADIUS, GetMean(top, bottom) + RADIUS);
-            graphics.DrawHintCircle(right - RADIUS, GetMean(top, bottom) - RADIUS, right + RADIUS, GetMean(top, bottom) + RADIUS);
+            graphics.DrawHintCircle(left - Constant.Constant.FOUR, GetMean(top, bottom) - Constant.Constant.FOUR, left + Constant.Constant.FOUR, GetMean(top, bottom) + Constant.Constant.FOUR);
+            graphics.DrawHintCircle(right - Constant.Constant.FOUR, GetMean(top, bottom) - Constant.Constant.FOUR, right + Constant.Constant.FOUR, GetMean(top, bottom) + Constant.Constant.FOUR);
 
-            graphics.DrawHintCircle(left - RADIUS, bottom - RADIUS, left + RADIUS, bottom + RADIUS);
-            graphics.DrawHintCircle(GetMean(left, right) - RADIUS, bottom - RADIUS, GetMean(left, right) + RADIUS, bottom + RADIUS);
-            graphics.DrawHintCircle(right - RADIUS, bottom - RADIUS, right + RADIUS, bottom + RADIUS);
+            graphics.DrawHintCircle(left - Constant.Constant.FOUR, bottom - Constant.Constant.FOUR, left + Constant.Constant.FOUR, bottom + Constant.Constant.FOUR);
+            graphics.DrawHintCircle(GetMean(left, right) - Constant.Constant.FOUR, bottom - Constant.Constant.FOUR, GetMean(left, right) + Constant.Constant.FOUR, bottom + Constant.Constant.FOUR);
+            graphics.DrawHintCircle(right - Constant.Constant.FOUR, bottom - Constant.Constant.FOUR, right + Constant.Constant.FOUR, bottom + Constant.Constant.FOUR);
         }
 
         // get mean
-        private double GetMean(double number1, double number2)
+        public double GetMean(double number1, double number2)
         {
             const double DIVISOR = 2;
             return (number1 + number2) / DIVISOR;
+        }
+
+        // reset resize point
+        public void ResetResizePoint()
+        {
+            double top = Math.Min(_point1.Y, _point2.Y);
+            double bottom = Math.Max(_point1.Y, _point2.Y);
+            double left = Math.Min(_point1.X, _point2.X);
+            double right = Math.Max(_point1.X, _point2.X);
+            _resizePoint[Location.LeftTop] = new Point(left, top);
+            _resizePoint[Location.Top] = new Point(GetMean(left, right), top);
+            _resizePoint[Location.RightTop] = new Point(right, top);
+            _resizePoint[Location.Left] = new Point(left, GetMean(top, bottom));
+            _resizePoint[Location.Right] = new Point(right, GetMean(top, bottom));
+            _resizePoint[Location.LeftBottom] = new Point(left, bottom);
+            _resizePoint[Location.Bottom] = new Point(GetMean(left, right), bottom);
+            _resizePoint[Location.RightBottom] = new Point(right, bottom);
+        }
+
+        // update point
+        public virtual void UpdatePoint()
+        {
+            Point1.X = _resizePoint[Location.LeftTop].X;
+            Point1.Y = _resizePoint[Location.LeftTop].Y;
+            Point2.X = _resizePoint[Location.RightBottom].X;
+            Point2.Y = _resizePoint[Location.RightBottom].Y;
+        }
+
+        // set resize point
+        public void SetResizePoint(Location location, Point point)
+        {
+            _resizePoint[location].X = point.X;
+            _resizePoint[location].Y = point.Y;
+            UpdatePoint();
+            ResetResizePoint();
+        }
+
+        // check in resize point
+        public bool IsInResizePoint(Location location, double pointX, double pointY)
+        {
+            return (pointX >= _resizePoint[location].X - Constant.Constant.FOUR && pointY >= _resizePoint[location].Y - Constant.Constant.FOUR && pointX <= _resizePoint[location].X + Constant.Constant.FOUR && pointY <= _resizePoint[location].Y + Constant.Constant.FOUR);
+        }
+
+        // in resize point
+        public Location GetLocation(double pointX, double pointY)
+        {
+            foreach (var resizePoint in _resizePoint)
+            {
+                if (IsInResizePoint(resizePoint.Key, pointX, pointY))
+                {
+                    return resizePoint.Key;
+                }
+            }
+            return Location.None;
         }
     }
 }

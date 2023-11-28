@@ -7,6 +7,7 @@
         public const string RECTANGLE = "矩形";
         public const string NONE = "None";
         public const string POINT = "default";
+        public const int FOUR = 4;
         // panel default
         public const int DEFAULT_MAX_PANEL_X = 490;
         public const int DEFAULT_MAX_PANEL_Y = 415;

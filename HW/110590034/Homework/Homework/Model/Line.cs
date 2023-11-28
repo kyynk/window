@@ -45,5 +45,21 @@ namespace Homework.Model
                 _point2 = temp;
             }
         }
+
+        // update point
+        public override void UpdatePoint()
+        {
+            double top = Math.Min(_point1.Y, _point2.Y);
+            if (_point1.Y != top)
+            {
+                _point1 = _resizePoint[Location.LeftBottom];
+                _point2 = _resizePoint[Location.RightTop];
+            }
+            else
+            {
+                _point1 = _resizePoint[Location.LeftTop];
+                _point2 = _resizePoint[Location.RightBottom];
+            }
+        }
     }
 }

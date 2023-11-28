@@ -67,7 +67,7 @@ namespace Homework.Model.Tests
             isSelected = _shapes.CheckSelect(5, 5);
             Assert.IsTrue(isSelected);
             Assert.IsNotNull(_shapes.GetSelectedShape());
-            Assert.IsTrue(_shapes.GetSelectedShape().isSelected);
+            Assert.IsTrue(_shapes.GetSelectedShape().IsSelected);
             // test branch coverage for repeat CheckSelect
             isSelected = _shapes.CheckSelect(5, 5);
             Assert.IsTrue(isSelected);

@@ -22,7 +22,7 @@ namespace Homework.View
             // presentation model
             _presentationModel = presentationModel;
             _presentationModel._modelChanged += HandleModelChanged;
-            _presentationModel._cursorChanged += HandleCursorChanged;
+            //_presentationModel._cursorChanged += SetCursor;
             // shape data (dataGridview)
             _shapeData.AutoGenerateColumns = false;
             _shapeData.DataSource = _presentationModel.GetShapes();
@@ -121,7 +121,7 @@ namespace Homework.View
         }
 
         // handle cursor changed
-        private void HandleCursorChanged(Cursor cursorType)
+        private void SetCursor(Cursor cursorType)
         {
             _canvas.Cursor = cursorType;
         }
