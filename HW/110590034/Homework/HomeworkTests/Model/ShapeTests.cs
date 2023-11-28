@@ -20,7 +20,7 @@ namespace Homework.Model.Tests
             _mockGraphics = new MockGraphics();
         }
 
-        // test shape
+        // test constructor
         [TestMethod()]
         public void ShapeTest()
         {

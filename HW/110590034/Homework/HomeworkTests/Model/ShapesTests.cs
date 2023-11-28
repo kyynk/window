@@ -15,7 +15,7 @@ namespace Homework.Model.Tests
             _shapes = new Shapes();
         }
 
-        // test shapes
+        // test constructor
         [TestMethod()]
         public void ShapesTest()
         {

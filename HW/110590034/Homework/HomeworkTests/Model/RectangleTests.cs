@@ -17,7 +17,7 @@ namespace Homework.Model.Tests
             _mockGraphics = new MockGraphics();
         }
 
-        // test rectangle
+        // test constructor
         [TestMethod()]
         public void RectangleTest()
         {

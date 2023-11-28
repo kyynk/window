@@ -17,7 +17,7 @@ namespace Homework.Model.Tests
             _mockGraphics = new MockGraphics();
         }
 
-        // test ellipse
+        // test constructor
         [TestMethod()]
         public void EllipseTest()
         {

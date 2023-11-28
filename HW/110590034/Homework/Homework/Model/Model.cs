@@ -41,7 +41,7 @@ namespace Homework.Model
         }
 
         // change state
-        public void ChangeState(string state)
+        public virtual void ChangeState(string state)
         {
             if (state == Constant.Constant.POINT_STATE)
                 _state = new PointState(this);
@@ -50,13 +50,13 @@ namespace Homework.Model
         }
 
         // pointer pressed
-        public void PressPointer(double mouseX, double mouseY)
+        public virtual void PressPointer(double mouseX, double mouseY)
         {
             _state.MouseDown(new Point(mouseX, mouseY), _shapeName, mouseX == CheckRange(mouseX, _panelMaxX) && mouseY == CheckRange(mouseY, _panelMaxY));
         }
 
         // pointer moved
-        public void MovePointer(double mouseX, double mouseY)
+        public virtual void MovePointer(double mouseX, double mouseY)
         {
             mouseX = CheckRange(mouseX, _panelMaxX);
             mouseY = CheckRange(mouseY, _panelMaxY);
@@ -65,7 +65,7 @@ namespace Homework.Model
         }
 
         // pointer released
-        public void ReleasePointer(double mouseX, double mouseY)
+        public virtual void ReleasePointer(double mouseX, double mouseY)
         {
 
             mouseX = CheckRange(mouseX, _panelMaxX);
@@ -75,7 +75,7 @@ namespace Homework.Model
         }
 
         // draw
-        public void Draw(IGraphics graphics)
+        public virtual void Draw(IGraphics graphics)
         {
             graphics.ClearAll();
             foreach (Shape aShape in _shapesData.ShapeList)
@@ -170,7 +170,7 @@ namespace Homework.Model
 
         // handle key down
         // if keycode = delete, will delete selected shape
-        public void HandleKeyDown(Keys keyCode)
+        public virtual void HandleKeyDown(Keys keyCode)
         {
             if (keyCode == Keys.Delete)
                 _shapesData.DeleteSelectedShape();

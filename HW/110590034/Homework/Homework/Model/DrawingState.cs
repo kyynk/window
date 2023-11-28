@@ -51,5 +51,13 @@
             if (_isPressed)
                 _model.DrawDrawingShape(graphics);
         }
+
+        public bool IsPressed
+        {
+            get
+            {
+                return _isPressed;
+            }
+        }
     }
 }

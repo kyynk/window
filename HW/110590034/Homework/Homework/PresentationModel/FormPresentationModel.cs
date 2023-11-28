@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Homework.Model;
-using System;
 
 namespace Homework.PresentationModel
 {
@@ -15,6 +14,7 @@ namespace Homework.PresentationModel
         private bool _isRectangleEnabled;
         private bool _isEllipseEnabled;
         private bool _isDefaultCursorEnabled;
+        private FormGraphicsAdaptor _graphicsAdaptor;
 
         public FormPresentationModel(Model.Model model)
         {
@@ -75,27 +75,26 @@ namespace Homework.PresentationModel
         }
 
         // draw
-        public void Draw(System.Drawing.Graphics graphics)
+        public void Draw(Graphics graphics)
         {
             // graphics物件是Paint事件帶進來的，只能在當次Paint使用
             // 而Adaptor又直接使用graphics，這樣DoubleBuffer才能正確運作
             // 因此，Adaptor不能重複使用，每次都要重新new
-            _model.Draw(new FormGraphicsAdaptor(graphics));
+            _graphicsAdaptor = new FormGraphicsAdaptor(graphics);
+            _model.Draw(_graphicsAdaptor);
         }
 
         // draw
-        public void DrawOnButton(System.Drawing.Graphics graphics, Size buttonSize, Size canvasSize)
+        public void DrawOnButton(Graphics graphics, Size buttonSize, Size canvasSize)
         {
-            // graphics物件是Paint事件帶進來的，只能在當次Paint使用
-            // 而Adaptor又直接使用graphics，這樣DoubleBuffer才能正確運作
-            // 因此，Adaptor不能重複使用，每次都要重新new
             // Calculate scaling factors
             float scaleX = (float)buttonSize.Width / canvasSize.Width;
             float scaleY = (float)buttonSize.Height / canvasSize.Height;
             // Apply scaling to the graphics object
             graphics.ScaleTransform(scaleX, scaleY);
 
-            _model.Draw(new FormGraphicsAdaptor(graphics));
+            _graphicsAdaptor = new FormGraphicsAdaptor(graphics);
+            _model.Draw(_graphicsAdaptor);
         }
 
         // reset boolean
@@ -136,7 +135,7 @@ namespace Homework.PresentationModel
             {
                 IsEllipseEnabled = true;
             }
-            _model.ShapeName = name;
+            ShapeName = name;
         }
 
         // line enable
@@ -161,6 +160,19 @@ namespace Homework.PresentationModel
         public void EnableDefaultCursor()
         {
             SetMode(Constant.Constant.POINT);
+        }
+
+        // shape name
+        public string ShapeName
+        {
+            get
+            {
+                return _model.ShapeName;
+            }
+            set
+            {
+                _model.ShapeName = value;
+            }
         }
 
         // is line enabled
@@ -226,7 +238,7 @@ namespace Homework.PresentationModel
         }
 
         // property changed
-        void NotifyPropertyChanged(string propertyName)
+        public void NotifyPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
             {

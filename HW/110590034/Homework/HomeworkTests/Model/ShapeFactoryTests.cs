@@ -18,7 +18,7 @@ namespace Homework.Model.Tests
             _privateFactory = new PrivateObject(_shapeFactory);
         }
 
-        // test shape factory
+        // test constructor
         [TestMethod()]
         public void ShapeFactoryTest()
         {

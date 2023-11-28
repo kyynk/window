@@ -21,7 +21,7 @@ namespace Homework.Model.Tests
             _privatePointState = new PrivateObject(_pointState);
         }
 
-        // test point state
+        // test constructor
         [TestMethod()]
         public void PointStateTest()
         {
