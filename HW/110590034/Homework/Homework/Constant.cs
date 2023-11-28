@@ -7,6 +7,9 @@
         public const string RECTANGLE = "矩形";
         public const string NONE = "None";
         public const string POINT = "default";
+        // panel default
+        public const int DEFAULT_MAX_PANEL_X = 490;
+        public const int DEFAULT_MAX_PANEL_Y = 415;
         // model state
         public const string POINT_STATE = "point";
         public const string DRAWING_STATE = "drawing";

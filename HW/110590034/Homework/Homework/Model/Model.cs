@@ -17,15 +17,13 @@ namespace Homework.Model
 
         public Model()
         {
-            const int DEFAULT_MAX_PANEL_X = 490;
-            const int DEFAULT_MAX_PANEL_Y = 415;
             _tempShape = null;
             _shapesData = new Shapes();
             _shapeFactory = new ShapeFactory();
             _shapeName = Constant.Constant.POINT;
             _state = new PointState(this);
-            _panelMaxX = DEFAULT_MAX_PANEL_X;
-            _panelMaxY = DEFAULT_MAX_PANEL_Y;
+            _panelMaxX = Constant.Constant.DEFAULT_MAX_PANEL_X;
+            _panelMaxY = Constant.Constant.DEFAULT_MAX_PANEL_Y;
         }
 
         public string ShapeName
