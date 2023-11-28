@@ -3,7 +3,7 @@
     public interface IState
     {
         // mouse down
-        void MouseDown(Point mouse, string shapeName);
+        void MouseDown(Point mouse, string shapeName, bool isInPanel);
         // mouse move
         void MouseMove(Point mouse);
         // mouse up

@@ -9,6 +9,7 @@ namespace Homework.Model
         public delegate void ModelChangedEventHandler();
         private int _panelMaxX;
         private int _panelMaxY;
+        private Shape _tempShape;
         private Shapes _shapesData;
         private ShapeFactory _shapeFactory;
         private IState _state;
@@ -18,6 +19,7 @@ namespace Homework.Model
         {
             const int DEFAULT_MAX_PANEL_X = 490;
             const int DEFAULT_MAX_PANEL_Y = 415;
+            _tempShape = null;
             _shapesData = new Shapes();
             _shapeFactory = new ShapeFactory();
             _shapeName = Constant.Constant.POINT;
@@ -44,20 +46,20 @@ namespace Homework.Model
             if (state == Constant.Constant.POINT_STATE)
                 _state = new PointState(this);
             else
-                _state = new DrawingState(this, _shapeFactory);
+                _state = new DrawingState(this);
         }
 
         // pointer pressed
         public void PressPointer(double mouseX, double mouseY)
         {
-            _state.MouseDown(new Point(mouseX, mouseY), _shapeName);
+            _state.MouseDown(new Point(mouseX, mouseY), _shapeName, mouseX == CheckRange(mouseX, _panelMaxX) && mouseY == CheckRange(mouseY, _panelMaxY));
         }
 
         // pointer moved
         public void MovePointer(double mouseX, double mouseY)
         {
-            mouseX = CheckRangeOfX(mouseX);
-            mouseY = CheckRangeOfY(mouseY);
+            mouseX = CheckRange(mouseX, _panelMaxX);
+            mouseY = CheckRange(mouseY, _panelMaxY);
             _state.MouseMove(new Point(mouseX, mouseY));
             NotifyModelChanged();
         }
@@ -65,9 +67,9 @@ namespace Homework.Model
         // pointer released
         public void ReleasePointer(double mouseX, double mouseY)
         {
-            
-            mouseX = CheckRangeOfX(mouseX);
-            mouseY = CheckRangeOfY(mouseY);
+
+            mouseX = CheckRange(mouseX, _panelMaxX);
+            mouseY = CheckRange(mouseY, _panelMaxY);
             _state.MouseUp(new Point(mouseX, mouseY), _shapeName);
             NotifyModelChanged();
         }
@@ -81,10 +83,34 @@ namespace Homework.Model
             _state.Drawing(graphics);
         }
 
+        // create drawing shape
+        public virtual void CreateDrawingShape(string shapeType, Point firstPoint)
+        {
+            _tempShape = _shapeFactory.AddDrawingShape(shapeType, firstPoint, firstPoint);
+        }
+
+        // move drawing shape
+        public virtual void MoveDrawingShape(Point secondPoint)
+        {
+            _tempShape.Point2 = new Point(secondPoint.X, secondPoint.Y);
+        }
+
         // add drawing shape
         public virtual void AddDrawingShape(string shapeName, Point point1, Point point2)
         {
             _shapesData.AddNewShapeByDrawing(shapeName, point1, point2);
+        }
+
+        // clear drawing shape
+        public virtual void ClearDrawingShape()
+        {
+            _tempShape = null;
+        }
+
+        // draw drawing shape
+        public virtual void DrawDrawingShape(IGraphics graphics)
+        {
+            _tempShape.Draw(graphics);
         }
 
         // get select shape
@@ -106,36 +132,19 @@ namespace Homework.Model
         }
 
         // check range for painting and return the value of range
-        public double CheckRangeOfX(double mouseX)
+        public double CheckRange(double mouse, double max)
         {
-            if (mouseX < 0)
+            if (mouse < 0)
             {
                 return 0;
             }
-            else if (mouseX > _panelMaxX)
+            else if (mouse > max)
             {
-                return _panelMaxX;
+                return max;
             }
             else
             {
-                return mouseX;
-            }
-        }
-
-        // check range for painting and return the value of range
-        public double CheckRangeOfY(double mouseY)
-        {
-            if (mouseY < 0)
-            {
-                return 0;
-            }
-            else if (mouseY > _panelMaxY)
-            {
-                return _panelMaxY;
-            }
-            else
-            {
-                return mouseY;
+                return mouse;
             }
         }
 
@@ -169,7 +178,7 @@ namespace Homework.Model
         }
 
         // notify observer
-        private void NotifyModelChanged()
+        public void NotifyModelChanged()
         {
             if (_modelChanged != null)
                 _modelChanged();

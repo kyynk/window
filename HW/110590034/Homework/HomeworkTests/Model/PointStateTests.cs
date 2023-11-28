@@ -41,7 +41,7 @@ namespace Homework.Model.Tests
             // not click, select
             Point mouse = new Point(10, 10);
             _mockModel.Setup(model => model.CheckSelectedShape(It.IsAny<double>(), It.IsAny<double>())).Returns(false);
-            _pointState.MouseDown(mouse, Constant.Constant.LINE);
+            _pointState.MouseDown(mouse, Constant.Constant.LINE, true);
             _mockModel.Verify(model => model.CheckSelectedShape(mouse.X, mouse.Y), Times.Exactly(2));
             Assert.IsFalse(_pointState.IsClicked);
             Assert.IsFalse(_pointState.IsSelected);
@@ -54,7 +54,7 @@ namespace Homework.Model.Tests
             // click, select
             Point mouse = new Point(10, 10);
             _mockModel.Setup(model => model.CheckSelectedShape(It.IsAny<double>(), It.IsAny<double>())).Returns(true);
-            _pointState.MouseDown(mouse, Constant.Constant.LINE);
+            _pointState.MouseDown(mouse, Constant.Constant.LINE, true);
             _mockModel.Verify(model => model.CheckSelectedShape(mouse.X, mouse.Y), Times.Exactly(2));
             Assert.IsTrue(_pointState.IsClicked);
             Assert.IsTrue(_pointState.IsSelected);

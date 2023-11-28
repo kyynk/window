@@ -185,7 +185,280 @@
     <div class="data">
       <Data id="ReviewPalData">
         <CodeReview xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-          <Reviews />
+          <Reviews>
+            <Smell>
+              <Id>1</Id>
+              <SmellType>Unresolved warnings(忽視警告)-欄位 'FormGraphicsAdaptorTests._formGraphicsAdaptor' 從未使用過</SmellType>
+              <HashCode>HomeworkTests\HomeworkTests.FormGraphicsAdaptorTests.cs.Unresolved warnings(忽視警告)-欄位 'FormGraphicsAdaptorTests._formGraphicsAdaptor' 從未使用過.10</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>HomeworkTests\HomeworkTests</Project>
+              <File>FormGraphicsAdaptorTests.cs</File>
+              <Line>10</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>2</Id>
+              <SmellType>Unresolved warnings(忽視警告)-函式 ReleasePointerTest 缺乏註解</SmellType>
+              <HashCode>HomeworkTests\HomeworkTests.ModelTests.cs.Unresolved warnings(忽視警告)-函式 ReleasePointerTest 缺乏註解.61</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>HomeworkTests\HomeworkTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>61</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>3</Id>
+              <SmellType>Unresolved warnings(忽視警告)-函式 MoveSelectedShapeTest 缺乏註解</SmellType>
+              <HashCode>HomeworkTests\HomeworkTests.ModelTests.cs.Unresolved warnings(忽視警告)-函式 MoveSelectedShapeTest 缺乏註解.115</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>HomeworkTests\HomeworkTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>115</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>4</Id>
+              <SmellType>Unresolved warnings(忽視警告)-函式 MovePointerTest 缺乏註解</SmellType>
+              <HashCode>HomeworkTests\HomeworkTests.ModelTests.cs.Unresolved warnings(忽視警告)-函式 MovePointerTest 缺乏註解.55</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>HomeworkTests\HomeworkTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>55</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>5</Id>
+              <SmellType>Unresolved warnings(忽視警告)-函式 MoveDrawingShapeTest 缺乏註解</SmellType>
+              <HashCode>HomeworkTests\HomeworkTests.ModelTests.cs.Unresolved warnings(忽視警告)-函式 MoveDrawingShapeTest 缺乏註解.79</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>HomeworkTests\HomeworkTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>79</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>6</Id>
+              <SmellType>Unresolved warnings(忽視警告)-函式 HandleKeyDownTest 缺乏註解</SmellType>
+              <HashCode>HomeworkTests\HomeworkTests.ModelTests.cs.Unresolved warnings(忽視警告)-函式 HandleKeyDownTest 缺乏註解.145</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>HomeworkTests\HomeworkTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>145</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>7</Id>
+              <SmellType>Unresolved warnings(忽視警告)-函式 GetShapesTest 缺乏註解</SmellType>
+              <HashCode>HomeworkTests\HomeworkTests.ModelTests.cs.Unresolved warnings(忽視警告)-函式 GetShapesTest 缺乏註解.133</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>HomeworkTests\HomeworkTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>133</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>8</Id>
+              <SmellType>Unresolved warnings(忽視警告)-函式 GetSelectedShapeTest 缺乏註解</SmellType>
+              <HashCode>HomeworkTests\HomeworkTests.ModelTests.cs.Unresolved warnings(忽視警告)-函式 GetSelectedShapeTest 缺乏註解.103</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>HomeworkTests\HomeworkTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>103</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>9</Id>
+              <SmellType>Unresolved warnings(忽視警告)-函式 DrawTest 缺乏註解</SmellType>
+              <HashCode>HomeworkTests\HomeworkTests.ModelTests.cs.Unresolved warnings(忽視警告)-函式 DrawTest 缺乏註解.67</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>HomeworkTests\HomeworkTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>67</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>10</Id>
+              <SmellType>Unresolved warnings(忽視警告)-函式 DrawDrawingShapeTest 缺乏註解</SmellType>
+              <HashCode>HomeworkTests\HomeworkTests.ModelTests.cs.Unresolved warnings(忽視警告)-函式 DrawDrawingShapeTest 缺乏註解.97</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>HomeworkTests\HomeworkTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>97</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>11</Id>
+              <SmellType>Unresolved warnings(忽視警告)-函式 DeleteTest 缺乏註解</SmellType>
+              <HashCode>HomeworkTests\HomeworkTests.ModelTests.cs.Unresolved warnings(忽視警告)-函式 DeleteTest 缺乏註解.139</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>HomeworkTests\HomeworkTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>139</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>12</Id>
+              <SmellType>Unresolved warnings(忽視警告)-函式 CreateTest 缺乏註解</SmellType>
+              <HashCode>HomeworkTests\HomeworkTests.ModelTests.cs.Unresolved warnings(忽視警告)-函式 CreateTest 缺乏註解.127</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>HomeworkTests\HomeworkTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>127</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>13</Id>
+              <SmellType>Unresolved warnings(忽視警告)-函式 CreateDrawingShapeTest 缺乏註解</SmellType>
+              <HashCode>HomeworkTests\HomeworkTests.ModelTests.cs.Unresolved warnings(忽視警告)-函式 CreateDrawingShapeTest 缺乏註解.73</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>HomeworkTests\HomeworkTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>73</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>14</Id>
+              <SmellType>Unresolved warnings(忽視警告)-函式 ClearDrawingShapeTest 缺乏註解</SmellType>
+              <HashCode>HomeworkTests\HomeworkTests.ModelTests.cs.Unresolved warnings(忽視警告)-函式 ClearDrawingShapeTest 缺乏註解.91</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>HomeworkTests\HomeworkTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>91</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>15</Id>
+              <SmellType>Unresolved warnings(忽視警告)-函式 CheckSelectedShapeTest 缺乏註解</SmellType>
+              <HashCode>HomeworkTests\HomeworkTests.ModelTests.cs.Unresolved warnings(忽視警告)-函式 CheckSelectedShapeTest 缺乏註解.109</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>HomeworkTests\HomeworkTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>109</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>16</Id>
+              <SmellType>Unresolved warnings(忽視警告)-函式 CheckRangeTest 缺乏註解</SmellType>
+              <HashCode>HomeworkTests\HomeworkTests.ModelTests.cs.Unresolved warnings(忽視警告)-函式 CheckRangeTest 缺乏註解.121</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>HomeworkTests\HomeworkTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>121</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>17</Id>
+              <SmellType>Unresolved warnings(忽視警告)-函式 AddDrawingShapeTest 缺乏註解</SmellType>
+              <HashCode>HomeworkTests\HomeworkTests.ModelTests.cs.Unresolved warnings(忽視警告)-函式 AddDrawingShapeTest 缺乏註解.85</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>HomeworkTests\HomeworkTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>85</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+          </Reviews>
           <HashCodeIgnoreList />
           <HashCodeRequestIgnoreList />
           <AnalysisFileManager>
@@ -306,6 +579,11 @@
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>Model\DrawingStateTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Model\EllipseTests.cs</RelativePath>
                 <ProjectName>HomeworkTests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
@@ -319,6 +597,11 @@
                 <RelativePath>Model\MockGraphics.cs</RelativePath>
                 <ProjectName>HomeworkTests</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Model\ModelTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Model\PointStateTests.cs</RelativePath>
@@ -346,14 +629,19 @@
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>PresentationModel\FormGraphicsAdaptorTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Properties\AssemblyInfo.cs</RelativePath>
                 <ProjectName>HomeworkTests</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>1757</ProductionLoc>
-          <TestLoc>400</TestLoc>
+          <ProductionLoc>1792</ProductionLoc>
+          <TestLoc>917</TestLoc>
         </CodeReview>
       </Data>
     </div>

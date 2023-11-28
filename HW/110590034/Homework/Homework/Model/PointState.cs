@@ -40,7 +40,7 @@
         }
 
         // mouse down
-        public void MouseDown(Point mouse, string shapeName)
+        public void MouseDown(Point mouse, string shapeName, bool isInPanel)
         {
             _isClicked = false;
             _isClicked = _model.CheckSelectedShape(mouse.X, mouse.Y);
