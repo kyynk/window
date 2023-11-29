@@ -30,12 +30,12 @@ namespace Homework.PresentationModel.Tests
             _mockModel = new Mock<Model.Model>();
             _presentationModel = new FormPresentationModel(_mockModel.Object);
             _privatePresentationModel = new PrivateObject(_presentationModel);
-
             Assert.IsNotNull(_presentationModel);
             Assert.IsFalse(_presentationModel.IsLineEnabled);
             Assert.IsFalse(_presentationModel.IsRectangleEnabled);
             Assert.IsFalse(_presentationModel.IsEllipseEnabled);
             Assert.IsTrue(_presentationModel.IsDefaultCursorEnabled);
+            Assert.AreEqual(Cursors.Arrow, _presentationModel.UsingCursor);
             Assert.IsNotNull((Model.Model)_privatePresentationModel.GetField("_model"));
         }
 
@@ -75,33 +75,89 @@ namespace Homework.PresentationModel.Tests
             Assert.AreEqual(0, _presentationModel.GetShapes().Count);
         }
 
+        // test is resize state
+        [TestMethod()]
+        public void IsResizeStateTest()
+        {
+            _mockModel.Setup(model => model.CheckIsResizeState(It.IsAny<double>(), It.IsAny<double>())).Returns(true);
+            Assert.IsTrue(_presentationModel.IsResizeState(1, 1));
+            _mockModel.Verify(model => model.CheckIsResizeState(1, 1), Times.Once);
+
+            _mockModel.Setup(model => model.CheckIsResizeState(It.IsAny<double>(), It.IsAny<double>())).Returns(false);
+            Assert.IsFalse(_presentationModel.IsResizeState(2, 2));
+            _mockModel.Verify(model => model.CheckIsResizeState(2, 2), Times.Once);
+        }
+
+        // test is location right bottom
+        [TestMethod()]
+        public void IsLocationRightBottomTest()
+        {
+            _mockModel.Setup(model => model.CheckLocationIsRightBottom(It.IsAny<double>(), It.IsAny<double>())).Returns(true);
+            Assert.IsTrue(_presentationModel.IsLocationRightBottom(1, 1));
+            _mockModel.Verify(model => model.CheckLocationIsRightBottom(1, 1), Times.Once);
+
+            _mockModel.Setup(model => model.CheckLocationIsRightBottom(It.IsAny<double>(), It.IsAny<double>())).Returns(false);
+            Assert.IsFalse(_presentationModel.IsLocationRightBottom(2, 2));
+            _mockModel.Verify(model => model.CheckLocationIsRightBottom(2, 2), Times.Once);
+        }
         // test press pointer
         [TestMethod()]
         public void PressPointerTest()
         {
+            // resize state
+            _presentationModel.IsPressed = false;
+            _mockModel.Setup(model => model.CheckIsResizeState(It.IsAny<double>(), It.IsAny<double>())).Returns(true);
             _presentationModel.PressPointer(50, 50);
+            _mockModel.Verify(model => model.ChangeState(Constant.Constant.RESIZE_STATE), Times.Once);
             _mockModel.Verify(model => model.PressPointer(50, 50), Times.Once);
+            Assert.IsTrue(_presentationModel.IsPressed);
+            // point state
+            _presentationModel.IsPressed = false;
+            _mockModel.Setup(model => model.CheckIsResizeState(It.IsAny<double>(), It.IsAny<double>())).Returns(false);
+            _presentationModel.PressPointer(51, 51);
+            _mockModel.Verify(model => model.ChangeState(Constant.Constant.POINT_STATE), Times.Once);
+            _mockModel.Verify(model => model.PressPointer(51, 51), Times.Once);
+            Assert.IsTrue(_presentationModel.IsPressed);
         }
 
         // test move pointer
         [TestMethod()]
         public void MovePointerTest()
         {
+            // right bottom
+            bool isCalledCursorChanged = false;
+            _presentationModel._cursorChanged += (cursor) => { isCalledCursorChanged = true; };
+            _presentationModel.IsPressed = false;
+            _mockModel.Setup(model => model.CheckLocationIsRightBottom(It.IsAny<double>(), It.IsAny<double>())).Returns(true);
             _presentationModel.MovePointer(23, 50);
+            Assert.IsTrue(isCalledCursorChanged);
+            Assert.AreEqual(Cursors.SizeNWSE, _presentationModel.UsingCursor);
             _mockModel.Verify(model => model.MovePointer(23, 50), Times.Once);
+            // not right bottom
+            isCalledCursorChanged = false;
+            _presentationModel.IsPressed = false;
+            _mockModel.Setup(model => model.CheckLocationIsRightBottom(It.IsAny<double>(), It.IsAny<double>())).Returns(false);
+            _presentationModel.MovePointer(25, 51);
+            Assert.IsTrue(isCalledCursorChanged);
+            Assert.AreEqual(Cursors.Arrow, _presentationModel.UsingCursor);
+            _mockModel.Verify(model => model.MovePointer(25, 51), Times.Once);
         }
 
         // test release pointer
         [TestMethod()]
         public void ReleasePointerWithShapeNameIsNotPointTest()
         {
+            bool isCalledCursorChanged = false;
+            _presentationModel._cursorChanged += (cursor) => { isCalledCursorChanged = true; };
             _presentationModel.EnableLine();
+            Assert.IsTrue(isCalledCursorChanged);
             _presentationModel.SetState(Constant.Constant.LINE);
+            Assert.AreEqual(Cursors.Cross, _presentationModel.UsingCursor);
             Assert.IsTrue(_presentationModel.IsLineEnabled);
             Assert.IsFalse(_presentationModel.IsRectangleEnabled);
             Assert.IsFalse(_presentationModel.IsEllipseEnabled);
             Assert.IsFalse(_presentationModel.IsDefaultCursorEnabled);
-
+            
             _presentationModel.ReleasePointer(56, 50);
             _mockModel.Verify(model => model.ReleasePointer(56, 50), Times.Once);
 
@@ -109,26 +165,21 @@ namespace Homework.PresentationModel.Tests
             Assert.IsFalse(_presentationModel.IsRectangleEnabled);
             Assert.IsFalse(_presentationModel.IsEllipseEnabled);
             Assert.IsTrue(_presentationModel.IsDefaultCursorEnabled);
+            Assert.IsFalse(_presentationModel.IsPressed);
         }
 
         // test release pointer
         [TestMethod()]
         public void ReleasePointerWithShapeNameIsPointTest()
         {
-            _presentationModel.EnableDefaultCursor();
-            _presentationModel.SetState(Constant.Constant.POINT);
+            _presentationModel.SetMode(Constant.Constant.POINT);
+            _presentationModel.IsPressed = true;
+            _presentationModel.ReleasePointer(56, 50);
             Assert.IsFalse(_presentationModel.IsLineEnabled);
             Assert.IsFalse(_presentationModel.IsRectangleEnabled);
             Assert.IsFalse(_presentationModel.IsEllipseEnabled);
             Assert.IsTrue(_presentationModel.IsDefaultCursorEnabled);
-
-            _presentationModel.ReleasePointer(30, 50);
-            _mockModel.Verify(model => model.ReleasePointer(30, 50), Times.Once);
-
-            Assert.IsFalse(_presentationModel.IsLineEnabled);
-            Assert.IsFalse(_presentationModel.IsRectangleEnabled);
-            Assert.IsFalse(_presentationModel.IsEllipseEnabled);
-            Assert.IsTrue(_presentationModel.IsDefaultCursorEnabled);
+            Assert.IsFalse(_presentationModel.IsPressed);
         }
 
         // test handle model changed
@@ -142,7 +193,10 @@ namespace Homework.PresentationModel.Tests
 
             eventCalled = false;
             _presentationModel.PropertyChanged += (sender, args) => eventCalled = true;
+            bool isCalledCursorChanged = false;
+            _presentationModel._cursorChanged += (cursor) => { isCalledCursorChanged = true; };
             _presentationModel.EnableDefaultCursor();
+            Assert.IsTrue(isCalledCursorChanged);
             _presentationModel.HandleModelChanged(); // actual will do
             Assert.IsTrue(eventCalled);
         }
@@ -251,7 +305,11 @@ namespace Homework.PresentationModel.Tests
         [TestMethod()]
         public void EnableLineTest()
         {
+            bool isCalledCursorChanged = false;
+            _presentationModel._cursorChanged += (cursor) => { isCalledCursorChanged = true; };
             _presentationModel.EnableLine();
+            Assert.IsTrue(isCalledCursorChanged);
+            Assert.AreEqual(Cursors.Cross, _presentationModel.UsingCursor);
             Assert.IsTrue(_presentationModel.IsLineEnabled);
             Assert.IsFalse(_presentationModel.IsRectangleEnabled);
             Assert.IsFalse(_presentationModel.IsEllipseEnabled);
@@ -262,7 +320,11 @@ namespace Homework.PresentationModel.Tests
         [TestMethod()]
         public void EnableRectangleTest()
         {
+            bool isCalledCursorChanged = false;
+            _presentationModel._cursorChanged += (cursor) => { isCalledCursorChanged = true; };
             _presentationModel.EnableRectangle();
+            Assert.IsTrue(isCalledCursorChanged);
+            Assert.AreEqual(Cursors.Cross, _presentationModel.UsingCursor);
             Assert.IsFalse(_presentationModel.IsLineEnabled);
             Assert.IsTrue(_presentationModel.IsRectangleEnabled);
             Assert.IsFalse(_presentationModel.IsEllipseEnabled);
@@ -273,7 +335,11 @@ namespace Homework.PresentationModel.Tests
         [TestMethod()]
         public void EnableEllipseTest()
         {
+            bool isCalledCursorChanged = false;
+            _presentationModel._cursorChanged += (cursor) => { isCalledCursorChanged = true; };
             _presentationModel.EnableEllipse();
+            Assert.IsTrue(isCalledCursorChanged);
+            Assert.AreEqual(Cursors.Cross, _presentationModel.UsingCursor);
             Assert.IsFalse(_presentationModel.IsLineEnabled);
             Assert.IsFalse(_presentationModel.IsRectangleEnabled);
             Assert.IsTrue(_presentationModel.IsEllipseEnabled);
@@ -284,7 +350,11 @@ namespace Homework.PresentationModel.Tests
         [TestMethod()]
         public void EnableDefaultCursorTest()
         {
+            bool isCalledCursorChanged = false;
+            _presentationModel._cursorChanged += (cursor) => { isCalledCursorChanged = true; };
             _presentationModel.EnableDefaultCursor();
+            Assert.IsTrue(isCalledCursorChanged);
+            Assert.AreEqual(Cursors.Arrow, _presentationModel.UsingCursor);
             Assert.IsFalse(_presentationModel.IsLineEnabled);
             Assert.IsFalse(_presentationModel.IsRectangleEnabled);
             Assert.IsFalse(_presentationModel.IsEllipseEnabled);

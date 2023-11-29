@@ -22,14 +22,14 @@ namespace Homework.State
         public void MouseDown(Point mouse, string shapeName, bool isInPanel)
         {
             _isPressed = true;
-            Console.WriteLine("resize down");
+            //Console.WriteLine("resize down");
         }
 
         // mouse move
         public void MouseMove(Point mouse)
         {
             // resize shape
-            Console.WriteLine("resize move");
+            //Console.WriteLine("resize move");
             if (_isPressed)
                 _model.ResizeSelectedShape(mouse.X, mouse.Y);
         }

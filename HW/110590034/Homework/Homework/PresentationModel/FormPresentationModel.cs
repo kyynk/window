@@ -29,6 +29,7 @@ namespace Homework.PresentationModel
             IsRectangleEnabled = false;
             IsEllipseEnabled = false;
             IsDefaultCursorEnabled = true;
+            UsingCursor = Cursors.Arrow;
             _model._modelChanged += HandleModelChanged;
         }
 
@@ -51,20 +52,32 @@ namespace Homework.PresentationModel
             _model.Delete(index);
         }
 
+        // check resize state
+        public bool IsResizeState(double mouseX, double mouseY)
+        {
+            return _model.CheckIsResizeState(mouseX, mouseY);
+        }
+
+        // check location is right bottom
+        public bool IsLocationRightBottom(double mouseX, double mouseY)
+        {
+            return _model.CheckLocationIsRightBottom(mouseX, mouseY);
+        }
+
         // pointer press
         public void PressPointer(double mouseX, double mouseY)
         {
-            if (IsDefaultCursorEnabled && _model.CheckIsResizeState(mouseX, mouseY))
+            if (IsDefaultCursorEnabled && IsResizeState(mouseX, mouseY))
             {
-                Console.WriteLine("aaaaaaaa");
+                //Console.WriteLine("aaaaaaaa");
                 _model.ChangeState(Constant.Constant.RESIZE_STATE);
             }
-            else if (IsDefaultCursorEnabled && !_model.CheckIsResizeState(mouseX, mouseY))
+            else if (IsDefaultCursorEnabled && !IsResizeState(mouseX, mouseY))
             {
-                Console.WriteLine("cccccccc");
+                //Console.WriteLine("cccccccc");
                 _model.ChangeState(Constant.Constant.POINT_STATE);
             }
-            Console.WriteLine("bbbbbbb");
+            //Console.WriteLine("bbbbbbb");
             IsPressed = true;
             _model.PressPointer(mouseX, mouseY);
         }
@@ -73,13 +86,15 @@ namespace Homework.PresentationModel
         public void MovePointer(double mouseX, double mouseY)
         {
             _model.MovePointer(mouseX, mouseY);
-            if (!IsPressed && _model.ShapeName == Constant.Constant.POINT && _model.CheckLocationIsRightBottom(mouseX, mouseY))
+            if (!IsPressed && _model.ShapeName == Constant.Constant.POINT && IsLocationRightBottom(mouseX, mouseY))
             {
                 _cursorChanged(Cursors.SizeNWSE);
+                UsingCursor = Cursors.SizeNWSE;
             }
-            else if (!IsPressed && _model.ShapeName == Constant.Constant.POINT && !_model.CheckLocationIsRightBottom(mouseX, mouseY))
+            else if (!IsPressed && _model.ShapeName == Constant.Constant.POINT && !IsLocationRightBottom(mouseX, mouseY))
             {
                 _cursorChanged(Cursors.Arrow);
+                UsingCursor = Cursors.Arrow;
             }
         }
 
@@ -172,6 +187,7 @@ namespace Homework.PresentationModel
         {
             SetMode(Constant.Constant.LINE);
             _cursorChanged(Cursors.Cross);
+            UsingCursor = Cursors.Cross;
         }
 
         // line enable
@@ -179,6 +195,7 @@ namespace Homework.PresentationModel
         {
             SetMode(Constant.Constant.RECTANGLE);
             _cursorChanged(Cursors.Cross);
+            UsingCursor = Cursors.Cross;
         }
 
         // line enable
@@ -186,6 +203,7 @@ namespace Homework.PresentationModel
         {
             SetMode(Constant.Constant.ELLIPSE);
             _cursorChanged(Cursors.Cross);
+            UsingCursor = Cursors.Cross;
         }
 
         // default cursor enable
@@ -193,6 +211,7 @@ namespace Homework.PresentationModel
         {
             SetMode(Constant.Constant.POINT);
             _cursorChanged(Cursors.Arrow);
+            UsingCursor = Cursors.Arrow;
         }
 
         // shape name
@@ -206,6 +225,13 @@ namespace Homework.PresentationModel
             {
                 _model.ShapeName = value;
             }
+        }
+
+        // for unit test
+        public Cursor UsingCursor
+        {
+            set;
+            get;
         }
 
         public bool IsPressed

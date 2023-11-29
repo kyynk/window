@@ -382,7 +382,6 @@ namespace Homework.Model.Tests
         public void ResizeSelectedShapeTest()
         {
             _model.AddDrawingShape(Constant.Constant.ELLIPSE, new Point(0, 0), new Point(10, 10));
-            //Assert.IsFalse(_model.CheckLocationIsRightBottom(10, 10));
             bool isSelected = _model.CheckSelectedShape(5, 5);
             Assert.IsInstanceOfType(_model.GetSelectedShape(), typeof(Shape));
             Assert.IsTrue(isSelected);

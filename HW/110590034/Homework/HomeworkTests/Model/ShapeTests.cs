@@ -22,12 +22,18 @@ namespace Homework.Model.Tests
 
         // test constructor
         [TestMethod()]
+        public void ShapeDefaultConstructorTest()
+        {
+            Shape shapeDefaultConstructor = new Shape();
+            Assert.AreEqual(Constant.Constant.NONE, shapeDefaultConstructor.ShapeName);
+        }
+
+        // test constructor
+        [TestMethod()]
         public void ShapeTest()
         {
             _throwShape = new Shape(new Point(0, 0), new Point(1, 1));
             Assert.AreEqual(Constant.Constant.NONE, _throwShape.ShapeName);
-            Shape shapeDefaultConstructor = new Shape();
-            Assert.AreEqual(Constant.Constant.NONE, shapeDefaultConstructor.ShapeName);
         }
 
         // test get shape name

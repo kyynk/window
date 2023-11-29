@@ -28,8 +28,7 @@ namespace Homework.Model
         // get info (position)
         public override string GetInfo()
         {
-            if (!IsResizing)
-                ResetPoint();
+            ResetPointWithoutResizing();
             string firstCoordinate = LEFT_PARENTHESIS + _point1.X + COMMA + _point1.Y + RIGHT_PARENTHESIS;
             string secondCoordinate = LEFT_PARENTHESIS + _point2.X + COMMA + _point2.Y + RIGHT_PARENTHESIS;
             return firstCoordinate + COMMA + secondCoordinate;
@@ -50,15 +49,21 @@ namespace Homework.Model
         // update point
         public override void UpdatePoint(Location location)
         {
-            if (location == Location.RightBottom && _point1.Y == _resizePoint[Location.RightBottom].Y)
+            if (location == Location.RightBottom && IsFirstPointBottom(_resizePoint[Location.RightBottom].Y))
             {
                 _point1.Y = _resizePoint[Location.RightBottom].Y;
                 _point2.X = _resizePoint[Location.RightBottom].X;
             }
-            else if (location == Location.RightBottom && _point1.Y != _resizePoint[Location.RightBottom].Y)
+            else if (location == Location.RightBottom && !IsFirstPointBottom(_resizePoint[Location.RightBottom].Y))
             {
                 _point2 = _resizePoint[Location.RightBottom];
             }
+        }
+
+        // check point1.y is top or bottom
+        public bool IsFirstPointBottom(double bottom)
+        {
+            return _point1.Y == bottom;
         }
     }
 }

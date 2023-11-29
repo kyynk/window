@@ -206,18 +206,18 @@ namespace Homework.Model
         // set resize point
         public void SetResizePoint(Location location, Point point)
         {
-            Console.WriteLine("set resize point");
-            Console.WriteLine(location);
+            //Console.WriteLine("set resize point");
+            //Console.WriteLine(location);
             _resizePoint[location] = point;
         }
 
         // check in resize point
         public bool IsInResizePoint(Location location, double pointX, double pointY)
         {
-            Console.WriteLine("hihihihihi");
-            Console.WriteLine(location);
-            Console.WriteLine(pointX);
-            Console.WriteLine(pointY);
+            //Console.WriteLine("hihihihihi");
+            //Console.WriteLine(location);
+            //Console.WriteLine(pointX);
+            //Console.WriteLine(pointY);
             return (pointX >= _resizePoint[location].X - Constant.Constant.FOUR && pointY >= _resizePoint[location].Y - Constant.Constant.FOUR && pointX <= _resizePoint[location].X + Constant.Constant.FOUR && pointY <= _resizePoint[location].Y + Constant.Constant.FOUR);
         }
 
@@ -225,22 +225,30 @@ namespace Homework.Model
         public Location GetLocation(double pointX, double pointY)
         {
             ResetResizePoint();
-            foreach (var iii in _resizePoint)
-            {
-                Console.WriteLine(iii.Key);
-                Console.WriteLine(iii.Value);
-                Console.WriteLine(iii.Value.X);
-                Console.WriteLine(iii.Value.Y);
-            }
+            //foreach (var iii in _resizePoint)
+            //{
+            //    Console.WriteLine(iii.Key);
+            //    Console.WriteLine(iii.Value);
+            //    Console.WriteLine(iii.Value.X);
+            //    Console.WriteLine(iii.Value.Y);
+            //}
             foreach (var resizePoint in _resizePoint)
             {
                 if (IsInResizePoint(resizePoint.Key, pointX, pointY))
                 {
-                    Console.WriteLine("in the point");
+                    //Console.WriteLine("in the point");
                     return resizePoint.Key;
                 }
             }
             return Location.None;
+        }
+
+        // resolve feature envy = =
+        // reset point without resizing
+        public void ResetPointWithoutResizing()
+        {
+            if (!IsResizing)
+                ResetPoint();
         }
     }
 }
