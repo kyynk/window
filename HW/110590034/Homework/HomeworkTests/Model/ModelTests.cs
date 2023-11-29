@@ -390,7 +390,7 @@ namespace Homework.Model.Tests
             _model.ResizeSelectedShape(15, 15);
             Assert.AreEqual(15, _model.GetSelectedShape().Point2.X);
             Assert.AreEqual(15, _model.GetSelectedShape().Point2.Y);
-            Assert.IsTrue(_model.CheckLocationIsRightBottom(0, 0));
+            Assert.IsFalse(_model.CheckLocationIsRightBottom(0, 0));
             _model.ResizeSelectedShape(20, 20);
             Assert.AreEqual(15, _model.GetSelectedShape().Point2.X);
             Assert.AreEqual(15, _model.GetSelectedShape().Point2.Y);

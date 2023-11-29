@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CoverageSession xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="4.7.922.0">
-  <Summary numSequencePoints="6042" visitedSequencePoints="2269" numBranchPoints="3752" visitedBranchPoints="788" sequenceCoverage="37.55" branchCoverage="21.00" maxCyclomaticComplexity="34" minCyclomaticComplexity="1" maxCrapScore="812" minCrapScore="1" visitedClasses="90" numClasses="306" visitedMethods="492" numMethods="1608" />
+  <Summary numSequencePoints="6042" visitedSequencePoints="2274" numBranchPoints="3752" visitedBranchPoints="789" sequenceCoverage="37.64" branchCoverage="21.03" maxCyclomaticComplexity="34" minCyclomaticComplexity="1" maxCrapScore="812" minCrapScore="1" visitedClasses="90" numClasses="306" visitedMethods="492" numMethods="1608" />
   <Modules>
-    <Module hash="ED-34-00-8C-CD-8C-04-C0-B8-DD-65-40-EC-33-AC-86-92-F9-1C-4C">
-      <Summary numSequencePoints="1039" visitedSequencePoints="985" numBranchPoints="152" visitedBranchPoints="152" sequenceCoverage="94.80" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" maxCrapScore="2" minCrapScore="1" visitedClasses="17" numClasses="17" visitedMethods="152" numMethods="152" />
+    <Module hash="E6-E4-D0-4D-91-5E-68-B0-39-6D-61-11-F7-6E-E5-55-A9-4B-8F-B1">
+      <Summary numSequencePoints="1039" visitedSequencePoints="990" numBranchPoints="152" visitedBranchPoints="152" sequenceCoverage="95.28" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" maxCrapScore="2" minCrapScore="1" visitedClasses="17" numClasses="17" visitedMethods="152" numMethods="152" />
       <ModulePath>C:\Users\user\Desktop\window\HW\110590034\Homework\HomeworkTests\bin\Debug\fine-code-coverage\build-output\HomeworkTests.dll</ModulePath>
-      <ModuleTime>2023-11-29T09:00:48.9894412Z</ModuleTime>
+      <ModuleTime>2023-11-29T10:07:14.3610117Z</ModuleTime>
       <ModuleName>HomeworkTests</ModuleName>
       <Files>
         <File uid="1" fullPath="C:\Users\user\Desktop\window\HW\110590034\Homework\HomeworkTests\PresentationModel\FormPresentationModelTests.cs" />
@@ -995,7 +995,7 @@
           </Methods>
         </Class>
         <Class>
-          <Summary numSequencePoints="274" visitedSequencePoints="269" numBranchPoints="27" visitedBranchPoints="27" sequenceCoverage="98.18" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" maxCrapScore="2" minCrapScore="1" visitedClasses="1" numClasses="1" visitedMethods="27" numMethods="27" />
+          <Summary numSequencePoints="274" visitedSequencePoints="274" numBranchPoints="27" visitedBranchPoints="27" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" maxCrapScore="2" minCrapScore="1" visitedClasses="1" numClasses="1" visitedMethods="27" numMethods="27" />
           <FullName>Homework.Model.Tests.ModelTests</FullName>
           <Methods>
             <Method visited="true" cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" crapScore="1" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
@@ -1495,8 +1495,8 @@
               <BranchPoints />
               <MethodPoint xsi:type="SequencePoint" vc="1" uspid="572" ordinal="0" offset="0" sl="369" sc="9" el="369" ec="10" bec="0" bev="0" fileid="7" />
             </Method>
-            <Method visited="true" cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="66.67" branchCoverage="100" crapScore="1.04" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
-              <Summary numSequencePoints="15" visitedSequencePoints="10" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="66.67" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" maxCrapScore="1.04" minCrapScore="1.04" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
+            <Method visited="true" cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" crapScore="1" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="15" visitedSequencePoints="15" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" maxCrapScore="1" minCrapScore="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken>100663377</MetadataToken>
               <Name>System.Void Homework.Model.Tests.ModelTests::ResizeSelectedShapeTest()</Name>
               <FileRef uid="7" />
@@ -1510,12 +1510,12 @@
                 <SequencePoint vc="1" uspid="588" ordinal="6" offset="163" sl="390" sc="13" el="390" ec="48" bec="0" bev="0" fileid="7" />
                 <SequencePoint vc="1" uspid="589" ordinal="7" offset="193" sl="391" sc="13" el="391" ec="69" bec="0" bev="0" fileid="7" />
                 <SequencePoint vc="1" uspid="590" ordinal="8" offset="229" sl="392" sc="13" el="392" ec="69" bec="0" bev="0" fileid="7" />
-                <SequencePoint vc="1" uspid="591" ordinal="9" offset="265" sl="393" sc="13" el="393" ec="68" bec="0" bev="0" fileid="7" />
-                <SequencePoint vc="0" uspid="592" ordinal="10" offset="300" sl="394" sc="13" el="394" ec="48" bec="0" bev="0" fileid="7" />
-                <SequencePoint vc="0" uspid="593" ordinal="11" offset="330" sl="395" sc="13" el="395" ec="69" bec="0" bev="0" fileid="7" />
-                <SequencePoint vc="0" uspid="594" ordinal="12" offset="366" sl="396" sc="13" el="396" ec="69" bec="0" bev="0" fileid="7" />
-                <SequencePoint vc="0" uspid="595" ordinal="13" offset="402" sl="397" sc="13" el="397" ec="30" bec="0" bev="0" fileid="7" />
-                <SequencePoint vc="0" uspid="596" ordinal="14" offset="415" sl="398" sc="9" el="398" ec="10" bec="0" bev="0" fileid="7" />
+                <SequencePoint vc="1" uspid="591" ordinal="9" offset="265" sl="393" sc="13" el="393" ec="69" bec="0" bev="0" fileid="7" />
+                <SequencePoint vc="1" uspid="592" ordinal="10" offset="300" sl="394" sc="13" el="394" ec="48" bec="0" bev="0" fileid="7" />
+                <SequencePoint vc="1" uspid="593" ordinal="11" offset="330" sl="395" sc="13" el="395" ec="69" bec="0" bev="0" fileid="7" />
+                <SequencePoint vc="1" uspid="594" ordinal="12" offset="366" sl="396" sc="13" el="396" ec="69" bec="0" bev="0" fileid="7" />
+                <SequencePoint vc="1" uspid="595" ordinal="13" offset="402" sl="397" sc="13" el="397" ec="30" bec="0" bev="0" fileid="7" />
+                <SequencePoint vc="1" uspid="596" ordinal="14" offset="415" sl="398" sc="9" el="398" ec="10" bec="0" bev="0" fileid="7" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint xsi:type="SequencePoint" vc="1" uspid="582" ordinal="0" offset="0" sl="383" sc="9" el="383" ec="10" bec="0" bev="0" fileid="7" />
@@ -3079,7 +3079,7 @@
       </Classes>
     </Module>
     <Module hash="3B-61-32-24-2D-AE-1F-88-CD-00-81-71-0C-47-AB-1C-C7-1D-4D-34">
-      <Summary numSequencePoints="1036" visitedSequencePoints="693" numBranchPoints="321" visitedBranchPoints="248" sequenceCoverage="66.89" branchCoverage="77.26" maxCyclomaticComplexity="7" minCyclomaticComplexity="0" maxCrapScore="12" minCrapScore="0" visitedClasses="13" numClasses="17" visitedMethods="138" numMethods="167" />
+      <Summary numSequencePoints="1036" visitedSequencePoints="693" numBranchPoints="321" visitedBranchPoints="249" sequenceCoverage="66.89" branchCoverage="77.57" maxCyclomaticComplexity="7" minCyclomaticComplexity="0" maxCrapScore="12" minCrapScore="0" visitedClasses="13" numClasses="17" visitedMethods="138" numMethods="167" />
       <ModulePath>C:\Users\user\Desktop\window\HW\110590034\Homework\HomeworkTests\bin\Debug\fine-code-coverage\build-output\Homework.exe</ModulePath>
       <ModuleTime>2023-11-29T08:29:28.6065205Z</ModuleTime>
       <ModuleName>Homework</ModuleName>
@@ -3180,10 +3180,10 @@
               <Name>System.Double Homework.Model.Point::get_X()</Name>
               <FileRef uid="36" />
               <SequencePoints>
-                <SequencePoint vc="1195" uspid="1111" ordinal="0" offset="0" sl="7" sc="13" el="7" ec="17" bec="0" bev="0" fileid="36" />
+                <SequencePoint vc="1196" uspid="1111" ordinal="0" offset="0" sl="7" sc="13" el="7" ec="17" bec="0" bev="0" fileid="36" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint xsi:type="SequencePoint" vc="1195" uspid="1111" ordinal="0" offset="0" sl="7" sc="13" el="7" ec="17" bec="0" bev="0" fileid="36" />
+              <MethodPoint xsi:type="SequencePoint" vc="1196" uspid="1111" ordinal="0" offset="0" sl="7" sc="13" el="7" ec="17" bec="0" bev="0" fileid="36" />
             </Method>
             <Method visited="true" cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" crapScore="1" isConstructor="false" isStatic="false" isGetter="false" isSetter="true">
               <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" maxCrapScore="1" minCrapScore="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -3202,10 +3202,10 @@
               <Name>System.Double Homework.Model.Point::get_Y()</Name>
               <FileRef uid="36" />
               <SequencePoints>
-                <SequencePoint vc="1139" uspid="1113" ordinal="0" offset="0" sl="12" sc="13" el="12" ec="17" bec="0" bev="0" fileid="36" />
+                <SequencePoint vc="1140" uspid="1113" ordinal="0" offset="0" sl="12" sc="13" el="12" ec="17" bec="0" bev="0" fileid="36" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint xsi:type="SequencePoint" vc="1139" uspid="1113" ordinal="0" offset="0" sl="12" sc="13" el="12" ec="17" bec="0" bev="0" fileid="36" />
+              <MethodPoint xsi:type="SequencePoint" vc="1140" uspid="1113" ordinal="0" offset="0" sl="12" sc="13" el="12" ec="17" bec="0" bev="0" fileid="36" />
             </Method>
             <Method visited="true" cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" crapScore="1" isConstructor="false" isStatic="false" isGetter="false" isSetter="true">
               <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" maxCrapScore="1" minCrapScore="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -3300,17 +3300,17 @@
               <Name>System.Void Homework.Model.Shapes::DeleteShapeByIndex(System.Int32)</Name>
               <FileRef uid="37" />
               <SequencePoints>
-                <SequencePoint vc="37" uspid="1135" ordinal="0" offset="0" sl="42" sc="9" el="42" ec="10" bec="0" bev="0" fileid="37" />
-                <SequencePoint vc="37" uspid="1136" ordinal="1" offset="1" sl="43" sc="13" el="43" ec="53" bec="2" bev="2" fileid="37" />
-                <SequencePoint vc="9" uspid="1137" ordinal="2" offset="25" sl="44" sc="17" el="44" ec="39" bec="0" bev="0" fileid="37" />
-                <SequencePoint vc="37" uspid="1138" ordinal="3" offset="32" sl="45" sc="13" el="45" ec="40" bec="0" bev="0" fileid="37" />
-                <SequencePoint vc="37" uspid="1139" ordinal="4" offset="45" sl="46" sc="9" el="46" ec="10" bec="0" bev="0" fileid="37" />
+                <SequencePoint vc="38" uspid="1135" ordinal="0" offset="0" sl="42" sc="9" el="42" ec="10" bec="0" bev="0" fileid="37" />
+                <SequencePoint vc="38" uspid="1136" ordinal="1" offset="1" sl="43" sc="13" el="43" ec="53" bec="2" bev="2" fileid="37" />
+                <SequencePoint vc="10" uspid="1137" ordinal="2" offset="25" sl="44" sc="17" el="44" ec="39" bec="0" bev="0" fileid="37" />
+                <SequencePoint vc="38" uspid="1138" ordinal="3" offset="32" sl="45" sc="13" el="45" ec="40" bec="0" bev="0" fileid="37" />
+                <SequencePoint vc="38" uspid="1139" ordinal="4" offset="45" sl="46" sc="9" el="46" ec="10" bec="0" bev="0" fileid="37" />
               </SequencePoints>
               <BranchPoints>
-                <BranchPoint vc="9" uspid="1140" ordinal="0" offset="23" sl="43" path="0" offsetend="25" fileid="37" />
+                <BranchPoint vc="10" uspid="1140" ordinal="0" offset="23" sl="43" path="0" offsetend="25" fileid="37" />
                 <BranchPoint vc="28" uspid="1141" ordinal="1" offset="23" sl="43" path="1" offsetend="32" fileid="37" />
               </BranchPoints>
-              <MethodPoint xsi:type="SequencePoint" vc="37" uspid="1135" ordinal="0" offset="0" sl="42" sc="9" el="42" ec="10" bec="0" bev="0" fileid="37" />
+              <MethodPoint xsi:type="SequencePoint" vc="38" uspid="1135" ordinal="0" offset="0" sl="42" sc="9" el="42" ec="10" bec="0" bev="0" fileid="37" />
             </Method>
             <Method visited="true" cyclomaticComplexity="5" nPathComplexity="4" sequenceCoverage="100" branchCoverage="100" crapScore="5" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
               <Summary numSequencePoints="19" visitedSequencePoints="19" numBranchPoints="5" visitedBranchPoints="5" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="5" minCyclomaticComplexity="5" maxCrapScore="5" minCrapScore="5" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -3352,12 +3352,12 @@
               <Name>Homework.Model.Shape Homework.Model.Shapes::GetSelectedShape()</Name>
               <FileRef uid="37" />
               <SequencePoints>
-                <SequencePoint vc="44" uspid="1167" ordinal="0" offset="0" sl="70" sc="9" el="70" ec="10" bec="0" bev="0" fileid="37" />
-                <SequencePoint vc="44" uspid="1168" ordinal="1" offset="1" sl="71" sc="13" el="71" ec="35" bec="0" bev="0" fileid="37" />
-                <SequencePoint vc="44" uspid="1169" ordinal="2" offset="10" sl="72" sc="9" el="72" ec="10" bec="0" bev="0" fileid="37" />
+                <SequencePoint vc="46" uspid="1167" ordinal="0" offset="0" sl="70" sc="9" el="70" ec="10" bec="0" bev="0" fileid="37" />
+                <SequencePoint vc="46" uspid="1168" ordinal="1" offset="1" sl="71" sc="13" el="71" ec="35" bec="0" bev="0" fileid="37" />
+                <SequencePoint vc="46" uspid="1169" ordinal="2" offset="10" sl="72" sc="9" el="72" ec="10" bec="0" bev="0" fileid="37" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint xsi:type="SequencePoint" vc="44" uspid="1167" ordinal="0" offset="0" sl="70" sc="9" el="70" ec="10" bec="0" bev="0" fileid="37" />
+              <MethodPoint xsi:type="SequencePoint" vc="46" uspid="1167" ordinal="0" offset="0" sl="70" sc="9" el="70" ec="10" bec="0" bev="0" fileid="37" />
             </Method>
             <Method visited="true" cyclomaticComplexity="2" nPathComplexity="2" sequenceCoverage="100" branchCoverage="100" crapScore="2" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
               <Summary numSequencePoints="4" visitedSequencePoints="4" numBranchPoints="3" visitedBranchPoints="3" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" maxCrapScore="2" minCrapScore="2" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -3796,12 +3796,12 @@
               <Name>Homework.Model.Point Homework.Model.Shape::get_Point2()</Name>
               <FileRef uid="41" />
               <SequencePoints>
-                <SequencePoint vc="34" uspid="1309" ordinal="0" offset="0" sl="107" sc="13" el="107" ec="14" bec="0" bev="0" fileid="41" />
-                <SequencePoint vc="34" uspid="1310" ordinal="1" offset="1" sl="108" sc="17" el="108" ec="32" bec="0" bev="0" fileid="41" />
-                <SequencePoint vc="34" uspid="1311" ordinal="2" offset="10" sl="109" sc="13" el="109" ec="14" bec="0" bev="0" fileid="41" />
+                <SequencePoint vc="36" uspid="1309" ordinal="0" offset="0" sl="107" sc="13" el="107" ec="14" bec="0" bev="0" fileid="41" />
+                <SequencePoint vc="36" uspid="1310" ordinal="1" offset="1" sl="108" sc="17" el="108" ec="32" bec="0" bev="0" fileid="41" />
+                <SequencePoint vc="36" uspid="1311" ordinal="2" offset="10" sl="109" sc="13" el="109" ec="14" bec="0" bev="0" fileid="41" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint xsi:type="SequencePoint" vc="34" uspid="1309" ordinal="0" offset="0" sl="107" sc="13" el="107" ec="14" bec="0" bev="0" fileid="41" />
+              <MethodPoint xsi:type="SequencePoint" vc="36" uspid="1309" ordinal="0" offset="0" sl="107" sc="13" el="107" ec="14" bec="0" bev="0" fileid="41" />
             </Method>
             <Method visited="true" cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" crapScore="1" isConstructor="false" isStatic="false" isGetter="false" isSetter="true">
               <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" maxCrapScore="1" minCrapScore="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -4112,7 +4112,7 @@
           </Methods>
         </Class>
         <Class>
-          <Summary numSequencePoints="127" visitedSequencePoints="127" numBranchPoints="49" visitedBranchPoints="47" sequenceCoverage="100" branchCoverage="95.92" maxCyclomaticComplexity="3" minCyclomaticComplexity="1" maxCrapScore="6" minCrapScore="1" visitedClasses="1" numClasses="1" visitedMethods="27" numMethods="27" />
+          <Summary numSequencePoints="127" visitedSequencePoints="127" numBranchPoints="49" visitedBranchPoints="48" sequenceCoverage="100" branchCoverage="97.96" maxCyclomaticComplexity="3" minCyclomaticComplexity="1" maxCrapScore="6" minCrapScore="1" visitedClasses="1" numClasses="1" visitedMethods="27" numMethods="27" />
           <FullName>Homework.Model.Model</FullName>
           <Methods>
             <Method visited="true" cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" crapScore="1" isConstructor="false" isStatic="false" isGetter="true" isSetter="false">
@@ -4338,12 +4338,12 @@
               <Name>Homework.Model.Shape Homework.Model.Model::GetSelectedShape()</Name>
               <FileRef uid="42" />
               <SequencePoints>
-                <SequencePoint vc="24" uspid="1531" ordinal="0" offset="0" sl="123" sc="9" el="123" ec="10" bec="0" bev="0" fileid="42" />
-                <SequencePoint vc="24" uspid="1532" ordinal="1" offset="1" sl="124" sc="13" el="124" ec="51" bec="0" bev="0" fileid="42" />
-                <SequencePoint vc="24" uspid="1533" ordinal="2" offset="15" sl="125" sc="9" el="125" ec="10" bec="0" bev="0" fileid="42" />
+                <SequencePoint vc="26" uspid="1531" ordinal="0" offset="0" sl="123" sc="9" el="123" ec="10" bec="0" bev="0" fileid="42" />
+                <SequencePoint vc="26" uspid="1532" ordinal="1" offset="1" sl="124" sc="13" el="124" ec="51" bec="0" bev="0" fileid="42" />
+                <SequencePoint vc="26" uspid="1533" ordinal="2" offset="15" sl="125" sc="9" el="125" ec="10" bec="0" bev="0" fileid="42" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint xsi:type="SequencePoint" vc="24" uspid="1531" ordinal="0" offset="0" sl="123" sc="9" el="123" ec="10" bec="0" bev="0" fileid="42" />
+              <MethodPoint xsi:type="SequencePoint" vc="26" uspid="1531" ordinal="0" offset="0" sl="123" sc="9" el="123" ec="10" bec="0" bev="0" fileid="42" />
             </Method>
             <Method visited="true" cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" crapScore="1" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
               <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" maxCrapScore="1" minCrapScore="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -4427,22 +4427,22 @@
               </BranchPoints>
               <MethodPoint xsi:type="SequencePoint" vc="6" uspid="1557" ordinal="0" offset="0" sl="161" sc="9" el="161" ec="10" bec="0" bev="0" fileid="42" />
             </Method>
-            <Method visited="true" cyclomaticComplexity="2" nPathComplexity="2" sequenceCoverage="100" branchCoverage="66.67" crapScore="2" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
-              <Summary numSequencePoints="4" visitedSequencePoints="4" numBranchPoints="3" visitedBranchPoints="2" sequenceCoverage="100" branchCoverage="66.67" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" maxCrapScore="2" minCrapScore="2" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
+            <Method visited="true" cyclomaticComplexity="2" nPathComplexity="2" sequenceCoverage="100" branchCoverage="100" crapScore="2" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="4" visitedSequencePoints="4" numBranchPoints="3" visitedBranchPoints="3" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" maxCrapScore="2" minCrapScore="2" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken>100663394</MetadataToken>
               <Name>System.Void Homework.Model.Model::ResizeSelectedShape(System.Double,System.Double)</Name>
               <FileRef uid="42" />
               <SequencePoints>
-                <SequencePoint vc="2" uspid="1564" ordinal="0" offset="0" sl="169" sc="9" el="169" ec="10" bec="0" bev="0" fileid="42" />
-                <SequencePoint vc="2" uspid="1565" ordinal="1" offset="1" sl="171" sc="13" el="171" ec="65" bec="2" bev="1" fileid="42" />
+                <SequencePoint vc="3" uspid="1564" ordinal="0" offset="0" sl="169" sc="9" el="169" ec="10" bec="0" bev="0" fileid="42" />
+                <SequencePoint vc="3" uspid="1565" ordinal="1" offset="1" sl="171" sc="13" el="171" ec="65" bec="2" bev="2" fileid="42" />
                 <SequencePoint vc="2" uspid="1566" ordinal="2" offset="14" sl="172" sc="17" el="172" ec="95" bec="0" bev="0" fileid="42" />
-                <SequencePoint vc="2" uspid="1567" ordinal="3" offset="39" sl="173" sc="9" el="173" ec="10" bec="0" bev="0" fileid="42" />
+                <SequencePoint vc="3" uspid="1567" ordinal="3" offset="39" sl="173" sc="9" el="173" ec="10" bec="0" bev="0" fileid="42" />
               </SequencePoints>
               <BranchPoints>
                 <BranchPoint vc="2" uspid="1568" ordinal="0" offset="12" sl="171" path="0" offsetend="14" fileid="42" />
-                <BranchPoint vc="0" uspid="1569" ordinal="1" offset="12" sl="171" path="1" offsetend="39" fileid="42" />
+                <BranchPoint vc="1" uspid="1569" ordinal="1" offset="12" sl="171" path="1" offsetend="39" fileid="42" />
               </BranchPoints>
-              <MethodPoint xsi:type="SequencePoint" vc="2" uspid="1564" ordinal="0" offset="0" sl="169" sc="9" el="169" ec="10" bec="0" bev="0" fileid="42" />
+              <MethodPoint xsi:type="SequencePoint" vc="3" uspid="1564" ordinal="0" offset="0" sl="169" sc="9" el="169" ec="10" bec="0" bev="0" fileid="42" />
             </Method>
             <Method visited="true" cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" crapScore="1" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
               <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" maxCrapScore="1" minCrapScore="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -4515,13 +4515,13 @@
               <Name>System.Void Homework.Model.Model::Delete(System.Int32)</Name>
               <FileRef uid="42" />
               <SequencePoints>
-                <SequencePoint vc="30" uspid="1594" ordinal="0" offset="0" sl="213" sc="9" el="213" ec="10" bec="0" bev="0" fileid="42" />
-                <SequencePoint vc="30" uspid="1595" ordinal="1" offset="1" sl="214" sc="13" el="214" ec="51" bec="0" bev="0" fileid="42" />
-                <SequencePoint vc="30" uspid="1596" ordinal="2" offset="14" sl="215" sc="13" el="215" ec="34" bec="0" bev="0" fileid="42" />
-                <SequencePoint vc="30" uspid="1597" ordinal="3" offset="21" sl="216" sc="9" el="216" ec="10" bec="0" bev="0" fileid="42" />
+                <SequencePoint vc="31" uspid="1594" ordinal="0" offset="0" sl="213" sc="9" el="213" ec="10" bec="0" bev="0" fileid="42" />
+                <SequencePoint vc="31" uspid="1595" ordinal="1" offset="1" sl="214" sc="13" el="214" ec="51" bec="0" bev="0" fileid="42" />
+                <SequencePoint vc="31" uspid="1596" ordinal="2" offset="14" sl="215" sc="13" el="215" ec="34" bec="0" bev="0" fileid="42" />
+                <SequencePoint vc="31" uspid="1597" ordinal="3" offset="21" sl="216" sc="9" el="216" ec="10" bec="0" bev="0" fileid="42" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint xsi:type="SequencePoint" vc="30" uspid="1594" ordinal="0" offset="0" sl="213" sc="9" el="213" ec="10" bec="0" bev="0" fileid="42" />
+              <MethodPoint xsi:type="SequencePoint" vc="31" uspid="1594" ordinal="0" offset="0" sl="213" sc="9" el="213" ec="10" bec="0" bev="0" fileid="42" />
             </Method>
             <Method visited="true" cyclomaticComplexity="2" nPathComplexity="2" sequenceCoverage="100" branchCoverage="100" crapScore="2" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
               <Summary numSequencePoints="5" visitedSequencePoints="5" numBranchPoints="3" visitedBranchPoints="3" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" maxCrapScore="2" minCrapScore="2" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -4547,16 +4547,16 @@
               <Name>System.Void Homework.Model.Model::NotifyModelChanged()</Name>
               <FileRef uid="42" />
               <SequencePoints>
-                <SequencePoint vc="49" uspid="1605" ordinal="0" offset="0" sl="229" sc="9" el="229" ec="10" bec="0" bev="0" fileid="42" />
-                <SequencePoint vc="49" uspid="1606" ordinal="1" offset="1" sl="230" sc="13" el="230" ec="39" bec="2" bev="2" fileid="42" />
+                <SequencePoint vc="50" uspid="1605" ordinal="0" offset="0" sl="229" sc="9" el="229" ec="10" bec="0" bev="0" fileid="42" />
+                <SequencePoint vc="50" uspid="1606" ordinal="1" offset="1" sl="230" sc="13" el="230" ec="39" bec="2" bev="2" fileid="42" />
                 <SequencePoint vc="9" uspid="1607" ordinal="2" offset="14" sl="231" sc="17" el="231" ec="33" bec="0" bev="0" fileid="42" />
-                <SequencePoint vc="49" uspid="1608" ordinal="3" offset="26" sl="232" sc="9" el="232" ec="10" bec="0" bev="0" fileid="42" />
+                <SequencePoint vc="50" uspid="1608" ordinal="3" offset="26" sl="232" sc="9" el="232" ec="10" bec="0" bev="0" fileid="42" />
               </SequencePoints>
               <BranchPoints>
                 <BranchPoint vc="9" uspid="1609" ordinal="0" offset="12" sl="230" path="0" offsetend="14" fileid="42" />
-                <BranchPoint vc="40" uspid="1610" ordinal="1" offset="12" sl="230" path="1" offsetend="26" fileid="42" />
+                <BranchPoint vc="41" uspid="1610" ordinal="1" offset="12" sl="230" path="1" offsetend="26" fileid="42" />
               </BranchPoints>
-              <MethodPoint xsi:type="SequencePoint" vc="49" uspid="1605" ordinal="0" offset="0" sl="229" sc="9" el="229" ec="10" bec="0" bev="0" fileid="42" />
+              <MethodPoint xsi:type="SequencePoint" vc="50" uspid="1605" ordinal="0" offset="0" sl="229" sc="9" el="229" ec="10" bec="0" bev="0" fileid="42" />
             </Method>
           </Methods>
         </Class>
