@@ -92,6 +92,7 @@ namespace Homework.Model
             {
                 _selectedShape.IsResizing = true;
                 _selectedShape.SetResizePoint(location, mouse);
+                _selectedShape.UpdatePoint(location);
             }
         }
 

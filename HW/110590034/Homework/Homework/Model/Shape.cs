@@ -38,6 +38,7 @@ namespace Homework.Model
             _point1 = new Point(-1, -1);
             _point2 = new Point(-1, -1);
             _resizePoint = new Dictionary<Location, Point>();
+            ResetResizePoint();
             _shapeName = Constant.Constant.NONE;
         }
 
@@ -46,6 +47,7 @@ namespace Homework.Model
             _point1 = new Point(point1.X, point1.Y);
             _point2 = new Point(point2.X, point2.Y);
             _resizePoint = new Dictionary<Location, Point>();
+            ResetResizePoint();
             _shapeName = Constant.Constant.NONE;
         }
 
@@ -192,10 +194,13 @@ namespace Homework.Model
         // update point
         public virtual void UpdatePoint(Location location)
         {
-            Point1.X = _resizePoint[Location.LeftTop].X;
-            Point1.Y = _resizePoint[Location.LeftTop].Y;
-            Point2.X = _resizePoint[Location.RightBottom].X;
-            Point2.Y = _resizePoint[Location.RightBottom].Y;
+            if (location == Location.RightBottom)
+            {
+                Point1.X = _resizePoint[Location.LeftTop].X;
+                Point1.Y = _resizePoint[Location.LeftTop].Y;
+                Point2.X = _resizePoint[Location.RightBottom].X;
+                Point2.Y = _resizePoint[Location.RightBottom].Y;
+            }
         }
 
         // set resize point
@@ -204,7 +209,6 @@ namespace Homework.Model
             Console.WriteLine("set resize point");
             Console.WriteLine(location);
             _resizePoint[location] = point;
-            UpdatePoint(location);
         }
 
         // check in resize point

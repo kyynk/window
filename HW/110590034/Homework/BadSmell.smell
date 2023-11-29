@@ -185,7 +185,360 @@
     <div class="data">
       <Data id="ReviewPalData">
         <CodeReview xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-          <Reviews />
+          <Reviews>
+            <Smell>
+              <Id>1</Id>
+              <SmellType>Literal constants(字面常數)-"set resize point"</SmellType>
+              <HashCode>LiteralConstants.SetResizePoint."set resize point"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>Shape.cs</File>
+              <Line>209</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>2</Id>
+              <SmellType>Literal constants(字面常數)-"hihihihihi"</SmellType>
+              <HashCode>LiteralConstants.IsInResizePoint."hihihihihi"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>Shape.cs</File>
+              <Line>217</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>3</Id>
+              <SmellType>Literal constants(字面常數)-"in the point"</SmellType>
+              <HashCode>LiteralConstants.GetLocation."in the point"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>Shape.cs</File>
+              <Line>239</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>4</Id>
+              <SmellType>Literal constants(字面常數)-"aaaaaaaa"</SmellType>
+              <HashCode>LiteralConstants.PressPointer."aaaaaaaa"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>FormPresentationModel.cs</File>
+              <Line>59</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>5</Id>
+              <SmellType>Literal constants(字面常數)-"cccccccc"</SmellType>
+              <HashCode>LiteralConstants.PressPointer."cccccccc"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>FormPresentationModel.cs</File>
+              <Line>64</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>6</Id>
+              <SmellType>Literal constants(字面常數)-"bbbbbbb"</SmellType>
+              <HashCode>LiteralConstants.PressPointer."bbbbbbb"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>FormPresentationModel.cs</File>
+              <Line>67</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>7</Id>
+              <SmellType>Literal constants(字面常數)-"resize down"</SmellType>
+              <HashCode>LiteralConstants.MouseDown."resize down"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>ResizeState.cs</File>
+              <Line>25</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>8</Id>
+              <SmellType>Literal constants(字面常數)-"resize move"</SmellType>
+              <HashCode>LiteralConstants.MouseMove."resize move"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>ResizeState.cs</File>
+              <Line>32</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>9</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>52 目前物件 Homework.Model.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Point，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Model.Point.Y 以及 Homework.Model.Point.Y</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>C:\Users\user\Desktop\window\HW\110590034\Homework\Homework\Model\Line.cs</File>
+              <Line>52</Line>
+              <StartLine>52</StartLine>
+              <StartCol>16</StartCol>
+              <EndLine>52</EndLine>
+              <EndCol>101</EndCol>
+              <Comment>目前物件 Homework.Model.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Point，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Model.Point.Y 以及 Homework.Model.Point.Y</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>10</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>55 目前物件 Homework.Model.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Model.Shape._resizePoint 以及 Homework.Model.Shape._resizePoint</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>C:\Users\user\Desktop\window\HW\110590034\Homework\Homework\Model\Line.cs</File>
+              <Line>55</Line>
+              <StartLine>54</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>55</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 Homework.Model.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Model.Shape._resizePoint 以及 Homework.Model.Shape._resizePoint</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>11</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>55 目前物件 Homework.Model.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Point，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：Homework.Model.Point.Y 以及 Homework.Model.Point.Y 以及 Homework.Model.Point.Y</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>C:\Users\user\Desktop\window\HW\110590034\Homework\Homework\Model\Line.cs</File>
+              <Line>55</Line>
+              <StartLine>54</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>55</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 Homework.Model.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Point，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：Homework.Model.Point.Y 以及 Homework.Model.Point.Y 以及 Homework.Model.Point.Y</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>12</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>56 目前物件 Homework.Model.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Model.Shape._resizePoint 以及 Homework.Model.Shape._resizePoint</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>C:\Users\user\Desktop\window\HW\110590034\Homework\Homework\Model\Line.cs</File>
+              <Line>56</Line>
+              <StartLine>55</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>56</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 Homework.Model.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Model.Shape._resizePoint 以及 Homework.Model.Shape._resizePoint</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>13</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>56 目前物件 Homework.Model.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Point，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：Homework.Model.Point.X 以及 Homework.Model.Point.Y 以及 Homework.Model.Point.Y</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>C:\Users\user\Desktop\window\HW\110590034\Homework\Homework\Model\Line.cs</File>
+              <Line>56</Line>
+              <StartLine>55</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>56</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 Homework.Model.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Point，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：Homework.Model.Point.X 以及 Homework.Model.Point.Y 以及 Homework.Model.Point.Y</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>14</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>57 目前物件 Homework.Model.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Model.Shape._resizePoint 以及 Homework.Model.Shape._resizePoint</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>C:\Users\user\Desktop\window\HW\110590034\Homework\Homework\Model\Line.cs</File>
+              <Line>57</Line>
+              <StartLine>57</StartLine>
+              <StartCol>21</StartCol>
+              <EndLine>57</EndLine>
+              <EndCol>106</EndCol>
+              <Comment>目前物件 Homework.Model.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Model.Shape._resizePoint 以及 Homework.Model.Shape._resizePoint</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>15</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>57 目前物件 Homework.Model.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Point，使用物件方法或屬性次數：4次，使用到的方法或屬性為以下：Homework.Model.Point.Y 以及 Homework.Model.Point.Y 以及 Homework.Model.Point.Y 以及 Homework.Model.Point.Y</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>C:\Users\user\Desktop\window\HW\110590034\Homework\Homework\Model\Line.cs</File>
+              <Line>57</Line>
+              <StartLine>57</StartLine>
+              <StartCol>21</StartCol>
+              <EndLine>57</EndLine>
+              <EndCol>106</EndCol>
+              <Comment>目前物件 Homework.Model.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Point，使用物件方法或屬性次數：4次，使用到的方法或屬性為以下：Homework.Model.Point.Y 以及 Homework.Model.Point.Y 以及 Homework.Model.Point.Y 以及 Homework.Model.Point.Y</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>16</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>60 目前物件 Homework.Model.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Shape，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：Homework.Model.Shape._resizePoint 以及 Homework.Model.Shape._resizePoint 以及 Homework.Model.Shape._resizePoint</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>C:\Users\user\Desktop\window\HW\110590034\Homework\Homework\Model\Line.cs</File>
+              <Line>60</Line>
+              <StartLine>59</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>60</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 Homework.Model.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Shape，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：Homework.Model.Shape._resizePoint 以及 Homework.Model.Shape._resizePoint 以及 Homework.Model.Shape._resizePoint</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>17</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>30 目前物件 Homework.Model.Rectangle，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Model.Shape.ResetPoint() 以及 Homework.Model.Shape.IsResizing</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>C:\Users\user\Desktop\window\HW\110590034\Homework\Homework\Model\Rectangle.cs</File>
+              <Line>30</Line>
+              <StartLine>29</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>30</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 Homework.Model.Rectangle，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Model.Shape.ResetPoint() 以及 Homework.Model.Shape.IsResizing</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>18</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>30 目前物件 Homework.Model.Ellipse，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Model.Shape.ResetPoint() 以及 Homework.Model.Shape.IsResizing</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>C:\Users\user\Desktop\window\HW\110590034\Homework\Homework\Model\Ellipse.cs</File>
+              <Line>30</Line>
+              <StartLine>29</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>30</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 Homework.Model.Ellipse，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Model.Shape.ResetPoint() 以及 Homework.Model.Shape.IsResizing</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>19</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>60 目前物件 Homework.PresentationModel.FormPresentationModel，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Model，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Model.Model.ChangeState(string) 以及 Homework.Model.Model.CheckIsResizeState(double, double)</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>C:\Users\user\Desktop\window\HW\110590034\Homework\Homework\PresentationModel\FormPresentationModel.cs</File>
+              <Line>60</Line>
+              <StartLine>59</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>60</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 Homework.PresentationModel.FormPresentationModel，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Model，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Model.Model.ChangeState(string) 以及 Homework.Model.Model.CheckIsResizeState(double, double)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>20</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>65 目前物件 Homework.PresentationModel.FormPresentationModel，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Model，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：Homework.Model.Model.ChangeState(string) 以及 Homework.Model.Model.CheckIsResizeState(double, double) 以及 Homework.Model.Model.CheckIsResizeState(double, double)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>C:\Users\user\Desktop\window\HW\110590034\Homework\Homework\PresentationModel\FormPresentationModel.cs</File>
+              <Line>65</Line>
+              <StartLine>64</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>65</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 Homework.PresentationModel.FormPresentationModel，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Model，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：Homework.Model.Model.ChangeState(string) 以及 Homework.Model.Model.CheckIsResizeState(double, double) 以及 Homework.Model.Model.CheckIsResizeState(double, double)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>21</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>75 目前物件 Homework.PresentationModel.FormPresentationModel，使用物件的方法或屬性次數：1次，Envy到對象物件 Homework.Model.Model，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Model.Model.ShapeName 以及 Homework.Model.Model.CheckLocationIsRightBottom(double, double)</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>C:\Users\user\Desktop\window\HW\110590034\Homework\Homework\PresentationModel\FormPresentationModel.cs</File>
+              <Line>75</Line>
+              <StartLine>75</StartLine>
+              <StartCol>16</StartCol>
+              <EndLine>75</EndLine>
+              <EndCol>126</EndCol>
+              <Comment>目前物件 Homework.PresentationModel.FormPresentationModel，使用物件的方法或屬性次數：1次，Envy到對象物件 Homework.Model.Model，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Model.Model.ShapeName 以及 Homework.Model.Model.CheckLocationIsRightBottom(double, double)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>22</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>79 目前物件 Homework.PresentationModel.FormPresentationModel，使用物件的方法或屬性次數：2次，Envy到對象物件 Homework.Model.Model，使用物件方法或屬性次數：4次，使用到的方法或屬性為以下：Homework.Model.Model.ShapeName 以及 Homework.Model.Model.CheckLocationIsRightBottom(double, double) 以及 Homework.Model.Model.ShapeName 以及 Homework.Model.Model.CheckLocationIsRightBottom(double, double)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>C:\Users\user\Desktop\window\HW\110590034\Homework\Homework\PresentationModel\FormPresentationModel.cs</File>
+              <Line>79</Line>
+              <StartLine>79</StartLine>
+              <StartCol>21</StartCol>
+              <EndLine>79</EndLine>
+              <EndCol>132</EndCol>
+              <Comment>目前物件 Homework.PresentationModel.FormPresentationModel，使用物件的方法或屬性次數：2次，Envy到對象物件 Homework.Model.Model，使用物件方法或屬性次數：4次，使用到的方法或屬性為以下：Homework.Model.Model.ShapeName 以及 Homework.Model.Model.CheckLocationIsRightBottom(double, double) 以及 Homework.Model.Model.ShapeName 以及 Homework.Model.Model.CheckLocationIsRightBottom(double, double)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+          </Reviews>
           <HashCodeIgnoreList />
           <HashCodeRequestIgnoreList />
           <AnalysisFileManager>
@@ -377,8 +730,8 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>1978</ProductionLoc>
-          <TestLoc>1406</TestLoc>
+          <ProductionLoc>2116</ProductionLoc>
+          <TestLoc>1585</TestLoc>
         </CodeReview>
       </Data>
     </div>

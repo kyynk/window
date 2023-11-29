@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Homework.Model;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.ComponentModel;
 using System.Windows.Forms;
 using Homework.State;
@@ -46,6 +47,8 @@ namespace Homework.Model.Tests
             Assert.IsInstanceOfType(_privateModel.GetField("_state"), typeof(DrawingState));
             _model.ChangeState(Constant.Constant.POINT_STATE);
             Assert.IsInstanceOfType(_privateModel.GetField("_state"), typeof(PointState));
+            _model.ChangeState(Constant.Constant.RESIZE_STATE);
+            Assert.IsInstanceOfType(_privateModel.GetField("_state"), typeof(ResizeState));
         }
 
         // test ShapeName property
@@ -333,6 +336,81 @@ namespace Homework.Model.Tests
             _model._modelChanged += () => { eventRaised = true; };
             _model.NotifyModelChanged();
             Assert.IsTrue(eventRaised);
+        }
+
+        // test get location
+        [TestMethod()]
+        public void GetLocationTest()
+        {
+            _model.AddDrawingShape(Constant.Constant.LINE, new Point(0, 0), new Point(10, 10));
+            bool isSelected = _model.CheckSelectedShape(5, 5);
+            Assert.IsInstanceOfType(_model.GetSelectedShape(), typeof(Shape));
+            Assert.IsTrue(isSelected);
+            Assert.IsInstanceOfType(_model.GetLocation(1, 1), typeof(Shape.Location));
+            _model.Delete(0);
+        }
+
+        // test check is resize state
+        [TestMethod()]
+        public void CheckIsResizeStateTest()
+        {
+            _model.AddDrawingShape(Constant.Constant.LINE, new Point(0, 0), new Point(10, 10));
+            bool isSelected = _model.CheckSelectedShape(5, 5);
+            Assert.IsInstanceOfType(_model.GetSelectedShape(), typeof(Shape));
+            Assert.IsTrue(isSelected);
+            Assert.IsFalse(_model.CheckIsResizeState(100, 100));
+            Assert.IsTrue(_model.CheckIsResizeState(0, 1));
+            _model.Delete(0);
+        }
+
+        // test check location is right bottom
+        [TestMethod()]
+        public void CheckLocationIsRightBottomTest()
+        {
+            _model.AddDrawingShape(Constant.Constant.LINE, new Point(0, 0), new Point(10, 10));
+            Assert.IsFalse(_model.CheckLocationIsRightBottom(10, 10));
+            bool isSelected = _model.CheckSelectedShape(5, 5);
+            Assert.IsInstanceOfType(_model.GetSelectedShape(), typeof(Shape));
+            Assert.IsTrue(isSelected);
+            Assert.IsFalse(_model.CheckLocationIsRightBottom(100, 100));
+            Assert.IsTrue(_model.CheckLocationIsRightBottom(11, 11));
+            _model.Delete(0);
+        }
+
+        // test resize selected shape
+        [TestMethod()]
+        public void ResizeSelectedShapeTest()
+        {
+            _model.AddDrawingShape(Constant.Constant.ELLIPSE, new Point(0, 0), new Point(10, 10));
+            //Assert.IsFalse(_model.CheckLocationIsRightBottom(10, 10));
+            bool isSelected = _model.CheckSelectedShape(5, 5);
+            Assert.IsInstanceOfType(_model.GetSelectedShape(), typeof(Shape));
+            Assert.IsTrue(isSelected);
+            Assert.IsTrue(_model.CheckLocationIsRightBottom(11, 11));
+            _model.ResizeSelectedShape(15, 15);
+            Assert.AreEqual(15, _model.GetSelectedShape().Point2.X);
+            Assert.AreEqual(15, _model.GetSelectedShape().Point2.Y);
+            Assert.IsTrue(_model.CheckLocationIsRightBottom(0, 0));
+            _model.ResizeSelectedShape(20, 20);
+            Assert.AreEqual(15, _model.GetSelectedShape().Point2.X);
+            Assert.AreEqual(15, _model.GetSelectedShape().Point2.Y);
+            _model.Delete(0);
+        }
+
+        // test stop resize selected shape
+        [TestMethod()]
+        public void StopResizeSelectedShapeTest()
+        {
+            _model.AddDrawingShape(Constant.Constant.RECTANGLE, new Point(0, 0), new Point(10, 10));
+            bool isSelected = _model.CheckSelectedShape(5, 5);
+            Assert.IsInstanceOfType(_model.GetSelectedShape(), typeof(Shape));
+            Assert.IsTrue(isSelected);
+            Assert.IsTrue(_model.CheckLocationIsRightBottom(11, 11));
+            _model.ResizeSelectedShape(15, 15);
+            Assert.IsTrue(_model.GetSelectedShape().IsResizing);
+            _model.StopResizeSelectedShape();
+            Assert.IsFalse(_model.GetSelectedShape().IsResizing);
+            _model.Delete(0);
         }
     }
 }

@@ -117,5 +117,48 @@ namespace Homework.Model.Tests
             _shapes.DeleteSelectedShape();
             Assert.AreEqual(0, _shapes.ShapeList.Count);
         }
+
+        // test resize selected shape
+        [TestMethod()]
+        public void ResizeSelectedShapeTest()
+        {
+            // selected shape not null
+            _shapes.AddNewShapeByDrawing(Constant.Constant.ELLIPSE, new Point(0, 0), new Point(10, 10));
+            _shapes.CheckSelect(5, 5);
+            _shapes.ResizeSelectedShape(Shape.Location.RightBottom, new Point(15, 15));
+            Assert.AreEqual(0, _shapes.GetSelectedShape().Point1.X);
+            Assert.AreEqual(0, _shapes.GetSelectedShape().Point1.Y);
+            Assert.AreEqual(15, _shapes.GetSelectedShape().Point2.X);
+            Assert.AreEqual(15, _shapes.GetSelectedShape().Point2.Y);
+            // clean
+            _shapes.DeleteSelectedShape();
+        }
+
+        // test cancel resize
+        [TestMethod()]
+        public void CancelResizeTest()
+        {
+            // selected shape not null
+            _shapes.AddNewShapeByDrawing(Constant.Constant.ELLIPSE, new Point(0, 0), new Point(10, 10));
+            _shapes.CheckSelect(5, 5);
+            _shapes.ResizeSelectedShape(Shape.Location.RightBottom, new Point(15, 15));
+            Assert.IsTrue(_shapes.GetSelectedShape().IsResizing);
+            _shapes.CancelResize();
+            Assert.IsFalse(_shapes.GetSelectedShape().IsResizing);
+            // clean
+            _shapes.DeleteSelectedShape();
+        }
+
+        // test get selected shape location
+        [TestMethod()]
+        public void GetSelectedShapeLocationTest()
+        {
+            _shapes.AddNewShapeByDrawing(Constant.Constant.ELLIPSE, new Point(0, 0), new Point(10, 10));
+            _shapes.CheckSelect(5, 5);
+            Assert.AreEqual(Shape.Location.Right, _shapes.GetSelectedShapeLocation(7, 7));
+            Assert.AreEqual(Shape.Location.None, _shapes.GetSelectedShapeLocation(20, 20));
+            // clean
+            _shapes.DeleteSelectedShape();
+        }
     }
 }

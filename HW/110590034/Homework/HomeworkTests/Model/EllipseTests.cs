@@ -44,7 +44,13 @@ namespace Homework.Model.Tests
         [TestMethod()]
         public void GetInfoTest()
         {
+            // not resize
             Assert.AreEqual("(1, 1), (2, 5)", _ellipse.GetInfo());
+            // is resize
+            _ellipse.Point1 = new Point(2, 5);
+            _ellipse.Point2 = new Point(1, 0);
+            _ellipse.IsResizing = true;
+            Assert.AreEqual("(2, 5), (1, 0)", _ellipse.GetInfo());
         }
     }
 }

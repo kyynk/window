@@ -44,7 +44,13 @@ namespace Homework.Model.Tests
         [TestMethod()]
         public void GetInfoTest()
         {
+            // not resize
             Assert.AreEqual("(1, 1), (2, 5)", _line.GetInfo());
+            // is resize
+            _line.Point1 = new Point(2, 5);
+            _line.Point2 = new Point(1, 0);
+            _line.IsResizing = true;
+            Assert.AreEqual("(2, 5), (1, 0)", _line.GetInfo());
         }
 
         // test reset point
@@ -57,6 +63,58 @@ namespace Homework.Model.Tests
             _line.Point2 = point2;
             _line.ResetPoint();
             Assert.AreEqual("(2, 2), (3, 7)", _line.GetInfo());
+        }
+
+        // test update point
+        [TestMethod()]
+        public void UpdatePointWithRightBottomAndFirstPointIsLeftBottomTest()
+        {
+            Point point1 = new Point(1, 7);
+            Point point2 = new Point(3, 5);
+            _line.Point1 = point1;
+            _line.Point2 = point2;
+            _line.ResetResizePoint();
+            _line.SetResizePoint(Shape.Location.RightBottom, new Point(5, 7));
+            _line.UpdatePoint(Shape.Location.RightBottom);
+            Assert.AreEqual(1, _line.Point1.X);
+            Assert.AreEqual(7, _line.Point1.Y);
+            Assert.AreEqual(5, _line.Point2.X);
+            Assert.AreEqual(5, _line.Point2.Y);
+        }
+
+        // test update point
+        [TestMethod()]
+        public void UpdatePointWithRightBottomAndFirstPointIsLeftTopTest()
+        {
+            Point point1 = new Point(1, 1);
+            Point point2 = new Point(6, 7);
+            _line.Point1 = point1;
+            _line.Point2 = point2;
+            _line.ResetResizePoint();
+            _line.SetResizePoint(Shape.Location.RightBottom, new Point(5, 5));
+            _line.UpdatePoint(Shape.Location.RightBottom);
+            Assert.AreEqual(1, _line.Point1.X);
+            Assert.AreEqual(1, _line.Point1.Y);
+            Assert.AreEqual(5, _line.Point2.X);
+            Assert.AreEqual(5, _line.Point2.Y);
+        }
+
+
+        // test update point
+        [TestMethod()]
+        public void UpdatePointWithOtherTest()
+        {
+            Point point1 = new Point(1, 1);
+            Point point2 = new Point(6, 7);
+            _line.Point1 = point1;
+            _line.Point2 = point2;
+            _line.ResetResizePoint();
+            _line.SetResizePoint(Shape.Location.Left, new Point(5, 5));
+            _line.UpdatePoint(Shape.Location.Left);
+            Assert.AreEqual(1, _line.Point1.X);
+            Assert.AreEqual(1, _line.Point1.Y);
+            Assert.AreEqual(6, _line.Point2.X);
+            Assert.AreEqual(7, _line.Point2.Y);
         }
     }
 }

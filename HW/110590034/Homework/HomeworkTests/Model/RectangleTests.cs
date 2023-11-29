@@ -44,7 +44,13 @@ namespace Homework.Model.Tests
         [TestMethod()]
         public void GetInfoTest()
         {
+            // not resize
             Assert.AreEqual("(1, 1), (2, 5)", _rectangle.GetInfo());
+            // is resize
+            _rectangle.Point1 = new Point(2, 5);
+            _rectangle.Point2 = new Point(1, 0);
+            _rectangle.IsResizing = true;
+            Assert.AreEqual("(2, 5), (1, 0)", _rectangle.GetInfo());
         }
     }
 }

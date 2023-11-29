@@ -122,5 +122,56 @@ namespace Homework.Model.Tests
         {
             Assert.AreEqual(5, _shape.GetMean(1, 9));
         }
+
+        // test update point
+        [TestMethod()]
+        public void UpdatePointWithRightBottomTest()
+        {
+            _shape = new Ellipse(new Point(1, 1), new Point(3, 3));
+            _shape.ResetResizePoint();
+            _shape.SetResizePoint(Shape.Location.RightBottom, new Point(5, 5));
+            _shape.UpdatePoint(Shape.Location.RightBottom);
+            Assert.AreEqual(1, _shape.Point1.X);
+            Assert.AreEqual(1, _shape.Point1.Y);
+            Assert.AreEqual(5, _shape.Point2.X);
+            Assert.AreEqual(5, _shape.Point2.Y);
+        }
+
+        // test update point
+        [TestMethod()]
+        public void UpdatePointWithOtherTest()
+        {
+            _shape = new Ellipse(new Point(1, 1), new Point(3, 3));
+            _shape.ResetResizePoint();
+            _shape.SetResizePoint(Shape.Location.Left, new Point(5, 5));
+            _shape.UpdatePoint(Shape.Location.Left);
+            Assert.AreEqual(1, _shape.Point1.X);
+            Assert.AreEqual(1, _shape.Point1.Y);
+            Assert.AreEqual(3, _shape.Point2.X);
+            Assert.AreEqual(3, _shape.Point2.Y);
+        }
+
+        // test is in resize point
+        [TestMethod()]
+        public void IsInResizePointTest()
+        {
+            _shape = new Rectangle(new Point(10, 10), new Point(30, 30));
+            _shape.ResetResizePoint();
+            Assert.IsTrue(_shape.IsInResizePoint(Shape.Location.LeftTop, 12.5, 11.6));
+            Assert.IsFalse(_shape.IsInResizePoint(Shape.Location.LeftTop, 30.5, 11.6));
+            Assert.IsFalse(_shape.IsInResizePoint(Shape.Location.LeftTop, 12.5, 21.6));
+            Assert.IsFalse(_shape.IsInResizePoint(Shape.Location.LeftTop, -30.5, 11.6));
+            Assert.IsFalse(_shape.IsInResizePoint(Shape.Location.LeftTop, 12.5, -21.6));
+        }
+
+        // test get location
+        [TestMethod()]
+        public void GetLocationTest()
+        {
+            _shape = new Line(new Point(10, 10), new Point(30, 30));
+            _shape.ResetResizePoint();
+            Assert.AreEqual(Shape.Location.RightBottom, _shape.GetLocation(27, 26));
+            Assert.AreEqual(Shape.Location.None, _shape.GetLocation(20, 20));
+        }
     }
 }

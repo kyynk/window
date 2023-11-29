@@ -42,14 +42,6 @@ namespace Homework.Model
             }
         }
 
-        public IState State
-        {
-            get
-            {
-                return _state;
-            }
-        }
-
         // change state
         // add one more state -> resize state
         public virtual void ChangeState(string state)

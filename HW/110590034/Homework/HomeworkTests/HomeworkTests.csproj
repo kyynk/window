@@ -84,6 +84,7 @@
     <Compile Include="Model\ShapeTests.cs" />
     <Compile Include="PresentationModel\FormPresentationModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="State\ResizeStateTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
