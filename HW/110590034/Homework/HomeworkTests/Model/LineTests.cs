@@ -116,5 +116,18 @@ namespace Homework.Model.Tests
             Assert.AreEqual(6, _line.Point2.X);
             Assert.AreEqual(7, _line.Point2.Y);
         }
+
+        // test is frist point bottom
+        [TestMethod()]
+        public void IsFirstPointBottomTest()
+        {
+            Point point1 = new Point(1, 1);
+            Point point2 = new Point(6, 0);
+            _line.Point1 = point1;
+            _line.Point2 = point2;
+            Assert.IsTrue(_line.IsFirstPointBottom(1));
+            _line.Point2.Y = 7;
+            Assert.IsFalse(_line.IsFirstPointBottom(7));
+        }
     }
 }

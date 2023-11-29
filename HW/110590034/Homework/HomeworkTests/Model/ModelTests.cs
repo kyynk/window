@@ -39,6 +39,14 @@ namespace Homework.Model.Tests
             Assert.IsInstanceOfType(_privateModel.GetField("_state"), typeof(PointState));
         }
 
+        // test ShapeName property
+        [TestMethod()]
+        public void ShapeNamePropertyTest()
+        {
+            _model.ShapeName = Constant.Constant.LINE;
+            Assert.AreEqual(Constant.Constant.LINE, _model.ShapeName);
+        }
+
         // test change state
         [TestMethod()]
         public void ChangeStateTest()
@@ -49,14 +57,6 @@ namespace Homework.Model.Tests
             Assert.IsInstanceOfType(_privateModel.GetField("_state"), typeof(PointState));
             _model.ChangeState(Constant.Constant.RESIZE_STATE);
             Assert.IsInstanceOfType(_privateModel.GetField("_state"), typeof(ResizeState));
-        }
-
-        // test ShapeName property
-        [TestMethod()]
-        public void ShapeNamePropertyTest()
-        {
-            _model.ShapeName = Constant.Constant.LINE;
-            Assert.AreEqual(Constant.Constant.LINE, _model.ShapeName);
         }
 
         // test press pointer

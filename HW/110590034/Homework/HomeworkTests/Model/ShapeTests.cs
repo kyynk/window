@@ -1,6 +1,7 @@
 ﻿using Homework.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 
 namespace Homework.Model.Tests
 {
@@ -129,6 +130,31 @@ namespace Homework.Model.Tests
             Assert.AreEqual(5, _shape.GetMean(1, 9));
         }
 
+        // test reset resize point
+        [TestMethod()]
+        public void ResetResizePointTest()
+        {
+            _shape = new Ellipse(new Point(1, 1), new Point(3, 3));
+            PrivateObject privateShape = new PrivateObject(_shape);
+            _shape.ResetResizePoint();
+            Assert.AreEqual(1, ((Dictionary<Shape.Location, Point>)privateShape.GetField("_resizePoint"))[Shape.Location.LeftTop].X);
+            Assert.AreEqual(1, ((Dictionary<Shape.Location, Point>)privateShape.GetField("_resizePoint"))[Shape.Location.LeftTop].Y);
+            Assert.AreEqual(1, ((Dictionary<Shape.Location, Point>)privateShape.GetField("_resizePoint"))[Shape.Location.Left].X);
+            Assert.AreEqual(2, ((Dictionary<Shape.Location, Point>)privateShape.GetField("_resizePoint"))[Shape.Location.Left].Y);
+            Assert.AreEqual(1, ((Dictionary<Shape.Location, Point>)privateShape.GetField("_resizePoint"))[Shape.Location.LeftBottom].X);
+            Assert.AreEqual(3, ((Dictionary<Shape.Location, Point>)privateShape.GetField("_resizePoint"))[Shape.Location.LeftBottom].Y);
+            Assert.AreEqual(2, ((Dictionary<Shape.Location, Point>)privateShape.GetField("_resizePoint"))[Shape.Location.Top].X);
+            Assert.AreEqual(1, ((Dictionary<Shape.Location, Point>)privateShape.GetField("_resizePoint"))[Shape.Location.Top].Y);
+            Assert.AreEqual(2, ((Dictionary<Shape.Location, Point>)privateShape.GetField("_resizePoint"))[Shape.Location.Bottom].X);
+            Assert.AreEqual(3, ((Dictionary<Shape.Location, Point>)privateShape.GetField("_resizePoint"))[Shape.Location.Bottom].Y);
+            Assert.AreEqual(3, ((Dictionary<Shape.Location, Point>)privateShape.GetField("_resizePoint"))[Shape.Location.RightTop].X);
+            Assert.AreEqual(1, ((Dictionary<Shape.Location, Point>)privateShape.GetField("_resizePoint"))[Shape.Location.RightTop].Y);
+            Assert.AreEqual(3, ((Dictionary<Shape.Location, Point>)privateShape.GetField("_resizePoint"))[Shape.Location.Right].X);
+            Assert.AreEqual(2, ((Dictionary<Shape.Location, Point>)privateShape.GetField("_resizePoint"))[Shape.Location.Right].Y);
+            Assert.AreEqual(3, ((Dictionary<Shape.Location, Point>)privateShape.GetField("_resizePoint"))[Shape.Location.RightBottom].X);
+            Assert.AreEqual(3, ((Dictionary<Shape.Location, Point>)privateShape.GetField("_resizePoint"))[Shape.Location.RightBottom].Y);
+        }
+
         // test update point
         [TestMethod()]
         public void UpdatePointWithRightBottomTest()
@@ -157,6 +183,17 @@ namespace Homework.Model.Tests
             Assert.AreEqual(3, _shape.Point2.Y);
         }
 
+        // test set resize point
+        [TestMethod()]
+        public void SetResizePointTest()
+        {
+            _shape = new Ellipse(new Point(1, 1), new Point(3, 3));
+            PrivateObject privateShape = new PrivateObject(_shape);
+            _shape.SetResizePoint(Shape.Location.Left, new Point(5, 5));
+            Assert.AreEqual(5, ((Dictionary<Shape.Location, Point>)privateShape.GetField("_resizePoint"))[Shape.Location.Left].X);
+            Assert.AreEqual(5, ((Dictionary<Shape.Location, Point>)privateShape.GetField("_resizePoint"))[Shape.Location.Left].Y);
+        }
+
         // test is in resize point
         [TestMethod()]
         public void IsInResizePointTest()
@@ -178,6 +215,25 @@ namespace Homework.Model.Tests
             _shape.ResetResizePoint();
             Assert.AreEqual(Shape.Location.RightBottom, _shape.GetLocation(27, 26));
             Assert.AreEqual(Shape.Location.None, _shape.GetLocation(20, 20));
+        }
+
+        // test reset point without resizing
+        [TestMethod()]
+        public void ResetPointWithoutResizingTest()
+        {
+            _shape = new Rectangle(new Point(50, 50), new Point(30, 30));
+            _shape.IsResizing = true;
+            _shape.ResetPointWithoutResizing();
+            Assert.AreEqual(50, _shape.Point1.X);
+            Assert.AreEqual(50, _shape.Point1.Y);
+            Assert.AreEqual(30, _shape.Point2.X);
+            Assert.AreEqual(30, _shape.Point2.Y);
+            _shape.IsResizing = false;
+            _shape.ResetPointWithoutResizing();
+            Assert.AreEqual(30, _shape.Point1.X);
+            Assert.AreEqual(30, _shape.Point1.Y);
+            Assert.AreEqual(50, _shape.Point2.X);
+            Assert.AreEqual(50, _shape.Point2.Y);
         }
     }
 }
