@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using Homework.Model;
 using Homework.View;
+using System;
 
 namespace Homework.PresentationModel
 {
@@ -11,7 +12,9 @@ namespace Homework.PresentationModel
         public event PropertyChangedEventHandler PropertyChanged;
         public event Model.Model.ModelChangedEventHandler _modelChanged;
         public delegate void CursorChangedEventHandler(Cursor cursor);
+        public event CursorChangedEventHandler _cursorChanged;
         private Model.Model _model;
+        private bool _isPressed;
         private bool _isLineEnabled;
         private bool _isRectangleEnabled;
         private bool _isEllipseEnabled;
@@ -21,6 +24,7 @@ namespace Homework.PresentationModel
         public FormPresentationModel(Model.Model model)
         {
             _model = model;
+            IsPressed = false;
             IsLineEnabled = false;
             IsRectangleEnabled = false;
             IsEllipseEnabled = false;
@@ -50,6 +54,18 @@ namespace Homework.PresentationModel
         // pointer press
         public void PressPointer(double mouseX, double mouseY)
         {
+            if (IsDefaultCursorEnabled && _model.CheckIsResizeState(mouseX, mouseY))
+            {
+                Console.WriteLine("aaaaaaaa");
+                _model.ChangeState(Constant.Constant.RESIZE_STATE);
+            }
+            else if (IsDefaultCursorEnabled && !_model.CheckIsResizeState(mouseX, mouseY))
+            {
+                Console.WriteLine("cccccccc");
+                _model.ChangeState(Constant.Constant.POINT_STATE);
+            }
+            Console.WriteLine("bbbbbbb");
+            IsPressed = true;
             _model.PressPointer(mouseX, mouseY);
         }
 
@@ -57,14 +73,25 @@ namespace Homework.PresentationModel
         public void MovePointer(double mouseX, double mouseY)
         {
             _model.MovePointer(mouseX, mouseY);
+            if (!IsPressed && _model.ShapeName == Constant.Constant.POINT && _model.CheckLocationIsRightBottom(mouseX, mouseY))
+            {
+                _cursorChanged(Cursors.SizeNWSE);
+            }
+            else if (!IsPressed && _model.ShapeName == Constant.Constant.POINT && !_model.CheckLocationIsRightBottom(mouseX, mouseY))
+            {
+                _cursorChanged(Cursors.Arrow);
+            }
         }
 
         // pointer press
         public void ReleasePointer(double mouseX, double mouseY)
         {
             _model.ReleasePointer(mouseX, mouseY);
+            IsPressed = false;
             if (_model.ShapeName == Constant.Constant.POINT)
+            {
                 ResetBoolean();
+            }
             else
                 EnableDefaultCursor();
         }
@@ -144,24 +171,28 @@ namespace Homework.PresentationModel
         public void EnableLine()
         {
             SetMode(Constant.Constant.LINE);
+            _cursorChanged(Cursors.Cross);
         }
 
         // line enable
         public void EnableRectangle()
         {
             SetMode(Constant.Constant.RECTANGLE);
+            _cursorChanged(Cursors.Cross);
         }
 
         // line enable
         public void EnableEllipse()
         {
             SetMode(Constant.Constant.ELLIPSE);
+            _cursorChanged(Cursors.Cross);
         }
 
         // default cursor enable
         public void EnableDefaultCursor()
         {
             SetMode(Constant.Constant.POINT);
+            _cursorChanged(Cursors.Arrow);
         }
 
         // shape name
@@ -174,6 +205,18 @@ namespace Homework.PresentationModel
             set
             {
                 _model.ShapeName = value;
+            }
+        }
+
+        public bool IsPressed
+        {
+            set
+            {
+                _isPressed = value;
+            }
+            get
+            {
+                return _isPressed;
             }
         }
 
@@ -237,12 +280,6 @@ namespace Homework.PresentationModel
         public void HandleKeyDown(Keys keyCode)
         {
             _model.HandleKeyDown(keyCode);
-        }
-
-        // handle cursor changed
-        public void HandleCursorChanged(Cursor newCursor)
-        {
-            
         }
 
         // property changed

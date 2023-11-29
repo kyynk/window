@@ -88,13 +88,24 @@ namespace Homework.Model
         // resize selected shape
         public void ResizeSelectedShape(Shape.Location location, Point mouse)
         {
-            _selectedShape.SetResizePoint(location, mouse);
+            if (_selectedShape != null)
+            {
+                _selectedShape.IsResizing = true;
+                _selectedShape.SetResizePoint(location, mouse);
+            }
         }
 
-        // get 
-        public Shape.Location GetSelectedShapeLocation(Point mouse)
+        // cancel resize
+        public void CancelResize()
         {
-            return _selectedShape.GetLocation(mouse.X, mouse.Y);
+            if (_selectedShape != null)
+                _selectedShape.IsResizing = false;
+        }
+
+        // get location
+        public Shape.Location GetSelectedShapeLocation(double mouseX, double mouseY)
+        {
+            return _selectedShape.GetLocation(mouseX, mouseY);
         }
     }
 }

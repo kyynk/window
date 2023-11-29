@@ -26,7 +26,8 @@
         // get info (position)
         public override string GetInfo()
         {
-            ResetPoint();
+            if (!IsResizing)
+                ResetPoint();
             string firstCoordinate = LEFT_PARENTHESIS + _point1.X + COMMA + _point1.Y + RIGHT_PARENTHESIS;
             string secondCoordinate = LEFT_PARENTHESIS + _point2.X + COMMA + _point2.Y + RIGHT_PARENTHESIS;
             return firstCoordinate + COMMA + secondCoordinate;

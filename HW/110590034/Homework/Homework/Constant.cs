@@ -14,6 +14,7 @@
         // model state
         public const string POINT_STATE = "point";
         public const string DRAWING_STATE = "drawing";
+        public const string RESIZE_STATE = "resize";
         // tool strip button
         public const string CHECKED = "Checked";
         public const string IS_LINE_ENABLED = "IsLineEnabled";

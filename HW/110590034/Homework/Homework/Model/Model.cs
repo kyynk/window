@@ -16,6 +16,7 @@ namespace Homework.Model
         private ShapeFactory _shapeFactory;
         private IState _state;
         private string _shapeName;
+        private Shape.Location _selectedLocation;
 
         public Model()
         {
@@ -26,6 +27,7 @@ namespace Homework.Model
             _state = new PointState(this);
             _panelMaxX = Constant.Constant.DEFAULT_MAX_PANEL_X;
             _panelMaxY = Constant.Constant.DEFAULT_MAX_PANEL_Y;
+            _selectedLocation = Shape.Location.None;
         }
 
         public string ShapeName
@@ -40,12 +42,22 @@ namespace Homework.Model
             }
         }
 
+        public IState State
+        {
+            get
+            {
+                return _state;
+            }
+        }
+
         // change state
         // add one more state -> resize state
         public virtual void ChangeState(string state)
         {
             if (state == Constant.Constant.POINT_STATE)
                 _state = new PointState(this);
+            else if (state == Constant.Constant.RESIZE_STATE)
+                _state = new ResizeState(this);
             else
                 _state = new DrawingState(this);
         }
@@ -132,19 +144,47 @@ namespace Homework.Model
             _shapesData.MoveSelectedShape(diffX, diffY);
         }
 
+        // get location
+        public Shape.Location GetLocation(double mouseX, double mouseY)
+        {
+            _selectedLocation = _shapesData.GetSelectedShapeLocation(mouseX, mouseY);
+            return _selectedLocation;
+        }
+
         // check is resize state or not
-        // -> if _selectedShape != null (in point)
-        //        _selectedShape.GetLocation != Shape.Location.None
-        //            set state -> Resize()
-        //            cursor -> change!
+        public virtual bool CheckIsResizeState(double mouseX, double mouseY)
+        {
+            if (_shapesData.GetSelectedShape() != null)
+            {
+                if (GetLocation(mouseX, mouseY) != Shape.Location.None)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
-        // mouse down (resize)
-        //     check resize state (
-        //     if location != None -> resize state
-        //     else -> point state)
+        // check location is right bottom
+        public virtual bool CheckLocationIsRightBottom(double mouseX, double mouseY)
+        {
+            if (GetSelectedShape() != null)
+                return GetLocation(mouseX, mouseY) == Shape.Location.RightBottom;
+            return false;
+        }
 
-        // resize selected shape(
-        //  -> _shapesData.resize shape)
+        // resize selected shape
+        public virtual void ResizeSelectedShape(double mouseX, double mouseY)
+        {
+            // now is constant
+            if (_selectedLocation == Shape.Location.RightBottom)
+                _shapesData.ResizeSelectedShape(_selectedLocation, new Point(mouseX, mouseY));
+        }
+
+        // stop resize selected shape
+        public virtual void StopResizeSelectedShape()
+        {
+            _shapesData.CancelResize();
+        }
 
         // check range for painting and return the value of range
         public double CheckRange(double mouse, double max)

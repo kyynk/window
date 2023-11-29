@@ -28,7 +28,8 @@ namespace Homework.Model
         // get info (position)
         public override string GetInfo()
         {
-            ResetPoint();
+            if (!IsResizing)
+                ResetPoint();
             string firstCoordinate = LEFT_PARENTHESIS + _point1.X + COMMA + _point1.Y + RIGHT_PARENTHESIS;
             string secondCoordinate = LEFT_PARENTHESIS + _point2.X + COMMA + _point2.Y + RIGHT_PARENTHESIS;
             return firstCoordinate + COMMA + secondCoordinate;
@@ -47,17 +48,15 @@ namespace Homework.Model
         }
 
         // update point
-        public override void UpdatePoint()
+        public override void UpdatePoint(Location location)
         {
-            double top = Math.Min(_point1.Y, _point2.Y);
-            if (_point1.Y != top)
+            if (location == Location.RightBottom && _point1.Y == _resizePoint[Location.RightBottom].Y)
             {
-                _point1 = _resizePoint[Location.LeftBottom];
-                _point2 = _resizePoint[Location.RightTop];
+                _point1.Y = _resizePoint[Location.RightBottom].Y;
+                _point2.X = _resizePoint[Location.RightBottom].X;
             }
-            else
+            else if (location == Location.RightBottom && _point1.Y != _resizePoint[Location.RightBottom].Y)
             {
-                _point1 = _resizePoint[Location.LeftTop];
                 _point2 = _resizePoint[Location.RightBottom];
             }
         }

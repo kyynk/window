@@ -22,6 +22,11 @@ namespace Homework.Model
             RightBottom,
             None
         }
+        public bool IsResizing
+        {
+            get;
+            set;
+        }
         public bool IsSelected
         { 
             get;
@@ -185,7 +190,7 @@ namespace Homework.Model
         }
 
         // update point
-        public virtual void UpdatePoint()
+        public virtual void UpdatePoint(Location location)
         {
             Point1.X = _resizePoint[Location.LeftTop].X;
             Point1.Y = _resizePoint[Location.LeftTop].Y;
@@ -196,25 +201,38 @@ namespace Homework.Model
         // set resize point
         public void SetResizePoint(Location location, Point point)
         {
-            _resizePoint[location].X = point.X;
-            _resizePoint[location].Y = point.Y;
-            UpdatePoint();
-            ResetResizePoint();
+            Console.WriteLine("set resize point");
+            Console.WriteLine(location);
+            _resizePoint[location] = point;
+            UpdatePoint(location);
         }
 
         // check in resize point
         public bool IsInResizePoint(Location location, double pointX, double pointY)
         {
+            Console.WriteLine("hihihihihi");
+            Console.WriteLine(location);
+            Console.WriteLine(pointX);
+            Console.WriteLine(pointY);
             return (pointX >= _resizePoint[location].X - Constant.Constant.FOUR && pointY >= _resizePoint[location].Y - Constant.Constant.FOUR && pointX <= _resizePoint[location].X + Constant.Constant.FOUR && pointY <= _resizePoint[location].Y + Constant.Constant.FOUR);
         }
 
         // in resize point
         public Location GetLocation(double pointX, double pointY)
         {
+            ResetResizePoint();
+            foreach (var iii in _resizePoint)
+            {
+                Console.WriteLine(iii.Key);
+                Console.WriteLine(iii.Value);
+                Console.WriteLine(iii.Value.X);
+                Console.WriteLine(iii.Value.Y);
+            }
             foreach (var resizePoint in _resizePoint)
             {
                 if (IsInResizePoint(resizePoint.Key, pointX, pointY))
                 {
+                    Console.WriteLine("in the point");
                     return resizePoint.Key;
                 }
             }

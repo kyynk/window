@@ -50,8 +50,6 @@ namespace Homework.State
             _point = mouse;
             if (!_isClicked)
                 _isSelected = false;
-            // else
-            // model -> resize state
         }
 
         // get diff

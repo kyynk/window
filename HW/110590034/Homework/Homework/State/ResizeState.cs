@@ -10,37 +10,43 @@ namespace Homework.State
     public class ResizeState : IState
     {
         private Model.Model _model;
+        private bool _isPressed;
 
         public ResizeState(Model.Model model)
         {
             _model = model;
+            _isPressed = false;
         }
 
         // mouse down
         public void MouseDown(Point mouse, string shapeName, bool isInPanel)
         {
-            // if not in shape resize point
-            // -> point state
+            _isPressed = true;
+            Console.WriteLine("resize down");
         }
 
         // mouse move
         public void MouseMove(Point mouse)
         {
             // resize shape
+            Console.WriteLine("resize move");
+            if (_isPressed)
+                _model.ResizeSelectedShape(mouse.X, mouse.Y);
         }
 
         // mouse up
         public void MouseUp(Point mouse, string shapeName)
         {
-            
+            _isPressed = false;
+            _model.StopResizeSelectedShape();
         }
 
         // drawing
         public void Drawing(IGraphics graphics)
         {
             Shape hint = _model.GetSelectedShape();
-            //if (_isClicked && hint != null)
-            //    hint.DrawHint(graphics);
+            if (hint != null)
+                hint.DrawHint(graphics);
         }
     }
 }

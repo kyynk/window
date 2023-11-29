@@ -22,6 +22,7 @@ namespace Homework.View
             // presentation model
             _presentationModel = presentationModel;
             _presentationModel._modelChanged += HandleModelChanged;
+            _presentationModel._cursorChanged += SetCursor;
             //_presentationModel._cursorChanged += SetCursor;
             // shape data (dataGridview)
             _shapeData.AutoGenerateColumns = false;
@@ -49,7 +50,7 @@ namespace Homework.View
         public void HandleCanvasReleased(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             _presentationModel.ReleasePointer(e.X, e.Y);
-            _canvas.Cursor = Cursors.Arrow;
+            //_canvas.Cursor = Cursors.Arrow;
         }
 
         // handle canvas moved
@@ -75,28 +76,28 @@ namespace Homework.View
         private void ClickLineButton(object sender, EventArgs e)
         {
             _presentationModel.EnableLine();
-            _canvas.Cursor = Cursors.Cross;
+            //_canvas.Cursor = Cursors.Cross;
         }
 
         // click rectangle button
         private void ClickRectangleButton(object sender, EventArgs e)
         {
             _presentationModel.EnableRectangle();
-            _canvas.Cursor = Cursors.Cross;
+            //_canvas.Cursor = Cursors.Cross;
         }
 
         // click ellipse button
         private void ClickEllipseButton(object sender, EventArgs e)
         {
             _presentationModel.EnableEllipse();
-            _canvas.Cursor = Cursors.Cross;
+            //_canvas.Cursor = Cursors.Cross;
         }
 
         // click default cursor button
         private void ClickDefaultCursorButton(object sender, EventArgs e)
         {
             _presentationModel.EnableDefaultCursor();
-            _canvas.Cursor = Cursors.Arrow;
+            //_canvas.Cursor = Cursors.Arrow;
         }
 
         // click create button
