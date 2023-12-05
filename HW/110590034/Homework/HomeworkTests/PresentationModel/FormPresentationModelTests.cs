@@ -102,7 +102,7 @@ namespace Homework.PresentationModel.Tests
         }
         // test press pointer
         [TestMethod()]
-        public void PressPointerTest()
+        public void PressPointerWithResizeStateTest()
         {
             // resize state
             _presentationModel.IsPressed = false;
@@ -111,6 +111,12 @@ namespace Homework.PresentationModel.Tests
             _mockModel.Verify(model => model.ChangeState(Constant.Constant.RESIZE_STATE), Times.Once);
             _mockModel.Verify(model => model.PressPointer(50, 50), Times.Once);
             Assert.IsTrue(_presentationModel.IsPressed);
+        }
+
+        // test press pointer
+        [TestMethod()]
+        public void PressPointerWithPointStateTest()
+        {
             // point state
             _presentationModel.IsPressed = false;
             _mockModel.Setup(model => model.CheckIsResizeState(It.IsAny<double>(), It.IsAny<double>())).Returns(false);
@@ -120,9 +126,25 @@ namespace Homework.PresentationModel.Tests
             Assert.IsTrue(_presentationModel.IsPressed);
         }
 
+        // test press pointer
+        [TestMethod()]
+        public void PressPointerWithDrawingStateWithReturnIsTrueTest()
+        {
+            // drawing state
+            _presentationModel.IsPressed = false;
+            _presentationModel.IsDefaultCursorEnabled = false;
+            _mockModel.Setup(model => model.CheckIsResizeState(It.IsAny<double>(), It.IsAny<double>())).Returns(true);
+            _presentationModel.PressPointer(51, 51);
+            _mockModel.Verify(model => model.ChangeState(Constant.Constant.POINT_STATE), Times.Never);
+            _mockModel.Verify(model => model.PressPointer(51, 51), Times.Once);
+            Assert.IsTrue(_presentationModel.IsPressed);
+            // clean
+            _presentationModel.IsDefaultCursorEnabled = true;
+        }
+
         // test move pointer
         [TestMethod()]
-        public void MovePointerTest()
+        public void MovePointerWithPointStateTest()
         {
             // right bottom
             bool isCalledCursorChanged = false;
@@ -141,6 +163,19 @@ namespace Homework.PresentationModel.Tests
             Assert.IsTrue(isCalledCursorChanged);
             Assert.AreEqual(Cursors.Arrow, _presentationModel.UsingCursor);
             _mockModel.Verify(model => model.MovePointer(25, 51), Times.Once);
+        }
+
+        // test move pointer
+        [TestMethod()]
+        public void MovePointerWithoutPointStateTest()
+        {
+            bool isCalledCursorChanged = false;
+            _presentationModel._cursorChanged += (cursor) => { isCalledCursorChanged = true; };
+            _presentationModel.IsPressed = true;
+            _mockModel.Setup(model => model.CheckLocationIsRightBottom(It.IsAny<double>(), It.IsAny<double>())).Returns(true);
+            _presentationModel.MovePointer(23, 50);
+            Assert.IsFalse(isCalledCursorChanged);
+            _mockModel.Verify(model => model.MovePointer(23, 50), Times.Once);
         }
 
         // test release pointer

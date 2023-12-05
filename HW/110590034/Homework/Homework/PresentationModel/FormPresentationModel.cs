@@ -67,15 +67,18 @@ namespace Homework.PresentationModel
         // pointer press
         public void PressPointer(double mouseX, double mouseY)
         {
-            if (IsDefaultCursorEnabled && IsResizeState(mouseX, mouseY))
+            if (IsDefaultCursorEnabled)
             {
-                //Console.WriteLine("aaaaaaaa");
-                _model.ChangeState(Constant.Constant.RESIZE_STATE);
-            }
-            else if (IsDefaultCursorEnabled && !IsResizeState(mouseX, mouseY))
-            {
-                //Console.WriteLine("cccccccc");
-                _model.ChangeState(Constant.Constant.POINT_STATE);
+                if (IsResizeState(mouseX, mouseY))
+                {
+                    //Console.WriteLine("aaaaaaaa");
+                    _model.ChangeState(Constant.Constant.RESIZE_STATE);
+                }
+                else
+                {
+                    //Console.WriteLine("cccccccc");
+                    _model.ChangeState(Constant.Constant.POINT_STATE);
+                }
             }
             //Console.WriteLine("bbbbbbb");
             IsPressed = true;
@@ -86,15 +89,18 @@ namespace Homework.PresentationModel
         public void MovePointer(double mouseX, double mouseY)
         {
             _model.MovePointer(mouseX, mouseY);
-            if (!IsPressed && _model.ShapeName == Constant.Constant.POINT && IsLocationRightBottom(mouseX, mouseY))
+            if (!IsPressed && _model.ShapeName == Constant.Constant.POINT)
             {
-                _cursorChanged(Cursors.SizeNWSE);
-                UsingCursor = Cursors.SizeNWSE;
-            }
-            else if (!IsPressed && _model.ShapeName == Constant.Constant.POINT && !IsLocationRightBottom(mouseX, mouseY))
-            {
-                _cursorChanged(Cursors.Arrow);
-                UsingCursor = Cursors.Arrow;
+                if (IsLocationRightBottom(mouseX, mouseY))
+                {
+                    _cursorChanged(Cursors.SizeNWSE);
+                    UsingCursor = Cursors.SizeNWSE;
+                }
+                else
+                {
+                    _cursorChanged(Cursors.Arrow);
+                    UsingCursor = Cursors.Arrow;
+                }
             }
         }
 
