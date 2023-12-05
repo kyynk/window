@@ -235,5 +235,17 @@ namespace Homework.Model.Tests
             Assert.AreEqual(50, _shape.Point2.X);
             Assert.AreEqual(50, _shape.Point2.Y);
         }
+
+        // test set first point bottom
+        [TestMethod()]
+        public void SetFirstPointBottomTest()
+        {
+            _shape = new Line(new Point(0, 0), new Point(10, 10));
+            _shape.SetFirstPointBottom();
+            Assert.IsFalse(_shape.IsFirstPointBottom);
+            _shape.Point1.Y = 20;
+            _shape.SetFirstPointBottom();
+            Assert.IsTrue(_shape.IsFirstPointBottom);
+        }
     }
 }

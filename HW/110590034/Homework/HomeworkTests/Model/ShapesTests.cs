@@ -122,6 +122,9 @@ namespace Homework.Model.Tests
         [TestMethod()]
         public void ResizeSelectedShapeTest()
         {
+            // selected shape is null
+            _shapes.ResizeSelectedShape(Shape.Location.RightBottom, new Point(15, 15));
+            Assert.IsNull(_shapes.GetSelectedShape());
             // selected shape not null
             _shapes.AddNewShapeByDrawing(Constant.Constant.ELLIPSE, new Point(0, 0), new Point(10, 10));
             _shapes.CheckSelect(5, 5);
@@ -138,6 +141,9 @@ namespace Homework.Model.Tests
         [TestMethod()]
         public void CancelResizeTest()
         {
+            // selected shape is null
+            _shapes.CancelResize();
+            Assert.IsNull(_shapes.GetSelectedShape());
             // selected shape not null
             _shapes.AddNewShapeByDrawing(Constant.Constant.ELLIPSE, new Point(0, 0), new Point(10, 10));
             _shapes.CheckSelect(5, 5);
@@ -158,6 +164,30 @@ namespace Homework.Model.Tests
             Assert.AreEqual(Shape.Location.Right, _shapes.GetSelectedShapeLocation(7, 7));
             Assert.AreEqual(Shape.Location.None, _shapes.GetSelectedShapeLocation(20, 20));
             // clean
+            _shapes.DeleteSelectedShape();
+        }
+
+        // test set selected shape is first point bottom
+        [TestMethod()]
+        public void SetSelectedShapeIsFirstPointBottomWithFalseTest()
+        {
+            _shapes.AddNewShapeByDrawing(Constant.Constant.LINE, new Point(0, 0), new Point(10, 10));
+            _shapes.CheckSelect(5, 5);
+            _shapes.SetSelectedShapeIsFirstPointBottom();
+            Assert.IsFalse(_shapes.GetSelectedShape().IsFirstPointBottom);
+            //clean
+            _shapes.DeleteSelectedShape();
+        }
+
+        // test set selected shape is first point bottom
+        [TestMethod()]
+        public void SetSelectedShapeIsFirstPointBottomWithTrueTest()
+        {
+            _shapes.AddNewShapeByDrawing(Constant.Constant.LINE, new Point(11, 20), new Point(20, 11));
+            _shapes.CheckSelect(15, 15);
+            _shapes.SetSelectedShapeIsFirstPointBottom();
+            Assert.IsTrue(_shapes.GetSelectedShape().IsFirstPointBottom);
+            //clean
             _shapes.DeleteSelectedShape();
         }
     }

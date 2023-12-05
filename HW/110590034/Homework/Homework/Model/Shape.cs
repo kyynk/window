@@ -10,6 +10,7 @@ namespace Homework.Model
         protected Point _point1;
         protected Point _point2;
         protected Dictionary<Location, Point> _resizePoint;
+        protected bool _isFirstPointBottom;
         public enum Location
         {
             LeftTop,
@@ -249,6 +250,22 @@ namespace Homework.Model
         {
             if (!IsResizing)
                 ResetPoint();
+        }
+
+        // get is first point bottom
+        public bool IsFirstPointBottom
+        {
+            get
+            {
+                return _isFirstPointBottom;
+            }
+        }
+
+        // check point1.y is top or bottom for line
+        public void SetFirstPointBottom()
+        {
+            double bottom = Math.Max(_point1.Y, _point2.Y);
+            _isFirstPointBottom = _point1.Y == bottom;
         }
     }
 }

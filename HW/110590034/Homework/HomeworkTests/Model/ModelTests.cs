@@ -350,6 +350,32 @@ namespace Homework.Model.Tests
             _model.Delete(0);
         }
 
+        // test check bottom point
+        [TestMethod()]
+        public void CheckBottomPointIsSecondPointTest()
+        {
+            _model.AddDrawingShape(Constant.Constant.LINE, new Point(0, 0), new Point(10, 10));
+            bool isSelected = _model.CheckSelectedShape(5, 5);
+            Assert.IsInstanceOfType(_model.GetSelectedShape(), typeof(Shape));
+            Assert.IsTrue(isSelected);
+            _model.CheckBottomPoint();
+            Assert.IsFalse(_model.GetSelectedShape().IsFirstPointBottom);
+            _model.Delete(0);
+        }
+
+        // test check bottom point
+        [TestMethod()]
+        public void CheckBottomPointIsFirstPointTest()
+        {
+            _model.AddDrawingShape(Constant.Constant.LINE, new Point(0, 10), new Point(10, 0));
+            bool isSelected = _model.CheckSelectedShape(5, 5);
+            Assert.IsInstanceOfType(_model.GetSelectedShape(), typeof(Shape));
+            Assert.IsTrue(isSelected);
+            _model.CheckBottomPoint();
+            Assert.IsTrue(_model.GetSelectedShape().IsFirstPointBottom);
+            _model.Delete(0);
+        }
+
         // test check is resize state
         [TestMethod()]
         public void CheckIsResizeStateTest()
@@ -361,6 +387,7 @@ namespace Homework.Model.Tests
             Assert.IsFalse(_model.CheckIsResizeState(100, 100));
             Assert.IsTrue(_model.CheckIsResizeState(0, 1));
             _model.Delete(0);
+            Assert.IsFalse(_model.CheckIsResizeState(100, 100));
         }
 
         // test check location is right bottom

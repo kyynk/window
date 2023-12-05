@@ -22,6 +22,7 @@ namespace Homework.State
         public void MouseDown(Point mouse, string shapeName, bool isInPanel)
         {
             _isPressed = true;
+            _model.CheckBottomPoint();
             //Console.WriteLine("resize down");
         }
 

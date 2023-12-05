@@ -49,21 +49,22 @@ namespace Homework.Model
         // update point
         public override void UpdatePoint(Location location)
         {
-            if (location == Location.RightBottom && IsFirstPointBottom(_resizePoint[Location.RightBottom].Y))
+            if (location == Location.RightBottom && IsFirstMethod())
             {
                 _point1.Y = _resizePoint[Location.RightBottom].Y;
                 _point2.X = _resizePoint[Location.RightBottom].X;
             }
-            else if (location == Location.RightBottom && !IsFirstPointBottom(_resizePoint[Location.RightBottom].Y))
+            else if (location == Location.RightBottom && !IsFirstMethod())
             {
                 _point2 = _resizePoint[Location.RightBottom];
             }
         }
 
-        // check point1.y is top or bottom
-        public bool IsFirstPointBottom(double bottom)
+        // is method 1 (point1.y > point2.y)
+        public bool IsFirstMethod()
         {
-            return _point1.Y == bottom;
+            return IsFirstPointBottom;
         }
+
     }
 }

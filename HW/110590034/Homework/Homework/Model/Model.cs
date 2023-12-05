@@ -143,6 +143,12 @@ namespace Homework.Model
             return _selectedLocation;
         }
 
+        // set is first point on bottom (line) on resize state
+        public virtual void CheckBottomPoint()
+        {
+            _shapesData.SetSelectedShapeIsFirstPointBottom();
+        }
+
         // check is resize state or not
         public virtual bool CheckIsResizeState(double mouseX, double mouseY)
         {

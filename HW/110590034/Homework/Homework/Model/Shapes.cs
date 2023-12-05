@@ -108,5 +108,11 @@ namespace Homework.Model
         {
             return _selectedShape.GetLocation(mouseX, mouseY);
         }
+
+        // set is first point on bottom
+        public void SetSelectedShapeIsFirstPointBottom()
+        {
+            _selectedShape.SetFirstPointBottom();
+        }
     }
 }
