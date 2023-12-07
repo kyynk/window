@@ -1,0 +1,10 @@
+C:\Users\user\Desktop\window\test_dynamic\test_dynamic\bin\Debug\test_dynamic.exe.config
+C:\Users\user\Desktop\window\test_dynamic\test_dynamic\bin\Debug\test_dynamic.exe
+C:\Users\user\Desktop\window\test_dynamic\test_dynamic\bin\Debug\test_dynamic.pdb
+C:\Users\user\Desktop\window\test_dynamic\test_dynamic\obj\Debug\test_dynamic.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\window\test_dynamic\test_dynamic\obj\Debug\test_dynamic.Form1.resources
+C:\Users\user\Desktop\window\test_dynamic\test_dynamic\obj\Debug\test_dynamic.Properties.Resources.resources
+C:\Users\user\Desktop\window\test_dynamic\test_dynamic\obj\Debug\test_dynamic.csproj.GenerateResource.cache
+C:\Users\user\Desktop\window\test_dynamic\test_dynamic\obj\Debug\test_dynamic.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\window\test_dynamic\test_dynamic\obj\Debug\test_dynamic.exe
+C:\Users\user\Desktop\window\test_dynamic\test_dynamic\obj\Debug\test_dynamic.pdb
