@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using Homework.Model;
 
 namespace Homework.Model
 {
@@ -113,6 +112,12 @@ namespace Homework.Model
         public void SetSelectedShapeIsFirstPointBottom()
         {
             _selectedShape.SetFirstPointBottom();
+        }
+
+        // insert shape by index
+        public void InsertShapeByIndex(Shape shape, int index)
+        {
+            _shapeList.Insert(index, shape);
         }
     }
 }

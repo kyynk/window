@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Homework.Model;
+﻿using Homework.Model;
 
 namespace Homework.Command
 {
-    public class MoveCommand
+    public class MoveCommand : ICommand
     {
         Shape _shape;
         Model.Model _model;
-        public MoveCommand(Model.Model model, Shape shape)
+        int _shapeIndex;
+
+        public MoveCommand(Model.Model model, Shape shape, int index)
         {
             _shape = shape;
             _model = model;
+            _shapeIndex = index;
         }
 
         // execute

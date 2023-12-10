@@ -201,6 +201,12 @@ namespace Homework.Model
             }
         }
 
+        // insert shape
+        public void InserShape(Shape shape, int index)
+        {
+            _shapesData.InsertShapeByIndex(shape, index);
+        }
+
         // add new shape to shapes
         public void Create(string shapeType)
         {
