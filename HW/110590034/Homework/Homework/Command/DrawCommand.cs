@@ -18,13 +18,13 @@ namespace Homework.Command
         // execute
         public void Execute()
         {
-            //_model.DrawShape(rect);
+            _model.InserShape(_shape, _shapeIndex);
         }
 
         // unexcute
         public void UnExecute()
         {
-            //_model.DeleteShape();
+            _model.Delete(_shapeIndex);
         }
     }
 }

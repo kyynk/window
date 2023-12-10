@@ -6,25 +6,27 @@ namespace Homework.Command
     {
         Shape _shape;
         Model.Model _model;
-        int _shapeIndex;
+        Point _point1;
+        Point _point2;
 
-        public MoveCommand(Model.Model model, Shape shape, int index)
+        public MoveCommand(Model.Model model, Shape shape, Point point1, Point point2)
         {
             _shape = shape;
             _model = model;
-            _shapeIndex = index;
+            _point1 = point1;
+            _point2 = point2;
         }
 
         // execute
         public void Execute()
         {
-            //_model.DrawShape(rect);
+            
         }
 
         // unexcute
         public void UnExecute()
         {
-            //_model.DeleteShape();
+            
         }
     }
 }

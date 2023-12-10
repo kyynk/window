@@ -5,13 +5,11 @@ namespace Homework.Model
     public class Shapes
     {
         private readonly BindingList<Shape> _shapeList;
-        private readonly ShapeFactory _shapeFactory;
         private Shape _selectedShape;
 
         public Shapes()
         {
             _shapeList = new BindingList<Shape>();
-            _shapeFactory = new ShapeFactory();
             _selectedShape = null;
         }
 
@@ -25,15 +23,9 @@ namespace Homework.Model
         }
 
         // add new shape to _shapes
-        public void AddNewShapeByDrawing(string shapeType, Point point1, Point point2)
+        public void AddNewShape(Shape shape)
         {
-            _shapeList.Add(_shapeFactory.AddDrawingShape(shapeType, point1, point2));
-        }
-
-        // add new shape to _shapes
-        public void AddNewShapeByRandom(string shapeType)
-        {
-            _shapeList.Add(_shapeFactory.CreateShape(shapeType));
+            _shapeList.Add(shape);
         }
 
         // delete selected shape from _shapes

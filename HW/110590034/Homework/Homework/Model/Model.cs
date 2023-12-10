@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Forms;
 using Homework.State;
+using Homework.Command;
 
 namespace Homework.Model
 {
@@ -17,6 +18,8 @@ namespace Homework.Model
         private IState _state;
         private string _shapeName;
         private Shape.Location _selectedLocation;
+        private Point _firstPoint;
+        private CommandManager _commandManager;
 
         public Model()
         {
@@ -28,6 +31,8 @@ namespace Homework.Model
             _panelMaxX = Constant.Constant.DEFAULT_MAX_PANEL_X;
             _panelMaxY = Constant.Constant.DEFAULT_MAX_PANEL_Y;
             _selectedLocation = Shape.Location.None;
+            _firstPoint = new Point(-1, -1);
+            _commandManager = new CommandManager();
         }
 
         public string ShapeName
@@ -57,6 +62,7 @@ namespace Homework.Model
         // pointer pressed
         public virtual void PressPointer(double mouseX, double mouseY)
         {
+            _firstPoint = new Point(mouseX, mouseY);
             _state.MouseDown(new Point(mouseX, mouseY), _shapeName, mouseX == CheckRange(mouseX, _panelMaxX) && mouseY == CheckRange(mouseY, _panelMaxY));
         }
 
@@ -103,7 +109,8 @@ namespace Homework.Model
         // add drawing shape
         public virtual void AddDrawingShape(string shapeName, Point point1, Point point2)
         {
-            _shapesData.AddNewShapeByDrawing(shapeName, point1, point2);
+            Shape shape = _shapeFactory.AddDrawingShape(shapeName, point1, point2);
+            _shapesData.AddNewShape(shape);
         }
 
         // clear drawing shape
@@ -201,16 +208,33 @@ namespace Homework.Model
             }
         }
 
+
+        // redo
+        public void Redo()
+        {
+            _commandManager.Redo();
+            NotifyModelChanged();
+        }
+
+        //undo
+        public void Undo()
+        {
+            _commandManager.Undo();
+            NotifyModelChanged();
+        }
+
         // insert shape
         public void InserShape(Shape shape, int index)
         {
             _shapesData.InsertShapeByIndex(shape, index);
+            NotifyModelChanged();
         }
 
         // add new shape to shapes
         public void Create(string shapeType)
         {
-            _shapesData.AddNewShapeByRandom(shapeType);
+            Shape shape = _shapeFactory.CreateShape(shapeType);
+            _shapesData.AddNewShape(shape);
             NotifyModelChanged();
         }
 
