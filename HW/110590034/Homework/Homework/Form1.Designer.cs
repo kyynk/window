@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this._groupBox = new System.Windows.Forms.GroupBox();
             this._shapeData = new System.Windows.Forms.DataGridView();
             this._deleteButton = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -41,15 +40,15 @@
             this._description = new System.Windows.Forms.ToolStripMenuItem();
             this._about = new System.Windows.Forms.ToolStripMenuItem();
             this._toolStrip = new System.Windows.Forms.ToolStrip();
+            this._splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this._splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this._canvas = new Homework.View.DoubleBufferedPanel();
             this._lineButton = new Homework.View.ToolStripBindingButton();
             this._rectangleButton = new Homework.View.ToolStripBindingButton();
             this._ellipseButton = new Homework.View.ToolStripBindingButton();
             this._defaultCursorButton = new Homework.View.ToolStripBindingButton();
-            this._splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this._splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this._canvas = new Homework.View.DoubleBufferedPanel();
-            this._undoButton = new System.Windows.Forms.ToolStripButton();
-            this._redoButton = new System.Windows.Forms.ToolStripButton();
+            this._undoButton = new Homework.View.ToolStripBindingButton();
+            this._redoButton = new Homework.View.ToolStripBindingButton();
             this._groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._shapeData)).BeginInit();
             this._menuStrip.SuspendLayout();
@@ -69,11 +68,12 @@
             this._groupBox.Controls.Add(this._shapeData);
             this._groupBox.Controls.Add(this._shapeTypeComboBox);
             this._groupBox.Controls.Add(this._createButton);
-            this._groupBox.Location = new System.Drawing.Point(3, 6);
-            this._groupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._groupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._groupBox.Location = new System.Drawing.Point(0, 0);
+            this._groupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._groupBox.Name = "_groupBox";
-            this._groupBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this._groupBox.Size = new System.Drawing.Size(313, 521);
+            this._groupBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._groupBox.Size = new System.Drawing.Size(247, 433);
             this._groupBox.TabIndex = 0;
             this._groupBox.TabStop = false;
             this._groupBox.Text = "資料顯示";
@@ -83,19 +83,20 @@
             this._shapeData.AllowUserToAddRows = false;
             this._shapeData.AllowUserToResizeColumns = false;
             this._shapeData.AllowUserToResizeRows = false;
+            this._shapeData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this._shapeData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this._shapeData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this._deleteButton,
             this._shapeType,
             this._information});
-            this._shapeData.Location = new System.Drawing.Point(5, 68);
-            this._shapeData.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._shapeData.Location = new System.Drawing.Point(2, 65);
+            this._shapeData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._shapeData.Name = "_shapeData";
             this._shapeData.ReadOnly = true;
             this._shapeData.RowHeadersVisible = false;
             this._shapeData.RowHeadersWidth = 51;
             this._shapeData.RowTemplate.Height = 27;
-            this._shapeData.Size = new System.Drawing.Size(301, 448);
+            this._shapeData.Size = new System.Drawing.Size(230, 366);
             this._shapeData.TabIndex = 0;
             this._shapeData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClickDeleteButton);
             // 
@@ -142,18 +143,18 @@
             "矩形",
             "線",
             "圓"});
-            this._shapeTypeComboBox.Location = new System.Drawing.Point(101, 24);
-            this._shapeTypeComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._shapeTypeComboBox.Location = new System.Drawing.Point(76, 19);
+            this._shapeTypeComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._shapeTypeComboBox.Name = "_shapeTypeComboBox";
-            this._shapeTypeComboBox.Size = new System.Drawing.Size(156, 23);
+            this._shapeTypeComboBox.Size = new System.Drawing.Size(118, 20);
             this._shapeTypeComboBox.TabIndex = 1;
             // 
             // _createButton
             // 
-            this._createButton.Location = new System.Drawing.Point(5, 24);
-            this._createButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._createButton.Location = new System.Drawing.Point(4, 19);
+            this._createButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._createButton.Name = "_createButton";
-            this._createButton.Size = new System.Drawing.Size(64, 38);
+            this._createButton.Size = new System.Drawing.Size(48, 30);
             this._createButton.TabIndex = 0;
             this._createButton.Text = "新增";
             this._createButton.UseVisualStyleBackColor = true;
@@ -161,10 +162,10 @@
             // 
             // _canvas1
             // 
-            this._canvas1.Location = new System.Drawing.Point(3, 6);
-            this._canvas1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._canvas1.Location = new System.Drawing.Point(2, 5);
+            this._canvas1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._canvas1.Name = "_canvas1";
-            this._canvas1.Size = new System.Drawing.Size(128, 72);
+            this._canvas1.Size = new System.Drawing.Size(112, 63);
             this._canvas1.TabIndex = 2;
             this._canvas1.UseVisualStyleBackColor = true;
             // 
@@ -175,8 +176,8 @@
             this._description});
             this._menuStrip.Location = new System.Drawing.Point(0, 0);
             this._menuStrip.Name = "_menuStrip";
-            this._menuStrip.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this._menuStrip.Size = new System.Drawing.Size(1132, 30);
+            this._menuStrip.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this._menuStrip.Size = new System.Drawing.Size(849, 24);
             this._menuStrip.TabIndex = 4;
             this._menuStrip.Text = "menuStrip1";
             // 
@@ -185,13 +186,13 @@
             this._description.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this._about});
             this._description.Name = "_description";
-            this._description.Size = new System.Drawing.Size(53, 26);
+            this._description.Size = new System.Drawing.Size(43, 20);
             this._description.Text = "說明";
             // 
             // _about
             // 
             this._about.Name = "_about";
-            this._about.Size = new System.Drawing.Size(122, 26);
+            this._about.Size = new System.Drawing.Size(98, 22);
             this._about.Text = "關於";
             // 
             // _toolStrip
@@ -204,64 +205,19 @@
             this._defaultCursorButton,
             this._undoButton,
             this._redoButton});
-            this._toolStrip.Location = new System.Drawing.Point(0, 30);
+            this._toolStrip.Location = new System.Drawing.Point(0, 24);
             this._toolStrip.Name = "_toolStrip";
-            this._toolStrip.Size = new System.Drawing.Size(1132, 31);
+            this._toolStrip.Size = new System.Drawing.Size(849, 27);
             this._toolStrip.TabIndex = 5;
             this._toolStrip.Text = "toolStrip1";
-            // 
-            // _lineButton
-            // 
-            this._lineButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this._lineButton.Image = global::Homework.Properties.Resources.Line;
-            this._lineButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this._lineButton.Name = "_lineButton";
-            this._lineButton.Size = new System.Drawing.Size(29, 28);
-            this._lineButton.Text = "toolStripButton1";
-            this._lineButton.ToolTipText = "_lineButton";
-            this._lineButton.Click += new System.EventHandler(this.ClickLineButton);
-            // 
-            // _rectangleButton
-            // 
-            this._rectangleButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this._rectangleButton.Image = global::Homework.Properties.Resources.Rectangle;
-            this._rectangleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this._rectangleButton.Name = "_rectangleButton";
-            this._rectangleButton.Size = new System.Drawing.Size(29, 28);
-            this._rectangleButton.Text = "toolStripButton2";
-            this._rectangleButton.ToolTipText = "_rectangleButton";
-            this._rectangleButton.Click += new System.EventHandler(this.ClickRectangleButton);
-            // 
-            // _ellipseButton
-            // 
-            this._ellipseButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this._ellipseButton.Image = global::Homework.Properties.Resources.Ellipse;
-            this._ellipseButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this._ellipseButton.Name = "_ellipseButton";
-            this._ellipseButton.Size = new System.Drawing.Size(29, 28);
-            this._ellipseButton.Text = "toolStripButton3";
-            this._ellipseButton.ToolTipText = "_ellipseButton";
-            this._ellipseButton.Click += new System.EventHandler(this.ClickEllipseButton);
-            // 
-            // _defaultCursorButton
-            // 
-            this._defaultCursorButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this._defaultCursorButton.Image = global::Homework.Properties.Resources.DefaultCursor;
-            this._defaultCursorButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this._defaultCursorButton.Name = "_defaultCursorButton";
-            this._defaultCursorButton.Size = new System.Drawing.Size(29, 28);
-            this._defaultCursorButton.Text = "toolStripButton1";
-            this._defaultCursorButton.ToolTipText = "_defaultCursorButton";
-            this._defaultCursorButton.Click += new System.EventHandler(this.ClickDefaultCursorButton);
             // 
             // _splitContainer1
             // 
             this._splitContainer1.BackColor = System.Drawing.SystemColors.Control;
-            this._splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this._splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this._splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this._splitContainer1.Location = new System.Drawing.Point(0, 61);
-            this._splitContainer1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._splitContainer1.Location = new System.Drawing.Point(0, 51);
+            this._splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._splitContainer1.Name = "_splitContainer1";
             // 
             // _splitContainer1.Panel1
@@ -272,17 +228,17 @@
             // _splitContainer1.Panel2
             // 
             this._splitContainer1.Panel2.Controls.Add(this._splitContainer2);
-            this._splitContainer1.Size = new System.Drawing.Size(1132, 544);
-            this._splitContainer1.SplitterDistance = 113;
+            this._splitContainer1.Size = new System.Drawing.Size(849, 433);
+            this._splitContainer1.SplitterDistance = 116;
+            this._splitContainer1.SplitterWidth = 3;
             this._splitContainer1.TabIndex = 6;
             // 
             // _splitContainer2
             // 
-            this._splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this._splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this._splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this._splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this._splitContainer2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._splitContainer2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._splitContainer2.Name = "_splitContainer2";
             // 
             // _splitContainer2.Panel1
@@ -294,48 +250,96 @@
             // 
             this._splitContainer2.Panel2.BackColor = System.Drawing.Color.Gainsboro;
             this._splitContainer2.Panel2.Controls.Add(this._groupBox);
-            this._splitContainer2.Size = new System.Drawing.Size(1015, 544);
-            this._splitContainer2.SplitterDistance = 772;
+            this._splitContainer2.Size = new System.Drawing.Size(730, 433);
+            this._splitContainer2.SplitterDistance = 480;
+            this._splitContainer2.SplitterWidth = 3;
             this._splitContainer2.TabIndex = 0;
             // 
             // _canvas
             // 
             this._canvas.BackColor = System.Drawing.Color.White;
-            this._canvas.Location = new System.Drawing.Point(17, 85);
-            this._canvas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._canvas.Location = new System.Drawing.Point(16, 85);
+            this._canvas.Margin = new System.Windows.Forms.Padding(2);
             this._canvas.Name = "_canvas";
-            this._canvas.Size = new System.Drawing.Size(608, 342);
+            this._canvas.Size = new System.Drawing.Size(448, 252);
             this._canvas.TabIndex = 0;
+            // 
+            // _lineButton
+            // 
+            this._lineButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._lineButton.Image = global::Homework.Properties.Resources.Line;
+            this._lineButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._lineButton.Name = "_lineButton";
+            this._lineButton.Size = new System.Drawing.Size(24, 24);
+            this._lineButton.Text = "toolStripButton1";
+            this._lineButton.ToolTipText = "_lineButton";
+            this._lineButton.Click += new System.EventHandler(this.ClickLineButton);
+            // 
+            // _rectangleButton
+            // 
+            this._rectangleButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._rectangleButton.Image = global::Homework.Properties.Resources.Rectangle;
+            this._rectangleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._rectangleButton.Name = "_rectangleButton";
+            this._rectangleButton.Size = new System.Drawing.Size(24, 24);
+            this._rectangleButton.Text = "toolStripButton2";
+            this._rectangleButton.ToolTipText = "_rectangleButton";
+            this._rectangleButton.Click += new System.EventHandler(this.ClickRectangleButton);
+            // 
+            // _ellipseButton
+            // 
+            this._ellipseButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._ellipseButton.Image = global::Homework.Properties.Resources.Ellipse;
+            this._ellipseButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._ellipseButton.Name = "_ellipseButton";
+            this._ellipseButton.Size = new System.Drawing.Size(24, 24);
+            this._ellipseButton.Text = "toolStripButton3";
+            this._ellipseButton.ToolTipText = "_ellipseButton";
+            this._ellipseButton.Click += new System.EventHandler(this.ClickEllipseButton);
+            // 
+            // _defaultCursorButton
+            // 
+            this._defaultCursorButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._defaultCursorButton.Image = global::Homework.Properties.Resources.DefaultCursor;
+            this._defaultCursorButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._defaultCursorButton.Name = "_defaultCursorButton";
+            this._defaultCursorButton.Size = new System.Drawing.Size(24, 24);
+            this._defaultCursorButton.Text = "toolStripButton1";
+            this._defaultCursorButton.ToolTipText = "_defaultCursorButton";
+            this._defaultCursorButton.Click += new System.EventHandler(this.ClickDefaultCursorButton);
             // 
             // _undoButton
             // 
             this._undoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this._undoButton.Image = ((System.Drawing.Image)(resources.GetObject("_undoButton.Image")));
+            this._undoButton.Image = global::Homework.Properties.Resources.Undo;
             this._undoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this._undoButton.Name = "_undoButton";
-            this._undoButton.Size = new System.Drawing.Size(29, 28);
+            this._undoButton.Size = new System.Drawing.Size(24, 24);
             this._undoButton.Text = "_undoButton";
             this._undoButton.ToolTipText = "_undoButton";
+            this._undoButton.Click += new System.EventHandler(this.ClickUndoButton);
             // 
             // _redoButton
             // 
             this._redoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this._redoButton.Image = ((System.Drawing.Image)(resources.GetObject("_redoButton.Image")));
+            this._redoButton.Image = global::Homework.Properties.Resources.Redo;
             this._redoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this._redoButton.Name = "_redoButton";
-            this._redoButton.Size = new System.Drawing.Size(29, 28);
+            this._redoButton.Size = new System.Drawing.Size(24, 24);
             this._redoButton.Text = "_redoButton";
+            this._redoButton.ToolTipText = "_redoButton";
+            this._redoButton.Click += new System.EventHandler(this.ClickRedoButton);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1132, 605);
+            this.ClientSize = new System.Drawing.Size(849, 484);
             this.Controls.Add(this._splitContainer1);
             this.Controls.Add(this._toolStrip);
             this.Controls.Add(this._menuStrip);
             this.MainMenuStrip = this._menuStrip;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this._groupBox.ResumeLayout(false);
@@ -378,8 +382,8 @@
         private Homework.View.ToolStripBindingButton _defaultCursorButton;
         private System.Windows.Forms.SplitContainer _splitContainer1;
         private System.Windows.Forms.SplitContainer _splitContainer2;
-        private System.Windows.Forms.ToolStripButton _undoButton;
-        private System.Windows.Forms.ToolStripButton _redoButton;
+        private Homework.View.ToolStripBindingButton _undoButton;
+        private Homework.View.ToolStripBindingButton _redoButton;
     }
 }
 

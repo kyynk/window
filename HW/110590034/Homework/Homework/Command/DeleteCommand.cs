@@ -18,7 +18,7 @@ namespace Homework.Command
         // execute
         public void Execute()
         {
-            _model.Delete(_shapeIndex);
+            _model.DeleteShape(_shapeIndex);
         }
 
         // unexcute

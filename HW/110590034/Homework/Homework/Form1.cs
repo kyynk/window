@@ -31,6 +31,8 @@ namespace Homework.View
             _shapeType.DataPropertyName = "ShapeName";
             _information.DataPropertyName = "Info";
             // tool strip binding button
+            //_undoButton.DataBindings.Add(Constant.Constant.ENABLED, _presentationModel.IsUndoEnabled, Constant.Constant.IS_UNDO_ENABLED);
+            //_redoButton.DataBindings.Add(Constant.Constant.ENABLED, _presentationModel.IsRedoEnabled, Constant.Constant.IS_REDO_ENABLED);
             _lineButton.DataBindings.Add(Constant.Constant.CHECKED, _presentationModel, Constant.Constant.IS_LINE_ENABLED);
             _rectangleButton.DataBindings.Add(Constant.Constant.CHECKED, _presentationModel, Constant.Constant.IS_RECTANGLE_ENABLED);
             _ellipseButton.DataBindings.Add(Constant.Constant.CHECKED, _presentationModel, Constant.Constant.IS_ELLIPSE_ENABLED);
@@ -38,12 +40,55 @@ namespace Homework.View
             // keyboard
             KeyDown += HandleKeyDown;
             KeyPreview = true;
+            // initialize
+            UpdateUndoRedo();
+            _canvas1.Width = Constant.Constant.DEFAULT_MAX_BUTTON_X;
+            _canvas1.Height = Constant.Constant.DEFAULT_MAX_BUTTON_Y;
+            _canvas.Width = Constant.Constant.DEFAULT_MAX_PANEL_X;
+            _canvas.Height = Constant.Constant.DEFAULT_MAX_PANEL_Y;
+            Console.WriteLine("location");
+            Console.WriteLine("btn x " + _canvas1.Location.X + " btn y " + _canvas1.Location.Y);
+            Console.WriteLine("pnl x " + _canvas.Location.X + " pnl y " + _canvas.Location.Y);
+            Console.WriteLine("btn)) x " + (_canvas1.Location.X + _canvas1.Width) + " pnl111 x " + _splitContainer1.Panel1.Width);
+            Console.WriteLine("spliter x " + _splitContainer1.SplitterWidth + " ??? x " + (_splitContainer1.Panel1.Width - _splitContainer1.SplitterWidth));
+
+            _splitContainer1.Panel1.SizeChanged += LeftPanelSizeChanged;
+            _splitContainer2.Panel1.SizeChanged += MiddlePanelSizeChanged;
+            _splitContainer2.Panel2.SizeChanged += RightPanelSizeChanged;
+        }
+
+        // button size change
+        private void LeftPanelSizeChanged(object sender, EventArgs e)
+        {
+            int panelWidth = _splitContainer1.Panel1.Width;
+            int margin = 2;
+            _canvas1.Width = panelWidth - margin * 2;
+            _canvas1.Height = (int)((double)(_canvas1.Width) / 16.0 * 9.0);
+        }
+
+        // panel size change
+        private void MiddlePanelSizeChanged(object sender, EventArgs e)
+        {
+            int panelWidth = _splitContainer2.Panel1.Width;
+            int panelHeight = _splitContainer2.Panel1.Height;
+            int marginX = 16;
+            _canvas.Width = panelWidth - (2 * marginX);
+            _canvas.Height = (int)((double)(_canvas.Width) / 16.0 * 9.0);
+
+            _canvas.Location = new System.Drawing.Point(marginX, panelHeight / 2 - _canvas.Height / 2);
+        }
+
+        // info size change
+        private void RightPanelSizeChanged(object sender, EventArgs e)
+        {
+
         }
 
         // handle canvas pressed
         public void HandleCanvasPressed(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             _presentationModel.PressPointer(e.X, e.Y);
+            UpdateUndoRedo();
         }
 
         // handle canvas released
@@ -51,6 +96,7 @@ namespace Homework.View
         {
             _presentationModel.ReleasePointer(e.X, e.Y);
             //_canvas.Cursor = Cursors.Arrow;
+            UpdateUndoRedo();
         }
 
         // handle canvas moved
@@ -100,10 +146,25 @@ namespace Homework.View
             //_canvas.Cursor = Cursors.Arrow;
         }
 
+        // click undo button
+        private void ClickUndoButton(object sender, EventArgs e)
+        {
+            _presentationModel.Undo();
+            UpdateUndoRedo();
+        }
+
+        // click redo button
+        private void ClickRedoButton(object sender, EventArgs e)
+        {
+            _presentationModel.Redo();
+            UpdateUndoRedo();
+        }
+
         // click create button
         private void ClickCreateButton(object sender, EventArgs e)
         {
             _presentationModel.CreateShape(_shapeTypeComboBox.Text);
+            UpdateUndoRedo();
         }
 
         // click delete button
@@ -112,6 +173,7 @@ namespace Homework.View
             if (e.ColumnIndex == 0 && e.RowIndex >= 0)
             {
                 _presentationModel.DeleteShape(e.RowIndex);
+                UpdateUndoRedo();
             }
         }
 
@@ -119,6 +181,7 @@ namespace Homework.View
         private void HandleKeyDown(object sender, KeyEventArgs e)
         {
             _presentationModel.HandleKeyDown(e.KeyCode);
+            UpdateUndoRedo();
         }
 
         // handle cursor changed
@@ -131,6 +194,13 @@ namespace Homework.View
         private void HandleModelChanged()
         {
             Invalidate(true);
+        }
+
+        // update undo redo
+        private void UpdateUndoRedo()
+        {
+            _undoButton.Enabled = _presentationModel.IsUndoEnabled;
+            _redoButton.Enabled = _presentationModel.IsRedoEnabled;
         }
     }
 }

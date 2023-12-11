@@ -5,28 +5,30 @@ namespace Homework.Command
     public class MoveCommand : ICommand
     {
         Shape _shape;
-        Model.Model _model;
-        Point _point1;
-        Point _point2;
+        double _offsetX;
+        double _offsetY;
+        bool _isNotFirstTime;
 
-        public MoveCommand(Model.Model model, Shape shape, Point point1, Point point2)
+        public MoveCommand(Shape shape, double offsetX, double offsetY)
         {
             _shape = shape;
-            _model = model;
-            _point1 = point1;
-            _point2 = point2;
+            _offsetX = offsetX;
+            _offsetY = offsetY;
+            _isNotFirstTime = false;
         }
 
         // execute
         public void Execute()
         {
-            
+            if (_isNotFirstTime)
+                _shape.Move(_offsetX, _offsetY);
+            _isNotFirstTime = true;
         }
 
         // unexcute
         public void UnExecute()
         {
-            
+            _shape.Move(-_offsetX, -_offsetY);
         }
     }
 }

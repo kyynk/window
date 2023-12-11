@@ -6,9 +6,9 @@ namespace Homework.Model
     {
         private const string ARGUMENT_WRONG = "ARGUMENT_WRONG";
         private const int MIN_X_RANGE = 0;
-        private const int MAX_X_RANGE = 490;
+        private const int MAX_X_RANGE = 448;
         private const int MIN_Y_RANGE = 0;
-        private const int MAX_Y_RANGE = 415;
+        private const int MAX_Y_RANGE = 252;
         private readonly Random _randomNumber;
 
         public ShapeFactory()

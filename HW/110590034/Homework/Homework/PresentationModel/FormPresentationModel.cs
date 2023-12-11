@@ -220,6 +220,20 @@ namespace Homework.PresentationModel
             UsingCursor = Cursors.Arrow;
         }
 
+        // undo
+        public void Undo()
+        {
+            if (IsUndoEnabled)
+                _model.Undo();
+        }
+
+        // redo
+        public void Redo()
+        {
+            if (IsRedoEnabled)
+                _model.Redo();
+        }
+
         // shape name
         public string ShapeName
         {
@@ -305,6 +319,24 @@ namespace Homework.PresentationModel
             get
             {
                 return _isDefaultCursorEnabled;
+            }
+        }
+
+        // is undo enabled
+        public bool IsUndoEnabled
+        {
+            get
+            {
+                return _model.IsUndoEnabled;
+            }
+        }
+
+        // is redo enabled
+        public bool IsRedoEnabled
+        {
+            get
+            {
+                return _model.IsRedoEnabled;
             }
         }
 

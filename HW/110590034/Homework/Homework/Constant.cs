@@ -9,17 +9,22 @@
         public const string POINT = "default";
         public const int FOUR = 4;
         // panel default
-        public const int DEFAULT_MAX_PANEL_X = 490;
-        public const int DEFAULT_MAX_PANEL_Y = 415;
+        public const int DEFAULT_MAX_PANEL_X = 448;
+        public const int DEFAULT_MAX_PANEL_Y = 252;
+        public const int DEFAULT_MAX_BUTTON_X = 112;
+        public const int DEFAULT_MAX_BUTTON_Y = 63;
         // model state
         public const string POINT_STATE = "point";
         public const string DRAWING_STATE = "drawing";
         public const string RESIZE_STATE = "resize";
         // tool strip button
         public const string CHECKED = "Checked";
+        public const string ENABLED = "Enabled";
         public const string IS_LINE_ENABLED = "IsLineEnabled";
         public const string IS_RECTANGLE_ENABLED = "IsRectangleEnabled";
         public const string IS_ELLIPSE_ENABLED = "IsEllipseEnabled";
         public const string IS_CURSOR_ENABLED = "IsDefaultCursorEnabled";
+        public const string IS_UNDO_ENABLED = "IsUndoEnabled";
+        public const string IS_REDO_ENABLED = "IsRedoEnabled";
     }
 }

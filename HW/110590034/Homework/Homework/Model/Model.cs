@@ -110,7 +110,9 @@ namespace Homework.Model
         public virtual void AddDrawingShape(string shapeName, Point point1, Point point2)
         {
             Shape shape = _shapeFactory.AddDrawingShape(shapeName, point1, point2);
-            _shapesData.AddNewShape(shape);
+            //_shapesData.AddNewShape(shape);
+            _commandManager.Execute(new DrawCommand(this, shape, _shapesData.ShapeList.Count));
+            //NotifyModelChanged();
         }
 
         // clear drawing shape
@@ -141,6 +143,15 @@ namespace Homework.Model
         public virtual void MoveSelectedShape(double diffX, double diffY)
         {
             _shapesData.MoveSelectedShape(diffX, diffY);
+        }
+
+        // move done
+        public virtual void MoveDone(double endX, double endY)
+        {
+            double diffX = _firstPoint.X - endX;
+            double diffY = _firstPoint.Y - endY;
+            _commandManager.Execute(new MoveCommand(GetSelectedShape(), diffX, diffY));
+            NotifyModelChanged();
         }
 
         // get location
@@ -208,6 +219,12 @@ namespace Homework.Model
             }
         }
 
+        //undo
+        public void Undo()
+        {
+            _commandManager.Undo();
+            NotifyModelChanged();
+        }
 
         // redo
         public void Redo()
@@ -216,11 +233,20 @@ namespace Homework.Model
             NotifyModelChanged();
         }
 
-        //undo
-        public void Undo()
+        public bool IsUndoEnabled
         {
-            _commandManager.Undo();
-            NotifyModelChanged();
+            get
+            {
+                return _commandManager.IsUndoEnabled;
+            }
+        }
+
+        public bool IsRedoEnabled
+        {
+            get
+            {
+                return _commandManager.IsRedoEnabled;
+            }
         }
 
         // insert shape
@@ -234,8 +260,9 @@ namespace Homework.Model
         public void Create(string shapeType)
         {
             Shape shape = _shapeFactory.CreateShape(shapeType);
-            _shapesData.AddNewShape(shape);
-            NotifyModelChanged();
+            //_shapesData.AddNewShape(shape);
+            _commandManager.Execute(new AddCommand(this, shape, _shapesData.ShapeList.Count));
+            //NotifyModelChanged();
         }
 
         // get shapes
@@ -245,18 +272,44 @@ namespace Homework.Model
         }
 
         // delete selected shape from _shapes
-        public void Delete(int index)
+        public void DeleteShape(int index)
         {
             _shapesData.DeleteShapeByIndex(index);
             NotifyModelChanged();
+        }
+
+        // delete selected shape from _shapes
+        public void Delete(int index)
+        {
+            //_shapesData.DeleteShapeByIndex(index);
+            _commandManager.Execute(new DeleteCommand(this, _shapesData.ShapeList[index], index));
+            //NotifyModelChanged();
+        }
+
+        // get shape index
+        public int GetShapeIndex(Shape shape)
+        {
+            int index = -1;
+            foreach (Shape aShape in _shapesData.ShapeList)
+            {
+                index++;
+                if (aShape == shape)
+                {
+                    return index;
+                }
+            }
+            return -1;
         }
 
         // handle key down
         // if keycode = delete, will delete selected shape
         public virtual void HandleKeyDown(Keys keyCode)
         {
-            if (keyCode == Keys.Delete)
+            if (keyCode == Keys.Delete && GetSelectedShape() != null)
+            {
+                _commandManager.Execute(new DeleteCommand(this, GetSelectedShape(), GetShapeIndex(GetSelectedShape())));
                 _shapesData.DeleteSelectedShape();
+            }
             NotifyModelChanged();
         }
 

@@ -73,6 +73,10 @@ namespace Homework.State
         // mouse up
         public void MouseUp(Point mouse, string shapeName)
         {
+            if (_isSelected)
+            {
+                _model.MoveDone(mouse.X, mouse.Y);
+            }
             _isSelected = false;
         }
 

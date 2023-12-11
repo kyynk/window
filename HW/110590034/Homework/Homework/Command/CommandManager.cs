@@ -5,48 +5,55 @@ namespace Homework.Command
 {
     public class CommandManager
     {
-        Stack<ICommand> undo;
-        Stack<ICommand> redo;
+        Stack<ICommand> _undo;
+        Stack<ICommand> _redo;
 
         public CommandManager()
         {
-            undo = new Stack<ICommand>();
-            redo = new Stack<ICommand>();
+            _undo = new Stack<ICommand>();
+            _redo = new Stack<ICommand>();
         }
 
         // execute
         public void Execute(ICommand cmd)
         {
             cmd.Execute();
-            undo.Push(cmd);    // push command 進 undo stack
-            redo.Clear();      // 清除redo stack
+            _undo.Push(cmd);    // push command 進 undo stack
+            _redo.Clear();      // 清除redo stack
+            Console.WriteLine("execute");
+            Console.WriteLine("undo " + _undo.Count + " redo " + _redo.Count);
         }
 
         // undo
         public void Undo()
         {
-            if (undo.Count <= 0)
+            if (_undo.Count <= 0)
                 throw new Exception("Cannot Undo exception\n");
-            ICommand cmd = undo.Pop();
-            redo.Push(cmd);
+            ICommand cmd = _undo.Pop();
+            _redo.Push(cmd);
             cmd.UnExecute();
+            Console.WriteLine("undo");
+            Console.WriteLine("undo1 " + _undo.Count + " redo " + _redo.Count);
         }
 
         // redo
         public void Redo()
         {
-            if (redo.Count <= 0)
+            if (_redo.Count <= 0)
                 throw new Exception("Cannot Redo exception\n");
-            ICommand cmd = redo.Pop();
-            undo.Push(cmd);
+            ICommand cmd = _redo.Pop();
+            _undo.Push(cmd);
             cmd.Execute();
+            Console.WriteLine("redo");
+            Console.WriteLine("undo " + _undo.Count + " redo1 " + _redo.Count);
         }
 
         public bool IsRedoEnabled
         {
             get
             {
-                return redo.Count != 0;
+                Console.WriteLine("redo " + _redo.Count);
+                return _redo.Count != 0;
             }
         }
 
@@ -54,7 +61,8 @@ namespace Homework.Command
         {
             get
             {
-                return undo.Count != 0;
+                Console.WriteLine("undo " + _undo.Count);
+                return _undo.Count != 0;
             }
         }
     }

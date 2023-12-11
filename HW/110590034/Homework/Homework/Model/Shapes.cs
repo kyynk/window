@@ -72,7 +72,7 @@ namespace Homework.Model
         // delete select shape
         public void DeleteSelectedShape()
         {
-            _shapeList.Remove(_selectedShape);
+            //_shapeList.Remove(_selectedShape);
             _selectedShape = null;
         }
 
