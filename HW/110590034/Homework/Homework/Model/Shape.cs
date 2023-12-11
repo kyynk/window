@@ -128,7 +128,7 @@ namespace Homework.Model
         }
 
         // move shape
-        public void Move(double offsetX, double offsetY)
+        public virtual void Move(double offsetX, double offsetY)
         {
             _point1.X -= offsetX;
             _point2.X -= offsetX;

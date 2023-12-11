@@ -23,22 +23,12 @@ namespace Homework.Model.Tests
             Assert.AreEqual(0, _shapes.ShapeList.Count);
         }
 
-        // test add new shape by drawing
+        // test insert shape by index
         [TestMethod()]
-        public void AddNewShapeByDrawingTest()
+        public void InsertShapeByIndexTest()
         {
             int initialCount = _shapes.ShapeList.Count;
-            _shapes.AddNewShapeByDrawing(Constant.Constant.LINE, new Point(0, 0), new Point(10, 10));
-            Assert.AreEqual(initialCount + 1, _shapes.ShapeList.Count);
-            _shapes.DeleteShapeByIndex(0);
-        }
-
-        // test add new shape by random
-        [TestMethod()]
-        public void AddNewShapeByRandomTest()
-        {
-            int initialCount = _shapes.ShapeList.Count;
-            _shapes.AddNewShapeByRandom(Constant.Constant.ELLIPSE);
+            _shapes.InsertShapeByIndex(new Line(new Point(0, 0), new Point(10, 10)), 0);
             Assert.AreEqual(initialCount + 1, _shapes.ShapeList.Count);
             _shapes.DeleteShapeByIndex(0);
         }
@@ -47,7 +37,7 @@ namespace Homework.Model.Tests
         [TestMethod()]
         public void DeleteShapeByIndexTest()
         {
-            _shapes.AddNewShapeByDrawing(Constant.Constant.RECTANGLE, new Point(0, 0), new Point(10, 10));
+            _shapes.InsertShapeByIndex(new Rectangle(new Point(0, 0), new Point(10, 10)), 0);
             int initialCount = _shapes.ShapeList.Count;
             _shapes.DeleteShapeByIndex(0);
             Assert.AreEqual(initialCount - 1, _shapes.ShapeList.Count);
@@ -58,12 +48,12 @@ namespace Homework.Model.Tests
         public void CheckSelectTest()
         {
             // test selected shape is null
-            _shapes.AddNewShapeByDrawing(Constant.Constant.RECTANGLE, new Point(3, 3), new Point(10, 10));
+            _shapes.InsertShapeByIndex(new Rectangle(new Point(3, 3), new Point(10, 10)), 0);
             bool isSelected = _shapes.CheckSelect(15, 15);
             Assert.IsFalse(isSelected);
             Assert.IsNull(_shapes.GetSelectedShape());
             // test selected shape
-            _shapes.AddNewShapeByDrawing(Constant.Constant.RECTANGLE, new Point(0, 0), new Point(10, 10));
+            _shapes.InsertShapeByIndex(new Rectangle(new Point(0, 0), new Point(10, 10)), 1);
             isSelected = _shapes.CheckSelect(5, 5);
             Assert.IsTrue(isSelected);
             Assert.IsNotNull(_shapes.GetSelectedShape());
@@ -80,7 +70,7 @@ namespace Homework.Model.Tests
         [TestMethod()]
         public void GetSelectedShapeTest()
         {
-            _shapes.AddNewShapeByDrawing(Constant.Constant.RECTANGLE, new Point(0, 0), new Point(10, 10));
+            _shapes.InsertShapeByIndex(new Rectangle(new Point(0, 0), new Point(10, 10)), 0);
             _shapes.CheckSelect(5, 5);
             Assert.IsNotNull(_shapes.GetSelectedShape());
             _shapes.DeleteShapeByIndex(0);
@@ -94,7 +84,7 @@ namespace Homework.Model.Tests
             _shapes.MoveSelectedShape(10, 0);
             Assert.AreEqual(0, _shapes.ShapeList.Count);
             // selected shape
-            _shapes.AddNewShapeByDrawing(Constant.Constant.LINE, new Point(0, 0), new Point(10, 10));
+            _shapes.InsertShapeByIndex(new Line(new Point(0, 0), new Point(10, 10)), 0);
             _shapes.CheckSelect(5, 5);
             double initialX1 = _shapes.GetSelectedShape().Point1.X;
             double initialY1 = _shapes.GetSelectedShape().Point1.Y;
@@ -110,11 +100,13 @@ namespace Homework.Model.Tests
 
         // test delete selected shape
         [TestMethod()]
-        public void DeleteSelectedShapeTest()
+        public void ClearSelectedShapeTest()
         {
-            _shapes.AddNewShapeByDrawing(Constant.Constant.LINE, new Point(0, 0), new Point(10, 10));
+            _shapes.InsertShapeByIndex(new Line(new Point(0, 0), new Point(10, 10)), 0);
             _shapes.CheckSelect(5, 5);
-            _shapes.DeleteSelectedShape();
+            _shapes.ClearSelectedShape();
+            Assert.IsNull(_shapes.GetSelectedShape());
+            _shapes.DeleteShapeByIndex(0);
             Assert.AreEqual(0, _shapes.ShapeList.Count);
         }
 
@@ -126,7 +118,7 @@ namespace Homework.Model.Tests
             _shapes.ResizeSelectedShape(Shape.Location.RightBottom, new Point(15, 15));
             Assert.IsNull(_shapes.GetSelectedShape());
             // selected shape not null
-            _shapes.AddNewShapeByDrawing(Constant.Constant.ELLIPSE, new Point(0, 0), new Point(10, 10));
+            _shapes.InsertShapeByIndex(new Ellipse(new Point(0, 0), new Point(10, 10)), 0);
             _shapes.CheckSelect(5, 5);
             _shapes.ResizeSelectedShape(Shape.Location.RightBottom, new Point(15, 15));
             Assert.AreEqual(0, _shapes.GetSelectedShape().Point1.X);
@@ -134,7 +126,7 @@ namespace Homework.Model.Tests
             Assert.AreEqual(15, _shapes.GetSelectedShape().Point2.X);
             Assert.AreEqual(15, _shapes.GetSelectedShape().Point2.Y);
             // clean
-            _shapes.DeleteSelectedShape();
+            _shapes.ClearSelectedShape();
         }
 
         // test cancel resize
@@ -145,50 +137,50 @@ namespace Homework.Model.Tests
             _shapes.CancelResize();
             Assert.IsNull(_shapes.GetSelectedShape());
             // selected shape not null
-            _shapes.AddNewShapeByDrawing(Constant.Constant.ELLIPSE, new Point(0, 0), new Point(10, 10));
+            _shapes.InsertShapeByIndex(new Ellipse(new Point(0, 0), new Point(10, 10)), 0);
             _shapes.CheckSelect(5, 5);
             _shapes.ResizeSelectedShape(Shape.Location.RightBottom, new Point(15, 15));
             Assert.IsTrue(_shapes.GetSelectedShape().IsResizing);
             _shapes.CancelResize();
             Assert.IsFalse(_shapes.GetSelectedShape().IsResizing);
             // clean
-            _shapes.DeleteSelectedShape();
+            _shapes.ClearSelectedShape();
         }
 
         // test get selected shape location
         [TestMethod()]
         public void GetSelectedShapeLocationTest()
         {
-            _shapes.AddNewShapeByDrawing(Constant.Constant.ELLIPSE, new Point(0, 0), new Point(10, 10));
+            _shapes.InsertShapeByIndex(new Ellipse(new Point(0, 0), new Point(10, 10)), 0);
             _shapes.CheckSelect(5, 5);
             Assert.AreEqual(Shape.Location.Right, _shapes.GetSelectedShapeLocation(7, 7));
             Assert.AreEqual(Shape.Location.None, _shapes.GetSelectedShapeLocation(20, 20));
             // clean
-            _shapes.DeleteSelectedShape();
+            _shapes.ClearSelectedShape();
         }
 
         // test set selected shape is first point bottom
         [TestMethod()]
         public void SetSelectedShapeIsFirstPointBottomWithFalseTest()
         {
-            _shapes.AddNewShapeByDrawing(Constant.Constant.LINE, new Point(0, 0), new Point(10, 10));
+            _shapes.InsertShapeByIndex(new Line(new Point(0, 0), new Point(10, 10)), 0);
             _shapes.CheckSelect(5, 5);
             _shapes.SetSelectedShapeIsFirstPointBottom();
             Assert.IsFalse(_shapes.GetSelectedShape().IsFirstPointBottom);
             //clean
-            _shapes.DeleteSelectedShape();
+            _shapes.ClearSelectedShape();
         }
 
         // test set selected shape is first point bottom
         [TestMethod()]
         public void SetSelectedShapeIsFirstPointBottomWithTrueTest()
         {
-            _shapes.AddNewShapeByDrawing(Constant.Constant.LINE, new Point(11, 20), new Point(20, 11));
+            _shapes.InsertShapeByIndex(new Line(new Point(11, 20), new Point(20, 11)), 0);
             _shapes.CheckSelect(15, 15);
             _shapes.SetSelectedShapeIsFirstPointBottom();
             Assert.IsTrue(_shapes.GetSelectedShape().IsFirstPointBottom);
             //clean
-            _shapes.DeleteSelectedShape();
+            _shapes.ClearSelectedShape();
         }
     }
 }

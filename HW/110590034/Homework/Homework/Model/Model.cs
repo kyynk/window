@@ -220,20 +220,22 @@ namespace Homework.Model
         }
 
         //undo
-        public void Undo()
+        public virtual void Undo()
         {
-            _commandManager.Undo();
+            if (IsUndoEnabled)
+                _commandManager.Undo();
             NotifyModelChanged();
         }
 
         // redo
-        public void Redo()
+        public virtual void Redo()
         {
-            _commandManager.Redo();
+            if (IsRedoEnabled)
+                _commandManager.Redo();
             NotifyModelChanged();
         }
 
-        public bool IsUndoEnabled
+        public virtual bool IsUndoEnabled
         {
             get
             {
@@ -241,7 +243,7 @@ namespace Homework.Model
             }
         }
 
-        public bool IsRedoEnabled
+        public virtual bool IsRedoEnabled
         {
             get
             {
@@ -250,14 +252,14 @@ namespace Homework.Model
         }
 
         // insert shape
-        public void InsertShape(Shape shape, int index)
+        public virtual void InsertShape(Shape shape, int index)
         {
             _shapesData.InsertShapeByIndex(shape, index);
             NotifyModelChanged();
         }
 
         // add new shape to shapes
-        public void Create(string shapeType)
+        public virtual void Create(string shapeType)
         {
             Shape shape = _shapeFactory.CreateShape(shapeType);
             //_shapesData.AddNewShape(shape);
@@ -272,14 +274,14 @@ namespace Homework.Model
         }
 
         // delete selected shape from _shapes
-        public void DeleteShape(int index)
+        public virtual void DeleteShape(int index)
         {
             _shapesData.DeleteShapeByIndex(index);
             NotifyModelChanged();
         }
 
         // delete selected shape from _shapes
-        public void Delete(int index)
+        public virtual void Delete(int index)
         {
             //_shapesData.DeleteShapeByIndex(index);
             _commandManager.Execute(new DeleteCommand(this, _shapesData.ShapeList[index], index));
@@ -308,7 +310,7 @@ namespace Homework.Model
             if (keyCode == Keys.Delete && GetSelectedShape() != null)
             {
                 _commandManager.Execute(new DeleteCommand(this, GetSelectedShape(), GetShapeIndex(GetSelectedShape())));
-                _shapesData.DeleteSelectedShape();
+                _shapesData.ClearSelectedShape();
             }
             NotifyModelChanged();
         }

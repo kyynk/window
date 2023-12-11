@@ -22,10 +22,10 @@ namespace Homework.Model
             }
         }
 
-        // add new shape to _shapes
-        public void AddNewShape(Shape shape)
+        // insert shape by index
+        public void InsertShapeByIndex(Shape shape, int index)
         {
-            _shapeList.Add(shape);
+            _shapeList.Insert(index, shape);
         }
 
         // delete selected shape from _shapes
@@ -70,7 +70,7 @@ namespace Homework.Model
         }
 
         // delete select shape
-        public void DeleteSelectedShape()
+        public void ClearSelectedShape()
         {
             //_shapeList.Remove(_selectedShape);
             _selectedShape = null;
@@ -104,12 +104,6 @@ namespace Homework.Model
         public void SetSelectedShapeIsFirstPointBottom()
         {
             _selectedShape.SetFirstPointBottom();
-        }
-
-        // insert shape by index
-        public void InsertShapeByIndex(Shape shape, int index)
-        {
-            _shapeList.Insert(index, shape);
         }
     }
 }

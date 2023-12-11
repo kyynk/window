@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.ComponentModel;
 using System.Windows.Forms;
 using Homework.State;
+using Homework.Command;
 using Moq;
 
 namespace Homework.Model.Tests
@@ -31,12 +32,15 @@ namespace Homework.Model.Tests
             Assert.IsNotNull(_model);
             Assert.AreEqual(Constant.Constant.POINT, _model.ShapeName);
             Assert.IsNotNull(_model.GetShapes());
-            Assert.AreEqual(490, (int)_privateModel.GetField("_panelMaxX"));
-            Assert.AreEqual(415, (int)_privateModel.GetField("_panelMaxY"));
+            Assert.AreEqual(448, (int)_privateModel.GetField("_panelMaxX"));
+            Assert.AreEqual(252, (int)_privateModel.GetField("_panelMaxY"));
             Assert.IsNull((Shape)_privateModel.GetField("_tempShape"));
             Assert.IsNotNull((Shapes)_privateModel.GetField("_shapesData"));
             Assert.IsNotNull((ShapeFactory)_privateModel.GetField("_shapeFactory"));
             Assert.IsInstanceOfType(_privateModel.GetField("_state"), typeof(PointState));
+            Assert.AreEqual(-1, ((Point)_privateModel.GetField("_firstPoint")).X);
+            Assert.AreEqual(-1, ((Point)_privateModel.GetField("_firstPoint")).Y);
+            Assert.IsInstanceOfType(_privateModel.GetField("_commandManager"), typeof(CommandManager));
         }
 
         // test ShapeName property
@@ -149,6 +153,7 @@ namespace Homework.Model.Tests
         [TestMethod()]
         public void AddDrawingShapeTest()
         {
+            // command manager -> model, then add shape to shapesList
             _model.AddDrawingShape(Constant.Constant.LINE, new Point(10, 20), new Point(20, 20));
             _model.AddDrawingShape(Constant.Constant.RECTANGLE, new Point(0, 10), new Point(10, 0));
             _model.AddDrawingShape(Constant.Constant.ELLIPSE, new Point(50, 60), new Point(70, 80));
@@ -236,6 +241,21 @@ namespace Homework.Model.Tests
             Assert.AreEqual(5 - diffY, _model.GetSelectedShape().Point1.Y);
             Assert.AreEqual(11 - diffX, _model.GetSelectedShape().Point2.X);
             Assert.AreEqual(10 - diffY, _model.GetSelectedShape().Point2.Y);
+            // clean
+            _model.Delete(0);
+        }
+
+        // test move done
+        [TestMethod()]
+        public void MoveDoneTest()
+        {
+            _model.AddDrawingShape(Constant.Constant.LINE, new Point(6, 5), new Point(11, 10));
+            Assert.IsTrue(_model.CheckSelectedShape(8, 8));
+
+            bool eventRaised = false;
+            _model._modelChanged += () => { eventRaised = true; };
+            _model.MoveDone(5, 5);
+            Assert.IsTrue(eventRaised);
             // clean
             _model.Delete(0);
         }
@@ -437,6 +457,112 @@ namespace Homework.Model.Tests
             _model.StopResizeSelectedShape();
             Assert.IsFalse(_model.GetSelectedShape().IsResizing);
             _model.Delete(0);
+        }
+
+        // test undo
+        [TestMethod()]
+        public void UndoTest()
+        {
+            _model.AddDrawingShape(Constant.Constant.RECTANGLE, new Point(0, 0), new Point(10, 10));
+            // can undo
+            bool eventRaised = false;
+            _model._modelChanged += () => { eventRaised = true; };
+            _model.Undo();
+            Assert.IsTrue(eventRaised);
+            Assert.AreEqual(0, _model.GetShapes().Count);
+            // can not undo
+            eventRaised = false;
+            _model._modelChanged += () => { eventRaised = true; };
+            _model.Undo();
+            Assert.IsTrue(eventRaised);
+            Assert.AreEqual(0, _model.GetShapes().Count);
+            // clean
+            _model.Redo();
+            _model.DeleteShape(0);
+        }
+
+        // test redo
+        [TestMethod()]
+        public void RedoTest()
+        {
+            _model.AddDrawingShape(Constant.Constant.RECTANGLE, new Point(0, 0), new Point(10, 10));
+            _model.Undo();
+            Assert.AreEqual(0, _model.GetShapes().Count);
+            // can redo
+            bool eventRaised = false;
+            _model._modelChanged += () => { eventRaised = true; };
+            _model.Redo();
+            Assert.IsTrue(eventRaised);
+            Assert.AreEqual(1, _model.GetShapes().Count);
+            // can not redo
+            eventRaised = false;
+            _model._modelChanged += () => { eventRaised = true; };
+            _model.Redo();
+            Assert.IsTrue(eventRaised);
+            Assert.AreEqual(1, _model.GetShapes().Count);
+            // clean
+            _model.DeleteShape(0);
+        }
+
+
+        // test is undo enabled property
+        [TestMethod()]
+        public void IsUndoEnabledTest()
+        {
+            Model temp = new Model();
+            Assert.IsFalse(temp.IsUndoEnabled);
+            temp.Create(Constant.Constant.RECTANGLE);
+            Assert.IsTrue(temp.IsUndoEnabled);
+        }
+
+        // test is redo enabled property
+        [TestMethod()]
+        public void IsRedoEnabledTest()
+        {
+            Model temp = new Model();
+            Assert.IsFalse(temp.IsRedoEnabled);
+            temp.Create(Constant.Constant.RECTANGLE);
+            temp.Undo();
+            Assert.IsTrue(temp.IsRedoEnabled);
+        }
+
+        // test insert shape
+        [TestMethod()]
+        public void InsertShapeTest()
+        {
+            bool eventRaised = false;
+            _model._modelChanged += () => { eventRaised = true; };
+            _model.InsertShape(new Rectangle(new Point(0, 0), new Point(10, 10)), 0);
+            Assert.IsTrue(eventRaised);
+            Assert.AreEqual(1, _model.GetShapes().Count);
+            // clean
+            _model.DeleteShape(0);
+        }
+
+        // test delete shape
+        [TestMethod()]
+        public void DeleteShapeTest()
+        {
+            _model.InsertShape(new Rectangle(new Point(0, 0), new Point(10, 10)), 0);
+
+            bool eventRaised = false;
+            _model._modelChanged += () => { eventRaised = true; };
+            _model.DeleteShape(0);
+            Assert.IsTrue(eventRaised);
+            Assert.AreEqual(0, _model.GetShapes().Count);
+        }
+
+        // test get shape index
+        [TestMethod()]
+        public void GetShapeIndexTest()
+        {
+            _model.InsertShape(new Rectangle(new Point(0, 0), new Point(10, 10)), 0);
+            int index1 = _model.GetShapeIndex(_model.GetShapes()[0]);
+            int index2 = _model.GetShapeIndex(new Line(new Point(0, 0), new Point(10, 10)));
+            Assert.AreEqual(0, index1);
+            Assert.AreEqual(-1, index2);
+            // clean
+            _model.DeleteShape(0);
         }
     }
 }

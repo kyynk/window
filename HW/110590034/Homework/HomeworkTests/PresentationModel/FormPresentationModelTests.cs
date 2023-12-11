@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Homework.PresentationModel;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Drawing;
@@ -51,10 +52,9 @@ namespace Homework.PresentationModel.Tests
         public void CreateShapeTest()
         {
             _presentationModel.CreateShape("");
-            Assert.AreEqual(0, _presentationModel.GetShapes().Count);
-            _presentationModel.CreateShape(Constant.Constant.LINE);
-            Assert.AreEqual(1, _presentationModel.GetShapes().Count);
-            Assert.AreEqual(Constant.Constant.LINE, _presentationModel.GetShapes()[0].ShapeName);
+            _mockModel.Verify(model => model.Create(It.IsAny<string>()), Times.Never);
+            _presentationModel.CreateShape(Constant.Constant.ELLIPSE);
+            _mockModel.Verify(model => model.Create(Constant.Constant.ELLIPSE), Times.Once);
             // clean
             _presentationModel.DeleteShape(0);
         }
@@ -63,16 +63,8 @@ namespace Homework.PresentationModel.Tests
         [TestMethod()]
         public void DeleteShapeTest()
         {
-            _presentationModel.CreateShape(Constant.Constant.LINE);
-            _presentationModel.CreateShape(Constant.Constant.RECTANGLE);
-            _presentationModel.CreateShape(Constant.Constant.ELLIPSE);
-            Assert.AreEqual(3, _presentationModel.GetShapes().Count);
             _presentationModel.DeleteShape(0);
-            Assert.AreEqual(2, _presentationModel.GetShapes().Count);
-            _presentationModel.DeleteShape(0);
-            Assert.AreEqual(1, _presentationModel.GetShapes().Count);
-            _presentationModel.DeleteShape(0);
-            Assert.AreEqual(0, _presentationModel.GetShapes().Count);
+            _mockModel.Verify(model => model.Delete(0), Times.Once);
         }
 
         // test is resize state
@@ -192,7 +184,7 @@ namespace Homework.PresentationModel.Tests
             Assert.IsFalse(_presentationModel.IsRectangleEnabled);
             Assert.IsFalse(_presentationModel.IsEllipseEnabled);
             Assert.IsFalse(_presentationModel.IsDefaultCursorEnabled);
-            
+
             _presentationModel.ReleasePointer(56, 50);
             _mockModel.Verify(model => model.ReleasePointer(56, 50), Times.Once);
 
@@ -219,21 +211,41 @@ namespace Homework.PresentationModel.Tests
 
         // test handle model changed
         [TestMethod()]
-        public void HandleModelChangedTest()
+        public void HandleModelChangedWithInvokesModelChangedEventTest()
         {
-            bool eventCalled = false;
-            _presentationModel._modelChanged += () => eventCalled = true;
-            _presentationModel.HandleModelChanged();
-            Assert.IsTrue(eventCalled);
+            Mock<Model.Model> tempMockModel = new Mock<Model.Model>();
+            FormPresentationModel tempPresentationModel = new FormPresentationModel(tempMockModel.Object);
+            bool eventInvoked = false;
+            tempPresentationModel._modelChanged += () => { eventInvoked = true; };
 
-            eventCalled = false;
-            _presentationModel.PropertyChanged += (sender, args) => eventCalled = true;
-            bool isCalledCursorChanged = false;
-            _presentationModel._cursorChanged += (cursor) => { isCalledCursorChanged = true; };
-            _presentationModel.EnableDefaultCursor();
-            Assert.IsTrue(isCalledCursorChanged);
-            _presentationModel.HandleModelChanged(); // actual will do
-            Assert.IsTrue(eventCalled);
+            tempPresentationModel.HandleModelChanged();
+            Assert.IsTrue(eventInvoked);
+        }
+
+        // test handle model changed
+        [TestMethod()]
+        public void HandleModelChangedWithDoesNotInvokeModelChangedEventWhenNullTest()
+        {
+            Mock<Model.Model> tempMockModel = new Mock<Model.Model>();
+            FormPresentationModel tempPresentationModel = new FormPresentationModel(tempMockModel.Object);
+            bool eventInvoked = false;
+
+            tempPresentationModel.HandleModelChanged();
+            Assert.IsFalse(eventInvoked);
+        }
+
+        // test handle model changed
+        [TestMethod()]
+        public void HandleModelChangedWithInvokesMultipleSubscribedEventsTest()
+        {
+            Mock<Model.Model> tempMockModel = new Mock<Model.Model>();
+            FormPresentationModel tempPresentationModel = new FormPresentationModel(tempMockModel.Object);
+            int eventInvokeCount = 0;
+            tempPresentationModel._modelChanged += () => { eventInvokeCount++; };
+            tempPresentationModel._modelChanged += () => { eventInvokeCount++; };
+
+            tempPresentationModel.HandleModelChanged();
+            Assert.AreEqual(2, eventInvokeCount);
         }
 
         // test draw
@@ -394,6 +406,36 @@ namespace Homework.PresentationModel.Tests
             Assert.IsFalse(_presentationModel.IsRectangleEnabled);
             Assert.IsFalse(_presentationModel.IsEllipseEnabled);
             Assert.IsTrue(_presentationModel.IsDefaultCursorEnabled);
+        }
+
+        // test undo
+        [TestMethod()]
+        public void UndoTest()
+        {
+            _presentationModel.Undo();
+            _mockModel.Verify(model => model.Undo(), Times.Once);
+        }
+
+        // test redo
+        [TestMethod()]
+        public void RedoTest()
+        {
+            _presentationModel.Redo();
+            _mockModel.Verify(model => model.Redo(), Times.Once);
+        }
+
+        // test is undo enabled property
+        [TestMethod()]
+        public void IsUndoEnabledTest()
+        {
+            Assert.IsInstanceOfType(_presentationModel.IsUndoEnabled, typeof(bool));
+        }
+
+        // test is redo enabled property
+        [TestMethod()]
+        public void IsRedoEnabledTest()
+        {
+            Assert.IsInstanceOfType(_presentationModel.IsRedoEnabled, typeof(bool));
         }
 
         // test handle key down

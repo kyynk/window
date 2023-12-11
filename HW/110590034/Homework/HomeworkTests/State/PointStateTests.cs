@@ -98,7 +98,15 @@ namespace Homework.State.Tests
             // select
             _pointState.IsSelected = true;
             _pointState.MouseUp(new Point(5, 5), Constant.Constant.NONE);
+            _mockModel.Verify(model => model.MoveDone(5, 5), Times.Once);
             Assert.IsFalse(_pointState.IsSelected);
+
+            // not select
+            _pointState.IsSelected = false;
+            _pointState.MouseUp(new Point(11, 11), Constant.Constant.NONE);
+            _mockModel.Verify(model => model.MoveDone(11, 11), Times.Never);
+            Assert.IsFalse(_pointState.IsSelected);
+
         }
 
         // test drawing

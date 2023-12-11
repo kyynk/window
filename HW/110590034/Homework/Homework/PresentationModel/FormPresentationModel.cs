@@ -223,15 +223,13 @@ namespace Homework.PresentationModel
         // undo
         public void Undo()
         {
-            if (IsUndoEnabled)
-                _model.Undo();
+            _model.Undo();
         }
 
         // redo
         public void Redo()
         {
-            if (IsRedoEnabled)
-                _model.Redo();
+            _model.Redo();
         }
 
         // handle key down
