@@ -348,27 +348,27 @@
               <AnalysisFile>
                 <RelativePath>Command\AddCommandTests.cs</RelativePath>
                 <ProjectName>HomeworkTests</ProjectName>
-                <AnalysisFileType>Unknown</AnalysisFileType>
+                <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Command\CommandManagerTests.cs</RelativePath>
                 <ProjectName>HomeworkTests</ProjectName>
-                <AnalysisFileType>Unknown</AnalysisFileType>
+                <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Command\DeleteCommandTests.cs</RelativePath>
                 <ProjectName>HomeworkTests</ProjectName>
-                <AnalysisFileType>Unknown</AnalysisFileType>
+                <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Command\DrawCommandTests.cs</RelativePath>
                 <ProjectName>HomeworkTests</ProjectName>
-                <AnalysisFileType>Unknown</AnalysisFileType>
+                <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Command\MoveCommandTests.cs</RelativePath>
                 <ProjectName>HomeworkTests</ProjectName>
-                <AnalysisFileType>Unknown</AnalysisFileType>
+                <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Model\EllipseTests.cs</RelativePath>
@@ -442,8 +442,8 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>2691</ProductionLoc>
-          <TestLoc>1985</TestLoc>
+          <ProductionLoc>2692</ProductionLoc>
+          <TestLoc>2460</TestLoc>
         </CodeReview>
       </Data>
     </div>

@@ -42,18 +42,25 @@ namespace Homework.View
             KeyPreview = true;
             // initialize
             UpdateUndoRedo();
+            InitializeCanvasSize();
+            _splitContainer1.Panel1.SizeChanged += ChangeLeftPanelSize;
+            _splitContainer2.Panel1.SizeChanged += ChangeMiddlePanelSize;
+        }
+
+        // initialize canva size
+        public void InitializeCanvasSize()
+        {
             _canvas1.Width = Constant.Constant.DEFAULT_MAX_BUTTON_X;
             _canvas1.Height = Constant.Constant.DEFAULT_MAX_BUTTON_Y;
             _canvas.Width = Constant.Constant.DEFAULT_MAX_PANEL_X;
             _canvas.Height = Constant.Constant.DEFAULT_MAX_PANEL_Y;
-            Console.WriteLine("location");
-            Console.WriteLine("btn x " + _canvas1.Location.X + " btn y " + _canvas1.Location.Y);
-            Console.WriteLine("pnl x " + _canvas.Location.X + " pnl y " + _canvas.Location.Y);
-            Console.WriteLine("btn)) x " + (_canvas1.Location.X + _canvas1.Width) + " pnl111 x " + _splitContainer1.Panel1.Width);
-            Console.WriteLine("spliter x " + _splitContainer1.SplitterWidth + " ??? x " + (_splitContainer1.Panel1.Width - _splitContainer1.SplitterWidth));
-
-            _splitContainer1.Panel1.SizeChanged += ChangeLeftPanelSize;
-            _splitContainer2.Panel1.SizeChanged += ChangeMiddlePanelSize;
+            //Console.WriteLine("location");
+            //Console.WriteLine("btn x " + _canvas1.Location.X + " btn y " + _canvas1.Location.Y);
+            //Console.WriteLine("btn)) x " + (_canvas1.Location.X + _canvas1.Width) + " pnl111 x " + _splitContainer1.Panel1.Width);
+            //Console.WriteLine("spliter x " + _splitContainer1.SplitterWidth);
+            //Console.WriteLine("pnl x " + _canvas.Location.X + " pnl y " + _canvas.Location.Y);
+            //Console.WriteLine("pnl)) x " + (_canvas.Location.X + _canvas.Width) + " pnl222 x " + _splitContainer2.Panel1.Width);
+            //Console.WriteLine("spliter x " + _splitContainer1.SplitterWidth + " ???2 x " + (_splitContainer2.Panel1.Width - _splitContainer2.SplitterWidth));
         }
 
         // button size change

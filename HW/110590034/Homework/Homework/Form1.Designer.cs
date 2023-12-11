@@ -74,7 +74,7 @@
             this._groupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._groupBox.Name = "_groupBox";
             this._groupBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this._groupBox.Size = new System.Drawing.Size(245, 554);
+            this._groupBox.Size = new System.Drawing.Size(247, 554);
             this._groupBox.TabIndex = 0;
             this._groupBox.TabStop = false;
             this._groupBox.Text = "資料顯示";
@@ -97,7 +97,7 @@
             this._shapeData.RowHeadersVisible = false;
             this._shapeData.RowHeadersWidth = 51;
             this._shapeData.RowTemplate.Height = 27;
-            this._shapeData.Size = new System.Drawing.Size(239, 471);
+            this._shapeData.Size = new System.Drawing.Size(241, 471);
             this._shapeData.TabIndex = 0;
             this._shapeData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClickDeleteButton);
             // 
@@ -142,10 +142,10 @@
             this._groupBox1.Controls.Add(this._shapeTypeComboBox);
             this._groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this._groupBox1.Location = new System.Drawing.Point(3, 20);
-            this._groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this._groupBox1.Name = "_groupBox1";
-            this._groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this._groupBox1.Size = new System.Drawing.Size(239, 61);
+            this._groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this._groupBox1.Size = new System.Drawing.Size(241, 61);
             this._groupBox1.TabIndex = 2;
             this._groupBox1.TabStop = false;
             // 
@@ -265,7 +265,7 @@
             this._splitContainer2.Panel2.BackColor = System.Drawing.Color.Gainsboro;
             this._splitContainer2.Panel2.Controls.Add(this._groupBox);
             this._splitContainer2.Size = new System.Drawing.Size(1012, 554);
-            this._splitContainer2.SplitterDistance = 763;
+            this._splitContainer2.SplitterDistance = 761;
             this._splitContainer2.TabIndex = 0;
             // 
             // _canvas
