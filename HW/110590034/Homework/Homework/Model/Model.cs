@@ -250,7 +250,7 @@ namespace Homework.Model
         }
 
         // insert shape
-        public void InserShape(Shape shape, int index)
+        public void InsertShape(Shape shape, int index)
         {
             _shapesData.InsertShapeByIndex(shape, index);
             NotifyModelChanged();

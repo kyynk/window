@@ -6,6 +6,6 @@
         void Execute();
 
         // unexecute
-        void UnExecute();
+        void Undo();
     }
 }

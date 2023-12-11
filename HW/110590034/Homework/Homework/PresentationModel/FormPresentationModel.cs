@@ -7,7 +7,7 @@ using System;
 
 namespace Homework.PresentationModel
 {
-    public class FormPresentationModel : INotifyPropertyChanged
+    public partial class FormPresentationModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public event Model.Model.ModelChangedEventHandler _modelChanged;
@@ -234,125 +234,10 @@ namespace Homework.PresentationModel
                 _model.Redo();
         }
 
-        // shape name
-        public string ShapeName
-        {
-            get
-            {
-                return _model.ShapeName;
-            }
-            set
-            {
-                _model.ShapeName = value;
-            }
-        }
-
-        // for unit test
-        public Cursor UsingCursor
-        {
-            set;
-            get;
-        }
-
-        public bool IsPressed
-        {
-            set
-            {
-                _isPressed = value;
-            }
-            get
-            {
-                return _isPressed;
-            }
-        }
-
-        // is line enabled
-        public bool IsLineEnabled
-        {
-            set
-            {
-                _isLineEnabled = value;
-                NotifyPropertyChanged(Constant.Constant.IS_LINE_ENABLED);
-            }
-            get
-            {
-                return _isLineEnabled;
-            }
-        }
-
-        // is rectangle enabled
-        public bool IsRectangleEnabled
-        {
-            set
-            {
-                _isRectangleEnabled = value;
-                NotifyPropertyChanged(Constant.Constant.IS_RECTANGLE_ENABLED);
-            }
-            get
-            {
-                return _isRectangleEnabled;
-            }
-        }
-
-        // is ellipse enabled
-        public bool IsEllipseEnabled
-        {
-            set
-            {
-                _isEllipseEnabled = value;
-                NotifyPropertyChanged(Constant.Constant.IS_ELLIPSE_ENABLED);
-            }
-            get
-            {
-                return _isEllipseEnabled;
-            }
-        }
-
-        // is default cursor enabled
-        public bool IsDefaultCursorEnabled
-        {
-            set
-            {
-                _isDefaultCursorEnabled = value;
-                NotifyPropertyChanged(Constant.Constant.IS_CURSOR_ENABLED);
-            }
-            get
-            {
-                return _isDefaultCursorEnabled;
-            }
-        }
-
-        // is undo enabled
-        public bool IsUndoEnabled
-        {
-            get
-            {
-                return _model.IsUndoEnabled;
-            }
-        }
-
-        // is redo enabled
-        public bool IsRedoEnabled
-        {
-            get
-            {
-                return _model.IsRedoEnabled;
-            }
-        }
-
         // handle key down
         public void HandleKeyDown(Keys keyCode)
         {
             _model.HandleKeyDown(keyCode);
-        }
-
-        // property changed
-        public void NotifyPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
         }
     }
 }

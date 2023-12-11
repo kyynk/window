@@ -52,36 +52,27 @@ namespace Homework.View
             Console.WriteLine("btn)) x " + (_canvas1.Location.X + _canvas1.Width) + " pnl111 x " + _splitContainer1.Panel1.Width);
             Console.WriteLine("spliter x " + _splitContainer1.SplitterWidth + " ??? x " + (_splitContainer1.Panel1.Width - _splitContainer1.SplitterWidth));
 
-            _splitContainer1.Panel1.SizeChanged += LeftPanelSizeChanged;
-            _splitContainer2.Panel1.SizeChanged += MiddlePanelSizeChanged;
-            _splitContainer2.Panel2.SizeChanged += RightPanelSizeChanged;
+            _splitContainer1.Panel1.SizeChanged += ChangeLeftPanelSize;
+            _splitContainer2.Panel1.SizeChanged += ChangeMiddlePanelSize;
         }
 
         // button size change
-        private void LeftPanelSizeChanged(object sender, EventArgs e)
+        private void ChangeLeftPanelSize(object sender, EventArgs e)
         {
             int panelWidth = _splitContainer1.Panel1.Width;
-            int margin = 2;
-            _canvas1.Width = panelWidth - margin * 2;
-            _canvas1.Height = (int)((double)(_canvas1.Width) / 16.0 * 9.0);
+            _canvas1.Width = panelWidth - Constant.Constant.SLIDE_LOCATION_X * Constant.Constant.TWO;
+            _canvas1.Height = (int)((double)(_canvas1.Width) * Constant.Constant.PANEL_RATIO);
         }
 
         // panel size change
-        private void MiddlePanelSizeChanged(object sender, EventArgs e)
+        private void ChangeMiddlePanelSize(object sender, EventArgs e)
         {
             int panelWidth = _splitContainer2.Panel1.Width;
             int panelHeight = _splitContainer2.Panel1.Height;
-            int marginX = 16;
-            _canvas.Width = panelWidth - (2 * marginX);
-            _canvas.Height = (int)((double)(_canvas.Width) / 16.0 * 9.0);
+            _canvas.Width = panelWidth - (Constant.Constant.TWO * Constant.Constant.PANEL_LOCATION_X);
+            _canvas.Height = (int)((double)(_canvas.Width) * Constant.Constant.PANEL_RATIO);
 
-            _canvas.Location = new System.Drawing.Point(marginX, panelHeight / 2 - _canvas.Height / 2);
-        }
-
-        // info size change
-        private void RightPanelSizeChanged(object sender, EventArgs e)
-        {
-
+            _canvas.Location = new System.Drawing.Point(Constant.Constant.PANEL_LOCATION_X, panelHeight / Constant.Constant.TWO - _canvas.Height / Constant.Constant.TWO);
         }
 
         // handle canvas pressed

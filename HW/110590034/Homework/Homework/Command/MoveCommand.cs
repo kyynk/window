@@ -26,7 +26,7 @@ namespace Homework.Command
         }
 
         // unexcute
-        public void UnExecute()
+        public void Undo()
         {
             _shape.Move(-_offsetX, -_offsetY);
         }

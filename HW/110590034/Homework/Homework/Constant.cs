@@ -8,6 +8,7 @@
         public const string NONE = "None";
         public const string POINT = "default";
         public const int FOUR = 4;
+        public const int TWO = 2;
         // panel default
         public const int DEFAULT_MAX_PANEL_X = 448;
         public const int DEFAULT_MAX_PANEL_Y = 252;
@@ -26,5 +27,9 @@
         public const string IS_CURSOR_ENABLED = "IsDefaultCursorEnabled";
         public const string IS_UNDO_ENABLED = "IsUndoEnabled";
         public const string IS_REDO_ENABLED = "IsRedoEnabled";
+        // panel ratio
+        public const double PANEL_RATIO = 9.0 / 16.0;
+        public const int SLIDE_LOCATION_X = 2;
+        public const int PANEL_LOCATION_X = 16;
     }
 }

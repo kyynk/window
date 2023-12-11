@@ -62,7 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command\AddCommand.cs" />
-    <Compile Include="Command\ResizeCommand.cs" />
     <Compile Include="Command\MoveCommand.cs" />
     <Compile Include="Command\DeleteCommand.cs" />
     <Compile Include="Command\DrawCommand.cs" />

@@ -22,9 +22,9 @@ namespace Homework.Command
         }
 
         // unexcute
-        public void UnExecute()
+        public void Undo()
         {
-            _model.InserShape(_shape, _shapeIndex);
+            _model.InsertShape(_shape, _shapeIndex);
         }
     }
 }
