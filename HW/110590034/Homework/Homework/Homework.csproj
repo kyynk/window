@@ -138,11 +138,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resource\Redo.bmp" />
+    <Content Include="Resource\Redo2.png" />
     <Content Include="Resource\Undo.bmp" />
     <Content Include="Resource\DefaultCursor.bmp" />
     <Content Include="Resource\Ellipse.bmp" />
     <Content Include="Resource\Rectangle.bmp" />
     <Content Include="Resource\Line.bmp" />
+    <Content Include="Resource\Undo2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

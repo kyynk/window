@@ -346,6 +346,31 @@
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>Command\AddCommandTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Unknown</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Command\CommandManagerTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Unknown</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Command\DeleteCommandTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Unknown</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Command\DrawCommandTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Unknown</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Command\MoveCommandTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Unknown</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Model\EllipseTests.cs</RelativePath>
                 <ProjectName>HomeworkTests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
