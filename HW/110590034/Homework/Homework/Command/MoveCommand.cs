@@ -21,16 +21,18 @@ namespace Homework.Command
         }
 
         // execute
-        public void Execute()
+        public void Execute(double width)
         {
+            AdjustPanelWidth(width);
             if (_isNotFirstTime)
                 _shape.Move(_offsetX, _offsetY);
             _isNotFirstTime = true;
         }
 
         // unexcute
-        public void Undo()
+        public void Undo(double width)
         {
+            AdjustPanelWidth(width);
             _shape.Move(-_offsetX, -_offsetY);
         }
 
@@ -44,7 +46,7 @@ namespace Homework.Command
         public void AdjustPanelWidth(double width)
         {
             double ratio = width / _panelWidth;
-            _shape.ResizeForPanel(ratio);
+            //_shape.ResizeForPanel(ratio);
             _offsetX = Math.Round(_offsetX * ratio, 1);
             _offsetY = Math.Round(_offsetY * ratio, 1);
             StorePanelWidth(width);

@@ -19,14 +19,16 @@ namespace Homework.Command
         }
 
         // execute
-        public void Execute()
+        public void Execute(double width)
         {
+            AdjustPanelWidth(width);
             _model.InsertShape(_shape, _shapeIndex);
         }
 
         // unexcute
-        public void Undo()
+        public void Undo(double width)
         {
+            StorePanelWidth(width);
             _model.DeleteShape(_shapeIndex);
         }
 
@@ -34,15 +36,15 @@ namespace Homework.Command
         public void StorePanelWidth(double width)
         {
             _panelWidth = width;
-            Console.WriteLine("Store");
-            Console.WriteLine("width" + width + " panel width" + _panelWidth);
+            //Console.WriteLine("Store");
+            //Console.WriteLine("width" + width + " panel width" + _panelWidth);
         }
 
         // adjust panel width
         public void AdjustPanelWidth(double width)
         {
-            Console.WriteLine("Adjust");
-            Console.WriteLine("width" + width + " panel width" + _panelWidth);
+            //Console.WriteLine("Adjust");
+            //Console.WriteLine("width" + width + " panel width" + _panelWidth);
             double ratio = width / _panelWidth;
             _shape.ResizeForPanel(ratio);
             StorePanelWidth(width);

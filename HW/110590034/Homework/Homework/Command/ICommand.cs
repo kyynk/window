@@ -3,10 +3,10 @@
     public interface ICommand
     {
         // execute
-        void Execute();
+        void Execute(double width);
 
         // unexecute
-        void Undo();
+        void Undo(double width);
 
         // store panel width
         void StorePanelWidth(double width);

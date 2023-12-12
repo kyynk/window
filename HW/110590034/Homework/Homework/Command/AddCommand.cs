@@ -19,14 +19,16 @@ namespace Homework.Command
         }
 
         // execute
-        public void Execute()
+        public void Execute(double width)
         {
+            AdjustPanelWidth(width);
             _model.InsertShape(_shape, _shapeIndex);
         }
 
         // unexcute
-        public void Undo()
+        public void Undo(double width)
         {
+            StorePanelWidth(width);
             _model.DeleteShape(_shapeIndex);
         }
 
