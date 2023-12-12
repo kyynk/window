@@ -11,11 +11,13 @@ namespace Homework.Command.Tests
         private CommandManager _commandManager;
         private PrivateObject _privateCommandManager;
         private Mock<ICommand> _mockCommand;
+        private double _width;
 
         // setup
         [TestInitialize()]
         public void Initialize()
         {
+            _width = 500;
             _mockCommand = new Mock<ICommand>();
             _commandManager = new CommandManager();
             _privateCommandManager = new PrivateObject(_commandManager);
@@ -38,7 +40,7 @@ namespace Homework.Command.Tests
         [TestMethod()]
         public void ExecuteTest()
         {
-            _commandManager.Execute(_mockCommand.Object);
+            _commandManager.Execute(_mockCommand.Object, _width);
 
             Assert.AreEqual(1, ((Stack<ICommand>)_privateCommandManager.GetField("_undo")).Count);
             Assert.AreEqual(0, ((Stack<ICommand>)_privateCommandManager.GetField("_redo")).Count);
@@ -49,14 +51,14 @@ namespace Homework.Command.Tests
         public void UndoTest()
         {
             _mockCommand = new Mock<ICommand>();
-            _commandManager.Execute(_mockCommand.Object);
+            _commandManager.Execute(_mockCommand.Object, _width);
             // _undo.Count > 0
-            _commandManager.Undo();
+            _commandManager.Undo(_width);
             Assert.AreEqual(0, ((Stack<ICommand>)_privateCommandManager.GetField("_undo")).Count);
             Assert.AreEqual(1, ((Stack<ICommand>)_privateCommandManager.GetField("_redo")).Count);
-            _mockCommand.Verify(command => command.Undo(), Times.Once);
+            _mockCommand.Verify(command => command.Undo(_width), Times.Once);
             // _undo.Count <= 0
-            Assert.ThrowsException<Exception>(() => _commandManager.Undo());
+            Assert.ThrowsException<Exception>(() => _commandManager.Undo(_width));
         }
 
         // test redo
@@ -64,16 +66,16 @@ namespace Homework.Command.Tests
         public void RedoTest()
         {
             _mockCommand = new Mock<ICommand>();
-            _commandManager.Execute(_mockCommand.Object);
-            _commandManager.Undo();
+            _commandManager.Execute(_mockCommand.Object, _width);
+            _commandManager.Undo(_width);
             // _redo.Count > 0
             // 2 times, since execute and redo
-            _commandManager.Redo();
+            _commandManager.Redo(_width);
             Assert.AreEqual(1, ((Stack<ICommand>)_privateCommandManager.GetField("_undo")).Count);
             Assert.AreEqual(0, ((Stack<ICommand>)_privateCommandManager.GetField("_redo")).Count);
-            _mockCommand.Verify(command => command.Execute(), Times.Exactly(2));
+            _mockCommand.Verify(command => command.Execute(_width), Times.Exactly(2));
             // _redo.Count <= 0
-            Assert.ThrowsException<Exception>(() => _commandManager.Redo());
+            Assert.ThrowsException<Exception>(() => _commandManager.Redo(_width));
         }
     }
 }

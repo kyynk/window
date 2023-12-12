@@ -247,5 +247,19 @@ namespace Homework.Model.Tests
             _shape.SetFirstPointBottom();
             Assert.IsTrue(_shape.IsFirstPointBottom);
         }
+
+        // test resize for panel
+        [TestMethod()]
+        public void ResizeForPanelTest()
+        {
+            _shape = new Ellipse(new Point(10, 10), new Point(20, 20));
+            
+            _shape.ResizeForPanel(0.5);
+
+            Assert.AreEqual(5, _shape.Point1.X);
+            Assert.AreEqual(5, _shape.Point1.Y);
+            Assert.AreEqual(10, _shape.Point2.X);
+            Assert.AreEqual(10, _shape.Point2.Y);
+        }
     }
 }

@@ -39,5 +39,18 @@ namespace Homework.Model.Tests
             Assert.AreEqual(3, _point.X);
             Assert.AreEqual(5, _point.Y);
         }
+
+        // test resize point
+        [TestMethod()]
+        public void ResizePointTest()
+        {
+            double ratio = 0.5;
+            _point = new Point(100, 200);
+
+            _point.ResizePoint(ratio);
+
+            Assert.AreEqual(Math.Round(100 * ratio, 1), _point.X);
+            Assert.AreEqual(Math.Round(200 * ratio, 1), _point.Y);
+        }
     }
 }

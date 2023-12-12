@@ -269,7 +269,7 @@ namespace Homework.Model
         }
 
         // resize for panel
-        public void ResizeForPanel(double ratio)
+        public virtual void ResizeForPanel(double ratio)
         {
             _point1.ResizePoint(ratio);
             _point2.ResizePoint(ratio);

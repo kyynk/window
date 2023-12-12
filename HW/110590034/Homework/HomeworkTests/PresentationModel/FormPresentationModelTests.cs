@@ -446,6 +446,15 @@ namespace Homework.PresentationModel.Tests
             _mockModel.Verify(model => model.HandleKeyDown(Keys.Delete), Times.Once);
         }
 
+        // test set panel size
+        [TestMethod()]
+        public void SetPanelSizeTest()
+        {
+            double width = 100;
+            _presentationModel.SetPanelSize(width);
+            _mockModel.Verify(model => model.SetPanelSize(width), Times.Once);
+        }
+
         // test notify property changed
         [TestMethod()]
         public void NotifyPropertyChangedTest()

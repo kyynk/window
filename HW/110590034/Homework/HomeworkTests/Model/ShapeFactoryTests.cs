@@ -48,5 +48,16 @@ namespace Homework.Model.Tests
             Assert.IsInstanceOfType(_shapeFactory.CreateShape(Constant.Constant.ELLIPSE), typeof(Ellipse));
             Assert.ThrowsException<ArgumentException>(() => _shapeFactory.CreateShape("Triangle"));
         }
+
+        // test set range
+        [TestMethod()]
+        public void SetRangeTest()
+        {
+            double ratio = 2;
+            _shapeFactory.SetRange(ratio);
+
+            Assert.AreEqual((int)((double)Constant.Constant.DEFAULT_MAX_PANEL_X * ratio), (int)_privateFactory.GetField("_maxRangeX"));
+            Assert.AreEqual((int)((double)Constant.Constant.DEFAULT_MAX_PANEL_Y * ratio), (int)_privateFactory.GetField("_maxRangeY"));
+        }
     }
 }

@@ -564,5 +564,27 @@ namespace Homework.Model.Tests
             // clean
             _model.DeleteShape(0);
         }
+
+        // test set panel size test
+        [TestMethod()]
+        public void SetPanelSizeTest()
+        {
+            double width = 100;
+            _privateModel.SetField("_panelMaxX", 1600);
+            _privateModel.SetField("_panelMaxY", 900);
+            _model.InsertShape(new Ellipse(new Point(0, 0), new Point(16, 16)), 0);
+            bool eventRaised = false;
+            _model._modelChanged += () => { eventRaised = true; };
+
+            _model.SetPanelSize(width);
+
+            Assert.IsTrue(eventRaised);
+            Assert.AreEqual(0 * width / 1600, _model.GetShapes()[0].Point1.X);
+            Assert.AreEqual(0 * width / 1600, _model.GetShapes()[0].Point1.Y);
+            Assert.AreEqual(16 * width / 1600, _model.GetShapes()[0].Point2.X);
+            Assert.AreEqual(16 * width / 1600, _model.GetShapes()[0].Point2.Y);
+            Assert.AreEqual((int)width, _privateModel.GetField("_panelMaxX"));
+            Assert.AreEqual((int)(width * Constant.Constant.PANEL_RATIO), _privateModel.GetField("_panelMaxY"));
+        }
     }
 }
