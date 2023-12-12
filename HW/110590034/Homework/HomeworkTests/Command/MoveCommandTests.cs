@@ -46,7 +46,7 @@ namespace Homework.Command.Tests
         [TestMethod()]
         public void ExecuteTest()
         {
-            _moveCommand.StorePanelWidth(_panelWidth);
+            _moveCommand.SetPanelWidth(_panelWidth);
             // first time
             _moveCommand.Execute(1000);
             _mockShape.Verify(shape => shape.Move((double)_privateMoveCommand.GetField("_offsetX"), (double)_privateMoveCommand.GetField("_offsetY")), Times.Never);
@@ -65,7 +65,7 @@ namespace Homework.Command.Tests
         [TestMethod()]
         public void UndoTest()
         {
-            _moveCommand.StorePanelWidth(_panelWidth);
+            _moveCommand.SetPanelWidth(_panelWidth);
             _moveCommand.Undo(100);
             _mockShape.Verify(shape => shape.Move(-((double)_privateMoveCommand.GetField("_offsetX")), -((double)_privateMoveCommand.GetField("_offsetY"))), Times.Once);
             Assert.AreEqual(5 * 100 / _panelWidth, (double)_privateMoveCommand.GetField("_offsetX"));
@@ -76,7 +76,7 @@ namespace Homework.Command.Tests
         [TestMethod()]
         public void StorePanelWidthTest()
         {
-            _moveCommand.StorePanelWidth(200);
+            _moveCommand.SetPanelWidth(200);
             Assert.AreEqual(200, (double)_privateMoveCommand.GetField("_panelWidth"));
         }
 
@@ -86,7 +86,7 @@ namespace Homework.Command.Tests
         {
             _privateMoveCommand.SetField("_offsetX", 5);
             _privateMoveCommand.SetField("_offsetY", 6);
-            _moveCommand.StorePanelWidth(200);
+            _moveCommand.SetPanelWidth(200);
 
             _moveCommand.AdjustPanelWidth(100);
             Assert.AreEqual(2.5, (double)_privateMoveCommand.GetField("_offsetX"));

@@ -17,7 +17,7 @@ namespace Homework.Command
         // execute
         public void Execute(ICommand command, double width)
         {
-            command.StorePanelWidth(width);
+            command.SetPanelWidth(width);
             command.Execute(width);
             // push command 進 undo stack
             _undo.Push(command);

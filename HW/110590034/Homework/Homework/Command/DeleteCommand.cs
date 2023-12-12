@@ -20,7 +20,7 @@ namespace Homework.Command
         // execute
         public void Execute(double width)
         {
-            StorePanelWidth(width);
+            SetPanelWidth(width);
             _model.DeleteShape(_shapeIndex);
         }
 
@@ -32,7 +32,7 @@ namespace Homework.Command
         }
 
         // store panel width
-        public void StorePanelWidth(double width)
+        public void SetPanelWidth(double width)
         {
             _panelWidth = width;
         }
@@ -42,7 +42,7 @@ namespace Homework.Command
         {
             double ratio = width / _panelWidth;
             _shape.ResizeForPanel(ratio);
-            StorePanelWidth(width);
+            SetPanelWidth(width);
         }
     }
 }

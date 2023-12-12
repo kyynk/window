@@ -9,7 +9,7 @@
         void Undo(double width);
 
         // store panel width
-        void StorePanelWidth(double width);
+        void SetPanelWidth(double width);
 
         // adjust panel width
         void AdjustPanelWidth(double width);

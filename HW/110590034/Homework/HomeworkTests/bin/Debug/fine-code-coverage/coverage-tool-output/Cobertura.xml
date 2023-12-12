@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage line-rate="0.443052074631022" branch-rate="0.171947809878844" lines-covered="3182" lines-valid="7182" branches-covered="369" branches-valid="2146" complexity="2374" version="0" timestamp="1702402682">
+<coverage line-rate="0.443052074631022" branch-rate="0.171947809878844" lines-covered="3182" lines-valid="7182" branches-covered="369" branches-valid="2146" complexity="2374" version="0" timestamp="1702402862">
   <sources />
   <packages>
     <package name="Homework" line-rate="0.673881673881674" branch-rate="0.82051282051282" complexity="264">
@@ -34,7 +34,7 @@
                 <line number="33" hits="2" branch="false" />
               </lines>
             </method>
-            <method name="StorePanelWidth" signature="(System.Double)" line-rate="1" branch-rate="1" complexity="NaN">
+            <method name="SetPanelWidth" signature="(System.Double)" line-rate="1" branch-rate="1" complexity="NaN">
               <lines>
                 <line number="37" hits="32" branch="false" />
                 <line number="38" hits="32" branch="false" />
@@ -198,7 +198,7 @@
                 <line number="32" hits="1" branch="false" />
               </lines>
             </method>
-            <method name="StorePanelWidth" signature="(System.Double)" line-rate="1" branch-rate="1" complexity="NaN">
+            <method name="SetPanelWidth" signature="(System.Double)" line-rate="1" branch-rate="1" complexity="NaN">
               <lines>
                 <line number="36" hits="68" branch="false" />
                 <line number="37" hits="68" branch="false" />
@@ -270,7 +270,7 @@
                 <line number="33" hits="3" branch="false" />
               </lines>
             </method>
-            <method name="StorePanelWidth" signature="(System.Double)" line-rate="1" branch-rate="1" complexity="NaN">
+            <method name="SetPanelWidth" signature="(System.Double)" line-rate="1" branch-rate="1" complexity="NaN">
               <lines>
                 <line number="37" hits="57" branch="false" />
                 <line number="38" hits="57" branch="false" />
@@ -345,7 +345,7 @@
                 <line number="37" hits="1" branch="false" />
               </lines>
             </method>
-            <method name="StorePanelWidth" signature="(System.Double)" line-rate="1" branch-rate="1" complexity="NaN">
+            <method name="SetPanelWidth" signature="(System.Double)" line-rate="1" branch-rate="1" complexity="NaN">
               <lines>
                 <line number="41" hits="10" branch="false" />
                 <line number="42" hits="10" branch="false" />

@@ -43,7 +43,7 @@ namespace Homework.Command.Tests
         [TestMethod()]
         public void ExecuteTest()
         {
-            _addCommand.StorePanelWidth(_panelWidth);
+            _addCommand.SetPanelWidth(_panelWidth);
             _addCommand.Execute(_panelWidth);
             _mockModel.Verify(model => model.InsertShape((Shape)_privateAddCommand.GetField("_shape"), (int)_privateAddCommand.GetField("_shapeIndex")), Times.Once);
             _mockShape.Verify(shape => shape.ResizeForPanel(1), Times.Once);
@@ -54,7 +54,7 @@ namespace Homework.Command.Tests
         [TestMethod()]
         public void UndoTest()
         {
-            _addCommand.StorePanelWidth(_panelWidth);
+            _addCommand.SetPanelWidth(_panelWidth);
             _addCommand.Undo(100);
             _mockModel.Verify(model => model.DeleteShape((int)_privateAddCommand.GetField("_shapeIndex")), Times.Once);
             Assert.AreEqual(100, (double)_privateAddCommand.GetField("_panelWidth"));
@@ -64,7 +64,7 @@ namespace Homework.Command.Tests
         [TestMethod()]
         public void StorePanelWidthTest()
         {
-            _addCommand.StorePanelWidth(200);
+            _addCommand.SetPanelWidth(200);
             Assert.AreEqual(200, (double)_privateAddCommand.GetField("_panelWidth"));
         }
 
@@ -72,7 +72,7 @@ namespace Homework.Command.Tests
         [TestMethod()]
         public void AdjustPanelWidthTest()
         {
-            _addCommand.StorePanelWidth(200);
+            _addCommand.SetPanelWidth(200);
 
             _addCommand.AdjustPanelWidth(100);
             _mockShape.Verify(shape => shape.ResizeForPanel(0.5), Times.Once);
