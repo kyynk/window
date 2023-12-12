@@ -237,5 +237,11 @@ namespace Homework.PresentationModel
         {
             _model.HandleKeyDown(keyCode);
         }
+
+        // set panel size
+        public void SetPanelSize(double width)
+        {
+            _model.SetPanelSize(width);
+        }
     }
 }

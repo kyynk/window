@@ -15,9 +15,10 @@ namespace Homework.Command
         }
 
         // execute
-        public void Execute(ICommand command)
+        public void Execute(ICommand command, double width)
         {
             command.Execute();
+            command.StorePanelWidth(width);
             // push command 進 undo stack
             _undo.Push(command);
             // 清除redo stack
@@ -27,12 +28,13 @@ namespace Homework.Command
         }
 
         // undo
-        public void Undo()
+        public void Undo(double width)
         {
             const string MESSAGE = "Cannot Undo exception\n";
             if (_undo.Count <= 0)
                 throw new Exception(MESSAGE);
             ICommand command = _undo.Pop();
+            command.AdjustPanelWidth(width);
             _redo.Push(command);
             command.Undo();
             //Console.WriteLine("undo");
@@ -40,12 +42,13 @@ namespace Homework.Command
         }
 
         // redo
-        public void Redo()
+        public void Redo(double width)
         {
             const string MESSAGE = "Cannot Redo exception\n";
             if (_redo.Count <= 0)
                 throw new Exception(MESSAGE);
             ICommand command = _redo.Pop();
+            command.AdjustPanelWidth(width);
             _undo.Push(command);
             command.Execute();
             //Console.WriteLine("redo");

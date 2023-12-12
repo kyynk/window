@@ -80,6 +80,8 @@ namespace Homework.View
             _canvas.Height = (int)((double)(_canvas.Width) * Constant.Constant.PANEL_RATIO);
 
             _canvas.Location = new System.Drawing.Point(Constant.Constant.PANEL_LOCATION_X, panelHeight / Constant.Constant.TWO - _canvas.Height / Constant.Constant.TWO);
+
+            _presentationModel.SetPanelSize((double)_canvas.Width);
         }
 
         // handle canvas pressed

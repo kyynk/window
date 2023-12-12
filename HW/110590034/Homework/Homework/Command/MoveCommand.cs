@@ -1,4 +1,5 @@
 ﻿using Homework.Model;
+using System;
 
 namespace Homework.Command
 {
@@ -8,6 +9,7 @@ namespace Homework.Command
         double _offsetX;
         double _offsetY;
         bool _isNotFirstTime;
+        double _panelWidth;
 
         public MoveCommand(Shape shape, double offsetX, double offsetY)
         {
@@ -15,6 +17,7 @@ namespace Homework.Command
             _offsetX = offsetX;
             _offsetY = offsetY;
             _isNotFirstTime = false;
+            _panelWidth = -1;
         }
 
         // execute
@@ -29,6 +32,22 @@ namespace Homework.Command
         public void Undo()
         {
             _shape.Move(-_offsetX, -_offsetY);
+        }
+
+        // store panel width
+        public void StorePanelWidth(double width)
+        {
+            _panelWidth = width;
+        }
+
+        // adjust panel width
+        public void AdjustPanelWidth(double width)
+        {
+            double ratio = width / _panelWidth;
+            _shape.ResizeForPanel(ratio);
+            _offsetX = Math.Round(_offsetX * ratio, 1);
+            _offsetY = Math.Round(_offsetY * ratio, 1);
+            StorePanelWidth(width);
         }
     }
 }

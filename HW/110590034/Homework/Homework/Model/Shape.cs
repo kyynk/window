@@ -267,5 +267,12 @@ namespace Homework.Model
             double bottom = Math.Max(_point1.Y, _point2.Y);
             _isFirstPointBottom = _point1.Y == bottom;
         }
+
+        // resize for panel
+        public void ResizeForPanel(double ratio)
+        {
+            _point1.ResizePoint(ratio);
+            _point2.ResizePoint(ratio);
+        }
     }
 }

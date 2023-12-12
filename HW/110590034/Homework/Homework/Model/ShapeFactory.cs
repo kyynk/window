@@ -6,14 +6,16 @@ namespace Homework.Model
     {
         private const string ARGUMENT_WRONG = "ARGUMENT_WRONG";
         private const int MIN_X_RANGE = 0;
-        private const int MAX_X_RANGE = 448;
         private const int MIN_Y_RANGE = 0;
-        private const int MAX_Y_RANGE = 252;
+        private int _maxRangeX;
+        private int _maxRangeY;
         private readonly Random _randomNumber;
 
         public ShapeFactory()
         {
             _randomNumber = new Random();
+            _maxRangeX = Constant.Constant.DEFAULT_MAX_PANEL_X;
+            _maxRangeY = Constant.Constant.DEFAULT_MAX_PANEL_Y;
         }
 
         // add shape
@@ -40,7 +42,14 @@ namespace Homework.Model
         // create shape
         public Shape CreateShape(string shapeType)
         {
-            return AddDrawingShape(shapeType, new Point(_randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE), _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE)), new Point(_randomNumber.Next(MIN_X_RANGE, MAX_X_RANGE), _randomNumber.Next(MIN_Y_RANGE, MAX_Y_RANGE)));
+            return AddDrawingShape(shapeType, new Point(_randomNumber.Next(MIN_X_RANGE, _maxRangeX), _randomNumber.Next(MIN_Y_RANGE, _maxRangeY)), new Point(_randomNumber.Next(MIN_X_RANGE, _maxRangeX), _randomNumber.Next(MIN_Y_RANGE, _maxRangeY)));
+        }
+
+        // set range
+        public void SetRange(double ratio)
+        {
+            _maxRangeX = (int)((double)_maxRangeX * ratio);
+            _maxRangeY = (int)((double)_maxRangeY * ratio);
         }
     }
 }
