@@ -21,6 +21,12 @@ namespace Homework.Model
             Y = locationY;
         }
 
+        public Point(Point point)
+        {
+            X = point.X;
+            Y = point.Y;
+        }
+
         // resize point
         public void ResizePoint(double ratio)
         {

@@ -19,6 +19,7 @@ namespace Homework.Model
         private string _shapeName;
         private Shape.Location _selectedLocation;
         private Point _firstPoint;
+        private Point _firstPoint2;
         private CommandManager _commandManager;
 
         public Model()
@@ -32,6 +33,7 @@ namespace Homework.Model
             _panelMaxY = Constant.Constant.DEFAULT_MAX_PANEL_Y;
             _selectedLocation = Shape.Location.None;
             _firstPoint = new Point(-1, -1);
+            _firstPoint2 = new Point(-1, -1);
             _commandManager = new CommandManager();
         }
 
@@ -164,6 +166,8 @@ namespace Homework.Model
         // set is first point on bottom (line) on resize state
         public virtual void CheckBottomPoint()
         {
+            _firstPoint = new Point(GetSelectedShape().Point1);
+            _firstPoint2 = new Point(GetSelectedShape().Point2);
             _shapesData.SetSelectedShapeIsFirstPointBottom();
         }
 
@@ -200,6 +204,7 @@ namespace Homework.Model
         public virtual void StopResizeSelectedShape()
         {
             _shapesData.CancelResize();
+            _commandManager.Execute(new ResizeCommand(GetSelectedShape(), _firstPoint, _firstPoint2), _panelMaxX);
         }
 
         // check range for painting and return the value of range
