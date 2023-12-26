@@ -165,6 +165,7 @@ namespace Homework.View
         {
             Form2 CreateShapeDialog = new Form2();
             CreateShapeDialog.ShowDialog();
+            // testing...
             _presentationModel.CreateShape(_shapeTypeComboBox.Text);
             UpdateUndoRedo();
         }
