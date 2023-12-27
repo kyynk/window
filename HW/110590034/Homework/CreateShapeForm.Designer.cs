@@ -1,7 +1,7 @@
 ﻿
 namespace Homework
 {
-    partial class Form2
+    partial class CreateShapeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -33,10 +33,12 @@ namespace Homework
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this._textBoxLeft = new System.Windows.Forms.TextBox();
+            this._textBoxTop = new System.Windows.Forms.TextBox();
+            this._textBoxRight = new System.Windows.Forms.TextBox();
+            this._textBoxBottom = new System.Windows.Forms.TextBox();
+            this._okButton = new System.Windows.Forms.Button();
+            this._cancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -79,48 +81,68 @@ namespace Homework
             this.label4.TabIndex = 3;
             this.label4.Text = "右下角座標Y";
             // 
-            // textBox1
+            // _textBoxLeft
             // 
-            this.textBox1.Location = new System.Drawing.Point(135, 145);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(125, 22);
-            this.textBox1.TabIndex = 4;
+            this._textBoxLeft.Location = new System.Drawing.Point(135, 145);
+            this._textBoxLeft.Name = "_textBoxLeft";
+            this._textBoxLeft.Size = new System.Drawing.Size(125, 22);
+            this._textBoxLeft.TabIndex = 4;
             // 
-            // textBox2
+            // _textBoxTop
             // 
-            this.textBox2.Location = new System.Drawing.Point(521, 145);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(125, 22);
-            this.textBox2.TabIndex = 5;
+            this._textBoxTop.Location = new System.Drawing.Point(521, 145);
+            this._textBoxTop.Name = "_textBoxTop";
+            this._textBoxTop.Size = new System.Drawing.Size(125, 22);
+            this._textBoxTop.TabIndex = 5;
             // 
-            // textBox3
+            // _textBoxRight
             // 
-            this.textBox3.Location = new System.Drawing.Point(135, 278);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(125, 22);
-            this.textBox3.TabIndex = 6;
+            this._textBoxRight.Location = new System.Drawing.Point(135, 278);
+            this._textBoxRight.Name = "_textBoxRight";
+            this._textBoxRight.Size = new System.Drawing.Size(125, 22);
+            this._textBoxRight.TabIndex = 6;
             // 
-            // textBox4
+            // _textBoxBottom
             // 
-            this.textBox4.Location = new System.Drawing.Point(521, 278);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(125, 22);
-            this.textBox4.TabIndex = 7;
+            this._textBoxBottom.Location = new System.Drawing.Point(521, 278);
+            this._textBoxBottom.Name = "_textBoxBottom";
+            this._textBoxBottom.Size = new System.Drawing.Size(125, 22);
+            this._textBoxBottom.TabIndex = 7;
             // 
-            // Form2
+            // _okButton
+            // 
+            this._okButton.Location = new System.Drawing.Point(259, 381);
+            this._okButton.Name = "_okButton";
+            this._okButton.Size = new System.Drawing.Size(75, 23);
+            this._okButton.TabIndex = 8;
+            this._okButton.Text = "ok";
+            this._okButton.UseVisualStyleBackColor = true;
+            // 
+            // _cancelButton
+            // 
+            this._cancelButton.Location = new System.Drawing.Point(446, 381);
+            this._cancelButton.Name = "_cancelButton";
+            this._cancelButton.Size = new System.Drawing.Size(75, 23);
+            this._cancelButton.TabIndex = 9;
+            this._cancelButton.Text = "cancel";
+            this._cancelButton.UseVisualStyleBackColor = true;
+            // 
+            // CreateShapeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this._cancelButton);
+            this.Controls.Add(this._okButton);
+            this.Controls.Add(this._textBoxBottom);
+            this.Controls.Add(this._textBoxRight);
+            this.Controls.Add(this._textBoxTop);
+            this.Controls.Add(this._textBoxLeft);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form2";
+            this.Name = "CreateShapeForm";
             this.Text = "CreateShape";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -133,9 +155,11 @@ namespace Homework
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox _textBoxLeft;
+        private System.Windows.Forms.TextBox _textBoxTop;
+        private System.Windows.Forms.TextBox _textBoxRight;
+        private System.Windows.Forms.TextBox _textBoxBottom;
+        private System.Windows.Forms.Button _okButton;
+        private System.Windows.Forms.Button _cancelButton;
     }
 }

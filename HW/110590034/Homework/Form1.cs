@@ -163,7 +163,7 @@ namespace Homework.View
         // click create button
         private void ClickCreateButton(object sender, EventArgs e)
         {
-            Form2 CreateShapeDialog = new Form2();
+            CreateShapeForm CreateShapeDialog = new CreateShapeForm();
             CreateShapeDialog.ShowDialog();
             // testing...
             _presentationModel.CreateShape(_shapeTypeComboBox.Text);
