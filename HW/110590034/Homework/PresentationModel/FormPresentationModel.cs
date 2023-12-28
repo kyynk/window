@@ -40,10 +40,10 @@ namespace Homework.PresentationModel
         }
 
         // create shape
-        public void CreateShape(string shapeType)
+        public void CreateShape(string shapeType, Model.Point point1, Model.Point point2)
         {
             if (shapeType != "")
-                _model.Create(shapeType);
+                _model.Create(shapeType, point1, point2);
         }
 
         // remove shape by index

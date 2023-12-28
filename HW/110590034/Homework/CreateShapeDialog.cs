@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Homework
+namespace Homework.View
 {
-    public partial class CreateShapeForm : Form
+    public partial class CreateShapeDialog : Form
     {
         private double _left;
         private double _top;
@@ -19,21 +13,17 @@ namespace Homework
         private bool _isOk;
         private Size _canvasSize;
 
-        public CreateShapeForm()
+        public CreateShapeDialog()
         {
             InitializeComponent();
-            _left = -1;
-            _top = -1;
-            _right = -1;
-            _bottom = -1;
-            _isOk = false;
+            ResetValue();
             _canvasSize = new Size(Constant.Constant.DEFAULT_MAX_PANEL_X, Constant.Constant.DEFAULT_MAX_PANEL_Y);
 
             _leftTextBox.TextChanged += HandleTextBoxTextChanged;
             _topTextBox.TextChanged += HandleTextBoxTextChanged;
             _rightTextBox.TextChanged += HandleTextBoxTextChanged;
             _bottomTextBox.TextChanged += HandleTextBoxTextChanged;
-            _okButton.Enabled = false;
+
         }
 
         public bool IsOk
@@ -48,12 +38,14 @@ namespace Homework
         private void _okButton_Click(object sender, EventArgs e)
         {
             _isOk = true;
+            Close();
         }
 
         // click cancel button
         private void _cancelButton_Click(object sender, EventArgs e)
         {
             _isOk = false;
+            Close();
         }
 
         // handle text box text changed
@@ -72,27 +64,15 @@ namespace Homework
         }
 
         // get left
-        public double GetLeft()
+        public Model.Point GetLeftTop()
         {
-            return _left;
-        }
-
-        // get top
-        public double GetTop()
-        {
-            return _top;
+            return new Model.Point(_left, _top);
         }
 
         // get right
-        public double GetRight()
+        public Model.Point GetRightBottom()
         {
-            return _right;
-        }
-
-        // get bottom
-        public double GetBottom()
-        {
-            return _bottom;
+            return new Model.Point(_right, _bottom);
         }
 
         // set size
@@ -111,6 +91,21 @@ namespace Homework
         public bool IsYInRange(double pointY)
         {
             return (pointY >= 0 && pointY <= _canvasSize.Height);
+        }
+
+        // reset value
+        public void ResetValue()
+        {
+            _leftTextBox.Text = "";
+            _topTextBox.Text = "";
+            _rightTextBox.Text = "";
+            _bottomTextBox.Text = "";
+            _left = -1;
+            _top = -1;
+            _right = -1;
+            _bottom = -1;
+            _isOk = false;
+            _okButton.Enabled = false;
         }
     }
 }

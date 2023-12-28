@@ -7,6 +7,7 @@ namespace Homework.View
     public partial class Form1 : Form
     {
         private readonly FormPresentationModel _presentationModel;
+        private CreateShapeDialog _createShapeDialog;
 
         public Form1(FormPresentationModel presentationModel)
         {
@@ -40,6 +41,8 @@ namespace Homework.View
             // keyboard
             KeyDown += HandleKeyDown;
             KeyPreview = true;
+            // create shape dialog
+            _createShapeDialog = new CreateShapeDialog();
             // initialize
             UpdateUndoRedo();
             InitializeCanvasSize();
@@ -163,10 +166,17 @@ namespace Homework.View
         // click create button
         private void ClickCreateButton(object sender, EventArgs e)
         {
-            CreateShapeForm CreateShapeDialog = new CreateShapeForm();
-            CreateShapeDialog.ShowDialog();
+            if (_shapeTypeComboBox.Text != "")
+            {
+                _createShapeDialog.ResetValue();
+                _createShapeDialog.SetCavasSize(_canvas.Size);
+                _createShapeDialog.ShowDialog();
+                if (_createShapeDialog.IsOk)
+                {
+                    _presentationModel.CreateShape(_shapeTypeComboBox.Text, _createShapeDialog.GetLeftTop(), _createShapeDialog.GetRightBottom());
+                }
+            }
             // testing...
-            _presentationModel.CreateShape(_shapeTypeComboBox.Text);
             UpdateUndoRedo();
         }
 

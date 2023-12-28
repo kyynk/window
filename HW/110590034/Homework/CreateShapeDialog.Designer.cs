@@ -1,7 +1,7 @@
 ﻿
-namespace Homework
+namespace Homework.View
 {
-    partial class CreateShapeForm
+    partial class CreateShapeDialog
     {
         /// <summary>
         /// Required designer variable.

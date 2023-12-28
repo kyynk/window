@@ -99,7 +99,7 @@ namespace Homework.Model
         // create drawing shape
         public virtual void CreateDrawingShape(string shapeType, Point firstPoint)
         {
-            _tempShape = _shapeFactory.AddDrawingShape(shapeType, firstPoint, firstPoint);
+            _tempShape = _shapeFactory.CreateShape(shapeType, firstPoint, firstPoint);
         }
 
         // move drawing shape
@@ -111,7 +111,7 @@ namespace Homework.Model
         // add drawing shape
         public virtual void AddDrawingShape(string shapeName, Point point1, Point point2)
         {
-            Shape shape = _shapeFactory.AddDrawingShape(shapeName, point1, point2);
+            Shape shape = _shapeFactory.CreateShape(shapeName, point1, point2);
             //_shapesData.AddNewShape(shape);
             _commandManager.Execute(new DrawCommand(this, shape, _shapesData.ShapeList.Count), _panelMaxX);
             //NotifyModelChanged();
@@ -264,9 +264,9 @@ namespace Homework.Model
         }
 
         // add new shape to shapes
-        public virtual void Create(string shapeType)
+        public virtual void Create(string shapeType, Point point1, Point point2)
         {
-            Shape shape = _shapeFactory.CreateShape(shapeType);
+            Shape shape = _shapeFactory.CreateShape(shapeType, point1, point2);
             //_shapesData.AddNewShape(shape);
             _commandManager.Execute(new AddCommand(this, shape, _shapesData.ShapeList.Count), _panelMaxX);
             //NotifyModelChanged();

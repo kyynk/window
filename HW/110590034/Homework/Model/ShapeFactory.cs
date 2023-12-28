@@ -19,7 +19,7 @@ namespace Homework.Model
         }
 
         // add shape
-        public virtual Shape AddDrawingShape(string shapeType, Point point1, Point point2)
+        public virtual Shape CreateShape(string shapeType, Point point1, Point point2)
         {
             if (shapeType == Constant.Constant.LINE)
             {
@@ -39,11 +39,11 @@ namespace Homework.Model
             }
         }
 
-        // create shape
-        public Shape CreateShape(string shapeType)
-        {
-            return AddDrawingShape(shapeType, new Point(_randomNumber.Next(MIN_X_RANGE, _maxRangeX), _randomNumber.Next(MIN_Y_RANGE, _maxRangeY)), new Point(_randomNumber.Next(MIN_X_RANGE, _maxRangeX), _randomNumber.Next(MIN_Y_RANGE, _maxRangeY)));
-        }
+        //// create shape
+        //public Shape CreateShape(string shapeType)
+        //{
+        //    return CreateShape(shapeType, new Point(_randomNumber.Next(MIN_X_RANGE, _maxRangeX), _randomNumber.Next(MIN_Y_RANGE, _maxRangeY)), new Point(_randomNumber.Next(MIN_X_RANGE, _maxRangeX), _randomNumber.Next(MIN_Y_RANGE, _maxRangeY)));
+        //}
 
         // set range
         public void SetRange(double ratio)

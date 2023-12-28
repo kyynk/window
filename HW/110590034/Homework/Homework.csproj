@@ -69,11 +69,11 @@
     <Compile Include="Command\CommandManager.cs" />
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Constant.cs" />
-    <Compile Include="CreateShapeForm.cs">
+    <Compile Include="CreateShapeDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateShapeForm.Designer.cs">
-      <DependentUpon>CreateShapeForm.cs</DependentUpon>
+    <Compile Include="CreateShapeDialog.Designer.cs">
+      <DependentUpon>CreateShapeDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="PresentationModel\FormPresentationModelPartial.cs" />
     <Compile Include="State\ResizeState.cs" />
@@ -108,8 +108,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateShapeForm.resx">
-      <DependentUpon>CreateShapeForm.cs</DependentUpon>
+    <EmbeddedResource Include="CreateShapeDialog.resx">
+      <DependentUpon>CreateShapeDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
