@@ -105,5 +105,14 @@ namespace Homework.Model
         {
             _selectedShape.SetFirstPointBottom();
         }
+
+        // resize for panel
+        public void ResizeForPanel(double ratio)
+        {
+            foreach (Shape shape in _shapeList)
+            {
+                shape.ResizeForPanel(ratio);
+            }
+        }
     }
 }

@@ -6,7 +6,7 @@ using Homework.Command;
 
 namespace Homework.Model
 {
-    public class Model
+    public partial class Model
     {
         public event ModelChangedEventHandler _modelChanged;
         public delegate void ModelChangedEventHandler();

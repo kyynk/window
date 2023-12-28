@@ -215,5 +215,11 @@ namespace Homework.View
             _undoButton.Enabled = _presentationModel.IsUndoEnabled;
             _redoButton.Enabled = _presentationModel.IsRedoEnabled;
         }
+
+        // click add page button
+        private void _addPageButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

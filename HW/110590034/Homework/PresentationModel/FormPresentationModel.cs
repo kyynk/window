@@ -243,5 +243,11 @@ namespace Homework.PresentationModel
         {
             _model.SetPanelSize(width);
         }
+
+        // add page
+        public void AddPage()
+        {
+
+        }
     }
 }
