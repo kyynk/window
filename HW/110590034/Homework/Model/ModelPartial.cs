@@ -9,30 +9,36 @@ namespace Homework.Model
 {
     public partial class Model
     {
-        private List<Shapes> _pages;
-
         // add page
         public void AddPage()
         {
-            _pages.Add(new Shapes());
+            // command
         }
 
         // remove page
         public void RemovePage(int index)
         {
-            _pages.RemoveAt(index);
+            // command
         }
 
         // insert page
-        public void InsertPage(Shapes shapes, int index)
+        public void InsertPageByIndex(Shapes shapes, int index)
         {
-            _pages.Insert(index, shapes);
+            _pages.InsertPageByIndex(index, shapes);
+        }
+
+
+        // remove page
+        public void RemovePageByIndex(int index)
+        {
+            _pages.RemovePageByIndex(index);
         }
 
         // select page
         public void SelectPage(int index)
         {
-            _shapesData = _pages[index];
+            _pageIndex = index;
+            _shapesData = _pages.GetSelectPage(index);
         }
     }
 }

@@ -22,14 +22,14 @@ namespace Homework.Command
         public void Execute(double width)
         {
             AdjustWithPanelWidth(width);
-            _model.InsertPage(_shapes, _pageIndex);
+            _model.InsertPageByIndex(_shapes, _pageIndex);
         }
 
         // unexcute
         public void Undo(double width)
         {
             SetPanelWidth(width);
-            _model.RemovePage(_pageIndex);
+            _model.RemovePageByIndex(_pageIndex);
         }
 
         // store panel width

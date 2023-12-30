@@ -21,6 +21,8 @@ namespace Homework.Model
         private Point _firstPoint;
         private Point _firstPoint2;
         private CommandManager _commandManager;
+        private Pages _pages;
+        private int _pageIndex;
 
         public Model()
         {
@@ -35,6 +37,9 @@ namespace Homework.Model
             _firstPoint = new Point(-1, -1);
             _firstPoint2 = new Point(-1, -1);
             _commandManager = new CommandManager();
+            _pages = new Pages();
+            _pages.InsertPageByIndex(0, _shapesData);
+            _pageIndex = 0;
         }
 
         public string ShapeName
