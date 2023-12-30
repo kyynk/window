@@ -118,7 +118,7 @@ namespace Homework.Model
         {
             Shape shape = _shapeFactory.CreateShape(shapeName, point1, point2);
             //_shapesData.AddNewShape(shape);
-            _commandManager.Execute(new DrawCommand(this, shape, _shapesData.ShapeList.Count), _panelMaxX);
+            _commandManager.Execute(new DrawCommand(this, shape, _shapesData.ShapeList.Count, _pageIndex), _panelMaxX);
             //NotifyModelChanged();
         }
 
@@ -262,9 +262,10 @@ namespace Homework.Model
         }
 
         // insert shape
-        public virtual void InsertShape(Shape shape, int index)
+        public virtual void InsertShape(Shape shape, int shapeIndex, int pageIndex)
         {
-            _shapesData.InsertShapeByIndex(shape, index);
+
+            _pages.GetSelectPage(pageIndex).InsertShapeByIndex(shape, shapeIndex);
             NotifyModelChanged();
         }
 
@@ -273,7 +274,7 @@ namespace Homework.Model
         {
             Shape shape = _shapeFactory.CreateShape(shapeType, point1, point2);
             //_shapesData.AddNewShape(shape);
-            _commandManager.Execute(new AddCommand(this, shape, _shapesData.ShapeList.Count), _panelMaxX);
+            _commandManager.Execute(new AddCommand(this, shape, _shapesData.ShapeList.Count, _pageIndex), _panelMaxX);
             //NotifyModelChanged();
         }
 
@@ -284,9 +285,9 @@ namespace Homework.Model
         }
 
         // delete selected shape from _shapes
-        public virtual void DeleteShape(int index)
+        public virtual void DeleteShape(int shapeIndex, int pageIndex)
         {
-            _shapesData.DeleteShapeByIndex(index);
+            _pages.GetSelectPage(pageIndex).DeleteShapeByIndex(shapeIndex);
             NotifyModelChanged();
         }
 
@@ -294,7 +295,7 @@ namespace Homework.Model
         public virtual void Delete(int index)
         {
             //_shapesData.DeleteShapeByIndex(index);
-            _commandManager.Execute(new DeleteCommand(this, _shapesData.ShapeList[index], index), _panelMaxX);
+            _commandManager.Execute(new DeleteCommand(this, _shapesData.ShapeList[index], index, _pageIndex), _panelMaxX);
             //NotifyModelChanged();
         }
 
@@ -319,7 +320,7 @@ namespace Homework.Model
         {
             if (keyCode == Keys.Delete && GetSelectedShape() != null)
             {
-                _commandManager.Execute(new DeleteCommand(this, GetSelectedShape(), GetShapeIndex(GetSelectedShape())), _panelMaxX);
+                _commandManager.Execute(new DeleteCommand(this, GetSelectedShape(), GetShapeIndex(GetSelectedShape()), _pageIndex), _panelMaxX);
                 _shapesData.ClearSelectedShape();
             }
             NotifyModelChanged();

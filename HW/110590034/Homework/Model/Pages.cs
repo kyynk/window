@@ -38,5 +38,11 @@ namespace Homework.Model
         {
             return _pages;
         }
+
+        // get list len
+        public int GetPagesLen()
+        {
+            return _pages.Coount;
+        }
     }
 }
