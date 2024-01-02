@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Homework.PresentationModel;
 
@@ -8,6 +9,8 @@ namespace Homework.View
     {
         private readonly FormPresentationModel _presentationModel;
         private CreateShapeDialog _createShapeDialog;
+        private List<Button> _pageButtons;
+        private int _currentPageIndex;
 
         public Form1(FormPresentationModel presentationModel)
         {
@@ -18,8 +21,11 @@ namespace Homework.View
             _canvas.MouseUp += HandleCanvasReleased;
             _canvas.MouseMove += HandleCanvasMoved;
             _canvas.Paint += HandleCanvasPaint;
-            // canvas1
-            _canvas1.Paint += HandleButtonPaint;
+            // page button
+            _flowLayoutPanel.WrapContents = false;
+            _pageButtons = new List<Button>();
+            _currentPageIndex = -1;
+            AddPageButton();
             // presentation model
             _presentationModel = presentationModel;
             _presentationModel._modelChanged += HandleModelChanged;
@@ -53,8 +59,6 @@ namespace Homework.View
         // initialize canva size
         public void InitializeCanvasSize()
         {
-            _canvas1.Width = Constant.Constant.DEFAULT_MAX_BUTTON_X;
-            _canvas1.Height = Constant.Constant.DEFAULT_MAX_BUTTON_Y;
             _canvas.Width = Constant.Constant.DEFAULT_MAX_PANEL_X;
             _canvas.Height = Constant.Constant.DEFAULT_MAX_PANEL_Y;
             //Console.WriteLine("location");
@@ -70,8 +74,13 @@ namespace Homework.View
         private void ChangeLeftPanelSize(object sender, EventArgs e)
         {
             int panelWidth = _splitContainer1.Panel1.Width;
-            _canvas1.Width = panelWidth - Constant.Constant.SLIDE_LOCATION_X * Constant.Constant.TWO;
-            _canvas1.Height = (int)((double)(_canvas1.Width) * Constant.Constant.PANEL_RATIO);
+            _flowLayoutPanel.Width = panelWidth;
+            _flowLayoutPanel.Height = _splitContainer1.Panel1.Height;
+            for (var i = 0; i < _flowLayoutPanel.Controls.Count; i++)
+            {
+                _flowLayoutPanel.Controls[i].Width = _splitContainer1.Panel1.Width - Constant.Constant.SLIDE_MARGIN * Constant.Constant.TWO;
+                _flowLayoutPanel.Controls[i].Height = (int)((double)_flowLayoutPanel.Controls[i].Width * Constant.Constant.PANEL_RATIO);
+            }
         }
 
         // panel size change
@@ -137,7 +146,7 @@ namespace Homework.View
         public void HandleButtonPaint(object sender, System.Windows.Forms.PaintEventArgs e)
         {
             // Draw the contents of _canvas onto _canvas1 with scaling
-            _presentationModel.DrawOnButton(e.Graphics, _canvas1.Size, _canvas.Size);
+            //_presentationModel.DrawOnButton(e.Graphics, _canvas1.Size, _canvas.Size);
         }
 
         // click line button
@@ -236,9 +245,92 @@ namespace Homework.View
         }
 
         // click add page button
-        private void _addPageButton_Click(object sender, EventArgs e)
+        private void ClickeAddPageButton(object sender, EventArgs e)
         {
+            AddPageButton();
+        }
 
+        // add page button
+        public void AddPageButton()
+        {
+            int panelWidth = _splitContainer1.Panel1.Width;
+
+            Button newPageButton = new Button();
+            newPageButton.Click += SelectPage;
+            newPageButton.BackColor = System.Drawing.Color.White;
+            newPageButton.Paint += HandleButtonPaint;
+
+            newPageButton.Width = panelWidth - Constant.Constant.SLIDE_MARGIN * Constant.Constant.TWO;
+            newPageButton.Height = (int)((double)(newPageButton.Width) * Constant.Constant.PANEL_RATIO);
+
+            // 新增到列表和選擇區
+            // 插入到選擇的頁面後面一個位置
+            int insertIndex = _currentPageIndex + 1;
+            _pageButtons.Insert(insertIndex, newPageButton);
+            _flowLayoutPanel.Controls.Add(newPageButton);
+
+            SetCheckedPage(newPageButton, true);
+
+            // 重新調整頁面順序
+            UpdatePageOrder();
+
+            // 切換當前頁面
+            SwitchCurrentPage(insertIndex);
+        }
+
+        // update page order
+        private void UpdatePageOrder()
+        {
+            // 更新頁面按鈕的順序
+            for (int i = 0; i < _pageButtons.Count; i++)
+            {
+                _flowLayoutPanel.Controls.SetChildIndex(_pageButtons[i], i);
+            }
+        }
+
+        // select page
+        private void SelectPage(object sender, EventArgs e)
+        {
+            // 點擊頁面按鈕時切換當前頁面
+            int pageIndex = _pageButtons.IndexOf(sender as Button);
+            SwitchCurrentPage(pageIndex);
+        }
+
+        // switch current page
+        private void SwitchCurrentPage(int pageIndex)
+        {
+            // 切換當前頁面的Checked
+            if (_currentPageIndex >= 0 && _currentPageIndex < _pageButtons.Count)
+            {
+                SetCheckedPage(_pageButtons[_currentPageIndex], false);
+            }
+
+            _currentPageIndex = pageIndex;
+
+            if (_currentPageIndex >= 0 && _currentPageIndex < _pageButtons.Count)
+            {
+                SetCheckedPage(_pageButtons[_currentPageIndex], true);
+            }
+
+            // 在此處切換畫面相應的繪圖操作
+            // ...
+
+        }
+
+        // set checked page
+        private void SetCheckedPage(Button button, bool isChecked)
+        {
+            // 設定Checked樣式
+            if (isChecked)
+            {
+                button.FlatStyle = FlatStyle.Flat;
+                button.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            }
+            else
+            {
+                button.FlatStyle = FlatStyle.Standard;
+                button.FlatAppearance.BorderColor = System.Drawing.Color.Empty;
+            }
         }
     }
 }

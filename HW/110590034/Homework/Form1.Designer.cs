@@ -36,7 +36,6 @@
             this._groupBox1 = new System.Windows.Forms.GroupBox();
             this._createButton = new System.Windows.Forms.Button();
             this._shapeTypeComboBox = new System.Windows.Forms.ComboBox();
-            this._canvas1 = new System.Windows.Forms.Button();
             this._menuStrip = new System.Windows.Forms.MenuStrip();
             this._description = new System.Windows.Forms.ToolStripMenuItem();
             this._about = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,7 +60,6 @@
             this._splitContainer1.Panel1.SuspendLayout();
             this._splitContainer1.Panel2.SuspendLayout();
             this._splitContainer1.SuspendLayout();
-            this._flowLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._splitContainer2)).BeginInit();
             this._splitContainer2.Panel1.SuspendLayout();
             this._splitContainer2.Panel2.SuspendLayout();
@@ -77,7 +75,7 @@
             this._groupBox.Margin = new System.Windows.Forms.Padding(2);
             this._groupBox.Name = "_groupBox";
             this._groupBox.Padding = new System.Windows.Forms.Padding(2);
-            this._groupBox.Size = new System.Drawing.Size(247, 433);
+            this._groupBox.Size = new System.Drawing.Size(246, 433);
             this._groupBox.TabIndex = 0;
             this._groupBox.TabStop = false;
             this._groupBox.Text = "資料顯示";
@@ -100,7 +98,7 @@
             this._shapeData.RowHeadersVisible = false;
             this._shapeData.RowHeadersWidth = 51;
             this._shapeData.RowTemplate.Height = 27;
-            this._shapeData.Size = new System.Drawing.Size(243, 365);
+            this._shapeData.Size = new System.Drawing.Size(242, 365);
             this._shapeData.TabIndex = 0;
             this._shapeData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClickDeleteButton);
             // 
@@ -146,7 +144,7 @@
             this._groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this._groupBox1.Location = new System.Drawing.Point(2, 17);
             this._groupBox1.Name = "_groupBox1";
-            this._groupBox1.Size = new System.Drawing.Size(243, 49);
+            this._groupBox1.Size = new System.Drawing.Size(242, 49);
             this._groupBox1.TabIndex = 2;
             this._groupBox1.TabStop = false;
             // 
@@ -175,15 +173,6 @@
             this._shapeTypeComboBox.Name = "_shapeTypeComboBox";
             this._shapeTypeComboBox.Size = new System.Drawing.Size(118, 20);
             this._shapeTypeComboBox.TabIndex = 1;
-            // 
-            // _canvas1
-            // 
-            this._canvas1.Location = new System.Drawing.Point(2, 2);
-            this._canvas1.Margin = new System.Windows.Forms.Padding(2);
-            this._canvas1.Name = "_canvas1";
-            this._canvas1.Size = new System.Drawing.Size(112, 63);
-            this._canvas1.TabIndex = 2;
-            this._canvas1.UseVisualStyleBackColor = true;
             // 
             // _menuStrip
             // 
@@ -281,7 +270,7 @@
             this._addPageButton.Size = new System.Drawing.Size(24, 24);
             this._addPageButton.Text = "toolStripButton1";
             this._addPageButton.ToolTipText = "_addPageButton";
-            this._addPageButton.Click += new System.EventHandler(this._addPageButton_Click);
+            this._addPageButton.Click += new System.EventHandler(this.ClickeAddPageButton);
             // 
             // _undoButton
             // 
@@ -330,7 +319,6 @@
             // 
             // _flowLayoutPanel
             // 
-            this._flowLayoutPanel.Controls.Add(this._canvas1);
             this._flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this._flowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this._flowLayoutPanel.Location = new System.Drawing.Point(0, 0);
@@ -360,7 +348,7 @@
             this._splitContainer2.Panel2.Controls.Add(this._groupBox);
             this._splitContainer2.Panel2MinSize = 200;
             this._splitContainer2.Size = new System.Drawing.Size(730, 433);
-            this._splitContainer2.SplitterDistance = 480;
+            this._splitContainer2.SplitterDistance = 481;
             this._splitContainer2.SplitterWidth = 3;
             this._splitContainer2.TabIndex = 0;
             // 
@@ -396,7 +384,6 @@
             this._splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._splitContainer1)).EndInit();
             this._splitContainer1.ResumeLayout(false);
-            this._flowLayoutPanel.ResumeLayout(false);
             this._splitContainer2.Panel1.ResumeLayout(false);
             this._splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._splitContainer2)).EndInit();
@@ -412,7 +399,6 @@
         private System.Windows.Forms.ComboBox _shapeTypeComboBox;
         private System.Windows.Forms.Button _createButton;
         private System.Windows.Forms.DataGridView _shapeData;
-        private System.Windows.Forms.Button _canvas1;
         private System.Windows.Forms.MenuStrip _menuStrip;
         private System.Windows.Forms.ToolStripMenuItem _description;
         private System.Windows.Forms.ToolStripMenuItem _about;

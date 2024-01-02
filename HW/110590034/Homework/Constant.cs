@@ -29,7 +29,7 @@
         public const string IS_REDO_ENABLED = "IsRedoEnabled";
         // panel ratio
         public const double PANEL_RATIO = 9.0 / 16.0;
-        public const int SLIDE_LOCATION_X = 2;
+        public const int SLIDE_MARGIN = 2;
         public const int PANEL_MARGIN = 16;
     }
 }

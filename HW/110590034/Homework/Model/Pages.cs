@@ -42,7 +42,7 @@ namespace Homework.Model
         // get list len
         public int GetPagesLen()
         {
-            return _pages.Coount;
+            return _pages.Count;
         }
     }
 }
