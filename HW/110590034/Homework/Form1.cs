@@ -76,13 +76,32 @@ namespace Homework.View
 
         // panel size change
         private void ChangeMiddlePanelSize(object sender, EventArgs e)
-        {
+        {            
             int panelWidth = _splitContainer2.Panel1.Width;
             int panelHeight = _splitContainer2.Panel1.Height;
-            _canvas.Width = panelWidth - (Constant.Constant.TWO * Constant.Constant.PANEL_LOCATION_X);
-            _canvas.Height = (int)((double)(_canvas.Width) * Constant.Constant.PANEL_RATIO);
 
-            _canvas.Location = new System.Drawing.Point(Constant.Constant.PANEL_LOCATION_X, panelHeight / Constant.Constant.TWO - _canvas.Height / Constant.Constant.TWO);
+            //Console.WriteLine("spliter width: "+ panelWidth);
+            //Console.WriteLine("spliter height: " + panelHeight);
+            //Console.WriteLine("spliter Ratio: " + (double)((double)panelHeight / (double)panelWidth));
+            //Console.WriteLine("need Ratio: " + Constant.Constant.PANEL_RATIO);
+
+
+            if ((double)(panelHeight - Constant.Constant.TWO * Constant.Constant.PANEL_MARGIN) / (double)(panelWidth - Constant.Constant.TWO * Constant.Constant.PANEL_MARGIN) < Constant.Constant.PANEL_RATIO)
+            {
+                _canvas.Height = panelHeight - (Constant.Constant.TWO * Constant.Constant.PANEL_MARGIN);
+                _canvas.Width = (int)((double)(_canvas.Height) / Constant.Constant.PANEL_RATIO);
+            }
+            else
+            {
+                _canvas.Width = panelWidth - (Constant.Constant.TWO * Constant.Constant.PANEL_MARGIN);
+                _canvas.Height = (int)((double)(_canvas.Width) * Constant.Constant.PANEL_RATIO);
+            }
+
+            //Console.WriteLine("canvas width: " + _canvas.Width);
+            //Console.WriteLine("canvas height: " + _canvas.Height);
+            //Console.WriteLine("canvas Ratio: " + (double)((double)_canvas.Height / (double)_canvas.Width));
+
+            _canvas.Location = new System.Drawing.Point((panelWidth - _canvas.Width) / Constant.Constant.TWO, (panelHeight - _canvas.Height) / Constant.Constant.TWO);
 
             _presentationModel.SetPanelSize((double)_canvas.Width);
         }

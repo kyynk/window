@@ -30,6 +30,6 @@
         // panel ratio
         public const double PANEL_RATIO = 9.0 / 16.0;
         public const int SLIDE_LOCATION_X = 2;
-        public const int PANEL_LOCATION_X = 16;
+        public const int PANEL_MARGIN = 16;
     }
 }
