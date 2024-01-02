@@ -9,12 +9,14 @@ namespace Homework.Command
         Model.Model _model;
         int _shapeIndex;
         double _panelWidth;
+        int _pageIndex;
 
-        public AddCommand(Model.Model model, Shape shape, int index)
+        public AddCommand(Model.Model model, Shape shape, int shapeIndex, int pageIndex)
         {
             _shape = shape;
             _model = model;
-            _shapeIndex = index;
+            _shapeIndex = shapeIndex;
+            _pageIndex = pageIndex;
             _panelWidth = -1;
         }
 
@@ -22,14 +24,14 @@ namespace Homework.Command
         public void Execute(double width)
         {
             AdjustWithPanelWidth(width);
-            _model.InsertShape(_shape, _shapeIndex);
+            _model.InsertShape(_shape, _shapeIndex, _pageIndex);
         }
 
         // unexcute
         public void Undo(double width)
         {
             SetPanelWidth(width);
-            _model.DeleteShape(_shapeIndex);
+            _model.DeleteShape(_shapeIndex, _pageIndex);
         }
 
         // store panel width

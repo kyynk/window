@@ -13,12 +13,14 @@ namespace Homework.Model
         public void AddPage()
         {
             // command
+            _commandManager.Execute(new AddPageCommand(this, new Shapes(), _pages.GetPagesLen()), _panelMaxX);
         }
 
         // remove page
         public void RemovePage(int index)
         {
             // command
+            _commandManager.Execute(new DeletePageCommand(this, _shapesData, _pageIndex), _panelMaxX);
         }
 
         // insert page
