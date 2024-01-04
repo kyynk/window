@@ -228,7 +228,15 @@ namespace Homework.View
         // handle key down
         private void HandleKeyDown(object sender, KeyEventArgs e)
         {
-            _presentationModel.HandleKeyDown(e.KeyCode);
+            if (_presentationModel.IsSelectedShape())
+            {
+                _presentationModel.HandleKeyDown(e.KeyCode);
+            }
+            else
+            {
+
+            }
+            //_presentationModel.HandleKeyDown(e.KeyCode);
             UpdateUndoRedo();
         }
 

@@ -252,5 +252,11 @@ namespace Homework.PresentationModel
                 _model.AddPage(index);
             }
         }
+
+        // is selected shape
+        public bool IsSelectedShape()
+        {
+            return _model.IsSelectedShape();
+        }
     }
 }

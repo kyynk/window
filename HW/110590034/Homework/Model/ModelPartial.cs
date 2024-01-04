@@ -42,5 +42,11 @@ namespace Homework.Model
             _pageIndex = index;
             _shapesData = _pages.GetSelectPage(index);
         }
+
+        // Is selected shape
+        public bool IsSelectedShape()
+        {
+            return _shapesData.GetSelectedShape() != null;
+        }
     }
 }
