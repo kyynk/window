@@ -145,8 +145,9 @@ namespace Homework.View
         // handle canvas1 paint
         public void HandleButtonPaint(object sender, System.Windows.Forms.PaintEventArgs e)
         {
-            // Draw the contents of _canvas onto _canvas1 with scaling
-            //_presentationModel.DrawOnButton(e.Graphics, _canvas1.Size, _canvas.Size);
+            Button button = sender as Button;
+            // Draw the contents of _canvas onto button with scaling
+            _presentationModel.DrawOnButton(e.Graphics, button.Size, _canvas.Size);
         }
 
         // click line button
