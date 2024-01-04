@@ -10,10 +10,10 @@ namespace Homework.Model
     public partial class Model
     {
         // add page
-        public void AddPage()
+        public void AddPage(int index)
         {
             // command
-            _commandManager.Execute(new AddPageCommand(this, new Shapes(), _pages.GetPagesLen()), _panelMaxX);
+            _commandManager.Execute(new AddPageCommand(this, new Shapes(), index), _panelMaxX);
         }
 
         // remove page

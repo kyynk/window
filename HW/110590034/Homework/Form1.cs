@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using Homework.PresentationModel;
 
@@ -11,6 +12,7 @@ namespace Homework.View
         private CreateShapeDialog _createShapeDialog;
         private List<Button> _pageButtons;
         private int _currentPageIndex;
+        private Bitmap _bitmap;
 
         public Form1(FormPresentationModel presentationModel)
         {
@@ -25,7 +27,6 @@ namespace Homework.View
             _flowLayoutPanel.WrapContents = false;
             _pageButtons = new List<Button>();
             _currentPageIndex = -1;
-            AddPageButton();
             // presentation model
             _presentationModel = presentationModel;
             _presentationModel._modelChanged += HandleModelChanged;
@@ -54,6 +55,7 @@ namespace Homework.View
             InitializeCanvasSize();
             _splitContainer1.Panel1.SizeChanged += ChangeLeftPanelSize;
             _splitContainer2.Panel1.SizeChanged += ChangeMiddlePanelSize;
+            AddPageButton();
         }
 
         // initialize canva size
@@ -143,11 +145,15 @@ namespace Homework.View
         }
 
         // handle canvas1 paint
-        public void HandleButtonPaint(object sender, System.Windows.Forms.PaintEventArgs e)
+        public void HandleButtonPaint()
         {
-            Button button = sender as Button;
-            // Draw the contents of _canvas onto button with scaling
-            _presentationModel.DrawOnButton(e.Graphics, button.Size, _canvas.Size);
+            //Button button = sender as Button;
+            //// Draw the contents of _canvas onto button with scaling
+            //_presentationModel.DrawOnButton(e.Graphics, button.Size, _canvas.Size);
+            _bitmap = new Bitmap(_canvas.Width, _canvas.Height);
+            _canvas.DrawToBitmap(_bitmap, new System.Drawing.Rectangle(0, 0, _canvas.Width, _canvas.Height));
+            // slide1.Image = new Bitmap(_brief, slide1.Size);
+            _flowLayoutPanel.Controls[_currentPageIndex].BackgroundImage = new Bitmap(_bitmap, _flowLayoutPanel.Controls[_currentPageIndex].Size);
         }
 
         // click line button
@@ -236,6 +242,7 @@ namespace Homework.View
         private void HandleModelChanged()
         {
             Invalidate(true);
+            HandleButtonPaint();
         }
 
         // update undo redo
@@ -259,7 +266,7 @@ namespace Homework.View
             Button newPageButton = new Button();
             newPageButton.Click += SelectPage;
             newPageButton.BackColor = System.Drawing.Color.White;
-            newPageButton.Paint += HandleButtonPaint;
+            //newPageButton.Paint += HandleButtonPaint;
 
             newPageButton.Width = panelWidth - Constant.Constant.SLIDE_MARGIN * Constant.Constant.TWO;
             newPageButton.Height = (int)((double)(newPageButton.Width) * Constant.Constant.PANEL_RATIO);
@@ -315,7 +322,7 @@ namespace Homework.View
 
             // 在此處切換畫面相應的繪圖操作
             // ...
-
+            _shapeData.DataSource = _presentationModel.GetShapes();
         }
 
         // set checked page

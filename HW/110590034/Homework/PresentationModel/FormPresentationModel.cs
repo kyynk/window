@@ -245,9 +245,12 @@ namespace Homework.PresentationModel
         }
 
         // add page
-        public void AddPage()
+        public void AddPage(int index)
         {
-
+            if (index != 0)
+            {
+                _model.AddPage(index);
+            }
         }
     }
 }
