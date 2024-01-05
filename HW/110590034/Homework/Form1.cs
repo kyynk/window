@@ -26,12 +26,10 @@ namespace Homework.View
             // page button
             _flowLayoutPanel.WrapContents = false;
             _pageButtons = new List<Button>();
-            _currentPageIndex = -1;
             // presentation model
             _presentationModel = presentationModel;
             _presentationModel._modelChanged += HandleModelChanged;
             _presentationModel._cursorChanged += SetCursor;
-            //_presentationModel._cursorChanged += SetCursor;
             // shape data (dataGridview)
             _shapeData.AutoGenerateColumns = false;
             _shapeData.DataSource = _presentationModel.GetShapes();
@@ -39,8 +37,6 @@ namespace Homework.View
             _shapeType.DataPropertyName = "ShapeName";
             _information.DataPropertyName = "Info";
             // tool strip binding button
-            //_undoButton.DataBindings.Add(Constant.Constant.ENABLED, _presentationModel.IsUndoEnabled, Constant.Constant.IS_UNDO_ENABLED);
-            //_redoButton.DataBindings.Add(Constant.Constant.ENABLED, _presentationModel.IsRedoEnabled, Constant.Constant.IS_REDO_ENABLED);
             _lineButton.DataBindings.Add(Constant.Constant.CHECKED, _presentationModel, Constant.Constant.IS_LINE_ENABLED);
             _rectangleButton.DataBindings.Add(Constant.Constant.CHECKED, _presentationModel, Constant.Constant.IS_RECTANGLE_ENABLED);
             _ellipseButton.DataBindings.Add(Constant.Constant.CHECKED, _presentationModel, Constant.Constant.IS_ELLIPSE_ENABLED);
@@ -55,7 +51,9 @@ namespace Homework.View
             InitializeCanvasSize();
             _splitContainer1.Panel1.SizeChanged += ChangeLeftPanelSize;
             _splitContainer2.Panel1.SizeChanged += ChangeMiddlePanelSize;
-            AddPageButton();
+            _currentPageIndex = 0;
+            AddPageButton(0);
+            SetCheckedPage(_pageButtons[0], true);
         }
 
         // initialize canva size
@@ -246,35 +244,30 @@ namespace Homework.View
         // click add page button
         private void ClickeAddPageButton(object sender, EventArgs e)
         {
-            AddPageButton();
+            int insertIndex = _currentPageIndex + 1;
+            AddPageButton(insertIndex);
+            
+            UpdatePageOrder();
+            _presentationModel.AddPage(insertIndex);
+            SwitchCurrentPage(insertIndex);
         }
 
         // add page button
-        public void AddPageButton()
+        public void AddPageButton(int insertIndex)
         {
             int panelWidth = _splitContainer1.Panel1.Width;
 
             Button newPageButton = new Button();
             newPageButton.Click += SelectPage;
             newPageButton.BackColor = System.Drawing.Color.White;
-            //newPageButton.Paint += HandleButtonPaint;
 
             newPageButton.Width = panelWidth - Constant.Constant.SLIDE_MARGIN * Constant.Constant.TWO;
             newPageButton.Height = (int)((double)(newPageButton.Width) * Constant.Constant.PANEL_RATIO);
 
             // 新增到列表和選擇區
             // 插入到選擇的頁面後面一個位置
-            int insertIndex = _currentPageIndex + 1;
             _pageButtons.Insert(insertIndex, newPageButton);
             _flowLayoutPanel.Controls.Add(newPageButton);
-
-            SetCheckedPage(newPageButton, true);
-
-            // 重新調整頁面順序
-            UpdatePageOrder();
-
-            // 切換當前頁面
-            SwitchCurrentPage(insertIndex);
         }
 
         // update page order
@@ -313,7 +306,9 @@ namespace Homework.View
 
             // 在此處切換畫面相應的繪圖操作
             // ...
-            //_shapeData.DataSource = _presentationModel.GetShapes();
+            _presentationModel.SlideIndex = _currentPageIndex;
+            _presentationModel.SelectPage();
+            _shapeData.DataSource = _presentationModel.GetShapes();
         }
 
         // set checked page
@@ -323,12 +318,11 @@ namespace Homework.View
             if (isChecked)
             {
                 button.FlatStyle = FlatStyle.Flat;
-                button.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+                button.Focus();
             }
             else
             {
                 button.FlatStyle = FlatStyle.Standard;
-                button.FlatAppearance.BorderColor = System.Drawing.Color.Empty;
             }
         }
     }

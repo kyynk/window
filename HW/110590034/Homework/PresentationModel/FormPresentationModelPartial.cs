@@ -123,5 +123,12 @@ namespace Homework.PresentationModel
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+        // slide index
+        public int SlideIndex
+        {
+            get;
+            set;
+        }
     }
 }

@@ -28,6 +28,7 @@ namespace Homework.Model
         {
             _pages.InsertPageByIndex(index, shapes);
             SelectPage(index);
+            NotifyModelChanged();
         }
 
 
@@ -43,17 +44,17 @@ namespace Homework.Model
             {
                 SelectPage(index);
             }
+            NotifyModelChanged();
         }
 
         // select page
         public void SelectPage(int index)
         {
-            if (_shapesData != null)
-            {
-                _shapesData.ClearSelectedShape();
-            }
+            Console.WriteLine("old page index : " + _pageIndex);
             _pageIndex = index;
-            _shapesData = _pages.GetSelectPage(index);
+            Console.WriteLine("now page index : " + _pageIndex);
+            _shapesData = _pages.GetSelectPage(_pageIndex);
+            NotifyModelChanged();
         }
 
         // Is selected shape

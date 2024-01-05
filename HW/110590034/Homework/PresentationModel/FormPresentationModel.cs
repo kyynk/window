@@ -255,5 +255,11 @@ namespace Homework.PresentationModel
         {
             return _model.IsSelectedShape();
         }
+
+        // select page
+        public void SelectPage()
+        {
+            _model.SelectPage(SlideIndex);
+        }
     }
 }

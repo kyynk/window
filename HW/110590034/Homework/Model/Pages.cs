@@ -30,6 +30,7 @@ namespace Homework.Model
         // select page
         public Shapes GetSelectPage(int index)
         {
+            Console.WriteLine("Get page index : " + index);
             return _pages[index];
         }
 
@@ -37,12 +38,6 @@ namespace Homework.Model
         public List<Shapes> GetPages()
         {
             return _pages;
-        }
-
-        // get list len
-        public int GetPagesLen()
-        {
-            return _pages.Count;
         }
     }
 }

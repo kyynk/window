@@ -12,8 +12,8 @@ namespace Homework.Model
         public delegate void ModelChangedEventHandler();
         private int _panelMaxX;
         private int _panelMaxY;
-        private Shape _tempShape;
         private Shapes _shapesData;
+        private Shape _tempShape;
         private ShapeFactory _shapeFactory;
         private IState _state;
         private string _shapeName;
@@ -27,7 +27,6 @@ namespace Homework.Model
         public Model()
         {
             _tempShape = null;
-            //_shapesData = new Shapes();
             _shapeFactory = new ShapeFactory();
             _shapeName = Constant.Constant.POINT;
             _state = new PointState(this);
@@ -38,8 +37,9 @@ namespace Homework.Model
             _firstPoint2 = new Point(-1, -1);
             _commandManager = new CommandManager();
             _pages = new Pages();
-            //_pages.InsertPageByIndex(0, _shapesData);
+            _pages.InsertPageByIndex(0, new Shapes());
             _pageIndex = 0;
+            _shapesData = _pages.GetSelectPage(_pageIndex);
         }
 
         public string ShapeName
