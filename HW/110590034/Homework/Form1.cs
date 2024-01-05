@@ -30,6 +30,7 @@ namespace Homework.View
             _presentationModel = presentationModel;
             _presentationModel._modelChanged += HandleModelChanged;
             _presentationModel._cursorChanged += SetCursor;
+            _presentationModel._pagesChanged += HandlePagesChanged;
             // shape data (dataGridview)
             _shapeData.AutoGenerateColumns = false;
             _shapeData.DataSource = _presentationModel.GetShapes();
@@ -245,11 +246,23 @@ namespace Homework.View
         private void ClickeAddPageButton(object sender, EventArgs e)
         {
             int insertIndex = _currentPageIndex + 1;
-            AddPageButton(insertIndex);
-            
-            UpdatePageOrder();
             _presentationModel.AddPage(insertIndex);
-            SwitchCurrentPage(insertIndex);
+        }
+
+        // handle pages changed
+        private void HandlePagesChanged(bool isAddingPage, int index)
+        {
+            if (isAddingPage)
+            {
+                int insertIndex = _currentPageIndex + 1;
+                AddPageButton(insertIndex);
+                UpdatePageOrder();
+                SwitchCurrentPage(insertIndex);
+            }
+            else
+            {
+                // use model index !
+            }
         }
 
         // add page button

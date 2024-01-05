@@ -10,6 +10,7 @@ namespace Homework.Model
     {
         public event ModelChangedEventHandler _modelChanged;
         public delegate void ModelChangedEventHandler();
+        public event Pages.PagesChanged _pagesChanged;
         private int _panelMaxX;
         private int _panelMaxY;
         private Shapes _shapesData;
@@ -267,6 +268,7 @@ namespace Homework.Model
 
             _pages.GetSelectPage(pageIndex).InsertShapeByIndex(shape, shapeIndex);
             NotifyModelChanged();
+            Console.WriteLine("insert shap index : " + pageIndex + " now page " + _pageIndex);
         }
 
         // add new shape to shapes
@@ -289,6 +291,7 @@ namespace Homework.Model
         {
             _pages.GetSelectPage(pageIndex).DeleteShapeByIndex(shapeIndex);
             NotifyModelChanged();
+            Console.WriteLine("delete shap index : " + pageIndex + " now page " + _pageIndex);
         }
 
         // delete selected shape from _shapes

@@ -11,6 +11,7 @@ namespace Homework.PresentationModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public event Model.Model.ModelChangedEventHandler _modelChanged;
+        public event Pages.PagesChanged _pagesChanged;
         public delegate void CursorChangedEventHandler(Cursor cursor);
         public event CursorChangedEventHandler _cursorChanged;
         private Model.Model _model;

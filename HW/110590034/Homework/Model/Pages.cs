@@ -8,6 +8,9 @@ namespace Homework.Model
 {
     public class Pages
     {
+        public delegate void PagesChanged(bool isAddingPage, int index);
+        public event PagesChanged _pagesChanged;
+
         private List<Shapes> _pages;
 
         public Pages()
@@ -19,12 +22,14 @@ namespace Homework.Model
         public void InsertPageByIndex(int index, Shapes shapes)
         {
             _pages.Insert(index, shapes);
+            _pagesChanged?.Invoke(true, index);
         }
 
         // remove page by index
         public void RemovePageByIndex(int index)
         {
             _pages.RemoveAt(index);
+            _pagesChanged?.Invoke(false, index);
         }
 
         // select page
