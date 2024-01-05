@@ -247,10 +247,7 @@ namespace Homework.PresentationModel
         // add page
         public void AddPage(int index)
         {
-            if (index != 0)
-            {
-                _model.AddPage(index);
-            }
+            _model.AddPage(index);
         }
 
         // is selected shape

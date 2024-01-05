@@ -63,13 +63,6 @@ namespace Homework.View
         {
             _canvas.Width = Constant.Constant.DEFAULT_MAX_PANEL_X;
             _canvas.Height = Constant.Constant.DEFAULT_MAX_PANEL_Y;
-            //Console.WriteLine("location");
-            //Console.WriteLine("btn x " + _canvas1.Location.X + " btn y " + _canvas1.Location.Y);
-            //Console.WriteLine("btn)) x " + (_canvas1.Location.X + _canvas1.Width) + " pnl111 x " + _splitContainer1.Panel1.Width);
-            //Console.WriteLine("spliter x " + _splitContainer1.SplitterWidth);
-            //Console.WriteLine("pnl x " + _canvas.Location.X + " pnl y " + _canvas.Location.Y);
-            //Console.WriteLine("pnl)) x " + (_canvas.Location.X + _canvas.Width) + " pnl222 x " + _splitContainer2.Panel1.Width);
-            //Console.WriteLine("spliter x " + _splitContainer1.SplitterWidth + " ???2 x " + (_splitContainer2.Panel1.Width - _splitContainer2.SplitterWidth));
         }
 
         // button size change
@@ -91,12 +84,6 @@ namespace Homework.View
             int panelWidth = _splitContainer2.Panel1.Width;
             int panelHeight = _splitContainer2.Panel1.Height;
 
-            //Console.WriteLine("spliter width: "+ panelWidth);
-            //Console.WriteLine("spliter height: " + panelHeight);
-            //Console.WriteLine("spliter Ratio: " + (double)((double)panelHeight / (double)panelWidth));
-            //Console.WriteLine("need Ratio: " + Constant.Constant.PANEL_RATIO);
-
-
             if ((double)(panelHeight - Constant.Constant.TWO * Constant.Constant.PANEL_MARGIN) / (double)(panelWidth - Constant.Constant.TWO * Constant.Constant.PANEL_MARGIN) < Constant.Constant.PANEL_RATIO)
             {
                 _canvas.Height = panelHeight - (Constant.Constant.TWO * Constant.Constant.PANEL_MARGIN);
@@ -107,10 +94,6 @@ namespace Homework.View
                 _canvas.Width = panelWidth - (Constant.Constant.TWO * Constant.Constant.PANEL_MARGIN);
                 _canvas.Height = (int)((double)(_canvas.Width) * Constant.Constant.PANEL_RATIO);
             }
-
-            //Console.WriteLine("canvas width: " + _canvas.Width);
-            //Console.WriteLine("canvas height: " + _canvas.Height);
-            //Console.WriteLine("canvas Ratio: " + (double)((double)_canvas.Height / (double)_canvas.Width));
 
             _canvas.Location = new System.Drawing.Point((panelWidth - _canvas.Width) / Constant.Constant.TWO, (panelHeight - _canvas.Height) / Constant.Constant.TWO);
 
@@ -330,7 +313,7 @@ namespace Homework.View
 
             // 在此處切換畫面相應的繪圖操作
             // ...
-            _shapeData.DataSource = _presentationModel.GetShapes();
+            //_shapeData.DataSource = _presentationModel.GetShapes();
         }
 
         // set checked page

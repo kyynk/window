@@ -17,7 +17,7 @@ namespace Homework.Model
         }
 
         // remove page
-        public void RemovePage(int index)
+        public void RemovePage()
         {
             // command
             _commandManager.Execute(new DeletePageCommand(this, _shapesData, _pageIndex), _panelMaxX);
@@ -27,6 +27,7 @@ namespace Homework.Model
         public void InsertPageByIndex(Shapes shapes, int index)
         {
             _pages.InsertPageByIndex(index, shapes);
+            SelectPage(index);
         }
 
 
@@ -34,11 +35,23 @@ namespace Homework.Model
         public void RemovePageByIndex(int index)
         {
             _pages.RemovePageByIndex(index);
+            if (index > 0)
+            {
+                SelectPage(index - 1);
+            }
+            else
+            {
+                SelectPage(index);
+            }
         }
 
         // select page
         public void SelectPage(int index)
         {
+            if (_shapesData != null)
+            {
+                _shapesData.ClearSelectedShape();
+            }
             _pageIndex = index;
             _shapesData = _pages.GetSelectPage(index);
         }

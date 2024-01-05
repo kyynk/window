@@ -27,7 +27,7 @@ namespace Homework.Model
         public Model()
         {
             _tempShape = null;
-            _shapesData = new Shapes();
+            //_shapesData = new Shapes();
             _shapeFactory = new ShapeFactory();
             _shapeName = Constant.Constant.POINT;
             _state = new PointState(this);
@@ -38,7 +38,7 @@ namespace Homework.Model
             _firstPoint2 = new Point(-1, -1);
             _commandManager = new CommandManager();
             _pages = new Pages();
-            _pages.InsertPageByIndex(0, _shapesData);
+            //_pages.InsertPageByIndex(0, _shapesData);
             _pageIndex = 0;
         }
 
