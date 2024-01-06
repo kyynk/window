@@ -11,7 +11,6 @@ namespace Homework.View
         private readonly FormPresentationModel _presentationModel;
         private CreateShapeDialog _createShapeDialog;
         private List<Button> _pageButtons;
-        private int _currentPageIndex;
         private Bitmap _bitmap;
 
         public Form1(FormPresentationModel presentationModel)
@@ -52,7 +51,7 @@ namespace Homework.View
             InitializeCanvasSize();
             _splitContainer1.Panel1.SizeChanged += ChangeLeftPanelSize;
             _splitContainer2.Panel1.SizeChanged += ChangeMiddlePanelSize;
-            _currentPageIndex = 0;
+            _presentationModel.SlideIndex = 0;
             AddPageButton(0);
             SetCheckedPage(_pageButtons[0], true);
         }
@@ -135,7 +134,8 @@ namespace Homework.View
             _bitmap = new Bitmap(_canvas.Width, _canvas.Height);
             _canvas.DrawToBitmap(_bitmap, new System.Drawing.Rectangle(0, 0, _canvas.Width, _canvas.Height));
             // slide1.Image = new Bitmap(_brief, slide1.Size);
-            _flowLayoutPanel.Controls[_currentPageIndex].BackgroundImage = new Bitmap(_bitmap, _flowLayoutPanel.Controls[_currentPageIndex].Size);
+            int nowIndex = _presentationModel.SlideIndex;
+            _flowLayoutPanel.Controls[nowIndex].BackgroundImage = new Bitmap(_bitmap, _flowLayoutPanel.Controls[nowIndex].Size);
         }
 
         // click line button
@@ -245,7 +245,7 @@ namespace Homework.View
         // click add page button
         private void ClickeAddPageButton(object sender, EventArgs e)
         {
-            int insertIndex = _currentPageIndex + 1;
+            int insertIndex = _presentationModel.SlideIndex + 1;
             _presentationModel.AddPage(insertIndex);
         }
 
@@ -254,7 +254,7 @@ namespace Homework.View
         {
             if (isAddingPage)
             {
-                int insertIndex = _currentPageIndex + 1;
+                int insertIndex = _presentationModel.SlideIndex + 1;
                 AddPageButton(insertIndex);
                 UpdatePageOrder();
                 SwitchCurrentPage(insertIndex);
@@ -305,21 +305,21 @@ namespace Homework.View
         private void SwitchCurrentPage(int pageIndex)
         {
             // 切換當前頁面的Checked
-            if (_currentPageIndex >= 0 && _currentPageIndex < _pageButtons.Count)
+            if (_presentationModel.SlideIndex >= 0 && _presentationModel.SlideIndex < _pageButtons.Count)
             {
-                SetCheckedPage(_pageButtons[_currentPageIndex], false);
+                SetCheckedPage(_pageButtons[_presentationModel.SlideIndex], false);
             }
 
-            _currentPageIndex = pageIndex;
+            _presentationModel.SlideIndex = pageIndex;
 
-            if (_currentPageIndex >= 0 && _currentPageIndex < _pageButtons.Count)
+            if (_presentationModel.SlideIndex >= 0 && _presentationModel.SlideIndex < _pageButtons.Count)
             {
-                SetCheckedPage(_pageButtons[_currentPageIndex], true);
+                SetCheckedPage(_pageButtons[_presentationModel.SlideIndex], true);
             }
 
             // 在此處切換畫面相應的繪圖操作
             // ...
-            _presentationModel.SlideIndex = _currentPageIndex;
+            _presentationModel.SlideIndex = _presentationModel.SlideIndex;
             _presentationModel.SelectPage();
             _shapeData.DataSource = _presentationModel.GetShapes();
         }

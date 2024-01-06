@@ -127,8 +127,14 @@ namespace Homework.PresentationModel
         // slide index
         public int SlideIndex
         {
-            get;
-            set;
+            get
+            {
+                return _model.PageIndex;
+            }
+            set
+            {
+                _model.PageIndex = value;
+            }
         }
     }
 }

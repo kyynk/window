@@ -20,7 +20,7 @@ namespace Homework.Model
         public void RemovePage()
         {
             // command
-            _commandManager.Execute(new DeletePageCommand(this, _shapesData, _pageIndex), _panelMaxX);
+            _commandManager.Execute(new DeletePageCommand(this, _shapesData, PageIndex), _panelMaxX);
         }
 
         // insert page
@@ -50,10 +50,10 @@ namespace Homework.Model
         // select page
         public void SelectPage(int index)
         {
-            Console.WriteLine("old page index : " + _pageIndex);
-            _pageIndex = index;
-            Console.WriteLine("now page index : " + _pageIndex);
-            _shapesData = _pages.GetSelectPage(_pageIndex);
+            Console.WriteLine("old page index : " + PageIndex);
+            PageIndex = index;
+            Console.WriteLine("now page index : " + PageIndex);
+            _shapesData = _pages.GetSelectPage(PageIndex);
             NotifyModelChanged();
         }
 
@@ -61,6 +61,13 @@ namespace Homework.Model
         public bool IsSelectedShape()
         {
             return _shapesData.GetSelectedShape() != null;
+        }
+
+        // page index
+        public int PageIndex
+        {
+            get;
+            set;
         }
     }
 }
