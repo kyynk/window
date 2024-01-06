@@ -10,7 +10,6 @@ namespace Homework.Model
     {
         public event ModelChangedEventHandler _modelChanged;
         public delegate void ModelChangedEventHandler();
-        public event Pages.PagesChanged _pagesChanged;
         private int _panelMaxX;
         private int _panelMaxY;
         private Shapes _shapesData;

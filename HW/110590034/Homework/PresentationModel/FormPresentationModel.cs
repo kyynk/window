@@ -258,9 +258,18 @@ namespace Homework.PresentationModel
         }
 
         // select page
-        public void SelectPage()
+        public void SelectPage(int index)
         {
-            _model.SelectPage(SlideIndex);
+            _model.SelectPage(index);
+        }
+
+        // handle pages changed
+        public void HandlePagesChanged(bool isAdd, int index)
+        {
+            if (_pagesChanged != null)
+            {
+                _pagesChanged(isAdd, index);
+            }
         }
     }
 }

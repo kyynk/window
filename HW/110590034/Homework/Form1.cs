@@ -128,6 +128,8 @@ namespace Homework.View
         // handle canvas1 paint
         public void HandleButtonPaint()
         {
+            Console.WriteLine("now page index is " + _presentationModel.SlideIndex);
+            Console.WriteLine("now flow layout panel is " + _flowLayoutPanel.Controls.Count);
             //Button button = sender as Button;
             //// Draw the contents of _canvas onto button with scaling
             //_presentationModel.DrawOnButton(e.Graphics, button.Size, _canvas.Size);
@@ -254,14 +256,17 @@ namespace Homework.View
         {
             if (isAddingPage)
             {
-                int insertIndex = _presentationModel.SlideIndex + 1;
-                AddPageButton(insertIndex);
+                Console.WriteLine("add page");
+                AddPageButton(index);
                 UpdatePageOrder();
-                SwitchCurrentPage(insertIndex);
+                SwitchCurrentPage(index);
             }
             else
             {
                 // use model index !
+                Console.WriteLine("sth went wrong");
+                _flowLayoutPanel.Controls.RemoveAt(index);
+                _pageButtons.RemoveAt(index);
             }
         }
 
@@ -310,18 +315,13 @@ namespace Homework.View
                 SetCheckedPage(_pageButtons[_presentationModel.SlideIndex], false);
             }
 
-            _presentationModel.SlideIndex = pageIndex;
+            _presentationModel.SelectPage(pageIndex);
+            _shapeData.DataSource = _presentationModel.GetShapes();
 
             if (_presentationModel.SlideIndex >= 0 && _presentationModel.SlideIndex < _pageButtons.Count)
             {
                 SetCheckedPage(_pageButtons[_presentationModel.SlideIndex], true);
             }
-
-            // 在此處切換畫面相應的繪圖操作
-            // ...
-            _presentationModel.SlideIndex = _presentationModel.SlideIndex;
-            _presentationModel.SelectPage();
-            _shapeData.DataSource = _presentationModel.GetShapes();
         }
 
         // set checked page

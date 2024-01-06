@@ -9,6 +9,8 @@ namespace Homework.Model
 {
     public partial class Model
     {
+        public event Pages.PagesChanged _pagesChanged;
+
         // add page
         public void AddPage(int index)
         {
@@ -68,6 +70,15 @@ namespace Homework.Model
         {
             get;
             set;
+        }
+
+        // handle pages changed
+        public virtual void HandlePagesChanged(bool isAdd, int index)
+        {
+            if (_pagesChanged != null)
+            {
+                _pagesChanged(isAdd, index);
+            }
         }
     }
 }
