@@ -16,6 +16,7 @@ namespace Homework.Model
         {
             // command
             _commandManager.Execute(new AddPageCommand(this, new Shapes(), index), _panelMaxX);
+            Console.WriteLine("add ing page !!!");
         }
 
         // remove page
@@ -37,7 +38,6 @@ namespace Homework.Model
         // remove page
         public void RemovePageByIndex(int index)
         {
-            _pages.RemovePageByIndex(index);
             if (index > 0)
             {
                 SelectPage(index - 1);
@@ -46,6 +46,7 @@ namespace Homework.Model
             {
                 SelectPage(index);
             }
+            _pages.RemovePageByIndex(index);
             NotifyModelChanged();
         }
 
@@ -73,11 +74,11 @@ namespace Homework.Model
         }
 
         // handle pages changed
-        public virtual void HandlePagesChanged(bool isAdd, int index)
+        public virtual void HandlePagesChanged(bool isAdding, int index)
         {
             if (_pagesChanged != null)
             {
-                _pagesChanged(isAdd, index);
+                _pagesChanged(isAdding, index);
             }
         }
     }

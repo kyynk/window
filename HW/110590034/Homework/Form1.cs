@@ -255,11 +255,16 @@ namespace Homework.View
             }
             else
             {
-                // use model index !
                 Console.WriteLine("sth went wrong");
                 _flowLayoutPanel.Controls.RemoveAt(index);
                 _pageButtons.RemoveAt(index);
+                UpdatePageOrder();
+                _shapeData.DataSource = _presentationModel.GetShapes();
+                Console.WriteLine("lala page index is " + _presentationModel.SlideIndex);
+                Console.WriteLine("lala flow layout panel is " + _flowLayoutPanel.Controls.Count);
+                SetCheckedPage(_pageButtons[_presentationModel.SlideIndex], true);
             }
+            UpdateUndoRedo();
         }
 
         // add page button

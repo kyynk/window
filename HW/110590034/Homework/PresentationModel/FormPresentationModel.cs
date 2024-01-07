@@ -265,11 +265,11 @@ namespace Homework.PresentationModel
         }
 
         // handle pages changed
-        public void HandlePagesChanged(bool isAdd, int index)
+        public void HandlePagesChanged(bool isAdding, int index)
         {
             if (_pagesChanged != null)
             {
-                _pagesChanged(isAdd, index);
+                _pagesChanged(isAdding, index);
             }
         }
     }
