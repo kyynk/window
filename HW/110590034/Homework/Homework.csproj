@@ -152,8 +152,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resource\AddPage.png" />
+    <Content Include="Resource\Download.png" />
     <Content Include="Resource\Redo.bmp" />
     <Content Include="Resource\Redo2.png" />
+    <Content Include="Resource\Save.png" />
     <Content Include="Resource\Undo.bmp" />
     <Content Include="Resource\DefaultCursor.bmp" />
     <Content Include="Resource\Ellipse.bmp" />

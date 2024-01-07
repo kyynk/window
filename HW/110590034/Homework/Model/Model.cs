@@ -268,7 +268,7 @@ namespace Homework.Model
 
             _pages.GetSelectPage(pageIndex).InsertShapeByIndex(shape, shapeIndex);
             NotifyModelChanged();
-            Console.WriteLine("insert shap index : " + pageIndex + " now page " + PageIndex);
+            //Console.WriteLine("insert shap index : " + pageIndex + " now page " + PageIndex);
         }
 
         // add new shape to shapes
@@ -291,7 +291,7 @@ namespace Homework.Model
         {
             _pages.GetSelectPage(pageIndex).DeleteShapeByIndex(shapeIndex);
             NotifyModelChanged();
-            Console.WriteLine("delete shap index : " + pageIndex + " now page " + PageIndex);
+            //Console.WriteLine("delete shap index : " + pageIndex + " now page " + PageIndex);
         }
 
         // delete selected shape from _shapes

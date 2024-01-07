@@ -35,7 +35,7 @@ namespace Homework.Model
         // select page
         public Shapes GetSelectPage(int index)
         {
-            Console.WriteLine("Get page index : " + index);
+            //Console.WriteLine("Get page index : " + index);
             return _pages[index];
         }
 

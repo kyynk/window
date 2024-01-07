@@ -47,6 +47,8 @@
             this._addPageButton = new System.Windows.Forms.ToolStripButton();
             this._undoButton = new Homework.View.ToolStripBindingButton();
             this._redoButton = new Homework.View.ToolStripBindingButton();
+            this._saveButton = new System.Windows.Forms.ToolStripButton();
+            this._loadButton = new System.Windows.Forms.ToolStripButton();
             this._splitContainer1 = new System.Windows.Forms.SplitContainer();
             this._flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this._splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -75,7 +77,7 @@
             this._groupBox.Margin = new System.Windows.Forms.Padding(2);
             this._groupBox.Name = "_groupBox";
             this._groupBox.Padding = new System.Windows.Forms.Padding(2);
-            this._groupBox.Size = new System.Drawing.Size(246, 433);
+            this._groupBox.Size = new System.Drawing.Size(244, 433);
             this._groupBox.TabIndex = 0;
             this._groupBox.TabStop = false;
             this._groupBox.Text = "資料顯示";
@@ -98,7 +100,7 @@
             this._shapeData.RowHeadersVisible = false;
             this._shapeData.RowHeadersWidth = 51;
             this._shapeData.RowTemplate.Height = 27;
-            this._shapeData.Size = new System.Drawing.Size(242, 365);
+            this._shapeData.Size = new System.Drawing.Size(240, 365);
             this._shapeData.TabIndex = 0;
             this._shapeData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClickDeleteButton);
             // 
@@ -144,7 +146,7 @@
             this._groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this._groupBox1.Location = new System.Drawing.Point(2, 17);
             this._groupBox1.Name = "_groupBox1";
-            this._groupBox1.Size = new System.Drawing.Size(242, 49);
+            this._groupBox1.Size = new System.Drawing.Size(240, 49);
             this._groupBox1.TabIndex = 2;
             this._groupBox1.TabStop = false;
             // 
@@ -210,7 +212,9 @@
             this._defaultCursorButton,
             this._addPageButton,
             this._undoButton,
-            this._redoButton});
+            this._redoButton,
+            this._saveButton,
+            this._loadButton});
             this._toolStrip.Location = new System.Drawing.Point(0, 24);
             this._toolStrip.Name = "_toolStrip";
             this._toolStrip.Size = new System.Drawing.Size(849, 27);
@@ -294,6 +298,26 @@
             this._redoButton.ToolTipText = "_redoButton";
             this._redoButton.Click += new System.EventHandler(this.ClickRedoButton);
             // 
+            // _saveButton
+            // 
+            this._saveButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._saveButton.Image = global::Homework.Properties.Resources.Save;
+            this._saveButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._saveButton.Name = "_saveButton";
+            this._saveButton.Size = new System.Drawing.Size(24, 24);
+            this._saveButton.Text = "toolStripButton1";
+            this._saveButton.ToolTipText = "_saveButton";
+            // 
+            // _loadButton
+            // 
+            this._loadButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._loadButton.Image = global::Homework.Properties.Resources.Download;
+            this._loadButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._loadButton.Name = "_loadButton";
+            this._loadButton.Size = new System.Drawing.Size(24, 24);
+            this._loadButton.Text = "toolStripButton2";
+            this._loadButton.ToolTipText = "_loadButton";
+            // 
             // _splitContainer1
             // 
             this._splitContainer1.BackColor = System.Drawing.SystemColors.WindowFrame;
@@ -348,7 +372,7 @@
             this._splitContainer2.Panel2.Controls.Add(this._groupBox);
             this._splitContainer2.Panel2MinSize = 200;
             this._splitContainer2.Size = new System.Drawing.Size(730, 433);
-            this._splitContainer2.SplitterDistance = 481;
+            this._splitContainer2.SplitterDistance = 483;
             this._splitContainer2.SplitterWidth = 3;
             this._splitContainer2.TabIndex = 0;
             // 
@@ -418,6 +442,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn _information;
         private System.Windows.Forms.ToolStripButton _addPageButton;
         private System.Windows.Forms.FlowLayoutPanel _flowLayoutPanel;
+        private System.Windows.Forms.ToolStripButton _saveButton;
+        private System.Windows.Forms.ToolStripButton _loadButton;
     }
 }
 

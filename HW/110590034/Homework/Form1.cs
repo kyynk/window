@@ -129,8 +129,8 @@ namespace Homework.View
         // handle canvas1 paint
         public void HandleButtonPaint()
         {
-            Console.WriteLine("now page index is " + _presentationModel.SlideIndex);
-            Console.WriteLine("now flow layout panel is " + _flowLayoutPanel.Controls.Count);
+            //Console.WriteLine("now page index is " + _presentationModel.SlideIndex);
+            //Console.WriteLine("now flow layout panel is " + _flowLayoutPanel.Controls.Count);
             //Button button = sender as Button;
             //// Draw the contents of _canvas onto button with scaling
             //_presentationModel.DrawOnButton(e.Graphics, button.Size, _canvas.Size);
@@ -255,20 +255,20 @@ namespace Homework.View
         {
             if (isAddingPage)
             {
-                Console.WriteLine("add page");
+                //Console.WriteLine("add page");
                 AddPageButton(index);
                 UpdatePageOrder();
                 SwitchCurrentPage(index);
             }
             else
             {
-                Console.WriteLine("sth went wrong");
+                //Console.WriteLine("sth went wrong");
                 _flowLayoutPanel.Controls.RemoveAt(index);
                 _pageButtons.RemoveAt(index);
                 UpdatePageOrder();
                 _shapeData.DataSource = _presentationModel.GetShapes();
-                Console.WriteLine("lala page index is " + _presentationModel.SlideIndex);
-                Console.WriteLine("lala flow layout panel is " + _flowLayoutPanel.Controls.Count);
+                //Console.WriteLine("lala page index is " + _presentationModel.SlideIndex);
+                //Console.WriteLine("lala flow layout panel is " + _flowLayoutPanel.Controls.Count);
                 SetCheckedPage(_pageButtons[_presentationModel.SlideIndex], true);
             }
             //UpdateUndoRedo();
