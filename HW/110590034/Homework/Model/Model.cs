@@ -36,6 +36,7 @@ namespace Homework.Model
             _firstPoint2 = new Point(-1, -1);
             _commandManager = new CommandManager();
             _pages = new Pages();
+            _pages._pagesChanged += HandlePagesChanged;
             _pages.InsertPageByIndex(0, new Shapes());
             PageIndex = 0;
             _shapesData = _pages.GetSelectPage(PageIndex);

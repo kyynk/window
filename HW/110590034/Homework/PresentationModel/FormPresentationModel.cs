@@ -32,6 +32,7 @@ namespace Homework.PresentationModel
             IsDefaultCursorEnabled = true;
             UsingCursor = Cursors.Arrow;
             _model._modelChanged += HandleModelChanged;
+            _model._pagesChanged += HandlePagesChanged;
         }
 
         // get shapes
