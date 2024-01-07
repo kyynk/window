@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows.Forms;
 using System.Drawing;
+using Homework.Command;
 using Homework.Model;
 using Homework.View;
 using System;
@@ -12,6 +13,7 @@ namespace Homework.PresentationModel
         public event PropertyChangedEventHandler PropertyChanged;
         public event Model.Model.ModelChangedEventHandler _modelChanged;
         public event Pages.PagesChanged _pagesChanged;
+        public event CommandManager.UndoRedoChanged _undoRedoChanged;
         public delegate void CursorChangedEventHandler(Cursor cursor);
         public event CursorChangedEventHandler _cursorChanged;
         private Model.Model _model;
@@ -33,6 +35,7 @@ namespace Homework.PresentationModel
             UsingCursor = Cursors.Arrow;
             _model._modelChanged += HandleModelChanged;
             _model._pagesChanged += HandlePagesChanged;
+            _model._undoRedoChanged += HandleUndoRedoChanged;
         }
 
         // get shapes
@@ -270,6 +273,15 @@ namespace Homework.PresentationModel
             if (_pagesChanged != null)
             {
                 _pagesChanged(isAdding, index);
+            }
+        }
+
+        // handle undo redo changed
+        public void HandleUndoRedoChanged(bool isUndo, bool isRedo)
+        {
+            if (_undoRedoChanged != null)
+            {
+                _undoRedoChanged(isUndo, isRedo);
             }
         }
     }

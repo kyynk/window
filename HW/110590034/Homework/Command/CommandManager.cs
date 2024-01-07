@@ -5,6 +5,8 @@ namespace Homework.Command
 {
     public class CommandManager
     {
+        public delegate void UndoRedoChanged(bool isUndo, bool isRedo);
+        public event UndoRedoChanged _undoRedoChanged;
         Stack<ICommand> _undo;
         Stack<ICommand> _redo;
 
@@ -25,6 +27,7 @@ namespace Homework.Command
             _redo.Clear();
             //Console.WriteLine("execute");
             //Console.WriteLine("undo " + _undo.Count + " redo " + _redo.Count);
+            _undoRedoChanged?.Invoke(IsUndoEnabled, IsRedoEnabled);
         }
 
         // undo
@@ -39,6 +42,7 @@ namespace Homework.Command
             command.Undo(width);
             //Console.WriteLine("undo");
             //Console.WriteLine("undo1 " + _undo.Count + " redo " + _redo.Count);
+            _undoRedoChanged?.Invoke(IsUndoEnabled, IsRedoEnabled);
         }
 
         // redo
@@ -53,13 +57,22 @@ namespace Homework.Command
             command.Execute(width);
             //Console.WriteLine("redo");
             //Console.WriteLine("undo " + _undo.Count + " redo1 " + _redo.Count);
+            _undoRedoChanged?.Invoke(IsUndoEnabled, IsRedoEnabled);
+        }
+
+        // all clear
+        public void AllClear()
+        {
+            _undo.Clear();
+            _redo.Clear();
+            _undoRedoChanged?.Invoke(IsUndoEnabled, IsRedoEnabled);
         }
 
         public bool IsRedoEnabled
         {
             get
             {
-                //Console.WriteLine("redo " + _redo.Count);
+                Console.WriteLine("redo " + _redo.Count);
                 return _redo.Count != 0;
             }
         }
@@ -68,7 +81,7 @@ namespace Homework.Command
         {
             get
             {
-                //Console.WriteLine("undo " + _undo.Count);
+                Console.WriteLine("undo " + _undo.Count);
                 return _undo.Count != 0;
             }
         }

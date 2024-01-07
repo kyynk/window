@@ -35,6 +35,7 @@ namespace Homework.Model
             _firstPoint = new Point(-1, -1);
             _firstPoint2 = new Point(-1, -1);
             _commandManager = new CommandManager();
+            _commandManager._undoRedoChanged += HandleUndoRedoChanged;
             _pages = new Pages();
             _pages._pagesChanged += HandlePagesChanged;
             _pages.InsertPageByIndex(0, new Shapes());

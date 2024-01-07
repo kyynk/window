@@ -30,6 +30,7 @@ namespace Homework.View
             _presentationModel._modelChanged += HandleModelChanged;
             _presentationModel._cursorChanged += SetCursor;
             _presentationModel._pagesChanged += HandlePagesChanged;
+            _presentationModel._undoRedoChanged += HandleUndoRedoChanged;
             // shape data (dataGridview)
             _shapeData.AutoGenerateColumns = false;
             _shapeData.DataSource = _presentationModel.GetShapes();
@@ -102,7 +103,7 @@ namespace Homework.View
         public void HandleCanvasPressed(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             _presentationModel.PressPointer(e.X, e.Y);
-            UpdateUndoRedo();
+            //UpdateUndoRedo();
         }
 
         // handle canvas released
@@ -110,7 +111,7 @@ namespace Homework.View
         {
             _presentationModel.ReleasePointer(e.X, e.Y);
             //_canvas.Cursor = Cursors.Arrow;
-            UpdateUndoRedo();
+            //UpdateUndoRedo();
         }
 
         // handle canvas moved
@@ -172,14 +173,14 @@ namespace Homework.View
         private void ClickUndoButton(object sender, EventArgs e)
         {
             _presentationModel.Undo();
-            UpdateUndoRedo();
+            //UpdateUndoRedo();
         }
 
         // click redo button
         private void ClickRedoButton(object sender, EventArgs e)
         {
             _presentationModel.Redo();
-            UpdateUndoRedo();
+            //UpdateUndoRedo();
         }
 
         // click create button
@@ -195,8 +196,7 @@ namespace Homework.View
                     _presentationModel.CreateShape(_shapeTypeComboBox.Text, _createShapeDialog.GetLeftTop(), _createShapeDialog.GetRightBottom());
                 }
             }
-            // testing...
-            UpdateUndoRedo();
+            //UpdateUndoRedo();
         }
 
         // click delete button
@@ -205,7 +205,7 @@ namespace Homework.View
             if (e.ColumnIndex == 0 && e.RowIndex >= 0)
             {
                 _presentationModel.DeleteShape(e.RowIndex);
-                UpdateUndoRedo();
+                //UpdateUndoRedo();
             }
         }
 
@@ -213,7 +213,7 @@ namespace Homework.View
         private void HandleKeyDown(object sender, KeyEventArgs e)
         {
             _presentationModel.HandleKeyDown(e.KeyCode);
-            UpdateUndoRedo();
+            //UpdateUndoRedo();
         }
 
         // handle cursor changed
@@ -234,6 +234,13 @@ namespace Homework.View
         {
             _undoButton.Enabled = _presentationModel.IsUndoEnabled;
             _redoButton.Enabled = _presentationModel.IsRedoEnabled;
+        }
+
+        // handle undo redo changed
+        public void HandleUndoRedoChanged(bool isUndo, bool isRedo)
+        {
+            _undoButton.Enabled = isUndo;
+            _redoButton.Enabled = isRedo;
         }
 
         // click add page button
@@ -264,7 +271,7 @@ namespace Homework.View
                 Console.WriteLine("lala flow layout panel is " + _flowLayoutPanel.Controls.Count);
                 SetCheckedPage(_pageButtons[_presentationModel.SlideIndex], true);
             }
-            UpdateUndoRedo();
+            //UpdateUndoRedo();
         }
 
         // add page button

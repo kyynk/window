@@ -10,6 +10,7 @@ namespace Homework.Model
     public partial class Model
     {
         public event Pages.PagesChanged _pagesChanged;
+        public event CommandManager.UndoRedoChanged _undoRedoChanged;
 
         // add page
         public void AddPage(int index)
@@ -79,6 +80,15 @@ namespace Homework.Model
             if (_pagesChanged != null)
             {
                 _pagesChanged(isAdding, index);
+            }
+        }
+
+        // handle undo redo changed
+        public virtual void HandleUndoRedoChanged(bool isUndo, bool isRedo)
+        {
+            if (_undoRedoChanged != null)
+            {
+                _undoRedoChanged(isUndo, isRedo);
             }
         }
     }
