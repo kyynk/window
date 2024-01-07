@@ -28,6 +28,7 @@ namespace Homework.Model
         // remove page by index
         public void RemovePageByIndex(int index)
         {
+            //Console.WriteLine("debug rm page, page shapes shape list count = " + _pages[index].ShapeList.Count);
             _pages.RemoveAt(index);
             _pagesChanged?.Invoke(false, index);
         }
@@ -35,7 +36,8 @@ namespace Homework.Model
         // select page
         public Shapes GetSelectPage(int index)
         {
-            //Console.WriteLine("Get page index : " + index);
+            Console.WriteLine("Get page index : " + index);
+            //Console.WriteLine("debug rm page, page shapes shape list count = " + _pages[index].ShapeList.Count);
             return _pages[index];
         }
 

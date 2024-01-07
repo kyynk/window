@@ -5,14 +5,17 @@ namespace Homework.Command
 {
     public class ResizeCommand : ICommand
     {
+        Model.Model _model;
         Shape _shape;
         Point _prePointLeft;
         Point _prePointRight;
         bool _isNotFirstTime;
         double _panelWidth;
+        int _pageIndex;
 
-        public ResizeCommand(Shape shape, Point prePointLeft, Point prePointRight)
+        public ResizeCommand(Model.Model model, Shape shape, Point prePointLeft, Point prePointRight, int pageIndex)
         {
+            _model = model;
             _shape = shape;
             //_prePointLeft = new Point(prePointLeft.X, prePointLeft.Y);
             //_prePointRight = new Point(prePointRight.X, prePointRight.Y);
@@ -20,12 +23,14 @@ namespace Homework.Command
             _prePointRight = new Point(prePointRight);
             _isNotFirstTime = false;
             _panelWidth = -1;
+            _pageIndex = pageIndex;
         }
 
         // execute
         public void Execute(double width)
         {
             AdjustWithPanelWidth(width);
+            _model.SelectPage(_pageIndex);
             if (_isNotFirstTime)
             {
                 Resize();
@@ -37,6 +42,7 @@ namespace Homework.Command
         public void Undo(double width)
         {
             AdjustWithPanelWidth(width);
+            _model.SelectPage(_pageIndex);
             Resize();
         }
 

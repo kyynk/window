@@ -266,9 +266,12 @@ namespace Homework.View
                 _flowLayoutPanel.Controls.RemoveAt(index);
                 _pageButtons.RemoveAt(index);
                 UpdatePageOrder();
+                _presentationModel.SelectPage(_presentationModel.SlideIndex);
                 _shapeData.DataSource = _presentationModel.GetShapes();
-                //Console.WriteLine("lala page index is " + _presentationModel.SlideIndex);
+                Console.WriteLine("lala page index is " + _presentationModel.SlideIndex);
+                Console.WriteLine("lala delete page index is " + index);
                 //Console.WriteLine("lala flow layout panel is " + _flowLayoutPanel.Controls.Count);
+                //index = index == _presentationModel.SlideIndex ? index : index - 1;
                 SetCheckedPage(_pageButtons[_presentationModel.SlideIndex], true);
             }
             //UpdateUndoRedo();

@@ -158,7 +158,8 @@ namespace Homework.Model
         {
             double diffX = _firstPoint.X - endX;
             double diffY = _firstPoint.Y - endY;
-            _commandManager.Execute(new MoveCommand(GetSelectedShape(), diffX, diffY), _panelMaxX);
+            if (!(diffX == 0 && diffY == 0))
+                _commandManager.Execute(new MoveCommand(this, GetSelectedShape(), new Point(diffX, diffY), PageIndex), _panelMaxX);
             NotifyModelChanged();
         }
 
@@ -210,7 +211,7 @@ namespace Homework.Model
         public virtual void StopResizeSelectedShape()
         {
             _shapesData.CancelResize();
-            _commandManager.Execute(new ResizeCommand(GetSelectedShape(), _firstPoint, _firstPoint2), _panelMaxX);
+            _commandManager.Execute(new ResizeCommand(this, GetSelectedShape(), _firstPoint, _firstPoint2, PageIndex), _panelMaxX);
         }
 
         // check range for painting and return the value of range
@@ -325,6 +326,10 @@ namespace Homework.Model
             {
                 _commandManager.Execute(new DeleteCommand(this, GetSelectedShape(), GetShapeIndex(GetSelectedShape()), PageIndex), _panelMaxX);
                 _shapesData.ClearSelectedShape();
+            }
+            else if (keyCode == Keys.Delete && _pages.GetPages().Count > 1)
+            {
+                RemovePage();
             }
             NotifyModelChanged();
         }

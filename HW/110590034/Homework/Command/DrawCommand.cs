@@ -24,6 +24,7 @@ namespace Homework.Command
         public void Execute(double width)
         {
             AdjustWithPanelWidth(width);
+            _model.SelectPage(_pageIndex);
             _model.InsertShape(_shape, _shapeIndex, _pageIndex);
         }
 
@@ -31,6 +32,7 @@ namespace Homework.Command
         public void Undo(double width)
         {
             SetPanelWidth(width);
+            _model.SelectPage(_pageIndex);
             _model.DeleteShape(_shapeIndex, _pageIndex);
         }
 

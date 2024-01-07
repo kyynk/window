@@ -72,7 +72,7 @@ namespace Homework.Command
         {
             get
             {
-                Console.WriteLine("redo " + _redo.Count);
+                // Console.WriteLine("redo " + _redo.Count);
                 return _redo.Count != 0;
             }
         }
@@ -81,7 +81,7 @@ namespace Homework.Command
         {
             get
             {
-                Console.WriteLine("undo " + _undo.Count);
+                // Console.WriteLine("undo " + _undo.Count);
                 return _undo.Count != 0;
             }
         }
