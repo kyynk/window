@@ -251,16 +251,16 @@ namespace Homework.View
         }
 
         // handle pages changed
-        private void HandlePagesChanged(bool isAddingPage, int index)
+        private void HandlePagesChanged(Model.Pages.PageAction pageAction, int index)
         {
-            if (isAddingPage)
+            if (pageAction == Model.Pages.PageAction.Add)
             {
                 //Console.WriteLine("add page");
                 AddPageButton(index);
                 UpdatePageOrder();
                 SwitchCurrentPage(index);
             }
-            else
+            else if (pageAction == Model.Pages.PageAction.Remove)
             {
                 //Console.WriteLine("sth went wrong");
                 _flowLayoutPanel.Controls.RemoveAt(index);
@@ -274,6 +274,10 @@ namespace Homework.View
                 //index = index == _presentationModel.SlideIndex ? index : index - 1;
                 SetCheckedPage(_pageButtons[_presentationModel.SlideIndex], true);
             }
+            else
+            {
+                SwitchCurrentPage(index);
+            }
             //UpdateUndoRedo();
         }
 
@@ -285,6 +289,7 @@ namespace Homework.View
             Button newPageButton = new Button();
             newPageButton.Click += SelectPage;
             newPageButton.BackColor = System.Drawing.Color.White;
+            newPageButton.BackgroundImageLayout = ImageLayout.Stretch;
 
             newPageButton.Width = panelWidth - Constant.Constant.SLIDE_MARGIN * Constant.Constant.TWO;
             newPageButton.Height = (int)((double)(newPageButton.Width) * Constant.Constant.PANEL_RATIO);
@@ -298,7 +303,6 @@ namespace Homework.View
         // update page order
         private void UpdatePageOrder()
         {
-            // 更新頁面按鈕的順序
             for (int i = 0; i < _pageButtons.Count; i++)
             {
                 _flowLayoutPanel.Controls.SetChildIndex(_pageButtons[i], i);
@@ -308,7 +312,6 @@ namespace Homework.View
         // select page
         private void SelectPage(object sender, EventArgs e)
         {
-            // 點擊頁面按鈕時切換當前頁面
             int pageIndex = _pageButtons.IndexOf(sender as Button);
             SwitchCurrentPage(pageIndex);
         }
@@ -316,7 +319,6 @@ namespace Homework.View
         // switch current page
         private void SwitchCurrentPage(int pageIndex)
         {
-            // 切換當前頁面的Checked
             if (_presentationModel.SlideIndex >= 0 && _presentationModel.SlideIndex < _pageButtons.Count)
             {
                 SetCheckedPage(_pageButtons[_presentationModel.SlideIndex], false);
@@ -342,6 +344,7 @@ namespace Homework.View
             }
             else
             {
+                Console.WriteLine("time");
                 button.FlatStyle = FlatStyle.Standard;
             }
         }

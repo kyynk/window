@@ -8,10 +8,15 @@ namespace Homework.Model
 {
     public class Pages
     {
-        public delegate void PagesChanged(bool isAddingPage, int index);
+        public delegate void PagesChanged(PageAction pageAction, int index);
         public event PagesChanged _pagesChanged;
-
         private List<Shapes> _pages;
+        public enum PageAction
+        {
+            Add,
+            Remove,
+            Switch
+        }
 
         public Pages()
         {
@@ -22,7 +27,7 @@ namespace Homework.Model
         public void InsertPageByIndex(int index, Shapes shapes)
         {
             _pages.Insert(index, shapes);
-            _pagesChanged?.Invoke(true, index);
+            _pagesChanged?.Invoke(PageAction.Add, index);
         }
 
         // remove page by index
@@ -30,7 +35,7 @@ namespace Homework.Model
         {
             //Console.WriteLine("debug rm page, page shapes shape list count = " + _pages[index].ShapeList.Count);
             _pages.RemoveAt(index);
-            _pagesChanged?.Invoke(false, index);
+            _pagesChanged?.Invoke(PageAction.Remove, index);
         }
 
         // select page
@@ -38,6 +43,7 @@ namespace Homework.Model
         {
             Console.WriteLine("Get page index : " + index);
             //Console.WriteLine("debug rm page, page shapes shape list count = " + _pages[index].ShapeList.Count);
+            //_pagesChanged?.Invoke(PageAction.Switch, index);
             return _pages[index];
         }
 

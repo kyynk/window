@@ -58,6 +58,12 @@ namespace Homework.Model
         // select page
         public void SelectPage(int index)
         {
+            _pagesChanged(Pages.PageAction.Switch, index);
+        }
+
+        // switch page
+        public void SwitchPage(int index)
+        {
             Console.WriteLine("old page index : " + PageIndex);
             PageIndex = index;
             Console.WriteLine("now page index : " + PageIndex);
@@ -79,11 +85,11 @@ namespace Homework.Model
         }
 
         // handle pages changed
-        public virtual void HandlePagesChanged(bool isAdding, int index)
+        public virtual void HandlePagesChanged(Pages.PageAction pageAction, int index)
         {
             if (_pagesChanged != null)
             {
-                _pagesChanged(isAdding, index);
+                _pagesChanged(pageAction, index);
             }
         }
 

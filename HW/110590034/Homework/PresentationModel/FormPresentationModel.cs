@@ -264,15 +264,15 @@ namespace Homework.PresentationModel
         // select page
         public void SelectPage(int index)
         {
-            _model.SelectPage(index);
+            _model.SwitchPage(index);
         }
 
         // handle pages changed
-        public void HandlePagesChanged(bool isAdding, int index)
+        public void HandlePagesChanged(Pages.PageAction pageAction, int index)
         {
             if (_pagesChanged != null)
             {
-                _pagesChanged(isAdding, index);
+                _pagesChanged(pageAction, index);
             }
         }
 
