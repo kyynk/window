@@ -10,21 +10,23 @@ namespace Homework.Command.Tests
     public class MoveCommandTests
     {
         private MoveCommand _moveCommand;
+        private Mock<Model.Model> _mockModel;
         private Mock<Shape> _mockShape;
         private PrivateObject _privateMoveCommand;
-        private double _offsetX;
-        private double _offsetY;
+        private Point _offset;
         private double _panelWidth;
+        private int _pageIndex;
 
         // setup
         [TestInitialize()]
         public void Initialize()
         {
-            _offsetX = 5;
-            _offsetY = 6;
+            _offset = new Point(5, 6);
+            _pageIndex = 0;
             _panelWidth = 500;
+            _mockModel = new Mock<Model.Model>();
             _mockShape = new Mock<Shape>();
-            _moveCommand = new MoveCommand(_mockShape.Object, _offsetX, _offsetY);
+            _moveCommand = new MoveCommand(_mockModel.Object, _mockShape.Object, _offset, _pageIndex);
             _privateMoveCommand = new PrivateObject(_moveCommand);
         }
 
@@ -32,11 +34,12 @@ namespace Homework.Command.Tests
         [TestMethod()]
         public void MoveCommandTest()
         {
-            _moveCommand = new MoveCommand(_mockShape.Object, _offsetX, _offsetY);
+            _moveCommand = new MoveCommand(_mockModel.Object, _mockShape.Object, _offset, _pageIndex);
             _privateMoveCommand = new PrivateObject(_moveCommand);
 
             Assert.AreEqual(5, (double)_privateMoveCommand.GetField("_offsetX"));
             Assert.AreEqual(6, (double)_privateMoveCommand.GetField("_offsetY"));
+            Assert.AreEqual(0, (int)_privateMoveCommand.GetField("_pageIndex"));
             Assert.AreEqual(-1, (double)_privateMoveCommand.GetField("_panelWidth"));
             Assert.IsNotNull((Shape)_privateMoveCommand.GetField("_shape"));
             Assert.IsFalse((bool)_privateMoveCommand.GetField("_isNotFirstTime"));
@@ -49,12 +52,15 @@ namespace Homework.Command.Tests
             _moveCommand.SetPanelWidth(_panelWidth);
             // first time
             _moveCommand.Execute(1000);
+
+            _mockModel.Verify(model => model.SelectPage((int)_privateMoveCommand.GetField("_pageIndex")), Times.Once);
             _mockShape.Verify(shape => shape.Move((double)_privateMoveCommand.GetField("_offsetX"), (double)_privateMoveCommand.GetField("_offsetY")), Times.Never);
             Assert.IsTrue((bool)_privateMoveCommand.GetField("_isNotFirstTime"));
             Assert.AreEqual(5 * 1000 / _panelWidth, (double)_privateMoveCommand.GetField("_offsetX"));
             Assert.AreEqual(6 * 1000 / _panelWidth, (double)_privateMoveCommand.GetField("_offsetY"));
             // not first time
             _moveCommand.Execute(1000);
+            _mockModel.Verify(model => model.SelectPage((int)_privateMoveCommand.GetField("_pageIndex")), Times.Exactly(2));
             _mockShape.Verify(shape => shape.Move((double)_privateMoveCommand.GetField("_offsetX"), (double)_privateMoveCommand.GetField("_offsetY")), Times.Once);
             Assert.IsTrue((bool)_privateMoveCommand.GetField("_isNotFirstTime"));
             Assert.AreEqual(5 * 1000 / _panelWidth, (double)_privateMoveCommand.GetField("_offsetX"));
@@ -67,6 +73,7 @@ namespace Homework.Command.Tests
         {
             _moveCommand.SetPanelWidth(_panelWidth);
             _moveCommand.Undo(100);
+            _mockModel.Verify(model => model.SelectPage((int)_privateMoveCommand.GetField("_pageIndex")), Times.Once);
             _mockShape.Verify(shape => shape.Move(-((double)_privateMoveCommand.GetField("_offsetX")), -((double)_privateMoveCommand.GetField("_offsetY"))), Times.Once);
             Assert.AreEqual(5 * 100 / _panelWidth, (double)_privateMoveCommand.GetField("_offsetX"));
             Assert.AreEqual(6 * 100 / _panelWidth, (double)_privateMoveCommand.GetField("_offsetY"));

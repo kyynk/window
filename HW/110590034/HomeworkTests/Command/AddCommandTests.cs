@@ -11,18 +11,21 @@ namespace Homework.Command.Tests
         private Mock<Model.Model> _mockModel;
         private Mock<Shape> _mockShape;
         private PrivateObject _privateAddCommand;
-        private int _index;
+        private int _shapeIndex;
         private double _panelWidth;
+        private int _pageIndex;
+        
 
         // setup
         [TestInitialize()]
         public void Initialize()
         {
-            _index = 0;
+            _shapeIndex = 0;
+            _pageIndex = 0;
             _panelWidth = 500;
             _mockModel = new Mock<Model.Model>();
             _mockShape = new Mock<Shape>();
-            _addCommand = new AddCommand(_mockModel.Object, _mockShape.Object, _index);
+            _addCommand = new AddCommand(_mockModel.Object, _mockShape.Object, _shapeIndex, _pageIndex);
             _privateAddCommand = new PrivateObject(_addCommand);
         }
 
@@ -30,10 +33,11 @@ namespace Homework.Command.Tests
         [TestMethod()]
         public void AddCommandTest()
         {
-            _addCommand = new AddCommand(_mockModel.Object, _mockShape.Object, _index);
+            _addCommand = new AddCommand(_mockModel.Object, _mockShape.Object, _shapeIndex, _pageIndex);
             _privateAddCommand = new PrivateObject(_addCommand);
 
             Assert.AreEqual(0, (int)_privateAddCommand.GetField("_shapeIndex"));
+            Assert.AreEqual(0, (int)_privateAddCommand.GetField("_pageIndex"));
             Assert.AreEqual(-1, (double)_privateAddCommand.GetField("_panelWidth"));
             Assert.IsNotNull((Shape)_privateAddCommand.GetField("_shape"));
             Assert.IsNotNull((Model.Model)_privateAddCommand.GetField("_model"));
@@ -45,7 +49,8 @@ namespace Homework.Command.Tests
         {
             _addCommand.SetPanelWidth(_panelWidth);
             _addCommand.Execute(_panelWidth);
-            _mockModel.Verify(model => model.InsertShape((Shape)_privateAddCommand.GetField("_shape"), (int)_privateAddCommand.GetField("_shapeIndex")), Times.Once);
+            _mockModel.Verify(model => model.SelectPage((int)_privateAddCommand.GetField("_pageIndex")), Times.Once);
+            _mockModel.Verify(model => model.InsertShape((Shape)_privateAddCommand.GetField("_shape"), (int)_privateAddCommand.GetField("_shapeIndex"), (int)_privateAddCommand.GetField("_pageIndex")), Times.Once);
             _mockShape.Verify(shape => shape.ResizeForPanel(1), Times.Once);
             Assert.AreEqual(_panelWidth, (double)_privateAddCommand.GetField("_panelWidth"));
         }
@@ -56,7 +61,8 @@ namespace Homework.Command.Tests
         {
             _addCommand.SetPanelWidth(_panelWidth);
             _addCommand.Undo(100);
-            _mockModel.Verify(model => model.DeleteShape((int)_privateAddCommand.GetField("_shapeIndex")), Times.Once);
+            _mockModel.Verify(model => model.SelectPage((int)_privateAddCommand.GetField("_pageIndex")), Times.Once);
+            _mockModel.Verify(model => model.DeleteShape((int)_privateAddCommand.GetField("_shapeIndex"), (int)_privateAddCommand.GetField("_pageIndex")), Times.Once);
             Assert.AreEqual(100, (double)_privateAddCommand.GetField("_panelWidth"));
         }
 

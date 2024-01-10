@@ -41,16 +41,6 @@ namespace Homework.Model.Tests
             Assert.ThrowsException<ArgumentException>(() => _shapeFactory.CreateShape("Triangle", point1, point2));
         }
 
-        // test create shape
-        [TestMethod()]
-        public void CreateShapeTest()
-        {
-            Assert.IsInstanceOfType(_shapeFactory.CreateShape(Constant.Constant.LINE), typeof(Line));
-            Assert.IsInstanceOfType(_shapeFactory.CreateShape(Constant.Constant.RECTANGLE), typeof(Rectangle));
-            Assert.IsInstanceOfType(_shapeFactory.CreateShape(Constant.Constant.ELLIPSE), typeof(Ellipse));
-            Assert.ThrowsException<ArgumentException>(() => _shapeFactory.CreateShape("Triangle"));
-        }
-
         // test set range
         [TestMethod()]
         public void SetRangeTest()

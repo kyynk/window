@@ -277,6 +277,7 @@ namespace Homework.Model
         {
             Shape shape = _shapeFactory.CreateShape(shapeType, point1, point2);
             //_shapesData.AddNewShape(shape);
+            Console.WriteLine("create shape");
             _commandManager.Execute(new AddCommand(this, shape, _shapesData.ShapeList.Count, PageIndex), _panelMaxX);
             //NotifyModelChanged();
         }

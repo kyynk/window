@@ -113,7 +113,7 @@ namespace Homework.Model.Tests
             var mockGraphics = new MockGraphics();
             var mockState = new Mock<IState>();
             _privateModel.SetField("_state", mockState.Object);
-            _model.Create(Constant.Constant.LINE);
+            _model.Create(Constant.Constant.LINE, new Point(1, 1), new Point(10, 10));
             _model.Draw(mockGraphics);
             Assert.AreEqual(1, mockGraphics.DrawLineCount);
             mockState.Verify(state => state.Drawing(mockGraphics), Times.Once);
@@ -391,7 +391,7 @@ namespace Homework.Model.Tests
             Assert.AreEqual(0, _model.GetShapes().Count);
             // clean
             _model.Redo();
-            _model.DeleteShape(0);
+            _model.Delete(0);
         }
 
         // test redo
@@ -414,7 +414,7 @@ namespace Homework.Model.Tests
             Assert.IsTrue(eventRaised);
             Assert.AreEqual(1, _model.GetShapes().Count);
             // clean
-            _model.DeleteShape(0);
+            _model.Delete(0);
         }
 
         // test is undo enabled property
@@ -423,7 +423,7 @@ namespace Homework.Model.Tests
         {
             Model temp = new Model();
             Assert.IsFalse(temp.IsUndoEnabled);
-            temp.Create(Constant.Constant.RECTANGLE);
+            temp.Create(Constant.Constant.RECTANGLE, new Point(1, 1), new Point(2, 2));
             Assert.IsTrue(temp.IsUndoEnabled);
         }
 
@@ -433,7 +433,7 @@ namespace Homework.Model.Tests
         {
             Model temp = new Model();
             Assert.IsFalse(temp.IsRedoEnabled);
-            temp.Create(Constant.Constant.RECTANGLE);
+            temp.Create(Constant.Constant.RECTANGLE, new Point(1, 1), new Point(2, 2));
             temp.Undo();
             Assert.IsTrue(temp.IsRedoEnabled);
         }
@@ -444,20 +444,20 @@ namespace Homework.Model.Tests
         {
             bool eventRaised = false;
             _model._modelChanged += () => { eventRaised = true; };
-            _model.InsertShape(new Rectangle(new Point(0, 0), new Point(10, 10)), 0);
+            _model.InsertShape(new Rectangle(new Point(0, 0), new Point(10, 10)), 0, 0);
             Assert.IsTrue(eventRaised);
             Assert.AreEqual(1, _model.GetShapes().Count);
             // clean
-            _model.DeleteShape(0);
+            _model.DeleteShape(0, 0);
         }
 
         // test create
         [TestMethod()]
         public void CreateTest()
         {
-            _model.Create(Constant.Constant.LINE);
-            _model.Create(Constant.Constant.RECTANGLE);
-            _model.Create(Constant.Constant.ELLIPSE);
+            _model.Create(Constant.Constant.LINE, new Point(1, 1), new Point(2, 2));
+            _model.Create(Constant.Constant.RECTANGLE, new Point(1, 1), new Point(2, 2));
+            _model.Create(Constant.Constant.ELLIPSE, new Point(1, 1), new Point(2, 2));
             Assert.AreEqual(3, _model.GetShapes().Count);
             Assert.AreEqual(Constant.Constant.LINE, _model.GetShapes()[0].GetShapeName());
             Assert.AreEqual(Constant.Constant.RECTANGLE, _model.GetShapes()[1].GetShapeName());
@@ -473,9 +473,9 @@ namespace Homework.Model.Tests
         public void GetShapesTest()
         {
             Assert.IsInstanceOfType(_model.GetShapes(), typeof(BindingList<Shape>));
-            _model.Create(Constant.Constant.LINE);
-            _model.Create(Constant.Constant.RECTANGLE);
-            _model.Create(Constant.Constant.ELLIPSE);
+            _model.Create(Constant.Constant.LINE, new Point(1, 1), new Point(2, 2));
+            _model.Create(Constant.Constant.RECTANGLE, new Point(1, 1), new Point(2, 2));
+            _model.Create(Constant.Constant.ELLIPSE, new Point(1, 1), new Point(2, 2));
             Assert.AreEqual(3, _model.GetShapes().Count);
             Assert.AreEqual(Constant.Constant.LINE, _model.GetShapes()[0].GetShapeName());
             Assert.AreEqual(Constant.Constant.RECTANGLE, _model.GetShapes()[1].GetShapeName());
@@ -490,11 +490,11 @@ namespace Homework.Model.Tests
         [TestMethod()]
         public void DeleteShapeTest()
         {
-            _model.InsertShape(new Rectangle(new Point(0, 0), new Point(10, 10)), 0);
+            _model.InsertShape(new Rectangle(new Point(0, 0), new Point(10, 10)), 0, 0);
 
             bool eventRaised = false;
             _model._modelChanged += () => { eventRaised = true; };
-            _model.DeleteShape(0);
+            _model.DeleteShape(0, 0);
             Assert.IsTrue(eventRaised);
             Assert.AreEqual(0, _model.GetShapes().Count);
         }
@@ -503,9 +503,9 @@ namespace Homework.Model.Tests
         [TestMethod()]
         public void DeleteTest()
         {
-            _model.Create(Constant.Constant.LINE);
-            _model.Create(Constant.Constant.RECTANGLE);
-            _model.Create(Constant.Constant.ELLIPSE);
+            _model.Create(Constant.Constant.LINE, new Point(1, 1), new Point(2, 2));
+            _model.Create(Constant.Constant.RECTANGLE, new Point(1, 1), new Point(2, 2));
+            _model.Create(Constant.Constant.ELLIPSE, new Point(1, 1), new Point(2, 2));
             Assert.AreEqual(3, _model.GetShapes().Count);
             _model.Delete(0);
             Assert.AreEqual(2, _model.GetShapes().Count);
@@ -519,13 +519,13 @@ namespace Homework.Model.Tests
         [TestMethod()]
         public void GetShapeIndexTest()
         {
-            _model.InsertShape(new Rectangle(new Point(0, 0), new Point(10, 10)), 0);
+            _model.InsertShape(new Rectangle(new Point(0, 0), new Point(10, 10)), 0, 0);
             int index1 = _model.GetShapeIndex(_model.GetShapes()[0]);
             int index2 = _model.GetShapeIndex(new Line(new Point(0, 0), new Point(10, 10)));
             Assert.AreEqual(0, index1);
             Assert.AreEqual(-1, index2);
             // clean
-            _model.DeleteShape(0);
+            _model.DeleteShape(0, 0);
         }
 
         // test handle keydown
@@ -561,7 +561,7 @@ namespace Homework.Model.Tests
             double width = 100;
             _privateModel.SetField("_panelMaxX", 1600);
             _privateModel.SetField("_panelMaxY", 900);
-            _model.InsertShape(new Ellipse(new Point(0, 0), new Point(16, 16)), 0);
+            _model.InsertShape(new Ellipse(new Point(0, 0), new Point(16, 16)), 0, 0);
             bool eventRaised = false;
             _model._modelChanged += () => { eventRaised = true; };
 

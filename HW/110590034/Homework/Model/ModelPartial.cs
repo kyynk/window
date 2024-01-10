@@ -56,7 +56,7 @@ namespace Homework.Model
         }
 
         // select page
-        public void SelectPage(int index)
+        public virtual void SelectPage(int index)
         {
             _pagesChanged(Pages.PageAction.Switch, index);
         }

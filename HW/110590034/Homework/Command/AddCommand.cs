@@ -24,7 +24,9 @@ namespace Homework.Command
         public void Execute(double width)
         {
             AdjustWithPanelWidth(width);
+            Console.WriteLine("here");
             _model.SelectPage(_pageIndex);
+            Console.WriteLine("select");
             _model.InsertShape(_shape, _shapeIndex, _pageIndex);
         }
 

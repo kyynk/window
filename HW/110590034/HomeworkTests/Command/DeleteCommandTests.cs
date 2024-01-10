@@ -11,18 +11,20 @@ namespace Homework.Command.Tests
         private Mock<Model.Model> _mockModel;
         private Mock<Shape> _mockShape;
         private PrivateObject _privateDeleteCommand;
-        private int _index;
+        private int _shapeIndex;
         private double _panelWidth;
+        private int _pageIndex;
 
         // setup
         [TestInitialize()]
         public void Initialize()
         {
-            _index = 0;
+            _shapeIndex = 0;
+            _pageIndex = 0;
             _panelWidth = 500;
             _mockModel = new Mock<Model.Model>();
             _mockShape = new Mock<Shape>();
-            _deleteCommand = new DeleteCommand(_mockModel.Object, _mockShape.Object, _index);
+            _deleteCommand = new DeleteCommand(_mockModel.Object, _mockShape.Object, _shapeIndex, _pageIndex);
             _privateDeleteCommand = new PrivateObject(_deleteCommand);
         }
 
@@ -30,10 +32,11 @@ namespace Homework.Command.Tests
         [TestMethod()]
         public void DeleteCommandTest()
         {
-            _deleteCommand = new DeleteCommand(_mockModel.Object, _mockShape.Object, _index);
+            _deleteCommand = new DeleteCommand(_mockModel.Object, _mockShape.Object, _shapeIndex, _pageIndex);
             _privateDeleteCommand = new PrivateObject(_deleteCommand);
 
             Assert.AreEqual(0, (int)_privateDeleteCommand.GetField("_shapeIndex"));
+            Assert.AreEqual(0, (int)_privateDeleteCommand.GetField("_pageIndex"));
             Assert.AreEqual(-1, (double)_privateDeleteCommand.GetField("_panelWidth"));
             Assert.IsNotNull((Shape)_privateDeleteCommand.GetField("_shape"));
             Assert.IsNotNull((Model.Model)_privateDeleteCommand.GetField("_model"));
@@ -44,7 +47,8 @@ namespace Homework.Command.Tests
         public void ExecuteTest()
         {
             _deleteCommand.Execute(_panelWidth);
-            _mockModel.Verify(model => model.DeleteShape((int)_privateDeleteCommand.GetField("_shapeIndex")), Times.Once);
+            _mockModel.Verify(model => model.SelectPage((int)_privateDeleteCommand.GetField("_pageIndex")), Times.Once);
+            _mockModel.Verify(model => model.DeleteShape((int)_privateDeleteCommand.GetField("_shapeIndex"), (int)_privateDeleteCommand.GetField("_pageIndex")), Times.Once);
             Assert.AreEqual(_panelWidth, (double)_privateDeleteCommand.GetField("_panelWidth"));
         }
 
@@ -54,7 +58,8 @@ namespace Homework.Command.Tests
         {
             _deleteCommand.SetPanelWidth(_panelWidth);
             _deleteCommand.Undo(50);
-            _mockModel.Verify(model => model.InsertShape((Shape)_privateDeleteCommand.GetField("_shape"), (int)_privateDeleteCommand.GetField("_shapeIndex")), Times.Once);
+            _mockModel.Verify(model => model.SelectPage((int)_privateDeleteCommand.GetField("_pageIndex")), Times.Once);
+            _mockModel.Verify(model => model.InsertShape((Shape)_privateDeleteCommand.GetField("_shape"), (int)_privateDeleteCommand.GetField("_shapeIndex"), (int)_privateDeleteCommand.GetField("_pageIndex")), Times.Once);
             _mockShape.Verify(shape => shape.ResizeForPanel(50 / _panelWidth), Times.Once);
             Assert.AreEqual(50, (double)_privateDeleteCommand.GetField("_panelWidth"));
         }

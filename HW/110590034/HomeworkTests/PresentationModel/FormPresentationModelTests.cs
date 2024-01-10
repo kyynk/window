@@ -51,10 +51,10 @@ namespace Homework.PresentationModel.Tests
         [TestMethod()]
         public void CreateShapeTest()
         {
-            _presentationModel.CreateShape("");
-            _mockModel.Verify(model => model.Create(It.IsAny<string>()), Times.Never);
-            _presentationModel.CreateShape(Constant.Constant.ELLIPSE);
-            _mockModel.Verify(model => model.Create(Constant.Constant.ELLIPSE), Times.Once);
+            Model.Point point1 = new Model.Point(1, 1);
+            Model.Point point2 = new Model.Point(100, 100);
+            _presentationModel.CreateShape(Constant.Constant.ELLIPSE, point1, point2);
+            _mockModel.Verify(model => model.Create(Constant.Constant.ELLIPSE, point1, point2), Times.Once);
             // clean
             _presentationModel.DeleteShape(0);
         }
