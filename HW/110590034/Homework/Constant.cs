@@ -31,5 +31,7 @@
         public const double PANEL_RATIO = 9.0 / 16.0;
         public const int SLIDE_MARGIN = 2;
         public const int PANEL_MARGIN = 16;
+        // some string constant
+        public const string SLIDE = "slide";
     }
 }

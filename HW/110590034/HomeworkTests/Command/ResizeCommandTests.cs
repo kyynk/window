@@ -17,8 +17,8 @@ namespace Homework.Command.Tests
         private Mock<Model.Model> _mockModel;
         private Mock<Shape> _mockShape;
         private PrivateObject _privateResizeCommand;
-        private Point _prePointLeft;
-        private Point _prePointRight;
+        private Point _previousPointLeft;
+        private Point _previousPointRight;
         private double _panelWidth;
         private int _pageIndex;
 
@@ -26,13 +26,13 @@ namespace Homework.Command.Tests
         [TestInitialize()]
         public void Initialize()
         {
-            _prePointLeft = new Point(5, 6);
-            _prePointRight = new Point(10, 12);
+            _previousPointLeft = new Point(5, 6);
+            _previousPointRight = new Point(10, 12);
             _pageIndex = 0;
             _panelWidth = 500;
             _mockModel = new Mock<Model.Model>();
             _mockShape = new Mock<Shape>();
-            _resizeCommand = new ResizeCommand(_mockModel.Object, _mockShape.Object, _prePointLeft, _prePointRight, _pageIndex);
+            _resizeCommand = new ResizeCommand(_mockModel.Object, _mockShape.Object, _previousPointLeft, _previousPointRight, _pageIndex);
             _privateResizeCommand = new PrivateObject(_resizeCommand);
         }
 
@@ -40,13 +40,13 @@ namespace Homework.Command.Tests
         [TestMethod()]
         public void ResizeCommandTest()
         {
-            _resizeCommand = new ResizeCommand(_mockModel.Object, _mockShape.Object, _prePointLeft, _prePointRight, _pageIndex);
+            _resizeCommand = new ResizeCommand(_mockModel.Object, _mockShape.Object, _previousPointLeft, _previousPointRight, _pageIndex);
             _privateResizeCommand = new PrivateObject(_resizeCommand);
 
-            Assert.AreEqual(5, ((Point)_privateResizeCommand.GetField("_prePointLeft")).X);
-            Assert.AreEqual(6, ((Point)_privateResizeCommand.GetField("_prePointLeft")).Y);
-            Assert.AreEqual(10, ((Point)_privateResizeCommand.GetField("_prePointRight")).X);
-            Assert.AreEqual(12, ((Point)_privateResizeCommand.GetField("_prePointRight")).Y);
+            Assert.AreEqual(5, ((Point)_privateResizeCommand.GetField("_previousPointLeft")).X);
+            Assert.AreEqual(6, ((Point)_privateResizeCommand.GetField("_previousPointLeft")).Y);
+            Assert.AreEqual(10, ((Point)_privateResizeCommand.GetField("_previousPointRight")).X);
+            Assert.AreEqual(12, ((Point)_privateResizeCommand.GetField("_previousPointRight")).Y);
             Assert.AreEqual(0, (int)_privateResizeCommand.GetField("_pageIndex"));
             Assert.AreEqual(-1, (double)_privateResizeCommand.GetField("_panelWidth"));
             Assert.IsNotNull((Model.Model)_privateResizeCommand.GetField("_model"));
@@ -65,10 +65,10 @@ namespace Homework.Command.Tests
             _mockModel.Verify(model => model.SelectPage((int)_privateResizeCommand.GetField("_pageIndex")), Times.Once);
             _mockShape.Verify(shape => shape.SetTwoPoint(It.IsAny<Point>(), It.IsAny<Point>()), Times.Never);
             Assert.IsTrue((bool)_privateResizeCommand.GetField("_isNotFirstTime"));
-            Assert.AreEqual(5 * 1000 / _panelWidth, ((Point)_privateResizeCommand.GetField("_prePointLeft")).X);
-            Assert.AreEqual(6 * 1000 / _panelWidth, ((Point)_privateResizeCommand.GetField("_prePointLeft")).Y);
-            Assert.AreEqual(10 * 1000 / _panelWidth, ((Point)_privateResizeCommand.GetField("_prePointRight")).X);
-            Assert.AreEqual(12 * 1000 / _panelWidth, ((Point)_privateResizeCommand.GetField("_prePointRight")).Y);
+            Assert.AreEqual(5 * 1000 / _panelWidth, ((Point)_privateResizeCommand.GetField("_previousPointLeft")).X);
+            Assert.AreEqual(6 * 1000 / _panelWidth, ((Point)_privateResizeCommand.GetField("_previousPointLeft")).Y);
+            Assert.AreEqual(10 * 1000 / _panelWidth, ((Point)_privateResizeCommand.GetField("_previousPointRight")).X);
+            Assert.AreEqual(12 * 1000 / _panelWidth, ((Point)_privateResizeCommand.GetField("_previousPointRight")).Y);
             // not first time
             _resizeCommand.Execute(1000);
             _mockModel.Verify(model => model.SelectPage((int)_privateResizeCommand.GetField("_pageIndex")), Times.Exactly(2));
@@ -106,15 +106,15 @@ namespace Homework.Command.Tests
         [TestMethod()]
         public void AdjustWithPanelWidthTest()
         {
-            _privateResizeCommand.SetField("_prePointLeft", new Point(5, 6));
-            _privateResizeCommand.SetField("_prePointRight", new Point(10, 12));
+            _privateResizeCommand.SetField("_previousPointLeft", new Point(5, 6));
+            _privateResizeCommand.SetField("_previousPointRight", new Point(10, 12));
             _resizeCommand.SetPanelWidth(200);
 
             _resizeCommand.AdjustWithPanelWidth(100);
-            Assert.AreEqual(2.5, ((Point)_privateResizeCommand.GetField("_prePointLeft")).X);
-            Assert.AreEqual(3, ((Point)_privateResizeCommand.GetField("_prePointLeft")).Y);
-            Assert.AreEqual(5, ((Point)_privateResizeCommand.GetField("_prePointRight")).X);
-            Assert.AreEqual(6, ((Point)_privateResizeCommand.GetField("_prePointRight")).Y);
+            Assert.AreEqual(2.5, ((Point)_privateResizeCommand.GetField("_previousPointLeft")).X);
+            Assert.AreEqual(3, ((Point)_privateResizeCommand.GetField("_previousPointLeft")).Y);
+            Assert.AreEqual(5, ((Point)_privateResizeCommand.GetField("_previousPointRight")).X);
+            Assert.AreEqual(6, ((Point)_privateResizeCommand.GetField("_previousPointRight")).Y);
             Assert.AreEqual(100, (double)_privateResizeCommand.GetField("_panelWidth"));
         }
     }

@@ -230,7 +230,7 @@
             this._addPageButton.Size = new System.Drawing.Size(24, 24);
             this._addPageButton.Text = "_addPageButton";
             this._addPageButton.ToolTipText = "_addPageButton";
-            this._addPageButton.Click += new System.EventHandler(this.ClickeAddPageButton);
+            this._addPageButton.Click += new System.EventHandler(this.ClickAddPageButton);
             // 
             // _saveButton
             // 

@@ -83,6 +83,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormPartial.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Command\AddCommand.cs" />
     <Compile Include="Command\AddPageCommand.cs" />
     <Compile Include="Command\DeletePageCommand.cs" />

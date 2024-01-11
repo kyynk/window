@@ -7,20 +7,20 @@ namespace Homework.Command
     {
         Model.Model _model;
         Shape _shape;
-        Point _prePointLeft;
-        Point _prePointRight;
+        Point _previousPointLeft;
+        Point _previousPointRight;
         bool _isNotFirstTime;
         double _panelWidth;
         int _pageIndex;
 
-        public ResizeCommand(Model.Model model, Shape shape, Point prePointLeft, Point prePointRight, int pageIndex)
+        public ResizeCommand(Model.Model model, Shape shape, Point previousPointLeft, Point previousPointRight, int pageIndex)
         {
             _model = model;
             _shape = shape;
             //_prePointLeft = new Point(prePointLeft.X, prePointLeft.Y);
             //_prePointRight = new Point(prePointRight.X, prePointRight.Y);
-            _prePointLeft = new Point(prePointLeft);
-            _prePointRight = new Point(prePointRight);
+            _previousPointLeft = new Point(previousPointLeft);
+            _previousPointRight = new Point(previousPointRight);
             _isNotFirstTime = false;
             _panelWidth = -1;
             _pageIndex = pageIndex;
@@ -53,9 +53,9 @@ namespace Homework.Command
             //Point tempPoint2 = new Point(_shape.Point2.X, _shape.Point2.Y);
             Point tempPoint1 = new Point(_shape.Point1);
             Point tempPoint2 = new Point(_shape.Point2);
-            _shape.SetTwoPoint(_prePointLeft, _prePointRight);
-            _prePointLeft = tempPoint1;
-            _prePointRight = tempPoint2;
+            _shape.SetTwoPoint(_previousPointLeft, _previousPointRight);
+            _previousPointLeft = tempPoint1;
+            _previousPointRight = tempPoint2;
         }
 
         // store panel width
@@ -69,10 +69,10 @@ namespace Homework.Command
         {
             double ratio = width / _panelWidth;
             //_shape.ResizeForPanel(ratio);
-            _prePointLeft.X = Math.Round(_prePointLeft.X * ratio, 1);
-            _prePointLeft.Y = Math.Round(_prePointLeft.Y * ratio, 1);
-            _prePointRight.X = Math.Round(_prePointRight.X * ratio, 1);
-            _prePointRight.Y = Math.Round(_prePointRight.Y * ratio, 1);
+            _previousPointLeft.X = Math.Round(_previousPointLeft.X * ratio, 1);
+            _previousPointLeft.Y = Math.Round(_previousPointLeft.Y * ratio, 1);
+            _previousPointRight.X = Math.Round(_previousPointRight.X * ratio, 1);
+            _previousPointRight.Y = Math.Round(_previousPointRight.Y * ratio, 1);
             SetPanelWidth(width);
         }
     }

@@ -118,7 +118,7 @@ namespace Homework.View
             this._okButton.TabIndex = 8;
             this._okButton.Text = "OK";
             this._okButton.UseVisualStyleBackColor = true;
-            this._okButton.Click += new System.EventHandler(this._okButton_Click);
+            this._okButton.Click += new System.EventHandler(this.HandleOkButtonClick);
             // 
             // _cancelButton
             // 
@@ -129,7 +129,7 @@ namespace Homework.View
             this._cancelButton.TabIndex = 9;
             this._cancelButton.Text = "Cancel";
             this._cancelButton.UseVisualStyleBackColor = true;
-            this._cancelButton.Click += new System.EventHandler(this._cancelButton_Click);
+            this._cancelButton.Click += new System.EventHandler(this.HandleCancelButtonClick);
             // 
             // CreateShapeForm
             // 

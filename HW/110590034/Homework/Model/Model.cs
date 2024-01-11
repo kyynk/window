@@ -277,7 +277,7 @@ namespace Homework.Model
         {
             Shape shape = _shapeFactory.CreateShape(shapeType, point1, point2);
             //_shapesData.AddNewShape(shape);
-            Console.WriteLine("create shape");
+            //Console.WriteLine("create shape");
             _commandManager.Execute(new AddCommand(this, shape, _shapesData.ShapeList.Count, PageIndex), _panelMaxX);
             //NotifyModelChanged();
         }
@@ -317,43 +317,6 @@ namespace Homework.Model
                 }
             }
             return -1;
-        }
-
-        // handle key down
-        // if keycode = delete, will delete selected shape
-        public virtual void HandleKeyDown(Keys keyCode)
-        {
-            if (keyCode == Keys.Delete && GetSelectedShape() != null)
-            {
-                _commandManager.Execute(new DeleteCommand(this, GetSelectedShape(), GetShapeIndex(GetSelectedShape()), PageIndex), _panelMaxX);
-                _shapesData.ClearSelectedShape();
-            }
-            else if (keyCode == Keys.Delete && _pages.GetPages().Count > 1)
-            {
-                RemovePage();
-            }
-            NotifyModelChanged();
-        }
-
-        // set panel size
-        public virtual void SetPanelSize(double width)
-        {
-            double ratio = width / (double)_panelMaxX;
-            foreach (Shape aShape in _shapesData.ShapeList)
-            {
-                aShape.ResizeForPanel(ratio);
-            }
-            _shapeFactory.SetRange(ratio);
-            _panelMaxX = (int)width;
-            _panelMaxY = (int)(width * Constant.Constant.PANEL_RATIO);
-            NotifyModelChanged();
-        }
-
-        // notify observer
-        public void NotifyModelChanged()
-        {
-            if (_modelChanged != null)
-                _modelChanged();
         }
     }
 }

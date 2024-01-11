@@ -185,7 +185,181 @@
     <div class="data">
       <Data id="ReviewPalData">
         <CodeReview xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-          <Reviews />
+          <Reviews>
+            <Smell>
+              <Id>1</Id>
+              <SmellType>A syntax error has been discovered in file C:\Users\user\Desktop\window\HW\110590034\Homework\Command\CommandManager.cs on line 30.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>CommandManager.cs</File>
+              <Line>30</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>2</Id>
+              <SmellType>A syntax error has been discovered in file C:\Users\user\Desktop\window\HW\110590034\Homework\Model\Pages.cs on line 30.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>Pages.cs</File>
+              <Line>30</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>3</Id>
+              <SmellType>A syntax error has been discovered in file C:\Users\user\Desktop\window\HW\110590034\HomeworkTests\UI\Robot.cs on line 50.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>HomeworkTests</Project>
+              <File>Robot.cs</File>
+              <Line>50</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>4</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>196 目前物件 Homework.View.Form1，使用物件的方法或屬性次數：2次，Envy到對象物件 Homework.View.CreateShapeDialog，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：Homework.View.CreateShapeDialog.GetLeftTop() 以及 Homework.View.CreateShapeDialog.GetRightBottom() 以及 Homework.View.CreateShapeDialog.IsOk</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>C:\Users\user\Desktop\window\HW\110590034\Homework\Form1.cs</File>
+              <Line>196</Line>
+              <StartLine>195</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>196</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 Homework.View.Form1，使用物件的方法或屬性次數：2次，Envy到對象物件 Homework.View.CreateShapeDialog，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：Homework.View.CreateShapeDialog.GetLeftTop() 以及 Homework.View.CreateShapeDialog.GetRightBottom() 以及 Homework.View.CreateShapeDialog.IsOk</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>5</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>160 目前物件 Homework.Model.Model，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Point，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Model.Point.X 以及 Homework.Model.Point.Y</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>C:\Users\user\Desktop\window\HW\110590034\Homework\Model\Model.cs</File>
+              <Line>160</Line>
+              <StartLine>160</StartLine>
+              <StartCol>16</StartCol>
+              <EndLine>160</EndLine>
+              <EndCol>43</EndCol>
+              <Comment>目前物件 Homework.Model.Model，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Point，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.Model.Point.X 以及 Homework.Model.Point.Y</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>6</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>162 目前物件 Homework.Model.Model，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Point，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：Homework.Model.Point.X 以及 Homework.Model.Point.X 以及 Homework.Model.Point.Y</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>C:\Users\user\Desktop\window\HW\110590034\Homework\Model\Model.cs</File>
+              <Line>162</Line>
+              <StartLine>161</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>162</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 Homework.Model.Model，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.Model.Point，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：Homework.Model.Point.X 以及 Homework.Model.Point.X 以及 Homework.Model.Point.Y</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>7</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>29 目前物件 Homework.View.Form1，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.PresentationModel.FormPresentationModel，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.PresentationModel.FormPresentationModel.SlideIndex 以及 Homework.PresentationModel.FormPresentationModel.AddPage(int)</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>C:\Users\user\Desktop\window\HW\110590034\Homework\FormPartial.cs</File>
+              <Line>29</Line>
+              <StartLine>28</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>29</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 Homework.View.Form1，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.PresentationModel.FormPresentationModel，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.PresentationModel.FormPresentationModel.SlideIndex 以及 Homework.PresentationModel.FormPresentationModel.AddPage(int)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>8</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>63 目前物件 Homework.View.Form1，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.PresentationModel.FormPresentationModel，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.PresentationModel.FormPresentationModel.SlideIndex 以及 Homework.PresentationModel.FormPresentationModel.SelectPage(int)</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>C:\Users\user\Desktop\window\HW\110590034\Homework\FormPartial.cs</File>
+              <Line>63</Line>
+              <StartLine>62</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>63</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 Homework.View.Form1，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework.PresentationModel.FormPresentationModel，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework.PresentationModel.FormPresentationModel.SlideIndex 以及 Homework.PresentationModel.FormPresentationModel.SelectPage(int)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>9</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>86 目前物件 Homework.UI.Tests.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Interactions.Actions，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：OpenQA.Selenium.Interactions.Actions.SendKeys(string) 以及 OpenQA.Selenium.Interactions.Actions.Perform()</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>HomeworkTests</Project>
+              <File>C:\Users\user\Desktop\window\HW\110590034\HomeworkTests\UI\Robot.cs</File>
+              <Line>86</Line>
+              <StartLine>85</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>86</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 Homework.UI.Tests.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Interactions.Actions，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：OpenQA.Selenium.Interactions.Actions.SendKeys(string) 以及 OpenQA.Selenium.Interactions.Actions.Perform()</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>10</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>199 目前物件 Homework.UI.Tests.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Appium.AppiumWebElement，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：OpenQA.Selenium.Appium.AppiumWebElement.FindElementByName(string) 以及 OpenQA.Selenium.Appium.AppiumWebElement.FindElementsByXPath(string)</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>HomeworkTests</Project>
+              <File>C:\Users\user\Desktop\window\HW\110590034\HomeworkTests\UI\Robot.cs</File>
+              <Line>199</Line>
+              <StartLine>199</StartLine>
+              <StartCol>16</StartCol>
+              <EndLine>199</EndLine>
+              <EndCol>103</EndCol>
+              <Comment>目前物件 Homework.UI.Tests.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Appium.AppiumWebElement，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：OpenQA.Selenium.Appium.AppiumWebElement.FindElementByName(string) 以及 OpenQA.Selenium.Appium.AppiumWebElement.FindElementsByXPath(string)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>11</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>202 目前物件 Homework.UI.Tests.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Appium.AppiumWebElement，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：OpenQA.Selenium.Appium.AppiumWebElement.FindElementByName(string) 以及 OpenQA.Selenium.Appium.AppiumWebElement.FindElementsByXPath(string)</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>HomeworkTests</Project>
+              <File>C:\Users\user\Desktop\window\HW\110590034\HomeworkTests\UI\Robot.cs</File>
+              <Line>202</Line>
+              <StartLine>202</StartLine>
+              <StartCol>28</StartCol>
+              <EndLine>202</EndLine>
+              <EndCol>46</EndCol>
+              <Comment>目前物件 Homework.UI.Tests.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Appium.AppiumWebElement，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：OpenQA.Selenium.Appium.AppiumWebElement.FindElementByName(string) 以及 OpenQA.Selenium.Appium.AppiumWebElement.FindElementsByXPath(string)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+          </Reviews>
           <HashCodeIgnoreList />
           <HashCodeRequestIgnoreList />
           <AnalysisFileManager>
@@ -196,12 +370,22 @@
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>Command\AddPageCommand.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Command\CommandManager.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Command\DeleteCommand.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Command\DeletePageCommand.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
@@ -221,9 +405,24 @@
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>Command\ResizeCommand.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Constant.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>CreateShapeDialog.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>CreateShapeDialog.Designer.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>DoubleBufferedPanel.cs</RelativePath>
@@ -246,6 +445,21 @@
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>FormPartial.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>LoadDialog.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>LoadDialog.Designer.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Designer</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Model\Ellipse.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
@@ -262,6 +476,16 @@
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Model\Model.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Model\ModelPartial.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Model\Pages.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
@@ -321,6 +545,16 @@
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>SaveDialog.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>SaveDialog.Designer.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Designer</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>State\DrawingState.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
@@ -351,6 +585,11 @@
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>Command\AddPageCommandTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Command\CommandManagerTests.cs</RelativePath>
                 <ProjectName>HomeworkTests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
@@ -361,12 +600,22 @@
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>Command\DeletePageCommandTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Command\DrawCommandTests.cs</RelativePath>
                 <ProjectName>HomeworkTests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Command\MoveCommandTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Command\ResizeCommandTests.cs</RelativePath>
                 <ProjectName>HomeworkTests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
@@ -387,6 +636,11 @@
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Model\ModelTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Model\PagesTests.cs</RelativePath>
                 <ProjectName>HomeworkTests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
@@ -440,10 +694,20 @@
                 <ProjectName>HomeworkTests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>UI\Robot.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>UI\UITests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>2834</ProductionLoc>
-          <TestLoc>2650</TestLoc>
+          <ProductionLoc>3774</ProductionLoc>
+          <TestLoc>3901</TestLoc>
         </CodeReview>
       </Data>
     </div>

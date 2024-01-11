@@ -35,14 +35,14 @@ namespace Homework.View
         }
 
         // click ok button
-        private void _okButton_Click(object sender, EventArgs e)
+        private void HandleOkButtonClick(object sender, EventArgs e)
         {
             _isOk = true;
             Close();
         }
 
         // click cancel button
-        private void _cancelButton_Click(object sender, EventArgs e)
+        private void HandleCancelButtonClick(object sender, EventArgs e)
         {
             _isOk = false;
             Close();
@@ -55,7 +55,7 @@ namespace Homework.View
             bool isTransferToDouble = double.TryParse(_leftTextBox.Text, out _left) && double.TryParse(_topTextBox.Text, out _top) && double.TryParse(_rightTextBox.Text, out _right) && double.TryParse(_bottomTextBox.Text, out _bottom);
             if (isTransferToDouble)
             {
-                bool isInRange = IsXInRange(_left) && IsYInRange(_top) && IsXInRange(_right) && IsYInRange(_bottom);
+                bool isInRange = IsPointInWidthRange(_left) && IsPointInHeightRange(_top) && IsPointInWidthRange(_right) && IsPointInHeightRange(_bottom);
                 if (isInRange)
                 {
                     _okButton.Enabled = _left < _right && _top < _bottom;
@@ -76,19 +76,19 @@ namespace Homework.View
         }
 
         // set size
-        public void SetCavasSize(Size currentSize)
+        public void SetCanvasSize(Size currentSize)
         {
             _canvasSize = currentSize;
         }
 
         // is x in range
-        public bool IsXInRange(double pointX)
+        public bool IsPointInWidthRange(double pointX)
         {
             return (pointX >= 0 && pointX <= _canvasSize.Width);
         }
 
         // is y in range
-        public bool IsYInRange(double pointY)
+        public bool IsPointInHeightRange(double pointY)
         {
             return (pointY >= 0 && pointY <= _canvasSize.Height);
         }
