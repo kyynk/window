@@ -39,9 +39,9 @@ namespace Homework.UI.Tests
 
             _robot.Sleep(1);
             Console.WriteLine("hi 1111");
-            _canvas = _robot.FindElementById("_canvas");
+            _canvas = _robot.FindElementByAccessibilityId("_canvas");
             Console.WriteLine("hi 2222");
-            _flowLayoutPanel = _robot.FindElementById("_flowLayoutPanel");
+            _flowLayoutPanel = _robot.FindElementByAccessibilityId("_flowLayoutPanel");
             Console.WriteLine("hi 3333");
         }
 
@@ -74,7 +74,7 @@ namespace Homework.UI.Tests
                 .AddAction(pointer.CreatePointerDown(MouseButton.Left))
                 .AddAction(MovePointerToPoint(pointer, point2))
                 .AddAction(pointer.CreatePointerUp(MouseButton.Left));
-            _robot.PerformAction(actionBuilder.ToActionSequenceList());
+            _robot.PerformActions(actionBuilder.ToActionSequenceList());
         }
 
         // info transfer
@@ -144,7 +144,7 @@ namespace Homework.UI.Tests
                 .AddAction(pointer.CreatePointerDown(MouseButton.Left))
                 .AddAction(MovePointerToPoint(pointer, new Point(150, 150)))
                 .AddAction(pointer.CreatePointerUp(MouseButton.Left));
-            _robot.PerformAction(actionBuilder.ToActionSequenceList());
+            _robot.PerformActions(actionBuilder.ToActionSequenceList());
 
             string[] expectedData2 = { "刪除", "圓", "(60, 60), (200, 200)" };
             _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData2);
@@ -167,7 +167,7 @@ namespace Homework.UI.Tests
                 .AddAction(pointer.CreatePointerDown(MouseButton.Left))
                 .AddAction(MovePointerToPoint(pointer, new Point(200, 200)))
                 .AddAction(pointer.CreatePointerUp(MouseButton.Left));
-            _robot.PerformAction(actionBuilder.ToActionSequenceList());
+            _robot.PerformActions(actionBuilder.ToActionSequenceList());
 
             string[] expectedData2 = { "刪除", "矩形", "(10, 10), (200, 200)" };
             _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData2);
@@ -187,7 +187,7 @@ namespace Homework.UI.Tests
                 .AddAction(MovePointerToPoint(pointer, new Point(100, 100)))
                 .AddAction(pointer.CreatePointerDown(MouseButton.Left))
                 .AddAction(pointer.CreatePointerUp(MouseButton.Left));
-            _robot.PerformAction(actionBuilder.ToActionSequenceList());
+            _robot.PerformActions(actionBuilder.ToActionSequenceList());
             _robot.PerformDeleteKey();
             _robot.AssertDataGridViewRowCountBy("_shapeData", 0);
         }
@@ -209,10 +209,10 @@ namespace Homework.UI.Tests
                 Point point2 = new Point(_random.Next((int)point1.X + 1, canvasSize.Width), _random.Next((int)point1.Y + 1, canvasSize.Height));
                 _robot.SelectComboBoxValue("_shapeTypeComboBox", type);
                 _robot.ClickButton("新增");
-                _robot.FindElementById("_leftTextBox").SendKeys(point1.X.ToString());
-                _robot.FindElementById("_topTextBox").SendKeys(point1.Y.ToString());
-                _robot.FindElementById("_rightTextBox").SendKeys(point2.X.ToString());
-                _robot.FindElementById("_bottomTextBox").SendKeys(point2.Y.ToString());
+                _robot.FindElementByAccessibilityId("_leftTextBox").SendKeys(point1.X.ToString());
+                _robot.FindElementByAccessibilityId("_topTextBox").SendKeys(point1.Y.ToString());
+                _robot.FindElementByAccessibilityId("_rightTextBox").SendKeys(point2.X.ToString());
+                _robot.FindElementByAccessibilityId("_bottomTextBox").SendKeys(point2.Y.ToString());
                 _robot.ClickButton("OK");
                 string[] expectedData = { "刪除", type, transferInformation(point1, point2) };
                 _robot.AssertDataGridViewRowDataBy("_shapeData", i, expectedData);
@@ -236,10 +236,10 @@ namespace Homework.UI.Tests
                 Point point2 = new Point(_random.Next((int)point1.X + 1, canvasSize.Width), _random.Next((int)point1.Y + 1, canvasSize.Height));
                 _robot.SelectComboBoxValue("_shapeTypeComboBox", type);
                 _robot.ClickButton("新增");
-                _robot.FindElementById("_leftTextBox").SendKeys(point1.X.ToString());
-                _robot.FindElementById("_topTextBox").SendKeys(point1.Y.ToString());
-                _robot.FindElementById("_rightTextBox").SendKeys(point2.X.ToString());
-                _robot.FindElementById("_bottomTextBox").SendKeys(point2.Y.ToString());
+                _robot.FindElementByAccessibilityId("_leftTextBox").SendKeys(point1.X.ToString());
+                _robot.FindElementByAccessibilityId("_topTextBox").SendKeys(point1.Y.ToString());
+                _robot.FindElementByAccessibilityId("_rightTextBox").SendKeys(point2.X.ToString());
+                _robot.FindElementByAccessibilityId("_bottomTextBox").SendKeys(point2.Y.ToString());
                 _robot.ClickButton("OK");
                 string[] expectedData = { "刪除", type, transferInformation(point1, point2) };
                 _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData);
@@ -292,7 +292,7 @@ namespace Homework.UI.Tests
                 .AddAction(pointer.CreatePointerDown(MouseButton.Left))
                 .AddAction(MovePointerToPoint(pointer, new Point(200, 200)))
                 .AddAction(pointer.CreatePointerUp(MouseButton.Left));
-            _robot.PerformAction(actionBuilder.ToActionSequenceList());
+            _robot.PerformActions(actionBuilder.ToActionSequenceList());
 
             string[] expectedData2 = { "刪除", "矩形", "(10, 10), (200, 200)" };
             _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData2);
@@ -325,7 +325,7 @@ namespace Homework.UI.Tests
                 .AddAction(pointer.CreatePointerDown(MouseButton.Left))
                 .AddAction(MovePointerToPoint(pointer, new Point(150, 150)))
                 .AddAction(pointer.CreatePointerUp(MouseButton.Left));
-            _robot.PerformAction(actionBuilder.ToActionSequenceList());
+            _robot.PerformActions(actionBuilder.ToActionSequenceList());
 
             string[] expectedData2 = { "刪除", "圓", "(60, 60), (200, 200)" };
             _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData2);
@@ -358,7 +358,7 @@ namespace Homework.UI.Tests
                 .AddAction(MovePointerToPoint(pointer, new Point(100, 100)))
                 .AddAction(pointer.CreatePointerDown(MouseButton.Left))
                 .AddAction(pointer.CreatePointerUp(MouseButton.Left));
-            _robot.PerformAction(actionBuilder.ToActionSequenceList());
+            _robot.PerformActions(actionBuilder.ToActionSequenceList());
             _robot.PerformDeleteKey();
             _robot.AssertDataGridViewRowCountBy("_shapeData", 0);
 
@@ -394,10 +394,10 @@ namespace Homework.UI.Tests
                 Point point2 = new Point(_random.Next((int)point1.X + 1, canvasSize.Width), _random.Next((int)point1.Y + 1, canvasSize.Height));
                 _robot.SelectComboBoxValue("_shapeTypeComboBox", type);
                 _robot.ClickButton("新增");
-                _robot.FindElementById("_leftTextBox").SendKeys(point1.X.ToString());
-                _robot.FindElementById("_topTextBox").SendKeys(point1.Y.ToString());
-                _robot.FindElementById("_rightTextBox").SendKeys(point2.X.ToString());
-                _robot.FindElementById("_bottomTextBox").SendKeys(point2.Y.ToString());
+                _robot.FindElementByAccessibilityId("_leftTextBox").SendKeys(point1.X.ToString());
+                _robot.FindElementByAccessibilityId("_topTextBox").SendKeys(point1.Y.ToString());
+                _robot.FindElementByAccessibilityId("_rightTextBox").SendKeys(point2.X.ToString());
+                _robot.FindElementByAccessibilityId("_bottomTextBox").SendKeys(point2.Y.ToString());
                 _robot.ClickButton("OK");
                 string[] expectedData = { "刪除", type, transferInformation(point1, point2) };
                 _robot.AssertDataGridViewRowDataBy("_shapeData", i, expectedData);
@@ -431,10 +431,10 @@ namespace Homework.UI.Tests
                 Point point2 = new Point(_random.Next((int)point1.X + 1, canvasSize.Width), _random.Next((int)point1.Y + 1, canvasSize.Height));
                 _robot.SelectComboBoxValue("_shapeTypeComboBox", type);
                 _robot.ClickButton("新增");
-                _robot.FindElementById("_leftTextBox").SendKeys(point1.X.ToString());
-                _robot.FindElementById("_topTextBox").SendKeys(point1.Y.ToString());
-                _robot.FindElementById("_rightTextBox").SendKeys(point2.X.ToString());
-                _robot.FindElementById("_bottomTextBox").SendKeys(point2.Y.ToString());
+                _robot.FindElementByAccessibilityId("_leftTextBox").SendKeys(point1.X.ToString());
+                _robot.FindElementByAccessibilityId("_topTextBox").SendKeys(point1.Y.ToString());
+                _robot.FindElementByAccessibilityId("_rightTextBox").SendKeys(point2.X.ToString());
+                _robot.FindElementByAccessibilityId("_bottomTextBox").SendKeys(point2.Y.ToString());
                 _robot.ClickButton("OK");
                 string[] expectedData = { "刪除", type, transferInformation(point1, point2) };
                 _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData);

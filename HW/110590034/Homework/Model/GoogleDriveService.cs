@@ -39,6 +39,7 @@ namespace Homework.Model
             this.CreateNewService(applicationName, clientSecretFileName);
         }
 
+        // create new service
         private void CreateNewService(string applicationName, string clientSecretFileName)
         {
             const string USER = "user";
@@ -82,56 +83,6 @@ namespace Homework.Model
 
             if ((nowTimeStamp - _timeStamp) > ONE_HOUR_SECOND)
                 this.CreateNewService(_applicationName, _clientSecretFileName);
-        }
-
-        /// <summary>
-        /// 查詢Google Drive 根目錄的檔案
-        /// </summary>
-        /// <returns>Google Drive File List</returns>
-        public List<Google.Apis.Drive.v2.Data.File> ListRootFileAndFolder()
-        {
-            List<Google.Apis.Drive.v2.Data.File> returnList = new List<Google.Apis.Drive.v2.Data.File>();
-            const string ROOT_QUERY_STRING = "'root' in parents";
-
-            try
-            {
-                returnList = ListFileAndFolderWithQueryString(ROOT_QUERY_STRING);
-            }
-            catch (Exception exception)
-            {
-                throw exception;
-            }
-
-            return returnList;
-        }
-
-        /// <summary>
-        /// 使用QueryString 查詢檔案 回傳一List
-        /// </summary>
-        /// <param name="queryString">QueryString，使用方法: https://developers.google.com/drive/web/search-parameters </param>
-        /// <returns>含有Google Drive File 格式的 List</returns>
-        private List<Google.Apis.Drive.v2.Data.File> ListFileAndFolderWithQueryString(string queryString)
-        {
-            List<Google.Apis.Drive.v2.Data.File> returnList = new List<Google.Apis.Drive.v2.Data.File>();
-            this.CheckCredentialTimeStamp();
-            FilesResource.ListRequest listRequest = _service.Files.List();
-            listRequest.Q = queryString;
-            do
-            {
-                try
-                {
-                    FileList fileList = listRequest.Execute();
-                    returnList.AddRange(fileList.Items);
-                    listRequest.PageToken = fileList.NextPageToken;
-                }
-                catch (Exception exception)
-                {
-                    listRequest.PageToken = null;
-                    throw exception;
-                }
-            } while (!String.IsNullOrEmpty(listRequest.PageToken));
-
-            return returnList;
         }
 
         /// <summary>

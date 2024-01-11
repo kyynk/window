@@ -53,7 +53,7 @@ namespace Homework.UI.Tests
         }
 
         // find id
-        public WindowsElement FindElementById(string id)
+        public WindowsElement FindElementByAccessibilityId(string id)
         {
             return _driver.FindElementByAccessibilityId(id);
         }
@@ -65,7 +65,7 @@ namespace Homework.UI.Tests
         }
 
         // perform action
-        public void PerformAction(IList<ActionSequence> action)
+        public void PerformActions(IList<ActionSequence> action)
         {
             _driver.PerformActions(action);
         }
@@ -90,7 +90,7 @@ namespace Homework.UI.Tests
         public void SelectComboBoxValue(string comboBoxId, string value)
         {
             SwitchTo(comboBoxId);
-            var comboBox = FindElementById(comboBoxId);
+            var comboBox = FindElementByAccessibilityId(comboBoxId);
             comboBox.Click();
             comboBox.FindElement(By.Name(value)).Click();
         }
