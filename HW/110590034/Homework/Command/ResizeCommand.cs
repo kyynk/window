@@ -53,8 +53,7 @@ namespace Homework.Command
             //Point tempPoint2 = new Point(_shape.Point2.X, _shape.Point2.Y);
             Point tempPoint1 = new Point(_shape.Point1);
             Point tempPoint2 = new Point(_shape.Point2);
-            _shape.Point1 = _prePointLeft;
-            _shape.Point2 = _prePointRight;
+            _shape.SetTwoPoint(_prePointLeft, _prePointRight);
             _prePointLeft = tempPoint1;
             _prePointRight = tempPoint2;
         }

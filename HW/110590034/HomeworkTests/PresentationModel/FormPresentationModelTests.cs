@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using Homework.View;
 using Moq;
+using Homework.Model;
 
 namespace Homework.PresentationModel.Tests
 {
@@ -463,6 +464,90 @@ namespace Homework.PresentationModel.Tests
             _presentationModel.PropertyChanged += (sender, args) => eventRaised = true;
             _presentationModel.NotifyPropertyChanged(Constant.Constant.IS_CURSOR_ENABLED);
             Assert.IsTrue(eventRaised);
+        }
+
+        // test add page
+        [TestMethod()]
+        public void AddPageTest()
+        {
+            _presentationModel.AddPage(0);
+            _mockModel.Verify(model => model.AddPage(0), Times.Once);
+        }
+
+        // test is selected shape
+        [TestMethod()]
+        public void IsSelectedShapeTest()
+        {
+            _mockModel.Setup(model => model.IsSelectedShape()).Returns(true);
+            Assert.IsTrue(_presentationModel.IsSelectedShape());
+            _mockModel.Verify(model => model.IsSelectedShape(), Times.Once);
+            _mockModel.Setup(model => model.IsSelectedShape()).Returns(false);
+            Assert.IsFalse(_presentationModel.IsSelectedShape());
+            _mockModel.Verify(model => model.IsSelectedShape(), Times.Exactly(2));
+        }
+
+        // test select page
+        [TestMethod()]
+        public void SelectPageTest()
+        {
+            _presentationModel.SelectPage(0);
+            _mockModel.Verify(model => model.SwitchPage(0), Times.Once);
+        }
+
+        // test handle pages changed
+        [TestMethod()]
+        public void HandlePagesChangedTest()
+        {
+            bool eventRaised = false;
+            Pages.PageAction invokedAction = Pages.PageAction.Remove;
+            int invokedIndex = -1;
+
+            _presentationModel._pagesChanged += (pageAction, index) =>
+            {
+                eventRaised = true;
+                invokedAction = pageAction;
+                invokedIndex = index;
+            };
+
+            _presentationModel.HandlePagesChanged(Pages.PageAction.Add, 0);
+
+            Assert.AreEqual(Pages.PageAction.Add, invokedAction);
+            Assert.AreEqual(0, invokedIndex);
+            Assert.IsTrue(eventRaised);
+        }
+
+        // test handle undo redo changed
+        [TestMethod()]
+        public void HandleUndoRedoChangedTest()
+        {
+            bool eventRaised = false;
+            bool invokedIsUndo = false;
+            bool invokedIsRedo = true;
+
+            _presentationModel._undoRedoChanged += (isUndo, isRedo) =>
+            {
+                eventRaised = true;
+                invokedIsUndo = isUndo;
+                invokedIsRedo = isRedo;
+            };
+
+            _presentationModel.HandleUndoRedoChanged(true, true);
+
+            Assert.IsTrue(invokedIsUndo);
+            Assert.IsTrue(invokedIsRedo);
+            Assert.IsTrue(eventRaised);
+        }
+
+        // test property
+        [TestMethod()]
+        public void SlideIndexTest()
+        {
+            int newIndex = 5;
+
+            _presentationModel.SlideIndex = newIndex;
+            int retrievedIndex = _presentationModel.SlideIndex;
+
+            Assert.AreEqual(newIndex, retrievedIndex);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Homework.Model
         public event CommandManager.UndoRedoChanged _undoRedoChanged;
 
         // add page
-        public void AddPage(int index)
+        public virtual void AddPage(int index)
         {
             // command
             _commandManager.Execute(new AddPageCommand(this, new Shapes(), index), _panelMaxX);
@@ -62,7 +62,7 @@ namespace Homework.Model
         }
 
         // switch page
-        public void SwitchPage(int index)
+        public virtual void SwitchPage(int index)
         {
             Console.WriteLine("old page index : " + PageIndex);
             PageIndex = index;
@@ -72,7 +72,7 @@ namespace Homework.Model
         }
 
         // Is selected shape
-        public bool IsSelectedShape()
+        public virtual bool IsSelectedShape()
         {
             return _shapesData.GetSelectedShape() != null;
         }

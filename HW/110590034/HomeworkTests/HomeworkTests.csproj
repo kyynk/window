@@ -94,10 +94,14 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Command\AddCommandTests.cs" />
+    <Compile Include="Command\AddPageCommandTests.cs" />
     <Compile Include="Command\CommandManagerTests.cs" />
     <Compile Include="Command\DeleteCommandTests.cs" />
+    <Compile Include="Command\DeletePageCommandTests.cs" />
     <Compile Include="Command\DrawCommandTests.cs" />
     <Compile Include="Command\MoveCommandTests.cs" />
+    <Compile Include="Command\ResizeCommandTests.cs" />
+    <Compile Include="Model\PagesTests.cs" />
     <Compile Include="State\DrawingStateTests.cs" />
     <Compile Include="Model\LineTests.cs" />
     <Compile Include="Model\MockGraphics.cs" />

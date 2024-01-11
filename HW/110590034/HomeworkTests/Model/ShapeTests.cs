@@ -253,13 +253,26 @@ namespace Homework.Model.Tests
         public void ResizeForPanelTest()
         {
             _shape = new Ellipse(new Point(10, 10), new Point(20, 20));
-            
+
             _shape.ResizeForPanel(0.5);
 
             Assert.AreEqual(5, _shape.Point1.X);
             Assert.AreEqual(5, _shape.Point1.Y);
             Assert.AreEqual(10, _shape.Point2.X);
             Assert.AreEqual(10, _shape.Point2.Y);
+        }
+
+        // test set two point
+        [TestMethod()]
+        public void SetTwoPointTest()
+        {
+            _shape = new Ellipse(new Point(10, 10), new Point(20, 20));
+
+            Point point1 = new Point(5, 5);
+            Point point2 = new Point(10, 10);
+            _shape.SetTwoPoint(point1, point2);
+            Assert.AreEqual(point1, _shape.Point1);
+            Assert.AreEqual(point2, _shape.Point2);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Homework.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace Homework.Model.Tests
 {
@@ -181,6 +182,20 @@ namespace Homework.Model.Tests
             Assert.IsTrue(_shapes.GetSelectedShape().IsFirstPointBottom);
             //clean
             _shapes.ClearSelectedShape();
+        }
+
+        // test resize for panel
+        [TestMethod()]
+        public void ResizeForPanelTest()
+        {
+            _shapes.InsertShapeByIndex(new Line(new Point(10, 20), new Point(20, 10)), 0);
+            _shapes.ResizeForPanel(0.5);
+            Assert.AreEqual(5, _shapes.ShapeList[0].Point1.X);
+            Assert.AreEqual(10, _shapes.ShapeList[0].Point1.Y);
+            Assert.AreEqual(10, _shapes.ShapeList[0].Point2.X);
+            Assert.AreEqual(5, _shapes.ShapeList[0].Point2.Y);
+            // clean
+            _shapes.DeleteShapeByIndex(0);
         }
     }
 }

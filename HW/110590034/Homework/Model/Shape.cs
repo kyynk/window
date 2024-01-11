@@ -274,5 +274,12 @@ namespace Homework.Model
             _point1.ResizePoint(ratio);
             _point2.ResizePoint(ratio);
         }
+
+        // set two point
+        public virtual void SetTwoPoint(Point point1, Point point2)
+        {
+            Point1 = point1;
+            Point2 = point2;
+        }
     }
 }

@@ -41,6 +41,7 @@ namespace Homework.Command.Tests
             Assert.AreEqual(6, (double)_privateMoveCommand.GetField("_offsetY"));
             Assert.AreEqual(0, (int)_privateMoveCommand.GetField("_pageIndex"));
             Assert.AreEqual(-1, (double)_privateMoveCommand.GetField("_panelWidth"));
+            Assert.IsNotNull((Model.Model)_privateMoveCommand.GetField("_model"));
             Assert.IsNotNull((Shape)_privateMoveCommand.GetField("_shape"));
             Assert.IsFalse((bool)_privateMoveCommand.GetField("_isNotFirstTime"));
         }

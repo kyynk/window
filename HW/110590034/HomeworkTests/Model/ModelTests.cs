@@ -20,6 +20,7 @@ namespace Homework.Model.Tests
         {
             _model = new Model();
             _privateModel = new PrivateObject(_model);
+            _model._pagesChanged += HandlePagesChanged;
         }
 
         // test constructor
@@ -28,7 +29,7 @@ namespace Homework.Model.Tests
         {
             _model = new Model();
             _privateModel = new PrivateObject(_model);
-
+            _model._pagesChanged += HandlePagesChanged;
             Assert.IsNotNull(_model);
             Assert.AreEqual(Constant.Constant.POINT, _model.ShapeName);
             Assert.IsNotNull(_model.GetShapes());
@@ -41,6 +42,12 @@ namespace Homework.Model.Tests
             Assert.AreEqual(-1, ((Point)_privateModel.GetField("_firstPoint")).X);
             Assert.AreEqual(-1, ((Point)_privateModel.GetField("_firstPoint")).Y);
             Assert.IsInstanceOfType(_privateModel.GetField("_commandManager"), typeof(CommandManager));
+        }
+
+        // handle pages changed
+        public void HandlePagesChanged(Pages.PageAction pageAction, int index)
+        {
+            _model.SwitchPage(index);
         }
 
         // test ShapeName property
@@ -422,6 +429,7 @@ namespace Homework.Model.Tests
         public void IsUndoEnabledTest()
         {
             Model temp = new Model();
+            temp._pagesChanged += HandlePagesChanged;
             Assert.IsFalse(temp.IsUndoEnabled);
             temp.Create(Constant.Constant.RECTANGLE, new Point(1, 1), new Point(2, 2));
             Assert.IsTrue(temp.IsUndoEnabled);
@@ -432,6 +440,7 @@ namespace Homework.Model.Tests
         public void IsRedoEnabledTest()
         {
             Model temp = new Model();
+            temp._pagesChanged += HandlePagesChanged;
             Assert.IsFalse(temp.IsRedoEnabled);
             temp.Create(Constant.Constant.RECTANGLE, new Point(1, 1), new Point(2, 2));
             temp.Undo();

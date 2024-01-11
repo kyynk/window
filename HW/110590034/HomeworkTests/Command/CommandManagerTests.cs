@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Homework.Command;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using Moq;
 using System;
@@ -80,6 +81,22 @@ namespace Homework.Command.Tests
             // _redo.Count <= 0
             Assert.IsFalse(_commandManager.IsRedoEnabled);
             Assert.ThrowsException<Exception>(() => _commandManager.Redo(_width));
+        }
+
+        // test all clear
+        [TestMethod()]
+        public void AllClearTest()
+        {
+            
+            bool eventRaised = false;
+            _commandManager._undoRedoChanged += (isUndo, isRedu) =>
+            {
+                eventRaised = true;
+            };
+            _commandManager.AllClear();
+            Assert.IsTrue(eventRaised);
+            Assert.IsFalse(_commandManager.IsUndoEnabled);
+            Assert.IsFalse(_commandManager.IsRedoEnabled);
         }
     }
 }
