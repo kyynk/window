@@ -37,7 +37,7 @@ namespace Homework.UI.Tests
             _robot = new Robot(targetAppPath, MENU_FORM);
             _random = new Random();
 
-            _robot.Sleep(2);
+            _robot.Sleep(1);
             Console.WriteLine("hi 1111");
             _canvas = _robot.FindElementById("_canvas");
             Console.WriteLine("hi 2222");
@@ -470,6 +470,74 @@ namespace Homework.UI.Tests
 
             _robot.PerformDeleteKey();
             Assert.AreEqual(1, GetSlideByIdFromFlowLayoutPanel().Count);
+        }
+
+        // test undo redo add page
+        public void UndoRedoAddPageTest()
+        {
+            _robot.ClickButton("_addPageButton");
+            Assert.AreEqual(2, GetSlideByIdFromFlowLayoutPanel().Count);
+
+            _robot.AssertEnable("_undoButton", true);
+            _robot.AssertEnable("_redoButton", false);
+            _robot.ClickButton("_undoButton");
+
+            Assert.AreEqual(1, GetSlideByIdFromFlowLayoutPanel().Count);
+
+            _robot.AssertEnable("_undoButton", false);
+            _robot.AssertEnable("_redoButton", true);
+            _robot.ClickButton("_redoButton");
+            Assert.AreEqual(2, GetSlideByIdFromFlowLayoutPanel().Count);
+        }
+
+        // test undo redo delete page
+        public void UndoRedoDeletePageTest()
+        {
+            _robot.ClickButton("_addPageButton");
+            Assert.AreEqual(2, GetSlideByIdFromFlowLayoutPanel().Count);
+
+            _robot.PerformDeleteKey();
+            Assert.AreEqual(1, GetSlideByIdFromFlowLayoutPanel().Count);
+
+            _robot.AssertEnable("_undoButton", true);
+            _robot.AssertEnable("_redoButton", false);
+            _robot.ClickButton("_undoButton");
+
+            Assert.AreEqual(2, GetSlideByIdFromFlowLayoutPanel().Count);
+
+            _robot.AssertEnable("_undoButton", false);
+            _robot.AssertEnable("_redoButton", true);
+            _robot.ClickButton("_redoButton");
+            Assert.AreEqual(1, GetSlideByIdFromFlowLayoutPanel().Count);
+        }
+
+        // test dynamic layout
+        [TestMethod()]
+        public void DynamicLayoutTest()
+        {
+            var slides = GetSlideByIdFromFlowLayoutPanel();
+            _robot.ClickButton("_addPageButton");
+            foreach (var aSlide in slides)
+            {
+                //Console.WriteLine("slide ratio " + (double)aSlide.Size.Height / (double)aSlide.Size.Width);
+                //Console.WriteLine("expected ratio " + Constant.Constant.PANEL_RATIO);
+                Assert.IsTrue(Math.Abs((double)aSlide.Size.Height / (double)aSlide.Size.Width - Constant.Constant.PANEL_RATIO) < 0.01);
+                _robot.Sleep(1);
+            }
+            _robot.GetManage().Window.Maximize();
+            _robot.ClickButton("_addPageButton");
+            foreach (var aSlide in slides)
+            {
+                Assert.IsTrue(Math.Abs((double)aSlide.Size.Height / (double)aSlide.Size.Width - Constant.Constant.PANEL_RATIO) < 0.01);
+                _robot.Sleep(1);
+            }
+            _robot.GetManage().Window.Size = new System.Drawing.Size(800, 700);
+            _robot.ClickButton("_addPageButton");
+            foreach (var aSlide in slides)
+            {
+                Assert.IsTrue(Math.Abs((double)aSlide.Size.Height / (double)aSlide.Size.Width - Constant.Constant.PANEL_RATIO) < 0.01);
+                _robot.Sleep(1);
+            }
         }
     }
 }

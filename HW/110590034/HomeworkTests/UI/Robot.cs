@@ -70,7 +70,7 @@ namespace Homework.UI.Tests
             _driver.PerformActions(action);
         }
 
-        // get state
+        // get button state
         public AccessibleStates GetButtonState(string name)
         {
             string stateValue = FindElementByName(name).GetAttribute("LegacyState");
@@ -93,6 +93,12 @@ namespace Homework.UI.Tests
             var comboBox = FindElementById(comboBoxId);
             comboBox.Click();
             comboBox.FindElement(By.Name(value)).Click();
+        }
+
+        // get driver manage
+        public IOptions GetManage()
+        {
+            return _driver.Manage();
         }
 
         // clean up
