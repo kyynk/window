@@ -287,6 +287,7 @@ namespace Homework.View
             int panelWidth = _splitContainer1.Panel1.Width;
 
             Button newPageButton = new Button();
+            newPageButton.AccessibleName = "slide";
             newPageButton.Click += SelectPage;
             newPageButton.BackColor = System.Drawing.Color.White;
             newPageButton.BackgroundImageLayout = ImageLayout.Stretch;

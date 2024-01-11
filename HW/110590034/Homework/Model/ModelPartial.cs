@@ -28,7 +28,7 @@ namespace Homework.Model
         }
 
         // insert page
-        public void InsertPageByIndex(Shapes shapes, int index)
+        public virtual void InsertPageByIndex(Shapes shapes, int index)
         {
             _pages.InsertPageByIndex(index, shapes);
             SelectPage(index);
@@ -37,7 +37,7 @@ namespace Homework.Model
 
 
         // remove page
-        public void RemovePageByIndex(int index)
+        public virtual void RemovePageByIndex(int index)
         {
             if (index == _pages.GetPages().Count - 1)
             {

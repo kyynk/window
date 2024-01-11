@@ -15,7 +15,6 @@ namespace Homework.Command.Tests
         private double _panelWidth;
         private int _pageIndex;
         
-
         // setup
         [TestInitialize()]
         public void Initialize()

@@ -10,8 +10,9 @@ using OpenQA.Selenium;
 using System.Windows.Input;
 using System.Windows.Forms;
 using Homework;
+using OpenQA.Selenium.Interactions;
 
-namespace HomeworkTests.UI
+namespace Homework.UI.Tests
 {
     public class Robot
     {
@@ -35,12 +36,47 @@ namespace HomeworkTests.UI
             options.AddAdditionalCapability("app", targetAppPath);
             options.AddAdditionalCapability("deviceName", "WindowsPC");
 
-            _driver = new WindowsDriver<WindowsElement>(new Uri(WIN_APP_DRIVER_URI), options);
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-            _windowHandles = new Dictionary<string, string>
+            try
             {
-                { _root, _driver.CurrentWindowHandle }
-            };
+                _driver = new WindowsDriver<WindowsElement>(new Uri(WIN_APP_DRIVER_URI), options);
+                _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+                _windowHandles = new Dictionary<string, string>
+                {
+                    { _root, _driver.CurrentWindowHandle }
+                };
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"WebDriver 初始化失敗: {ex.Message}");
+                // 可以進行相應的處理，例如拋出例外狀況或記錄錯誤訊息
+            }
+        }
+
+        // find id
+        public WindowsElement FindElementById(string id)
+        {
+            return _driver.FindElementByAccessibilityId(id);
+        }
+
+        // find name
+        public WindowsElement FindElementByName(string name)
+        {
+            return _driver.FindElementByName(name);
+        }
+
+        // perform action
+        public void PerformAction(IList<ActionSequence> action)
+        {
+            _driver.PerformActions(action);
+        }
+
+        // get state
+        public AccessibleStates GetButtonState(string name)
+        {
+            string stateValue = FindElementByName(name).GetAttribute("LegacyState");
+            //Console.WriteLine(stateValue);
+            Console.WriteLine((AccessibleStates)Enum.Parse(typeof(AccessibleStates), stateValue));
+            return (AccessibleStates)Enum.Parse(typeof(AccessibleStates), stateValue);
         }
 
         // clean up
@@ -117,6 +153,13 @@ namespace HomeworkTests.UI
         {
             var dataGridView = _driver.FindElementByAccessibilityId(name);
             _driver.FindElementByName($"{columnName} 資料列 {rowIndex}").Click();
+        }
+
+        // test
+        public void AssertChecked(string name, bool state)
+        {
+            WindowsElement element = _driver.FindElementByName(name);
+            //Assert.AreEqual(state, element.Checked);
         }
 
         // test

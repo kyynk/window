@@ -93,6 +93,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="UI\Robot.cs" />
     <Compile Include="Command\AddCommandTests.cs" />
     <Compile Include="Command\AddPageCommandTests.cs" />
     <Compile Include="Command\CommandManagerTests.cs" />
@@ -116,7 +117,6 @@
     <Compile Include="PresentationModel\FormPresentationModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="State\ResizeStateTests.cs" />
-    <Compile Include="UI\Robot.cs" />
     <Compile Include="UI\UITests.cs" />
   </ItemGroup>
   <ItemGroup>

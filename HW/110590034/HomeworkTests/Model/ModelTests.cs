@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Homework.State;
 using Homework.Command;
 using Moq;
+using System;
 
 namespace Homework.Model.Tests
 {
@@ -47,7 +48,8 @@ namespace Homework.Model.Tests
         // handle pages changed
         public void HandlePagesChanged(Pages.PageAction pageAction, int index)
         {
-            _model.SwitchPage(index);
+            if (pageAction == Pages.PageAction.Switch)
+                _model.SwitchPage(index);
         }
 
         // test ShapeName property
@@ -558,9 +560,27 @@ namespace Homework.Model.Tests
             Assert.AreEqual(Constant.Constant.RECTANGLE, _model.GetShapes()[0].ShapeName);
             Assert.AreEqual(2, _model.GetShapes().Count);
             Assert.IsNull(_model.GetSelectedShape());
+
             // clean
             _model.Delete(0);
             _model.Delete(0);
+        }
+
+        // test handle keydown
+        [TestMethod()]
+        public void HandleKeyDownForDeletePageTest()
+        {
+            Assert.AreEqual(1, ((Pages)_privateModel.GetField("_pages")).GetPages().Count);
+            
+            // test cannot delete page
+            _model.HandleKeyDown(Keys.Delete);
+            Assert.AreEqual(1, ((Pages)_privateModel.GetField("_pages")).GetPages().Count);
+
+            // test delete page
+            _model.AddPage(0);
+            Assert.AreEqual(2, ((Pages)_privateModel.GetField("_pages")).GetPages().Count);
+            _model.HandleKeyDown(Keys.Delete);
+            Assert.AreEqual(1, ((Pages)_privateModel.GetField("_pages")).GetPages().Count);
         }
 
         // test set panel size test
@@ -592,6 +612,154 @@ namespace Homework.Model.Tests
             bool eventRaised = false;
             _model._modelChanged += () => { eventRaised = true; };
             _model.NotifyModelChanged();
+            Assert.IsTrue(eventRaised);
+        }
+
+        // test add page
+        [TestMethod()]
+        public void AddPageTest()
+        {
+            Assert.AreEqual(1, ((Pages)_privateModel.GetField("_pages")).GetPages().Count);
+            _model.AddPage(0);
+            Assert.AreEqual(2, ((Pages)_privateModel.GetField("_pages")).GetPages().Count);
+            Assert.AreEqual(0, _model.PageIndex);
+
+            // clean
+            _model.HandleKeyDown(Keys.Delete);
+        }
+
+        // test remove page
+        [TestMethod()]
+        public void RemovePageTest()
+        {
+            _model.AddPage(0);
+            Assert.AreEqual(2, ((Pages)_privateModel.GetField("_pages")).GetPages().Count);
+
+            _model.RemovePage();
+
+            Assert.AreEqual(1, ((Pages)_privateModel.GetField("_pages")).GetPages().Count);
+            Assert.AreEqual(0, _model.PageIndex);
+        }
+
+        // test insert page by index
+        [TestMethod()]
+        public void InsertPageByIndexTest()
+        {
+            Assert.AreEqual(1, ((Pages)_privateModel.GetField("_pages")).GetPages().Count);
+            _model.InsertPageByIndex(new Shapes(), 0);
+            Assert.AreEqual(2, ((Pages)_privateModel.GetField("_pages")).GetPages().Count);
+            Assert.AreEqual(0, _model.PageIndex);
+
+            // clean
+            _model.RemovePageByIndex(0);
+        }
+
+        // test remove page by index
+        [TestMethod()]
+        public void RemovePageByIndexTest()
+        {
+            // remove page
+            _model.InsertPageByIndex(new Shapes(), 1);
+            Assert.AreEqual(2, ((Pages)_privateModel.GetField("_pages")).GetPages().Count);
+
+            _model.RemovePageByIndex(0);
+
+            Assert.AreEqual(1, ((Pages)_privateModel.GetField("_pages")).GetPages().Count);
+            Assert.AreEqual(0, _model.PageIndex);
+
+            // remove page (last oage)
+            _model.InsertPageByIndex(new Shapes(), 1);
+            Assert.AreEqual(2, ((Pages)_privateModel.GetField("_pages")).GetPages().Count);
+
+            Console.WriteLine("remove page (last oage)");
+            _model.RemovePageByIndex(1);
+
+            Assert.AreEqual(1, ((Pages)_privateModel.GetField("_pages")).GetPages().Count);
+            Assert.AreEqual(0, _model.PageIndex);
+        }
+
+        // test select page
+        [TestMethod()]
+        public void SelectPageTest()
+        {
+            _model.AddPage(0);
+            Assert.AreEqual(0, _model.PageIndex);
+
+            _model.SelectPage(1);
+            Assert.AreEqual(1, _model.PageIndex);
+
+            // clean
+            _model.RemovePageByIndex(0);
+        }
+
+        // test switch page
+        [TestMethod()]
+        public void SwitchPageTest()
+        {
+            _model.AddPage(0);
+            Assert.AreEqual(0, _model.PageIndex);
+
+            _model.SwitchPage(1);
+            Assert.AreEqual(1, _model.PageIndex);
+
+            // clean
+            _model.RemovePageByIndex(0);
+        }
+
+        // test is selected shape
+        [TestMethod()]
+        public void IsSelectedShapeTest()
+        {
+            _model.AddDrawingShape(Constant.Constant.LINE, new Point(0, 0), new Point(10, 10));
+            Assert.IsFalse(_model.IsSelectedShape());
+            Assert.IsTrue(_model.CheckSelectedShape(6, 5));
+            Assert.IsTrue(_model.IsSelectedShape());
+
+            // clean
+            _model.Delete(0);
+        }
+
+        // test handle pages changed
+        [TestMethod()]
+        public void HandlePagesChangedTest()
+        {
+            bool eventRaised = false;
+            Pages.PageAction invokedAction = Pages.PageAction.Remove;
+            int invokedIndex = -1;
+
+            _model._pagesChanged += (pageAction, index) =>
+            {
+                eventRaised = true;
+                invokedAction = pageAction;
+                invokedIndex = index;
+            };
+
+            _model.HandlePagesChanged(Pages.PageAction.Add, 0);
+
+            Assert.AreEqual(Pages.PageAction.Add, invokedAction);
+            Assert.AreEqual(0, invokedIndex);
+            Assert.IsTrue(eventRaised);
+        }
+
+        // test handle undo redo changed
+        [TestMethod()]
+        public void HandleUndoRedoChangedTest()
+        {
+            bool eventRaised = false;
+            bool invokedIsUndo = false;
+            bool invokedIsRedo = true;
+
+            _model._undoRedoChanged += (isUndo, isRedo) =>
+            {
+                eventRaised = true;
+                invokedIsUndo = isUndo;
+                invokedIsRedo = isRedo;
+            };
+
+            _model.HandleUndoRedoChanged(true, true);
+
+            Assert.IsTrue(invokedIsUndo);
+            Assert.IsTrue(invokedIsRedo);
             Assert.IsTrue(eventRaised);
         }
     }
