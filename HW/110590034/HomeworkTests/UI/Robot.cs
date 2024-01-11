@@ -79,6 +79,22 @@ namespace Homework.UI.Tests
             return (AccessibleStates)Enum.Parse(typeof(AccessibleStates), stateValue);
         }
 
+        // input delete key
+        public void PerformDeleteKey()
+        {
+            Actions actions = new Actions(_driver);
+            actions.SendKeys(OpenQA.Selenium.Keys.Delete).Perform();
+        }
+
+        // select combobox value
+        public void SelectComboBoxValue(string comboBoxId, string value)
+        {
+            SwitchTo(comboBoxId);
+            var comboBox = FindElementById(comboBoxId);
+            comboBox.Click();
+            comboBox.FindElement(By.Name(value)).Click();
+        }
+
         // clean up
         public void CleanUp()
         {
@@ -156,16 +172,11 @@ namespace Homework.UI.Tests
         }
 
         // test
-        public void AssertChecked(string name, bool state)
-        {
-            WindowsElement element = _driver.FindElementByName(name);
-            //Assert.AreEqual(state, element.Checked);
-        }
-
-        // test
         public void AssertEnable(string name, bool state)
         {
             WindowsElement element = _driver.FindElementByName(name);
+            Console.WriteLine(element);
+            Console.WriteLine(element.Enabled);
             Assert.AreEqual(state, element.Enabled);
         }
 

@@ -54,7 +54,7 @@ namespace Homework.View
             _splitContainer2.Panel1.SizeChanged += ChangeMiddlePanelSize;
             _presentationModel.SlideIndex = 0;
             AddPageButton(0);
-            SetCheckedPage(_pageButtons[0], true);
+            _pageButtons[0].Focus();
         }
 
         // initialize canva size
@@ -272,7 +272,8 @@ namespace Homework.View
                 Console.WriteLine("lala delete page index is " + index);
                 //Console.WriteLine("lala flow layout panel is " + _flowLayoutPanel.Controls.Count);
                 //index = index == _presentationModel.SlideIndex ? index : index - 1;
-                SetCheckedPage(_pageButtons[_presentationModel.SlideIndex], true);
+                //SetCheckedPage(_pageButtons[_presentationModel.SlideIndex], true);
+                _pageButtons[_presentationModel.SlideIndex].Focus();
             }
             else
             {
@@ -287,7 +288,7 @@ namespace Homework.View
             int panelWidth = _splitContainer1.Panel1.Width;
 
             Button newPageButton = new Button();
-            newPageButton.AccessibleName = "slide";
+            newPageButton.Name = "slide";
             newPageButton.Click += SelectPage;
             newPageButton.BackColor = System.Drawing.Color.White;
             newPageButton.BackgroundImageLayout = ImageLayout.Stretch;
@@ -320,34 +321,34 @@ namespace Homework.View
         // switch current page
         private void SwitchCurrentPage(int pageIndex)
         {
-            if (_presentationModel.SlideIndex >= 0 && _presentationModel.SlideIndex < _pageButtons.Count)
-            {
-                SetCheckedPage(_pageButtons[_presentationModel.SlideIndex], false);
-            }
+            //if (_presentationModel.SlideIndex >= 0 && _presentationModel.SlideIndex < _pageButtons.Count)
+            //{
+            //    SetCheckedPage(_pageButtons[_presentationModel.SlideIndex], false);
+            //}
 
             _presentationModel.SelectPage(pageIndex);
             _shapeData.DataSource = _presentationModel.GetShapes();
-
-            if (_presentationModel.SlideIndex >= 0 && _presentationModel.SlideIndex < _pageButtons.Count)
-            {
-                SetCheckedPage(_pageButtons[_presentationModel.SlideIndex], true);
-            }
+            _pageButtons[_presentationModel.SlideIndex].Focus();
+            //if (_presentationModel.SlideIndex >= 0 && _presentationModel.SlideIndex < _pageButtons.Count)
+            //{
+            //    SetCheckedPage(_pageButtons[_presentationModel.SlideIndex], true);
+            //}
         }
 
-        // set checked page
-        private void SetCheckedPage(Button button, bool isChecked)
-        {
-            // 設定Checked樣式
-            if (isChecked)
-            {
-                button.FlatStyle = FlatStyle.Flat;
-                button.Focus();
-            }
-            else
-            {
-                Console.WriteLine("time");
-                button.FlatStyle = FlatStyle.Standard;
-            }
-        }
+        //// set checked page
+        //private void SetCheckedPage(Button button, bool isChecked)
+        //{
+        //    // 設定Checked樣式
+        //    if (isChecked)
+        //    {
+        //        button.FlatStyle = FlatStyle.Flat;
+        //        button.Focus();
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("time");
+        //        button.FlatStyle = FlatStyle.Standard;
+        //    }
+        //}
     }
 }
