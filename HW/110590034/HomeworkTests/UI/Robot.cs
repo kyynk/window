@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Forms;
 using Homework;
 using OpenQA.Selenium.Interactions;
+using System.IO;
 
 namespace Homework.UI.Tests
 {
@@ -35,6 +36,8 @@ namespace Homework.UI.Tests
             var options = new AppiumOptions();
             options.AddAdditionalCapability("app", targetAppPath);
             options.AddAdditionalCapability("deviceName", "WindowsPC");
+            string solutionPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Constant.Constant.MANY_FOLDER));
+            options.AddAdditionalCapability("appWorkingDir", Path.GetFullPath(Path.Combine(solutionPath, Constant.Constant.PROJECT_NAME, Constant.Constant.BINARY, Constant.Constant.DEBUG)));
 
             try
             {

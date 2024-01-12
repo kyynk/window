@@ -37,7 +37,7 @@ namespace Homework.UI.Tests
             _robot = new Robot(targetAppPath, MENU_FORM);
             _random = new Random();
 
-            _robot.Sleep(1);
+            _robot.Sleep(3);
             Console.WriteLine("hi 1111");
             _canvas = _robot.FindElementByAccessibilityId("_canvas");
             Console.WriteLine("hi 2222");
@@ -130,7 +130,7 @@ namespace Homework.UI.Tests
             _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData);
         }
 
-        // test move shape
+        // test move shape (all shape in redo undo)
         [TestMethod()]
         public void MoveShapeTest()
         {
@@ -150,7 +150,7 @@ namespace Homework.UI.Tests
             _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData2);
         }
 
-        // test resize shape
+        // test resize shape (all shape in redo undo)
         [TestMethod()]
         public void ResizeShapeTest()
         {
@@ -173,7 +173,7 @@ namespace Homework.UI.Tests
             _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData2);
         }
 
-        // test delete shape
+        // test delete shape (all shape in redo undo)
         [TestMethod()]
         public void DeleteShapeWithKeyTest()
         {
@@ -253,128 +253,191 @@ namespace Homework.UI.Tests
         [TestMethod()]
         public void UndoRedoDrawTest()
         {
-            _robot.AssertEnable("_undoButton", false);
-            _robot.AssertEnable("_redoButton", false);
-            DrawShape("_lineButton", new Point(10, 10), new Point(150, 150));
-            string[] expectedData = { "刪除", "線", "(10, 10), (150, 150)" };
-            _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData);
-            _robot.AssertDataGridViewRowCountBy("_shapeData", 1);
-
-            _robot.AssertEnable("_undoButton", true);
-            _robot.AssertEnable("_redoButton", false);
-            _robot.ClickButton("_undoButton");
-            _robot.AssertDataGridViewRowCountBy("_shapeData", 0);
+            List<string> shapeTypes = new List<string>();
+            shapeTypes.Add("圓");
+            shapeTypes.Add("矩形");
+            shapeTypes.Add("線");
+            List<string> buttonName = new List<string>();
+            buttonName.Add("_ellipseButton");
+            buttonName.Add("_rectangleButton");
+            buttonName.Add("_lineButton");
 
             _robot.AssertEnable("_undoButton", false);
-            _robot.AssertEnable("_redoButton", true);
-            _robot.ClickButton("_redoButton");
-            _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData);
-            _robot.AssertDataGridViewRowCountBy("_shapeData", 1);
-
-            _robot.AssertEnable("_undoButton", true);
             _robot.AssertEnable("_redoButton", false);
+
+            for (int i = 0; i < 3; i++)
+            {
+                DrawShape(buttonName[i], new Point(10, 10), new Point(150, 150));
+                string[] expectedData = { "刪除", shapeTypes[i], "(10, 10), (150, 150)" };
+                _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData);
+                _robot.AssertDataGridViewRowCountBy("_shapeData", 1);
+
+                _robot.AssertEnable("_undoButton", true);
+                _robot.AssertEnable("_redoButton", false);
+                _robot.ClickButton("_undoButton");
+                _robot.AssertDataGridViewRowCountBy("_shapeData", 0);
+
+                _robot.AssertEnable("_undoButton", false);
+                _robot.AssertEnable("_redoButton", true);
+                _robot.ClickButton("_redoButton");
+                _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData);
+                _robot.AssertDataGridViewRowCountBy("_shapeData", 1);
+
+                _robot.AssertEnable("_undoButton", true);
+                _robot.AssertEnable("_redoButton", false);
+
+                _robot.ClickButton("_undoButton");
+            }
         }
 
         // test undo redo resize
         [TestMethod()]
         public void UndoRedoResizeTest()
         {
-            DrawShape("_rectangleButton", new Point(10, 10), new Point(300, 250));
-            string[] expectedData1 = { "刪除", "矩形", "(10, 10), (300, 250)" };
-            _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData1);
-            ActionBuilder actionBuilder = new ActionBuilder();
-            PointerInputDevice pointer = new PointerInputDevice(PointerKind.Pen);
-            actionBuilder
-                .AddAction(MovePointerToPoint(pointer, new Point(100, 100)))
-                .AddAction(pointer.CreatePointerDown(MouseButton.Left))
-                .AddAction(pointer.CreatePointerUp(MouseButton.Left))
-                .AddAction(MovePointerToPoint(pointer, new Point(300, 250)))
-                .AddAction(pointer.CreatePointerDown(MouseButton.Left))
-                .AddAction(MovePointerToPoint(pointer, new Point(200, 200)))
-                .AddAction(pointer.CreatePointerUp(MouseButton.Left));
-            _robot.PerformActions(actionBuilder.ToActionSequenceList());
+            List<string> shapeTypes = new List<string>();
+            shapeTypes.Add("圓");
+            shapeTypes.Add("矩形");
+            shapeTypes.Add("線");
+            List<string> buttonName = new List<string>();
+            buttonName.Add("_ellipseButton");
+            buttonName.Add("_rectangleButton");
+            buttonName.Add("_lineButton");
 
-            string[] expectedData2 = { "刪除", "矩形", "(10, 10), (200, 200)" };
-            _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData2);
+            for (int i = 0; i < 3; i++)
+            {
+                DrawShape(buttonName[i], new Point(10, 10), new Point(300, 250));
+                string[] expectedData1 = { "刪除", shapeTypes[i], "(10, 10), (300, 250)" };
+                _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData1);
+                _robot.AssertDataGridViewRowCountBy("_shapeData", 1);
+                ActionBuilder actionBuilder = new ActionBuilder();
+                PointerInputDevice pointer = new PointerInputDevice(PointerKind.Pen);
+                actionBuilder
+                    .AddAction(MovePointerToPoint(pointer, new Point(100, 100)))
+                    .AddAction(pointer.CreatePointerDown(MouseButton.Left))
+                    .AddAction(pointer.CreatePointerUp(MouseButton.Left))
+                    .AddAction(MovePointerToPoint(pointer, new Point(300, 250)))
+                    .AddAction(pointer.CreatePointerDown(MouseButton.Left))
+                    .AddAction(MovePointerToPoint(pointer, new Point(200, 200)))
+                    .AddAction(pointer.CreatePointerUp(MouseButton.Left));
+                _robot.PerformActions(actionBuilder.ToActionSequenceList());
 
-            _robot.AssertEnable("_undoButton", true);
-            _robot.AssertEnable("_redoButton", false);
-            _robot.ClickButton("_undoButton");
-            _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData1);
+                string[] expectedData2 = { "刪除", shapeTypes[i], "(10, 10), (200, 200)" };
+                _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData2);
 
-            _robot.AssertEnable("_undoButton", true);
-            _robot.AssertEnable("_redoButton", true);
-            _robot.ClickButton("_redoButton");
-            _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData2);
+                _robot.AssertEnable("_undoButton", true);
+                _robot.AssertEnable("_redoButton", false);
+                _robot.ClickButton("_undoButton");
+                _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData1);
 
-            _robot.AssertEnable("_undoButton", true);
-            _robot.AssertEnable("_redoButton", false);
+                _robot.AssertEnable("_undoButton", true);
+                _robot.AssertEnable("_redoButton", true);
+                _robot.ClickButton("_redoButton");
+                _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData2);
+
+                _robot.AssertEnable("_undoButton", true);
+                _robot.AssertEnable("_redoButton", false);
+
+                _robot.ClickButton("_undoButton");
+                _robot.ClickButton("_undoButton");
+            }
         }
 
         // test undo redo move
         [TestMethod()]
         public void UndoRedoMoveTest()
         {
-            DrawShape("_ellipseButton", new Point(10, 10), new Point(150, 150));
-            string[] expectedData1 = { "刪除", "圓", "(10, 10), (150, 150)" };
-            _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData1);
-            ActionBuilder actionBuilder = new ActionBuilder();
-            PointerInputDevice pointer = new PointerInputDevice(PointerKind.Pen);
-            actionBuilder
-                .AddAction(MovePointerToPoint(pointer, new Point(100, 100)))
-                .AddAction(pointer.CreatePointerDown(MouseButton.Left))
-                .AddAction(MovePointerToPoint(pointer, new Point(150, 150)))
-                .AddAction(pointer.CreatePointerUp(MouseButton.Left));
-            _robot.PerformActions(actionBuilder.ToActionSequenceList());
+            List<string> shapeTypes = new List<string>();
+            shapeTypes.Add("圓");
+            shapeTypes.Add("矩形");
+            shapeTypes.Add("線");
+            List<string> buttonName = new List<string>();
+            buttonName.Add("_ellipseButton");
+            buttonName.Add("_rectangleButton");
+            buttonName.Add("_lineButton");
 
-            string[] expectedData2 = { "刪除", "圓", "(60, 60), (200, 200)" };
-            _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData2);
+            for (int i = 0; i < 3; i++)
+            {
+                DrawShape(buttonName[i], new Point(10, 10), new Point(300, 250));
+                string[] expectedData1 = { "刪除", shapeTypes[i], "(10, 10), (300, 250)" };
+                _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData1);
+                _robot.AssertDataGridViewRowCountBy("_shapeData", 1);
+                ActionBuilder actionBuilder = new ActionBuilder();
+                PointerInputDevice pointer = new PointerInputDevice(PointerKind.Pen);
+                actionBuilder
+                    .AddAction(MovePointerToPoint(pointer, new Point(100, 100)))
+                    .AddAction(pointer.CreatePointerDown(MouseButton.Left))
+                    .AddAction(MovePointerToPoint(pointer, new Point(150, 150)))
+                    .AddAction(pointer.CreatePointerUp(MouseButton.Left));
+                _robot.PerformActions(actionBuilder.ToActionSequenceList());
 
-            _robot.AssertEnable("_undoButton", true);
-            _robot.AssertEnable("_redoButton", false);
-            _robot.ClickButton("_undoButton");
-            _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData1);
+                string[] expectedData2 = { "刪除", shapeTypes[i], "(60, 60), (350, 300)" };
+                _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData2);
 
-            _robot.AssertEnable("_undoButton", true);
-            _robot.AssertEnable("_redoButton", true);
-            _robot.ClickButton("_redoButton");
-            _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData2);
+                _robot.AssertEnable("_undoButton", true);
+                _robot.AssertEnable("_redoButton", false);
+                _robot.ClickButton("_undoButton");
+                _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData1);
 
-            _robot.AssertEnable("_undoButton", true);
-            _robot.AssertEnable("_redoButton", false);
+                _robot.AssertEnable("_undoButton", true);
+                _robot.AssertEnable("_redoButton", true);
+                _robot.ClickButton("_redoButton");
+                _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData2);
+
+                _robot.AssertEnable("_undoButton", true);
+                _robot.AssertEnable("_redoButton", false);
+
+                _robot.ClickButton("_undoButton");
+                _robot.ClickButton("_undoButton");
+            }
         }
 
         // test undo redo delete shape with key
         [TestMethod()]
         public void UndoRedoDeleteShapeWithKeyTest()
         {
-            DrawShape("_lineButton", new Point(10, 10), new Point(300, 250));
-            string[] expectedData1 = { "刪除", "線", "(10, 10), (300, 250)" };
-            _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData1);
-            _robot.AssertDataGridViewRowCountBy("_shapeData", 1);
-            ActionBuilder actionBuilder = new ActionBuilder();
-            PointerInputDevice pointer = new PointerInputDevice(PointerKind.Pen);
-            actionBuilder
-                .AddAction(MovePointerToPoint(pointer, new Point(100, 100)))
-                .AddAction(pointer.CreatePointerDown(MouseButton.Left))
-                .AddAction(pointer.CreatePointerUp(MouseButton.Left));
-            _robot.PerformActions(actionBuilder.ToActionSequenceList());
-            _robot.PerformDeleteKey();
-            _robot.AssertDataGridViewRowCountBy("_shapeData", 0);
+            List<string> shapeTypes = new List<string>();
+            shapeTypes.Add("圓");
+            shapeTypes.Add("矩形");
+            shapeTypes.Add("線");
+            List<string> buttonName = new List<string>();
+            buttonName.Add("_ellipseButton");
+            buttonName.Add("_rectangleButton");
+            buttonName.Add("_lineButton");
 
-            _robot.AssertEnable("_undoButton", true);
-            _robot.AssertEnable("_redoButton", false);
-            _robot.ClickButton("_undoButton");
-            _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData1);
-            _robot.AssertDataGridViewRowCountBy("_shapeData", 1);
+            for (int i = 0; i < 3; i++)
+            {
+                DrawShape(buttonName[i], new Point(10, 10), new Point(300, 250));
+                string[] expectedData1 = { "刪除", shapeTypes[i], "(10, 10), (300, 250)" };
+                _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData1);
+                _robot.AssertDataGridViewRowCountBy("_shapeData", 1);
+                ActionBuilder actionBuilder = new ActionBuilder();
+                PointerInputDevice pointer = new PointerInputDevice(PointerKind.Pen);
+                actionBuilder
+                    .AddAction(MovePointerToPoint(pointer, new Point(100, 100)))
+                    .AddAction(pointer.CreatePointerDown(MouseButton.Left))
+                    .AddAction(pointer.CreatePointerUp(MouseButton.Left));
+                _robot.PerformActions(actionBuilder.ToActionSequenceList());
+                _robot.PerformDeleteKey();
 
-            _robot.AssertEnable("_undoButton", true);
-            _robot.AssertEnable("_redoButton", true);
-            _robot.ClickButton("_redoButton");
-            _robot.AssertDataGridViewRowCountBy("_shapeData", 0);
+                _robot.AssertDataGridViewRowCountBy("_shapeData", 0);
 
-            _robot.AssertEnable("_undoButton", true);
-            _robot.AssertEnable("_redoButton", false);
+                _robot.AssertEnable("_undoButton", true);
+                _robot.AssertEnable("_redoButton", false);
+                _robot.ClickButton("_undoButton");
+                _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData1);
+                _robot.AssertDataGridViewRowCountBy("_shapeData", 1);
+
+                _robot.AssertEnable("_undoButton", true);
+                _robot.AssertEnable("_redoButton", true);
+                _robot.ClickButton("_redoButton");
+                _robot.AssertDataGridViewRowCountBy("_shapeData", 0);
+
+                _robot.AssertEnable("_undoButton", true);
+                _robot.AssertEnable("_redoButton", false);
+
+                _robot.ClickButton("_undoButton");
+                _robot.ClickButton("_undoButton");
+            }
         }
 
         // test undo redo datagridview
@@ -538,6 +601,284 @@ namespace Homework.UI.Tests
                 Assert.IsTrue(Math.Abs((double)aSlide.Size.Height / (double)aSlide.Size.Width - Constant.Constant.PANEL_RATIO) < 0.01);
                 _robot.Sleep(1);
             }
+        }
+
+        // test save and load
+        [TestMethod()]
+        public void SaveAndLoadTest()
+        {
+            DrawShape("_ellipseButton", new Point(50, 50), new Point(150, 150));
+            DrawShape("_rectangleButton", new Point(50, 50), new Point(150, 150));
+            DrawShape("_lineButton", new Point(50, 50), new Point(150, 150));
+            DrawShape("_lineButton", new Point(50, 150), new Point(150, 50));
+            string[] expectedData1 = { "刪除", "圓", transferInformation(new Point(50, 50), new Point(150, 150)) };
+            string[] expectedData2 = { "刪除", "矩形", transferInformation(new Point(50, 50), new Point(150, 150)) };
+            string[] expectedData3 = { "刪除", "線", transferInformation(new Point(50, 50), new Point(150, 150)) };
+            string[] expectedData4 = { "刪除", "線", transferInformation(new Point(50, 150), new Point(150, 50)) };
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData1);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 1, expectedData2);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 2, expectedData3);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 3, expectedData4);
+            _robot.ClickButton("_saveButton");
+            _robot.ClickButton("Cancel");
+            _robot.AssertEnable("_saveButton", true);
+            _robot.ClickButton("_saveButton");
+            _robot.ClickButton("OK");
+            _robot.AssertEnable("_saveButton", false);
+
+            DrawShape("_rectangleButton", new Point(200, 50), new Point(150, 150));
+            DrawShape("_ellipseButton", new Point(200, 50), new Point(150, 150));
+
+            ActionBuilder actionBuilder = new ActionBuilder();
+            PointerInputDevice pointer = new PointerInputDevice(PointerKind.Pen);
+            actionBuilder
+                .AddAction(MovePointerToPoint(pointer, new Point(100, 100)))
+                .AddAction(pointer.CreatePointerDown(MouseButton.Left))
+                .AddAction(pointer.CreatePointerUp(MouseButton.Left));
+            _robot.PerformActions(actionBuilder.ToActionSequenceList());
+            _robot.PerformDeleteKey();
+
+            _robot.Sleep(10 + 5);
+
+            _robot.AssertEnable("_saveButton", true);
+            _robot.ClickButton("_loadButton");
+            _robot.ClickButton("OK");
+            _robot.Sleep(10);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData1);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 1, expectedData2);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 2, expectedData3);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 3, expectedData4);
+        }
+
+        // test all
+        [TestMethod()]
+        public void AllTest()
+        {
+            DrawFirstGraph();
+            TestFirstGraph();
+            _robot.ClickButton("_addPageButton");
+            DrawSecondGraph();
+            TestSecondGraph();
+            _robot.ClickButton("_saveButton");
+            _robot.ClickButton("OK");
+            _robot.Sleep(1);
+
+            _robot.PerformDeleteKey();
+            _robot.ClickButton("_addPageButton");
+            DrawThirdGraph();
+            TestThirdGraph();
+            
+            _robot.Sleep(10);
+            _robot.ClickButton("_loadButton");
+            _robot.ClickButton("OK");
+            _robot.Sleep(10);
+            TestFirstGraph();
+            _robot.PerformDeleteKey();
+            TestSecondGraph();
+        }
+
+        // first graph
+        public void DrawFirstGraph()
+        {
+            DrawShape("_ellipseButton", new Point(33, 36), new Point(50, 50));
+            ResizeShape(new Point(42, 42), new Point(50, 50), new Point(91, 86));
+            ClearSelect();
+            InputShape("線", new Point(61, 88), new Point(63, 146));
+            DrawShape("_rectangleButton", new Point(287, 99), new Point(361, 157));
+            DrawShape("_lineButton", new Point(287, 99), new Point(324, 66));
+            InputShape("線", new Point(326, 66), new Point(360, 98));
+            DrawShape("_lineButton", new Point(29, 172), new Point(65, 146));
+            DrawShape("_lineButton", new Point(62, 148), new Point(93, 168));
+            DrawShape("_lineButton", new Point(26, 108), new Point(93, 115));
+        }
+
+        // test first graph
+        public void TestFirstGraph()
+        {
+            string[] expectedData1 = { "刪除", "圓", transferInformation(new Point(33, 36), new Point(91, 86)) };
+            string[] expectedData2 = { "刪除", "線", transferInformation(new Point(61, 88), new Point(63, 146)) };
+            string[] expectedData3 = { "刪除", "矩形", transferInformation(new Point(287, 99), new Point(361, 157)) };
+            string[] expectedData4 = { "刪除", "線", transferInformation(new Point(287, 99), new Point(324, 66)) };
+            string[] expectedData5 = { "刪除", "線", transferInformation(new Point(326, 66), new Point(360, 98)) };
+            string[] expectedData6 = { "刪除", "線", transferInformation(new Point(29, 172), new Point(65, 146)) };
+            string[] expectedData7 = { "刪除", "線", transferInformation(new Point(62, 148), new Point(93, 168)) };
+            string[] expectedData8 = { "刪除", "線", transferInformation(new Point(26, 108), new Point(93, 115)) };
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData1);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 1, expectedData2);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 2, expectedData3);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 3, expectedData4);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 4, expectedData5);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 5, expectedData6);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 6, expectedData7);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 7, expectedData8);
+        }
+
+        // clear
+        public void ClearSelect()
+        {
+            ActionBuilder actionBuilder = new ActionBuilder();
+            PointerInputDevice pointer = new PointerInputDevice(PointerKind.Pen);
+            actionBuilder
+                .AddAction(MovePointerToPoint(pointer, new Point(1, 1)))
+                .AddAction(pointer.CreatePointerDown(MouseButton.Left))
+                .AddAction(pointer.CreatePointerUp(MouseButton.Left));
+            _robot.PerformActions(actionBuilder.ToActionSequenceList());
+        }
+
+        // resize shape
+        public void ResizeShape(Point inside, Point bottomRight, Point target)
+        {
+            ActionBuilder actionBuilder = new ActionBuilder();
+            PointerInputDevice pointer = new PointerInputDevice(PointerKind.Pen);
+            actionBuilder
+                .AddAction(MovePointerToPoint(pointer, new Point(inside)))
+                .AddAction(pointer.CreatePointerDown(MouseButton.Left))
+                .AddAction(pointer.CreatePointerUp(MouseButton.Left))
+                .AddAction(MovePointerToPoint(pointer, new Point(bottomRight)))
+                .AddAction(pointer.CreatePointerDown(MouseButton.Left))
+                .AddAction(MovePointerToPoint(pointer, new Point(target)))
+                .AddAction(pointer.CreatePointerUp(MouseButton.Left));
+            _robot.PerformActions(actionBuilder.ToActionSequenceList());
+        }
+
+        // move shape
+        public void MoveShape(Point point1, Point point2)
+        {
+            ActionBuilder actionBuilder = new ActionBuilder();
+            PointerInputDevice pointer = new PointerInputDevice(PointerKind.Pen);
+            actionBuilder
+                .AddAction(MovePointerToPoint(pointer, new Point(point1)))
+                .AddAction(pointer.CreatePointerDown(MouseButton.Left))
+                .AddAction(MovePointerToPoint(pointer, new Point(point2)))
+                .AddAction(pointer.CreatePointerUp(MouseButton.Left));
+            _robot.PerformActions(actionBuilder.ToActionSequenceList());
+        }
+
+        // delete shape
+        public void DeleteShapeWithKey(Point inside)
+        {
+            ActionBuilder actionBuilder = new ActionBuilder();
+            PointerInputDevice pointer = new PointerInputDevice(PointerKind.Pen);
+            actionBuilder
+                .AddAction(MovePointerToPoint(pointer, new Point(inside)))
+                .AddAction(pointer.CreatePointerDown(MouseButton.Left))
+                .AddAction(pointer.CreatePointerUp(MouseButton.Left));
+            _robot.PerformActions(actionBuilder.ToActionSequenceList());
+            _robot.PerformDeleteKey();
+        }
+
+        // second graph
+        public void DrawSecondGraph()
+        {
+            InputShape("圓", new Point(36, 56), new Point(200, 91));
+            DeleteShapeWithKey(new Point(100, 80));
+            ClearSelect();
+            InputShape("圓", new Point(36, 56), new Point(87, 91));
+            MoveShape(new Point(50, 70), new Point(150, 70));
+            ClearSelect();
+            InputShape("圓", new Point(224, 90), new Point(226, 153));
+            _robot.Sleep(1);
+            _robot.ClickButton("_undoButton");
+            InputShape("圓", new Point(107, 90), new Point(226, 153));
+            DrawShape("_ellipseButton", new Point(71, 153), new Point(281, 226));
+            DrawShape("_rectangleButton", new Point(235, 7), new Point(329, 87));
+            DrawShape("_ellipseButton", new Point(235, 7), new Point(329, 87));
+            DrawShape("_ellipseButton", new Point(305, 7), new Point(329, 87));
+            _robot.ClickButton("_undoButton");
+            _robot.ClickButton("_undoButton");
+            _robot.ClickButton("_redoButton");
+            DrawShape("_lineButton", new Point(282, 20), new Point(282, 54));
+            DrawShape("_lineButton", new Point(282, 54), new Point(304, 68));
+        }
+
+        // test second graph
+        public void TestSecondGraph()
+        {
+            string[] expectedData1 = { "刪除", "圓", transferInformation(new Point(136, 56), new Point(187, 91)) };
+            string[] expectedData2 = { "刪除", "圓", transferInformation(new Point(107, 90), new Point(226, 153)) };
+            string[] expectedData3 = { "刪除", "圓", transferInformation(new Point(71, 153), new Point(281, 226)) };
+            string[] expectedData4 = { "刪除", "矩形", transferInformation(new Point(235, 7), new Point(329, 87)) };
+            string[] expectedData5 = { "刪除", "圓", transferInformation(new Point(235, 7), new Point(329, 87)) };
+            string[] expectedData6 = { "刪除", "線", transferInformation(new Point(282, 20), new Point(282, 54)) };
+            string[] expectedData7 = { "刪除", "線", transferInformation(new Point(282, 54), new Point(304, 68)) };
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData1);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 1, expectedData2);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 2, expectedData3);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 3, expectedData4);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 4, expectedData5);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 5, expectedData6);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 6, expectedData7);
+        }
+
+        // input shape
+        public void InputShape(string name, Point point1 , Point point2)
+        {
+            _robot.SelectComboBoxValue("_shapeTypeComboBox", name);
+            _robot.ClickButton("新增");
+            _robot.FindElementByAccessibilityId("_leftTextBox").SendKeys(point1.X.ToString());
+            _robot.FindElementByAccessibilityId("_topTextBox").SendKeys(point1.Y.ToString());
+            _robot.FindElementByAccessibilityId("_rightTextBox").SendKeys(point2.X.ToString());
+            _robot.FindElementByAccessibilityId("_bottomTextBox").SendKeys(point2.Y.ToString());
+            _robot.ClickButton("OK");
+        }
+
+        // third graph
+        public void DrawThirdGraph()
+        {
+            InputShape("矩形", new Point(15, 67), new Point(212, 87));
+            DeleteShapeWithKey(new Point(100, 80));
+            ClearSelect();
+            InputShape("線", new Point(116, 68), new Point(139, 80));
+            ResizeShape(new Point(120, 69), new Point(139, 80), new Point(139, 41));
+            ClearSelect();
+            InputShape("線", new Point(143, 31), new Point(162, 57));
+            MoveShape(new Point(150, 50), new Point(200, 60));
+            ClearSelect();
+            InputShape("矩形", new Point(115, 67), new Point(212, 187));
+            InputShape("線", new Point(139, 41), new Point(191, 42));
+            DrawShape("_rectangleButton", new Point(88, 101), new Point(130, 161));
+            DrawShape("_ellipseButton", new Point(165, 86), new Point(227, 120));
+            DrawShape("_rectangleButton", new Point(116, 187), new Point(143, 215));
+            InputShape("矩形", new Point(184, 187), new Point(212, 215));
+            InputShape("矩形", new Point(184, 187), new Point(212, 215));
+            _robot.ClickDataGridViewCellBy("_shapeData", 7, "刪除");
+            InputShape("線", new Point(169, 9), new Point(170, 40));
+            DrawShape("_lineButton", new Point(169, 10), new Point(192, 18));
+            DrawShape("_lineButton", new Point(170, 30), new Point(191, 20));
+            DrawShape("_ellipseButton", new Point(343, 70), new Point(439, 210));
+            DrawShape("_rectangleButton", new Point(354, 209), new Point(437, 236));
+        }
+
+
+        // test third graph
+        public void TestThirdGraph()
+        {
+            string[] expectedData1 = { "刪除", "線", transferInformation(new Point(116, 68), new Point(139, 41)) };
+            string[] expectedData2 = { "刪除", "線", transferInformation(new Point(193, 41), new Point(212, 67)) };
+            string[] expectedData3 = { "刪除", "矩形", transferInformation(new Point(115, 67), new Point(212, 187)) };
+            string[] expectedData4 = { "刪除", "線", transferInformation(new Point(139, 41), new Point(191, 42)) };
+            string[] expectedData5 = { "刪除", "矩形", transferInformation(new Point(88, 101), new Point(130, 161)) };
+            string[] expectedData6 = { "刪除", "圓", transferInformation(new Point(165, 86), new Point(227, 120)) };
+            string[] expectedData7 = { "刪除", "矩形", transferInformation(new Point(116, 187), new Point(143, 215)) };
+            string[] expectedData8 = { "刪除", "矩形", transferInformation(new Point(184, 187), new Point(212, 215)) };
+            string[] expectedData9 = { "刪除", "線", transferInformation(new Point(169, 9), new Point(170, 40)) };
+            string[] expectedData10 = { "刪除", "線", transferInformation(new Point(169, 10), new Point(192, 18)) };
+            string[] expectedData11 = { "刪除", "線", transferInformation(new Point(170, 30), new Point(191, 20)) };
+            string[] expectedData12 = { "刪除", "圓", transferInformation(new Point(343, 70), new Point(439, 210)) };
+            string[] expectedData13 = { "刪除", "矩形", transferInformation(new Point(354, 209), new Point(437, 236)) };
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 0, expectedData1);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 1, expectedData2);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 2, expectedData3);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 3, expectedData4);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 4, expectedData5);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 5, expectedData6);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 6, expectedData7);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 7, expectedData8);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 8, expectedData9);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 9, expectedData10);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 10, expectedData11);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 11, expectedData12);
+            _robot.AssertDataGridViewRowDataBy("_shapeData", 12, expectedData13);
         }
     }
 }

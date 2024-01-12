@@ -113,6 +113,7 @@ namespace Homework.Model
                     Console.WriteLine($"ShapeName: {shapeName}, Point1: ({x1}, {y1}), Point2: ({x2}, {y2})");
                     shapes.InsertShapeByIndex(_shapeFactory.CreateShape(shapeName, new Point(x1, y1), new Point(x2, y2)), shapes.ShapeList.Count);
                 }
+                shapes.ResizeForPanel((double)_panelMaxX / (double)panelMaxX);
                 InsertPageByIndex(shapes, _pages.GetPages().Count);
                 Console.WriteLine("loop slide index " + PageIndex);
             }
