@@ -12,9 +12,25 @@ namespace Homework.View
 {
     public partial class LoadDialog : Form
     {
+        private bool _isOk;
+
         public LoadDialog()
         {
             InitializeComponent();
+        }
+
+        public bool IsOk
+        {
+            get
+            {
+                return _isOk;
+            }
+        }
+
+        // reset value
+        public void ResetValue()
+        {
+            _isOk = false;
         }
     }
 }

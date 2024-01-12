@@ -4,11 +4,15 @@ using System.Drawing;
 using Homework.Model;
 using Homework.View;
 using System;
+using System.Threading.Tasks;
 
 namespace Homework.PresentationModel
 {
     public partial class FormPresentationModel : INotifyPropertyChanged
     {
+        public delegate void SaveButtonEventHandler(bool isEnabled);
+        public event SaveButtonEventHandler _saveButtonChanged;
+
         // shape name
         public string ShapeName
         {
@@ -135,6 +139,21 @@ namespace Homework.PresentationModel
             {
                 _model.PageIndex = value;
             }
+        }
+
+        // save
+        public async void Save()
+        {
+            _saveButtonChanged(false);
+            var task = Task.Run(() => _model.Save());
+            await task;
+            _saveButtonChanged(true);
+        }
+
+        // load
+        public void Load()
+        {
+
         }
     }
 }

@@ -27,11 +27,17 @@
         public const string IS_CURSOR_ENABLED = "IsDefaultCursorEnabled";
         public const string IS_UNDO_ENABLED = "IsUndoEnabled";
         public const string IS_REDO_ENABLED = "IsRedoEnabled";
+        public const string IS_SAVE_ENABLED = "IsSaveButtonEnabled";
         // panel ratio
         public const double PANEL_RATIO = 9.0 / 16.0;
         public const int SLIDE_MARGIN = 2;
         public const int PANEL_MARGIN = 16;
-        // some string constant
+        // button name
         public const string SLIDE = "slide";
+        // drive
+        public const string PROJECT_NAME = "Homework";
+        public const string SECRET_FILE_NAME = "clientSecret.json";
+        // delay
+        public const int DELAY_TIME = 10000;
     }
 }

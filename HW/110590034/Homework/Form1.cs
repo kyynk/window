@@ -10,6 +10,8 @@ namespace Homework.View
     {
         private readonly FormPresentationModel _presentationModel;
         private CreateShapeDialog _createShapeDialog;
+        private SaveDialog _saveDialog;
+        private LoadDialog _loadDialog;
         private List<Button> _pageButtons;
         private Bitmap _bitmap;
 
@@ -31,6 +33,7 @@ namespace Homework.View
             _presentationModel._cursorChanged += SetCursor;
             _presentationModel._pagesChanged += HandlePagesChanged;
             _presentationModel._undoRedoChanged += HandleUndoRedoChanged;
+            _presentationModel._saveButtonChanged += HandleSaveButtonChanged;
             // shape data (dataGridview)
             _shapeData.AutoGenerateColumns = false;
             _shapeData.DataSource = _presentationModel.GetShapes();
@@ -45,8 +48,10 @@ namespace Homework.View
             // keyboard
             KeyDown += HandleKeyDown;
             KeyPreview = true;
-            // create shape dialog
+            // dialogs
             _createShapeDialog = new CreateShapeDialog();
+            _saveDialog = new SaveDialog();
+            _loadDialog = new LoadDialog();
             // initialize
             UpdateUndoRedo();
             InitializeCanvasSize();

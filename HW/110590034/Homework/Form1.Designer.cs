@@ -40,19 +40,19 @@
             this._description = new System.Windows.Forms.ToolStripMenuItem();
             this._about = new System.Windows.Forms.ToolStripMenuItem();
             this._toolStrip = new System.Windows.Forms.ToolStrip();
+            this._lineButton = new Homework.View.ToolStripBindingButton();
+            this._rectangleButton = new Homework.View.ToolStripBindingButton();
+            this._ellipseButton = new Homework.View.ToolStripBindingButton();
+            this._defaultCursorButton = new Homework.View.ToolStripBindingButton();
             this._addPageButton = new System.Windows.Forms.ToolStripButton();
-            this._saveButton = new System.Windows.Forms.ToolStripButton();
+            this._undoButton = new Homework.View.ToolStripBindingButton();
+            this._redoButton = new Homework.View.ToolStripBindingButton();
+            this._saveButton = new Homework.View.ToolStripBindingButton();
             this._loadButton = new System.Windows.Forms.ToolStripButton();
             this._splitContainer1 = new System.Windows.Forms.SplitContainer();
             this._flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this._splitContainer2 = new System.Windows.Forms.SplitContainer();
             this._canvas = new Homework.View.DoubleBufferedPanel();
-            this._lineButton = new Homework.View.ToolStripBindingButton();
-            this._rectangleButton = new Homework.View.ToolStripBindingButton();
-            this._ellipseButton = new Homework.View.ToolStripBindingButton();
-            this._defaultCursorButton = new Homework.View.ToolStripBindingButton();
-            this._undoButton = new Homework.View.ToolStripBindingButton();
-            this._redoButton = new Homework.View.ToolStripBindingButton();
             this._groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._shapeData)).BeginInit();
             this._groupBox1.SuspendLayout();
@@ -77,7 +77,7 @@
             this._groupBox.Margin = new System.Windows.Forms.Padding(2);
             this._groupBox.Name = "_groupBox";
             this._groupBox.Padding = new System.Windows.Forms.Padding(2);
-            this._groupBox.Size = new System.Drawing.Size(243, 433);
+            this._groupBox.Size = new System.Drawing.Size(242, 433);
             this._groupBox.TabIndex = 0;
             this._groupBox.TabStop = false;
             this._groupBox.Text = "資料顯示";
@@ -100,7 +100,7 @@
             this._shapeData.RowHeadersVisible = false;
             this._shapeData.RowHeadersWidth = 51;
             this._shapeData.RowTemplate.Height = 27;
-            this._shapeData.Size = new System.Drawing.Size(239, 365);
+            this._shapeData.Size = new System.Drawing.Size(238, 365);
             this._shapeData.TabIndex = 0;
             this._shapeData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClickDeleteButton);
             // 
@@ -146,7 +146,7 @@
             this._groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this._groupBox1.Location = new System.Drawing.Point(2, 17);
             this._groupBox1.Name = "_groupBox1";
-            this._groupBox1.Size = new System.Drawing.Size(239, 49);
+            this._groupBox1.Size = new System.Drawing.Size(238, 49);
             this._groupBox1.TabIndex = 2;
             this._groupBox1.TabStop = false;
             // 
@@ -221,6 +221,50 @@
             this._toolStrip.TabIndex = 5;
             this._toolStrip.Text = "toolStrip1";
             // 
+            // _lineButton
+            // 
+            this._lineButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._lineButton.Image = global::Homework.Properties.Resources.Line;
+            this._lineButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._lineButton.Name = "_lineButton";
+            this._lineButton.Size = new System.Drawing.Size(24, 24);
+            this._lineButton.Text = "_lineButton";
+            this._lineButton.ToolTipText = "_lineButton";
+            this._lineButton.Click += new System.EventHandler(this.ClickLineButton);
+            // 
+            // _rectangleButton
+            // 
+            this._rectangleButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._rectangleButton.Image = global::Homework.Properties.Resources.Rectangle;
+            this._rectangleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._rectangleButton.Name = "_rectangleButton";
+            this._rectangleButton.Size = new System.Drawing.Size(24, 24);
+            this._rectangleButton.Text = "_rectangleButton";
+            this._rectangleButton.ToolTipText = "_rectangleButton";
+            this._rectangleButton.Click += new System.EventHandler(this.ClickRectangleButton);
+            // 
+            // _ellipseButton
+            // 
+            this._ellipseButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._ellipseButton.Image = global::Homework.Properties.Resources.Ellipse;
+            this._ellipseButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._ellipseButton.Name = "_ellipseButton";
+            this._ellipseButton.Size = new System.Drawing.Size(24, 24);
+            this._ellipseButton.Text = "_ellipseButton";
+            this._ellipseButton.ToolTipText = "_ellipseButton";
+            this._ellipseButton.Click += new System.EventHandler(this.ClickEllipseButton);
+            // 
+            // _defaultCursorButton
+            // 
+            this._defaultCursorButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._defaultCursorButton.Image = global::Homework.Properties.Resources.DefaultCursor;
+            this._defaultCursorButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._defaultCursorButton.Name = "_defaultCursorButton";
+            this._defaultCursorButton.Size = new System.Drawing.Size(24, 24);
+            this._defaultCursorButton.Text = "_defaultCursorButton";
+            this._defaultCursorButton.ToolTipText = "_defaultCursorButton";
+            this._defaultCursorButton.Click += new System.EventHandler(this.ClickDefaultCursorButton);
+            // 
             // _addPageButton
             // 
             this._addPageButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -232,6 +276,28 @@
             this._addPageButton.ToolTipText = "_addPageButton";
             this._addPageButton.Click += new System.EventHandler(this.ClickAddPageButton);
             // 
+            // _undoButton
+            // 
+            this._undoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._undoButton.Image = global::Homework.Properties.Resources.Undo2;
+            this._undoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._undoButton.Name = "_undoButton";
+            this._undoButton.Size = new System.Drawing.Size(24, 24);
+            this._undoButton.Text = "_undoButton";
+            this._undoButton.ToolTipText = "_undoButton";
+            this._undoButton.Click += new System.EventHandler(this.ClickUndoButton);
+            // 
+            // _redoButton
+            // 
+            this._redoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this._redoButton.Image = global::Homework.Properties.Resources.Redo2;
+            this._redoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._redoButton.Name = "_redoButton";
+            this._redoButton.Size = new System.Drawing.Size(24, 24);
+            this._redoButton.Text = "_redoButton";
+            this._redoButton.ToolTipText = "_redoButton";
+            this._redoButton.Click += new System.EventHandler(this.ClickRedoButton);
+            // 
             // _saveButton
             // 
             this._saveButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -241,6 +307,7 @@
             this._saveButton.Size = new System.Drawing.Size(24, 24);
             this._saveButton.Text = "_saveButton";
             this._saveButton.ToolTipText = "_saveButton";
+            this._saveButton.Click += new System.EventHandler(this.HandleSaveButtonClick);
             // 
             // _loadButton
             // 
@@ -251,6 +318,7 @@
             this._loadButton.Size = new System.Drawing.Size(24, 24);
             this._loadButton.Text = "_loadButton";
             this._loadButton.ToolTipText = "_loadButton";
+            this._loadButton.Click += new System.EventHandler(this.HandleLoadButtonClick);
             // 
             // _splitContainer1
             // 
@@ -307,7 +375,7 @@
             this._splitContainer2.Panel2.Controls.Add(this._groupBox);
             this._splitContainer2.Panel2MinSize = 200;
             this._splitContainer2.Size = new System.Drawing.Size(730, 433);
-            this._splitContainer2.SplitterDistance = 484;
+            this._splitContainer2.SplitterDistance = 485;
             this._splitContainer2.SplitterWidth = 3;
             this._splitContainer2.TabIndex = 0;
             // 
@@ -320,72 +388,6 @@
             this._canvas.Name = "_canvas";
             this._canvas.Size = new System.Drawing.Size(448, 252);
             this._canvas.TabIndex = 0;
-            // 
-            // _lineButton
-            // 
-            this._lineButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this._lineButton.Image = global::Homework.Properties.Resources.Line;
-            this._lineButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this._lineButton.Name = "_lineButton";
-            this._lineButton.Size = new System.Drawing.Size(24, 24);
-            this._lineButton.Text = "_lineButton";
-            this._lineButton.ToolTipText = "_lineButton";
-            this._lineButton.Click += new System.EventHandler(this.ClickLineButton);
-            // 
-            // _rectangleButton
-            // 
-            this._rectangleButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this._rectangleButton.Image = global::Homework.Properties.Resources.Rectangle;
-            this._rectangleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this._rectangleButton.Name = "_rectangleButton";
-            this._rectangleButton.Size = new System.Drawing.Size(24, 24);
-            this._rectangleButton.Text = "_rectangleButton";
-            this._rectangleButton.ToolTipText = "_rectangleButton";
-            this._rectangleButton.Click += new System.EventHandler(this.ClickRectangleButton);
-            // 
-            // _ellipseButton
-            // 
-            this._ellipseButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this._ellipseButton.Image = global::Homework.Properties.Resources.Ellipse;
-            this._ellipseButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this._ellipseButton.Name = "_ellipseButton";
-            this._ellipseButton.Size = new System.Drawing.Size(24, 24);
-            this._ellipseButton.Text = "_ellipseButton";
-            this._ellipseButton.ToolTipText = "_ellipseButton";
-            this._ellipseButton.Click += new System.EventHandler(this.ClickEllipseButton);
-            // 
-            // _defaultCursorButton
-            // 
-            this._defaultCursorButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this._defaultCursorButton.Image = global::Homework.Properties.Resources.DefaultCursor;
-            this._defaultCursorButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this._defaultCursorButton.Name = "_defaultCursorButton";
-            this._defaultCursorButton.Size = new System.Drawing.Size(24, 24);
-            this._defaultCursorButton.Text = "_defaultCursorButton";
-            this._defaultCursorButton.ToolTipText = "_defaultCursorButton";
-            this._defaultCursorButton.Click += new System.EventHandler(this.ClickDefaultCursorButton);
-            // 
-            // _undoButton
-            // 
-            this._undoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this._undoButton.Image = global::Homework.Properties.Resources.Undo2;
-            this._undoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this._undoButton.Name = "_undoButton";
-            this._undoButton.Size = new System.Drawing.Size(24, 24);
-            this._undoButton.Text = "_undoButton";
-            this._undoButton.ToolTipText = "_undoButton";
-            this._undoButton.Click += new System.EventHandler(this.ClickUndoButton);
-            // 
-            // _redoButton
-            // 
-            this._redoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this._redoButton.Image = global::Homework.Properties.Resources.Redo2;
-            this._redoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this._redoButton.Name = "_redoButton";
-            this._redoButton.Size = new System.Drawing.Size(24, 24);
-            this._redoButton.Text = "_redoButton";
-            this._redoButton.ToolTipText = "_redoButton";
-            this._redoButton.Click += new System.EventHandler(this.ClickRedoButton);
             // 
             // Form1
             // 
@@ -444,7 +446,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn _information;
         private System.Windows.Forms.ToolStripButton _addPageButton;
         private System.Windows.Forms.FlowLayoutPanel _flowLayoutPanel;
-        private System.Windows.Forms.ToolStripButton _saveButton;
+        private Homework.View.ToolStripBindingButton _saveButton;
         private System.Windows.Forms.ToolStripButton _loadButton;
     }
 }

@@ -130,6 +130,7 @@
     <Compile Include="LoadDialog.Designer.cs">
       <DependentUpon>LoadDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\ModelPartial2.cs" />
     <Compile Include="Model\GoogleDriveService.cs" />
     <Compile Include="SaveDialog.cs">
       <SubType>Form</SubType>

@@ -134,5 +134,29 @@ namespace Homework.View
         //        button.FlatStyle = FlatStyle.Standard;
         //    }
         //}
+
+        // handle save button click
+        private void HandleSaveButtonClick(object sender, EventArgs e)
+        {
+            _saveDialog.ResetValue();
+            _saveDialog.ShowDialog();
+            if (_saveDialog.IsOk)
+            {
+                _presentationModel.Save();
+            }
+        }
+
+        // handle load button click
+        private void HandleLoadButtonClick(object sender, EventArgs e)
+        {
+            _loadDialog.ResetValue();
+            _loadDialog.ShowDialog();
+        }
+
+        // handle save button changed
+        public void HandleSaveButtonChanged(bool isEnabled)
+        {
+            _saveButton.Enabled = isEnabled;
+        }
     }
 }

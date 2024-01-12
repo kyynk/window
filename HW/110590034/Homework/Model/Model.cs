@@ -22,6 +22,7 @@ namespace Homework.Model
         private Point _firstPoint2;
         private CommandManager _commandManager;
         private Pages _pages;
+        private GoogleDriveService _drive;
 
         public Model()
         {
@@ -41,6 +42,7 @@ namespace Homework.Model
             _pages.InsertPageByIndex(0, new Shapes());
             PageIndex = 0;
             _shapesData = _pages.GetSelectPage(PageIndex);
+            _drive = new GoogleDriveService(Constant.Constant.PROJECT_NAME, Constant.Constant.SECRET_FILE_NAME);
         }
 
         public string ShapeName

@@ -84,6 +84,12 @@ namespace Homework.Model
             if ((nowTimeStamp - _timeStamp) > ONE_HOUR_SECOND)
                 this.CreateNewService(_applicationName, _clientSecretFileName);
         }
+        
+        // upload file async
+        public async Task<Google.Apis.Drive.v2.Data.File> UploadFileAsync(string uploadFileName, string contentType, Action<IUploadProgress> uploadProgressEventHandler = null, Action<Google.Apis.Drive.v2.Data.File> responseReceivedEventHandler = null)
+        {
+            return await Task.Run(() => UploadFile(uploadFileName, contentType, uploadProgressEventHandler, responseReceivedEventHandler));
+        }
 
         /// <summary>
         /// 上傳檔案
@@ -95,42 +101,57 @@ namespace Homework.Model
         /// <returns>上傳成功，回傳上傳成功的 Google Drive 格式之File</returns>
         public Google.Apis.Drive.v2.Data.File UploadFile(string uploadFileName, string contentType, Action<IUploadProgress> uploadProgressEventHandeler = null, Action<Google.Apis.Drive.v2.Data.File> responseReceivedEventHandler = null)
         {
-            FileStream uploadStream = new FileStream(uploadFileName, FileMode.Open, FileAccess.Read);
-            const char SPLASH = '\\';
-            string title = "";
-
-            this.CheckCredentialTimeStamp();
-            if (uploadFileName.LastIndexOf(SPLASH) != -1)
-                title = uploadFileName.Substring(uploadFileName.LastIndexOf(SPLASH) + 1);
-            else
-                title = uploadFileName;
-
-            Google.Apis.Drive.v2.Data.File fileToInsert = new Google.Apis.Drive.v2.Data.File { Title = title };
-            FilesResource.InsertMediaUpload insertRequest = _service.Files.Insert(fileToInsert, uploadStream, contentType);
-            insertRequest.ChunkSize = FilesResource.InsertMediaUpload.MinimumChunkSize * 2;
-
-            if (uploadProgressEventHandeler != null)
-                insertRequest.ProgressChanged += uploadProgressEventHandeler;
-
-
-            if (responseReceivedEventHandler != null)
-                insertRequest.ResponseReceived += responseReceivedEventHandler;
-
-            try
+            using (FileStream uploadStream = new FileStream(uploadFileName, FileMode.Open, FileAccess.Read))
             {
-                insertRequest.Upload();
-            }
-            catch (Exception exception)
-            {
-                throw exception;
-            }
-            finally
-            {
-                uploadStream.Close();
-            }
+                const char SPLASH = '\\';
+                string title = "";
 
-            return insertRequest.ResponseBody;
+                this.CheckCredentialTimeStamp();
+                if (uploadFileName.LastIndexOf(SPLASH) != -1)
+                    title = uploadFileName.Substring(uploadFileName.LastIndexOf(SPLASH) + 1);
+                else
+                    title = uploadFileName;
+
+                Google.Apis.Drive.v2.Data.File existingFile = GetFileByTitle(title);
+                if (existingFile != null)
+                {
+                    // If the file exists, update it instead of creating a new one
+                    Console.WriteLine("// If the file exists, update it instead of creating a new one");
+                    return UpdateFile(uploadFileName, existingFile.Id, contentType);
+                }
+                else
+                {
+                    Console.WriteLine("wtf");
+                    Google.Apis.Drive.v2.Data.File fileToInsert = new Google.Apis.Drive.v2.Data.File { Title = title };
+                    FilesResource.InsertMediaUpload insertRequest = _service.Files.Insert(fileToInsert, uploadStream, contentType);
+                    insertRequest.ChunkSize = FilesResource.InsertMediaUpload.MinimumChunkSize * 2;
+
+                    if (uploadProgressEventHandeler != null)
+                        insertRequest.ProgressChanged += uploadProgressEventHandeler;
+
+
+                    if (responseReceivedEventHandler != null)
+                        insertRequest.ResponseReceived += responseReceivedEventHandler;
+
+                    try
+                    {
+                        insertRequest.Upload();
+                    }
+                    catch (Exception exception)
+                    {
+                        throw exception;
+                    }
+                    finally
+                    {
+                        uploadStream.Close();
+                    }
+
+                    return insertRequest.ResponseBody;
+                }
+            }
         }
+
+
 
         /// <summary>
         /// 下載檔案
@@ -202,6 +223,26 @@ namespace Homework.Model
             {
                 throw exception;
             }
+        }
+
+        // find
+        // Helper method to get a file by title
+        private Google.Apis.Drive.v2.Data.File GetFileByTitle(string title)
+        {
+            FilesResource.ListRequest listRequest = _service.Files.List();
+            listRequest.Q = "trashed=false"; // Exclude trashed files from the search
+
+            FileList fileList = listRequest.Execute();
+
+            foreach (var file in fileList.Items)
+            {
+                if (file.Title == title)
+                {
+                    return file; // Return the first file with the matching title
+                }
+            }
+
+            return null; // Return null if no matching file is found
         }
     }
 }
