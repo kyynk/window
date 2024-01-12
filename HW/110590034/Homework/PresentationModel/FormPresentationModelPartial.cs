@@ -153,7 +153,24 @@ namespace Homework.PresentationModel
         // load
         public void Load()
         {
+            _model.Load();
+            Console.WriteLine("hey");
+        }
 
+        // delete
+        public void DeleteDriveFile()
+        {
+            _model.DeleteDriveFile();
+        }
+
+
+        // handle form enabled
+        public void HandleFormEnabled(bool isEnabled)
+        {
+            if (_formEnabled != null)
+            {
+                _formEnabled(isEnabled);
+            }
         }
     }
 }

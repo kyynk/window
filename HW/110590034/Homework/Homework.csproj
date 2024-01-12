@@ -233,6 +233,7 @@
     <Content Include="Resource\Rectangle.bmp" />
     <Content Include="Resource\Line.bmp" />
     <Content Include="Resource\Undo2.png" />
+    <Content Include="Resource\working.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

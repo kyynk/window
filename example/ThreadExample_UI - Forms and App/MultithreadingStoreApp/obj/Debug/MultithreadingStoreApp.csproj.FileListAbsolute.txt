@@ -1,0 +1,64 @@
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\bin\Debug\App.xbf
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\bin\Debug\MainPage.xbf
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\bin\Debug\MultithreadingStoreApp.xr.xml
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\bin\Debug\MultithreadingStoreApp.exe
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\bin\Debug\MultithreadingStoreApp.pdb
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\bin\Debug\resources.pri
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\bin\Debug\AppxManifest.xml
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\bin\Debug\MultithreadingStoreApp.build.appxrecipe
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\obj\Debug\App.g.i.cs
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\obj\Debug\App.g.cs
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\obj\Debug\MainPage.g.i.cs
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\obj\Debug\MainPage.g.cs
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\obj\Debug\XamlTypeInfo.g.cs
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\obj\Debug\App.xaml
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\obj\Debug\MainPage.xaml
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\obj\Debug\App.xbf
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\obj\Debug\MainPage.xbf
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\obj\Debug\XamlSaveStateFile.xml
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\obj\Debug\MultithreadingStoreApp.exe
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\obj\Debug\MultithreadingStoreApp.pdb
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\obj\Debug\priconfig.xml
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\obj\Debug\priconfig.xml.intermediate
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\obj\Debug\layout.resfiles
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\obj\Debug\layout.resfiles.intermediate
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\obj\Debug\resources.resfiles
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\obj\Debug\resources.resfiles.intermediate
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\obj\Debug\pri.resfiles
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\obj\Debug\pri.resfiles.intermediate
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\obj\Debug\qualifiers.txt
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\obj\Debug\qualifiers.txt.intermediate
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\obj\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\MultithreadingStoreApp\obj\Debug\ProjectArchitectures.txt
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\bin\Debug\App.xbf
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\bin\Debug\MainPage.xbf
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\bin\Debug\MultithreadingStoreApp.xr.xml
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\bin\Debug\MultithreadingStoreApp.exe
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\bin\Debug\MultithreadingStoreApp.pdb
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\bin\Debug\resources.pri
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\bin\Debug\AppxManifest.xml
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\bin\Debug\MultithreadingStoreApp.build.appxrecipe
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\obj\Debug\App.g.i.cs
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\obj\Debug\App.g.cs
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\obj\Debug\MainPage.g.i.cs
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\obj\Debug\MainPage.g.cs
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\obj\Debug\XamlTypeInfo.g.cs
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\obj\Debug\App.xaml
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\obj\Debug\MainPage.xaml
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\obj\Debug\App.xbf
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\obj\Debug\MainPage.xbf
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\obj\Debug\XamlSaveStateFile.xml
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\obj\Debug\MultithreadingStoreApp.exe
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\obj\Debug\MultithreadingStoreApp.pdb
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\obj\Debug\priconfig.xml
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\obj\Debug\priconfig.xml.intermediate
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\obj\Debug\layout.resfiles
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\obj\Debug\layout.resfiles.intermediate
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\obj\Debug\resources.resfiles
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\obj\Debug\resources.resfiles.intermediate
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\obj\Debug\pri.resfiles
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\obj\Debug\pri.resfiles.intermediate
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\obj\Debug\qualifiers.txt
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\obj\Debug\qualifiers.txt.intermediate
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\obj\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\MultithreadingStoreApp\obj\Debug\ProjectArchitectures.txt

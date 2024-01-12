@@ -1,0 +1,18 @@
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\Multithreading\bin\Debug\Multithreading.exe.config
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\Multithreading\bin\Debug\Multithreading.exe
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\Multithreading\bin\Debug\Multithreading.pdb
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\Multithreading\obj\Debug\Multithreading.csprojResolveAssemblyReference.cache
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\Multithreading\obj\Debug\Multithreading.Form1.resources
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\Multithreading\obj\Debug\Multithreading.Properties.Resources.resources
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\Multithreading\obj\Debug\Multithreading.csproj.GenerateResource.Cache
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\Multithreading\obj\Debug\Multithreading.exe
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\WinRTMultithreading-master\Multithreading\obj\Debug\Multithreading.pdb
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\Multithreading\bin\Debug\Multithreading.exe.config
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\Multithreading\bin\Debug\Multithreading.exe
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\Multithreading\bin\Debug\Multithreading.pdb
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\Multithreading\obj\Debug\Multithreading.csprojResolveAssemblyReference.cache
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\Multithreading\obj\Debug\Multithreading.Form1.resources
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\Multithreading\obj\Debug\Multithreading.Properties.Resources.resources
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\Multithreading\obj\Debug\Multithreading.csproj.GenerateResource.Cache
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\Multithreading\obj\Debug\Multithreading.exe
+C:\Users\Woei-Kae\Desktop\WinRTMultithreading-master\MultithreadUI - Forms and App\Multithreading\obj\Debug\Multithreading.pdb

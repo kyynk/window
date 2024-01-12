@@ -1,0 +1,39 @@
+{
+  "Shapes": [
+    {
+      "ShapeList": [
+        {
+          "IsResizing": false,
+          "IsSelected": false,
+          "ShapeName": "圓",
+          "Info": "(90, 24), (252, 142)",
+          "Point1": {
+            "X": 90.0,
+            "Y": 24.0
+          },
+          "Point2": {
+            "X": 252.0,
+            "Y": 142.0
+          },
+          "IsFirstPointBottom": false
+        },
+        {
+          "IsResizing": false,
+          "IsSelected": false,
+          "ShapeName": "矩形",
+          "Info": "(67, 106), (217, 201)",
+          "Point1": {
+            "X": 67.0,
+            "Y": 106.0
+          },
+          "Point2": {
+            "X": 217.0,
+            "Y": 201.0
+          },
+          "IsFirstPointBottom": false
+        }
+      ]
+    }
+  ],
+  "PanelMaxX": 448
+}

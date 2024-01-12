@@ -1,0 +1,10 @@
+C:\Users\Woei-Kae\Desktop\TaskExample\TaskExample\bin\Debug\TaskExample.exe.config
+C:\Users\Woei-Kae\Desktop\TaskExample\TaskExample\obj\Debug\TaskExample.exe
+C:\Users\Woei-Kae\Desktop\TaskExample\TaskExample\obj\Debug\TaskExample.pdb
+C:\Users\Woei-Kae\Desktop\TaskExample\TaskExample\bin\Debug\TaskExample.exe
+C:\Users\Woei-Kae\Desktop\TaskExample\TaskExample\bin\Debug\TaskExample.pdb
+C:\Users\Woei-Kae\Desktop\TaskExample\TaskExample\obj\Debug\TaskExample.csprojResolveAssemblyReference.cache
+C:\Users\Woei-Kae\Desktop\TaskExample\TaskExample\obj\Debug\TaskExample.TaskExampleForm.resources
+C:\Users\Woei-Kae\Desktop\TaskExample\TaskExample\obj\Debug\TaskExample.Properties.Resources.resources
+C:\Users\Woei-Kae\Desktop\TaskExample\TaskExample\obj\Debug\TaskExample.csproj.GenerateResource.Cache
+C:\Work\text\lecture\Windows Programming\Example Code\TaskExample\TaskExample\bin\Debug\TaskExample.exe.config

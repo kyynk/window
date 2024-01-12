@@ -42,6 +42,7 @@ namespace Homework.Model
             _pages.InsertPageByIndex(0, new Shapes());
             PageIndex = 0;
             _shapesData = _pages.GetSelectPage(PageIndex);
+            _fileId = null;
             _drive = new GoogleDriveService(Constant.Constant.PROJECT_NAME, Constant.Constant.SECRET_FILE_NAME);
         }
 

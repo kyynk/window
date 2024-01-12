@@ -8,6 +8,8 @@ namespace Homework.View
 {
     public partial class Form1
     {
+        private delegate void CrossThread(Model.Pages.PageAction pageAction, int index);
+
         // update undo redo
         private void UpdateUndoRedo()
         {
@@ -32,17 +34,25 @@ namespace Homework.View
         // handle pages changed
         private void HandlePagesChanged(Model.Pages.PageAction pageAction, int index)
         {
-            if (pageAction == Model.Pages.PageAction.Add)
+            if (this.InvokeRequired) // 若非同執行緒
             {
-                AddPageAction(index);
-            }
-            else if (pageAction == Model.Pages.PageAction.Remove)
-            {
-                RemovePageAction(index);
+                CrossThread crossThread = new CrossThread(HandlePagesChanged); //利用委派執行
+                this.Invoke(crossThread, pageAction, index);
             }
             else
             {
-                SwitchCurrentPage(index);
+                if (pageAction == Model.Pages.PageAction.Add)
+                {
+                    AddPageAction(index);
+                }
+                else if (pageAction == Model.Pages.PageAction.Remove)
+                {
+                    RemovePageAction(index);
+                }
+                else
+                {
+                    SwitchCurrentPage(index);
+                }
             }
         }
 
@@ -151,6 +161,10 @@ namespace Homework.View
         {
             _loadDialog.ResetValue();
             _loadDialog.ShowDialog();
+            if (_loadDialog.IsOk)
+            {
+                _presentationModel.Load();
+            }
         }
 
         // handle save button changed
@@ -158,5 +172,12 @@ namespace Homework.View
         {
             _saveButton.Enabled = isEnabled;
         }
+
+        // handle form enabled
+        public void HandleFormEnabled(bool isEnabled)
+        {
+            this.Enabled = isEnabled;
+        }
+
     }
 }

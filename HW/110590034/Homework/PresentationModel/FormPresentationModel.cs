@@ -17,6 +17,7 @@ namespace Homework.PresentationModel
         public event CommandManager.UndoRedoChanged _undoRedoChanged;
         public delegate void CursorChangedEventHandler(Cursor cursor);
         public event CursorChangedEventHandler _cursorChanged;
+        public event Model.Model.FormEnabledHandler _formEnabled;
         private Model.Model _model;
         private bool _isPressed;
         private bool _isLineEnabled;
@@ -37,6 +38,7 @@ namespace Homework.PresentationModel
             _model._modelChanged += HandleModelChanged;
             _model._pagesChanged += HandlePagesChanged;
             _model._undoRedoChanged += HandleUndoRedoChanged;
+            _model._formEnabled += HandleFormEnabled;
         }
 
         // get shapes

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Homework.PresentationModel;
 
 namespace Homework.View
 {
@@ -17,6 +18,7 @@ namespace Homework.View
         public LoadDialog()
         {
             InitializeComponent();
+            ResetValue();
         }
 
         public bool IsOk
@@ -31,6 +33,20 @@ namespace Homework.View
         public void ResetValue()
         {
             _isOk = false;
+        }
+
+        // handle ok button click
+        private void HandleOkButtonClick(object sender, EventArgs e)
+        {
+            _isOk = true;
+            Close();
+        }
+
+        // handle cancel button click
+        private void HandleCancelButtonClick(object sender, EventArgs e)
+        {
+            _isOk = false;
+            Close();
         }
     }
 }

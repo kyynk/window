@@ -13,6 +13,8 @@ using Google.Apis.Upload;
 using Google.Apis.Download;
 using Google.Apis.Drive.v2.Data;
 using System.Net;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Homework.Model
 {
@@ -40,7 +42,7 @@ namespace Homework.Model
         }
 
         // create new service
-        private void CreateNewService(string applicationName, string clientSecretFileName)
+        public void CreateNewService(string applicationName, string clientSecretFileName)
         {
             const string USER = "user";
             const string CREDENTIAL_FOLDER = ".credential/";
@@ -65,7 +67,7 @@ namespace Homework.Model
             _service = service;
         }
 
-        private int UNIXNowTimeStamp
+        public int UNIXNowTimeStamp
         {
             get
             {
@@ -76,7 +78,7 @@ namespace Homework.Model
         }
 
         //Check and refresh the credential if credential is out-of-date
-        private void CheckCredentialTimeStamp()
+        public void CheckCredentialTimeStamp()
         {
             const int ONE_HOUR_SECOND = 3600;
             int nowTimeStamp = UNIXNowTimeStamp;
@@ -227,7 +229,7 @@ namespace Homework.Model
 
         // find
         // Helper method to get a file by title
-        private Google.Apis.Drive.v2.Data.File GetFileByTitle(string title)
+        public Google.Apis.Drive.v2.Data.File GetFileByTitle(string title)
         {
             FilesResource.ListRequest listRequest = _service.Files.List();
             listRequest.Q = "trashed=false"; // Exclude trashed files from the search
@@ -243,6 +245,58 @@ namespace Homework.Model
             }
 
             return null; // Return null if no matching file is found
+        }
+
+        // get file id by title
+        public string GetFileIdByTitle(string title)
+        {
+            FilesResource.ListRequest listRequest = _service.Files.List();
+            listRequest.Q = "trashed=false"; // Exclude trashed files from the search
+
+            FileList fileList = listRequest.Execute();
+
+            foreach (var file in fileList.Items)
+            {
+                if (file.Title == title)
+                {
+                    return file.Id; // Return the first file with the matching title
+                }
+            }
+
+            return ""; // Return null if no matching file is found
+        }
+
+        // download file and get content
+        public string DownloadFileAndGetContent(string fileId)
+        {
+            string solutionPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Constant.Constant.MANY_FOLDER));
+            string filePath = Path.Combine(solutionPath, Constant.Constant.PROJECT_NAME, Constant.Constant.BINARY, Constant.Constant.DEBUG, Constant.Constant.FILE_NAME);
+            string downloadPath = Path.Combine(solutionPath, Constant.Constant.PROJECT_NAME, Constant.Constant.BINARY, Constant.Constant.DEBUG);
+
+
+            // Download the file from Google Drive
+            var fileToDownload = _service.Files.Get(fileId).Execute();
+
+            Console.WriteLine("whyhyyyy");
+            DownloadFile(fileToDownload, downloadPath);
+
+            Console.WriteLine("whyhyyyy 2");
+
+            // Deserialize JSON data
+            string jsonContent = System.IO.File.ReadAllText(filePath);
+            //var jsonObject = JsonConvert.DeserializeObject<JObject>(jsonContent);
+
+            Console.WriteLine(jsonContent);
+
+            //// Extract List<Shapes> and _panelMaxX from the JSON object
+            //List<Shapes> shapesList = jsonObject["Shapes"].ToObject<List<Shapes>>();
+            //int panelMaxX = jsonObject["PanelMaxX"].ToObject<int>();
+
+            //Console.WriteLine(shapesList);
+            //Console.WriteLine(panelMaxX);
+
+            // Return the deserialized data
+            return jsonContent;
         }
     }
 }

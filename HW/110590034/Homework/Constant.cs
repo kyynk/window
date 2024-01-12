@@ -36,6 +36,10 @@
         public const string SLIDE = "slide";
         // drive
         public const string PROJECT_NAME = "Homework";
+        public const string BINARY = "bin";
+        public const string DEBUG = "Debug";
+        public const string MANY_FOLDER = "..\\..\\..\\";
+        public const string FILE_NAME = "110590034.json";
         public const string SECRET_FILE_NAME = "clientSecret.json";
         // delay
         public const int DELAY_TIME = 10000;

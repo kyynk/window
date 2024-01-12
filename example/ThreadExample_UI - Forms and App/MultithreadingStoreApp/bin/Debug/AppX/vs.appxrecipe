@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>WKC-TAICHI</Machine>
+    <WindowsUser>Woei-Kae</WindowsUser>
+    <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>c2d5610b-31db-401b-a2b6-2772adfa7bba</PackageIdentityName>
+    <IntermediateOutputPath>C:\Work\text\lecture\Windows Programming\Example Code\ThreadExample_UI - Forms and App\MultithreadingStoreApp\obj\Debug\</IntermediateOutputPath>
+    <RegisteredManifestChecksum>5FADBC69AD478080176EB5D4959B24E4FC3182344704E39053BB5CA235946F63</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>c2d5610b-31db-401b-a2b6-2772adfa7bba_1.0.0.0_neutral__y7jjvz08q05hy</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>c2d5610b-31db-401b-a2b6-2772adfa7bba_y7jjvz08q05hy!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>c2d5610b-31db-401b-a2b6-2772adfa7bba</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=KellyYang</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Work\text\lecture\Windows Programming\Example Code\ThreadExample_UI - Forms and App\MultithreadingStoreApp\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2014-12-24T06:33:05.529</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Work\text\lecture\Windows Programming\Example Code\ThreadExample_UI - Forms and App\MultithreadingStoreApp\bin\Debug\MultithreadingStoreApp.exe">
+      <PackagePath>MultithreadingStoreApp.exe</PackagePath>
+      <Modified>2014-12-24T06:05:30.504</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Work\text\lecture\Windows Programming\Example Code\ThreadExample_UI - Forms and App\MultithreadingStoreApp\Assets\Logo.scale-100.png">
+      <PackagePath>Assets\Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2014-12-23T13:36:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Work\text\lecture\Windows Programming\Example Code\ThreadExample_UI - Forms and App\MultithreadingStoreApp\Assets\SmallLogo.scale-100.png">
+      <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2014-12-23T13:36:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Work\text\lecture\Windows Programming\Example Code\ThreadExample_UI - Forms and App\MultithreadingStoreApp\Assets\SplashScreen.scale-100.png">
+      <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2014-12-23T13:36:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Work\text\lecture\Windows Programming\Example Code\ThreadExample_UI - Forms and App\MultithreadingStoreApp\Assets\StoreLogo.scale-100.png">
+      <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2014-12-23T13:36:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Work\text\lecture\Windows Programming\Example Code\ThreadExample_UI - Forms and App\MultithreadingStoreApp\bin\Debug\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+      <Modified>2014-12-24T06:00:32.794</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Work\text\lecture\Windows Programming\Example Code\ThreadExample_UI - Forms and App\MultithreadingStoreApp\bin\Debug\MainPage.xbf">
+      <PackagePath>MainPage.xbf</PackagePath>
+      <Modified>2014-12-24T06:05:30.285</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Work\text\lecture\Windows Programming\Example Code\ThreadExample_UI - Forms and App\MultithreadingStoreApp\bin\Debug\MultithreadingStoreApp.xr.xml">
+      <PackagePath>MultithreadingStoreApp.xr.xml</PackagePath>
+      <Modified>2014-12-24T06:00:32.778</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Work\text\lecture\Windows Programming\Example Code\ThreadExample_UI - Forms and App\MultithreadingStoreApp\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2014-12-24T06:00:33.091</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

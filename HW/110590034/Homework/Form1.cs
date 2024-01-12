@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using Homework.PresentationModel;
+using System.Threading;
 
 namespace Homework.View
 {
@@ -34,6 +35,7 @@ namespace Homework.View
             _presentationModel._pagesChanged += HandlePagesChanged;
             _presentationModel._undoRedoChanged += HandleUndoRedoChanged;
             _presentationModel._saveButtonChanged += HandleSaveButtonChanged;
+            _presentationModel._formEnabled += HandleFormEnabled;
             // shape data (dataGridview)
             _shapeData.AutoGenerateColumns = false;
             _shapeData.DataSource = _presentationModel.GetShapes();
@@ -60,6 +62,7 @@ namespace Homework.View
             _presentationModel.SlideIndex = 0;
             AddPageButton(0);
             _pageButtons[0].Focus();
+            FormClosed += (sender, args) => _presentationModel.DeleteDriveFile();
         }
 
         // initialize canva size
@@ -139,6 +142,7 @@ namespace Homework.View
             //Button button = sender as Button;
             //// Draw the contents of _canvas onto button with scaling
             //_presentationModel.DrawOnButton(e.Graphics, button.Size, _canvas.Size);
+            
             _bitmap = new Bitmap(_canvas.Width, _canvas.Height);
             _canvas.DrawToBitmap(_bitmap, new System.Drawing.Rectangle(0, 0, _canvas.Width, _canvas.Height));
             // slide1.Image = new Bitmap(_brief, slide1.Size);

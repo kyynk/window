@@ -41,7 +41,7 @@ namespace Homework.Model
         // select page
         public Shapes GetSelectPage(int index)
         {
-            Console.WriteLine("Get page index : " + index);
+            Console.WriteLine("in pages.cs Get page index : " + index);
             //Console.WriteLine("debug rm page, page shapes shape list count = " + _pages[index].ShapeList.Count);
             //_pagesChanged?.Invoke(PageAction.Switch, index);
             return _pages[index];
