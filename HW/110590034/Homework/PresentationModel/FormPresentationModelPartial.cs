@@ -154,7 +154,7 @@ namespace Homework.PresentationModel
         public void Load()
         {
             _model.Load();
-            Console.WriteLine("hey");
+            //Console.WriteLine("hey");
         }
 
         // delete

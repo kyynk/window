@@ -41,6 +41,8 @@
         public const string MANY_FOLDER = "..\\..\\..\\";
         public const string FILE_NAME = "110590034.json";
         public const string SECRET_FILE_NAME = "clientSecret.json";
+        public const string FILE_TYPE = "application/json";
+        public const string NETWORK = "pls connect network";
         // delay
         public const int DELAY_TIME = 10000;
     }

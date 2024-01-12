@@ -50,3 +50,7 @@ C:\Users\user\Desktop\window\HW\110590034\HomeworkTests\bin\Debug\Google.Apis.pd
 C:\Users\user\Desktop\window\HW\110590034\HomeworkTests\bin\Debug\Google.Apis.xml
 C:\Users\user\Desktop\window\HW\110590034\HomeworkTests\bin\Debug\Google.Apis.Core.pdb
 C:\Users\user\Desktop\window\HW\110590034\HomeworkTests\bin\Debug\Google.Apis.Core.xml
+C:\Users\user\Desktop\window\HW\110590034\HomeworkTests\bin\Debug\Google.Apis.Auth.PlatformServices.dll
+C:\Users\user\Desktop\window\HW\110590034\HomeworkTests\bin\Debug\Google.Apis.PlatformServices.dll
+C:\Users\user\Desktop\window\HW\110590034\HomeworkTests\bin\Debug\System.CodeDom.dll
+C:\Users\user\Desktop\window\HW\110590034\HomeworkTests\bin\Debug\System.CodeDom.xml

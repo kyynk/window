@@ -6,6 +6,8 @@ using System.Drawing;
 using Homework.View;
 using Moq;
 using Homework.Model;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace Homework.PresentationModel.Tests
 {
@@ -548,6 +550,58 @@ namespace Homework.PresentationModel.Tests
             int retrievedIndex = _presentationModel.SlideIndex;
 
             Assert.AreEqual(newIndex, retrievedIndex);
+        }
+
+        // test handle undo redo changed
+        [TestMethod()]
+        public void SaveTest()
+        {
+            bool eventTriggered = false;
+            _presentationModel._saveButtonChanged += (isEnabled) =>
+            {
+                eventTriggered = true;
+            };
+
+            Task task = Task.Run(() => _presentationModel.Save());
+            task.Wait();
+
+            _mockModel.Verify(model => model.Save(), Times.Once);
+            Assert.IsTrue(eventTriggered);
+        }
+
+        // test handle undo redo changed
+        [TestMethod()]
+        public void LoadTest()
+        {
+            _presentationModel.Load();
+            _mockModel.Verify(model => model.Load(), Times.Once);
+        }
+
+        // test handle undo redo changed
+        [TestMethod()]
+        public void DeleteDriveFileTest()
+        {
+            _presentationModel.DeleteDriveFile();
+            _mockModel.Verify(model => model.DeleteDriveFile(), Times.Once);
+        }
+
+        // test handle form enabled
+        [TestMethod()]
+        public void HandleFormEnabledTest()
+        {
+            bool eventRaised = false;
+            bool invokedIsEnabled = false;
+
+            _presentationModel._formEnabled += (isEnabled) =>
+            {
+                eventRaised = true;
+                invokedIsEnabled = isEnabled;
+            };
+
+            _presentationModel.HandleFormEnabled(true);
+
+            Assert.IsTrue(invokedIsEnabled);
+            Assert.IsTrue(eventRaised);
         }
     }
 }

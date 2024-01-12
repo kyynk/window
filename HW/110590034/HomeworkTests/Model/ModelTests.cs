@@ -571,7 +571,7 @@ namespace Homework.Model.Tests
         public void HandleKeyDownForDeletePageTest()
         {
             Assert.AreEqual(1, ((Pages)_privateModel.GetField("_pages")).GetPages().Count);
-            
+
             // test cannot delete page
             _model.HandleKeyDown(Keys.Delete);
             Assert.AreEqual(1, ((Pages)_privateModel.GetField("_pages")).GetPages().Count);
@@ -761,6 +761,41 @@ namespace Homework.Model.Tests
             Assert.IsTrue(invokedIsUndo);
             Assert.IsTrue(invokedIsRedo);
             Assert.IsTrue(eventRaised);
+        }
+
+        // test save
+        [TestMethod()]
+        public void SaveTest()
+        {
+            
+        }
+
+        // test clear now
+        [TestMethod()]
+        public void ClearNowTest()
+        {
+            
+        }
+
+        // test reload pages
+        [TestMethod()]
+        public void ReloadPagesTest()
+        {
+            
+        }
+
+        // test load
+        [TestMethod()]
+        public void LoadTest()
+        {
+            
+        }
+
+        // test delete drive file
+        [TestMethod()]
+        public void DeleteDriveFileTest()
+        {
+            
         }
     }
 }

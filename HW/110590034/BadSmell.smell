@@ -465,6 +465,11 @@
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>Model\GoogleDriveService.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Model\IGraphics.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
@@ -481,6 +486,11 @@
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Model\ModelPartial.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Model\ModelPartial2.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
@@ -621,6 +631,11 @@
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Model\EllipseTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Model\GoogleDriveServiceTests.cs</RelativePath>
                 <ProjectName>HomeworkTests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>

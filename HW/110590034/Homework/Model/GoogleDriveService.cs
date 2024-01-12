@@ -186,7 +186,7 @@ namespace Homework.Model
         /// 刪除符合FileID的檔案
         /// </summary>
         /// <param name="fileId">欲刪除檔案的FileID</param>
-        public void DeleteFile(string fileId)
+        public virtual void DeleteFile(string fileId)
         {
             CheckCredentialTimeStamp();
             try
@@ -277,16 +277,16 @@ namespace Homework.Model
             // Download the file from Google Drive
             var fileToDownload = _service.Files.Get(fileId).Execute();
 
-            Console.WriteLine("whyhyyyy");
+            //Console.WriteLine("whyhyyyy");
             DownloadFile(fileToDownload, downloadPath);
 
-            Console.WriteLine("whyhyyyy 2");
+            //Console.WriteLine("whyhyyyy 2");
 
             // Deserialize JSON data
             string jsonContent = System.IO.File.ReadAllText(filePath);
             //var jsonObject = JsonConvert.DeserializeObject<JObject>(jsonContent);
 
-            Console.WriteLine(jsonContent);
+            //Console.WriteLine(jsonContent);
 
             //// Extract List<Shapes> and _panelMaxX from the JSON object
             //List<Shapes> shapesList = jsonObject["Shapes"].ToObject<List<Shapes>>();

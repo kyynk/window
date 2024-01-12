@@ -6,29 +6,14 @@
           "IsResizing": false,
           "IsSelected": false,
           "ShapeName": "圓",
-          "Info": "(33, 36), (91, 86)",
+          "Info": "(50, 50), (150, 150)",
           "Point1": {
-            "X": 33.0,
-            "Y": 36.0
+            "X": 50.0,
+            "Y": 50.0
           },
           "Point2": {
-            "X": 91.0,
-            "Y": 86.0
-          },
-          "IsFirstPointBottom": false
-        },
-        {
-          "IsResizing": false,
-          "IsSelected": false,
-          "ShapeName": "線",
-          "Info": "(61, 88), (63, 146)",
-          "Point1": {
-            "X": 61.0,
-            "Y": 88.0
-          },
-          "Point2": {
-            "X": 63.0,
-            "Y": 146.0
+            "X": 150.0,
+            "Y": 150.0
           },
           "IsFirstPointBottom": false
         },
@@ -36,14 +21,14 @@
           "IsResizing": false,
           "IsSelected": false,
           "ShapeName": "矩形",
-          "Info": "(287, 99), (361, 157)",
+          "Info": "(50, 50), (150, 150)",
           "Point1": {
-            "X": 287.0,
-            "Y": 99.0
+            "X": 50.0,
+            "Y": 50.0
           },
           "Point2": {
-            "X": 361.0,
-            "Y": 157.0
+            "X": 150.0,
+            "Y": 150.0
           },
           "IsFirstPointBottom": false
         },
@@ -51,14 +36,14 @@
           "IsResizing": false,
           "IsSelected": false,
           "ShapeName": "線",
-          "Info": "(287, 99), (324, 66)",
+          "Info": "(50, 50), (150, 150)",
           "Point1": {
-            "X": 287.0,
-            "Y": 99.0
+            "X": 50.0,
+            "Y": 50.0
           },
           "Point2": {
-            "X": 324.0,
-            "Y": 66.0
+            "X": 150.0,
+            "Y": 150.0
           },
           "IsFirstPointBottom": false
         },
@@ -66,168 +51,14 @@
           "IsResizing": false,
           "IsSelected": false,
           "ShapeName": "線",
-          "Info": "(326, 66), (360, 98)",
+          "Info": "(50, 150), (150, 50)",
           "Point1": {
-            "X": 326.0,
-            "Y": 66.0
+            "X": 50.0,
+            "Y": 150.0
           },
           "Point2": {
-            "X": 360.0,
-            "Y": 98.0
-          },
-          "IsFirstPointBottom": false
-        },
-        {
-          "IsResizing": false,
-          "IsSelected": false,
-          "ShapeName": "線",
-          "Info": "(29, 172), (65, 146)",
-          "Point1": {
-            "X": 29.0,
-            "Y": 172.0
-          },
-          "Point2": {
-            "X": 65.0,
-            "Y": 146.0
-          },
-          "IsFirstPointBottom": false
-        },
-        {
-          "IsResizing": false,
-          "IsSelected": false,
-          "ShapeName": "線",
-          "Info": "(62, 148), (93, 168)",
-          "Point1": {
-            "X": 62.0,
-            "Y": 148.0
-          },
-          "Point2": {
-            "X": 93.0,
-            "Y": 168.0
-          },
-          "IsFirstPointBottom": false
-        },
-        {
-          "IsResizing": false,
-          "IsSelected": false,
-          "ShapeName": "線",
-          "Info": "(26, 108), (93, 115)",
-          "Point1": {
-            "X": 26.0,
-            "Y": 108.0
-          },
-          "Point2": {
-            "X": 93.0,
-            "Y": 115.0
-          },
-          "IsFirstPointBottom": false
-        }
-      ]
-    },
-    {
-      "ShapeList": [
-        {
-          "IsResizing": false,
-          "IsSelected": false,
-          "ShapeName": "圓",
-          "Info": "(136, 56), (187, 91)",
-          "Point1": {
-            "X": 136.0,
-            "Y": 56.0
-          },
-          "Point2": {
-            "X": 187.0,
-            "Y": 91.0
-          },
-          "IsFirstPointBottom": false
-        },
-        {
-          "IsResizing": false,
-          "IsSelected": false,
-          "ShapeName": "圓",
-          "Info": "(107, 90), (226, 153)",
-          "Point1": {
-            "X": 107.0,
-            "Y": 90.0
-          },
-          "Point2": {
-            "X": 226.0,
-            "Y": 153.0
-          },
-          "IsFirstPointBottom": false
-        },
-        {
-          "IsResizing": false,
-          "IsSelected": false,
-          "ShapeName": "圓",
-          "Info": "(71, 153), (281, 226)",
-          "Point1": {
-            "X": 71.0,
-            "Y": 153.0
-          },
-          "Point2": {
-            "X": 281.0,
-            "Y": 226.0
-          },
-          "IsFirstPointBottom": false
-        },
-        {
-          "IsResizing": false,
-          "IsSelected": false,
-          "ShapeName": "矩形",
-          "Info": "(235, 7), (329, 87)",
-          "Point1": {
-            "X": 235.0,
-            "Y": 7.0
-          },
-          "Point2": {
-            "X": 329.0,
-            "Y": 87.0
-          },
-          "IsFirstPointBottom": false
-        },
-        {
-          "IsResizing": false,
-          "IsSelected": false,
-          "ShapeName": "圓",
-          "Info": "(235, 7), (329, 87)",
-          "Point1": {
-            "X": 235.0,
-            "Y": 7.0
-          },
-          "Point2": {
-            "X": 329.0,
-            "Y": 87.0
-          },
-          "IsFirstPointBottom": false
-        },
-        {
-          "IsResizing": false,
-          "IsSelected": false,
-          "ShapeName": "線",
-          "Info": "(282, 20), (282, 54)",
-          "Point1": {
-            "X": 282.0,
-            "Y": 20.0
-          },
-          "Point2": {
-            "X": 282.0,
-            "Y": 54.0
-          },
-          "IsFirstPointBottom": false
-        },
-        {
-          "IsResizing": false,
-          "IsSelected": false,
-          "ShapeName": "線",
-          "Info": "(282, 54), (304, 68)",
-          "Point1": {
-            "X": 282.0,
-            "Y": 54.0
-          },
-          "Point2": {
-            "X": 304.0,
-            "Y": 68.0
+            "X": 150.0,
+            "Y": 50.0
           },
           "IsFirstPointBottom": false
         }
